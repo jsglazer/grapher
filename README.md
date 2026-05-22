@@ -2,9 +2,12 @@
 
 An Obsidian plugin that renders mathematical equations as graphs directly in your notes using a `grapher` code block.
 
-**Repository:** https://github.com/jsglazer/obsidian-grapher
+**Repository:** https://github.com/jsglazer/obsidian-grapher-dev
 
 ---
+
+![Description of Image](quadcub.png)
+
 
 ## Usage
 
@@ -79,6 +82,24 @@ Grapher uses [math.js](https://mathjs.org) for evaluation. Supported syntax incl
 - Square roots and powers: `sqrt(x)`, `x^(1/3)`
 - Constants: `pi`, `e`
 - Implicit multiplication: `3x`, `2sin(x)`
+
+### LaTeX input
+
+LaTeX notation is also accepted and converted automatically. Common patterns:
+
+| LaTeX | math.js equivalent |
+|-------|--------------------|
+| `\frac{a}{b}` | `(a)/(b)` |
+| `\sqrt{x}` | `sqrt(x)` |
+| `\sqrt[n]{x}` | `x^(1/n)` |
+| `x^{n+1}` | `x^(n+1)` |
+| `\sin`, `\cos`, `\ln`, etc. | `sin`, `cos`, `ln`, etc. |
+| `\pi` | `pi` |
+| `\left(\ldots\right)` | `(...)` |
+| `\left\|x\right\|` | `abs(x)` |
+| `\cdot`, `\times` | `*` |
+
+Example: `eq: f(x) = 2 + \frac{1}{x}` is valid.
 
 ---
 

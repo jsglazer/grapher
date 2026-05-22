@@ -2703,6 +2703,119 @@ __export(main_exports, {
 module.exports = __toCommonJS(main_exports);
 var import_obsidian = require("obsidian");
 
+// src/latexToMathjs.ts
+function extractBraceGroup(s, start) {
+  if (start >= s.length || s[start] !== "{") return null;
+  let depth = 0;
+  for (let i2 = start; i2 < s.length; i2++) {
+    if (s[i2] === "{") depth++;
+    else if (s[i2] === "}") {
+      depth--;
+      if (depth === 0) return { content: s.slice(start + 1, i2), end: i2 };
+    }
+  }
+  return null;
+}
+function skipSpaces(s, pos) {
+  while (pos < s.length && s[pos] === " ") pos++;
+  return pos;
+}
+function replaceFracs(s) {
+  s = s.replace(/\\[dt]frac/g, "\\frac");
+  let changed = true;
+  while (changed) {
+    changed = false;
+    const idx = s.indexOf("\\frac");
+    if (idx === -1) break;
+    let pos = skipSpaces(s, idx + 5);
+    const num = extractBraceGroup(s, pos);
+    if (!num) break;
+    pos = skipSpaces(s, num.end + 1);
+    const den = extractBraceGroup(s, pos);
+    if (!den) break;
+    s = s.slice(0, idx) + `(${num.content})/(${den.content})` + s.slice(den.end + 1);
+    changed = true;
+  }
+  return s;
+}
+function replaceSqrts(s) {
+  let changed = true;
+  while (changed) {
+    changed = false;
+    const idx = s.indexOf("\\sqrt");
+    if (idx === -1) break;
+    let pos = skipSpaces(s, idx + 5);
+    let nthRoot2 = null;
+    if (s[pos] === "[") {
+      const closeIdx = s.indexOf("]", pos);
+      if (closeIdx !== -1) {
+        nthRoot2 = s.slice(pos + 1, closeIdx).trim();
+        pos = skipSpaces(s, closeIdx + 1);
+      }
+    }
+    const arg2 = extractBraceGroup(s, pos);
+    if (!arg2) break;
+    const repl = nthRoot2 ? `(${arg2.content})^(1/${nthRoot2})` : `sqrt(${arg2.content})`;
+    s = s.slice(0, idx) + repl + s.slice(arg2.end + 1);
+    changed = true;
+  }
+  return s;
+}
+function replaceBraceExponents(s) {
+  let changed = true;
+  while (changed) {
+    changed = false;
+    const idx = s.indexOf("^{");
+    if (idx === -1) break;
+    const group = extractBraceGroup(s, idx + 1);
+    if (!group) break;
+    s = s.slice(0, idx) + `^(${group.content})` + s.slice(group.end + 1);
+    changed = true;
+  }
+  return s;
+}
+function removeSubscripts(s) {
+  let changed = true;
+  while (changed) {
+    changed = false;
+    const idx = s.indexOf("_{");
+    if (idx === -1) break;
+    const group = extractBraceGroup(s, idx + 1);
+    if (!group) break;
+    s = s.slice(0, idx) + s.slice(group.end + 1);
+    changed = true;
+  }
+  s = s.replace(/_[a-zA-Z0-9]/g, "");
+  return s;
+}
+function latexToMathjs(input) {
+  if (!input.includes("\\") && !input.includes("{")) return input;
+  let s = input;
+  s = s.replace(/\\[,;!]|\\quad|\\qquad/g, " ");
+  s = s.replace(/\\text\s*\{[^{}]*\}/g, "");
+  s = s.replace(/\\cdot/g, "*");
+  s = s.replace(/\\times/g, "*");
+  s = s.replace(/\\div/g, "/");
+  s = s.replace(/\\pi/g, "pi");
+  let prev = "";
+  while (prev !== s) {
+    prev = s;
+    s = s.replace(/\\left\s*\|([^|]*?)\\right\s*\|/g, "abs($1)");
+  }
+  s = s.replace(/\\left\s*[\(\[]/g, "(");
+  s = s.replace(/\\right\s*[\)\]]/g, ")");
+  s = s.replace(/\\left\s*\./g, "");
+  s = s.replace(/\\right\s*\./g, "");
+  s = s.replace(/\\(arcsin|arccos|arctan|sinh|cosh|tanh|sin|cos|tan|csc|sec|cot|exp|ln|log)/g, "$1");
+  s = replaceFracs(s);
+  s = replaceSqrts(s);
+  s = replaceBraceExponents(s);
+  s = removeSubscripts(s);
+  s = s.replace(/\{/g, "(").replace(/\}/g, ")");
+  s = s.replace(/\s+/g, " ").trim();
+  return s;
+}
+
 // src/parser.ts
 var EQ_DEFAULTS = { lineColor: "#1e56d9", lineWidth: 2 };
 var GLOBAL_DEFAULTS = { axisColor: "#888888", renderWidth: "100%" };
@@ -2773,7 +2886,7 @@ function parseGrapherBlock(source) {
     );
     return {
       rawEquation: block.rawValue,
-      equation: parseEquationRHS(block.rawValue),
+      equation: latexToMathjs(parseEquationRHS(block.rawValue)),
       lineColor: (_d = (_c = block.sub["lines"]) != null ? _c : fallback.lines) != null ? _d : EQ_DEFAULTS.lineColor,
       lineWidth: isNaN(lw) ? EQ_DEFAULTS.lineWidth : lw,
       showIntX: ((_f = (_e = block.sub["intx"]) != null ? _e : fallback.intx) != null ? _f : "false").toLowerCase() === "true",
@@ -45334,53 +45447,6 @@ function drawTitle(ctx, title, plotX, plotW) {
   ctx.fillText(title, bx + boxW / 2, by + boxH / 2);
   ctx.restore();
 }
-function drawEquationLabel(ctx, equations, loc, plotX, plotY, plotW, plotH) {
-  const FONT = "bold 12px monospace";
-  const LINE_H = 18;
-  const PAD_H = 8;
-  const PAD_V = 5;
-  const BULLET = 12;
-  ctx.save();
-  ctx.font = FONT;
-  const maxTw = Math.max(...equations.map((e3) => ctx.measureText(e3.rawEquation).width));
-  const boxW = maxTw + BULLET + PAD_H * 2;
-  const boxH = equations.length * LINE_H + PAD_V * 2;
-  const margin = 10;
-  let bx, by;
-  switch (loc) {
-    case "left":
-      bx = plotX + margin;
-      by = plotY + margin;
-      break;
-    case "right":
-      bx = plotX + plotW - margin - boxW;
-      by = plotY + margin;
-      break;
-    case "above":
-      bx = plotX + (plotW - boxW) / 2;
-      by = plotY + margin;
-      break;
-    case "below":
-      bx = plotX + (plotW - boxW) / 2;
-      by = plotY + plotH - margin - boxH;
-      break;
-  }
-  ctx.fillStyle = "#ffffff";
-  ctx.fillRect(bx, by, boxW, boxH);
-  ctx.strokeStyle = "#cccccc";
-  ctx.lineWidth = 0.5;
-  ctx.strokeRect(bx, by, boxW, boxH);
-  for (let i2 = 0; i2 < equations.length; i2++) {
-    const ty = by + PAD_V + i2 * LINE_H;
-    ctx.fillStyle = equations[i2].lineColor;
-    ctx.fillRect(bx + PAD_H, ty + 4, 8, 8);
-    ctx.fillStyle = "#000000";
-    ctx.textAlign = "left";
-    ctx.textBaseline = "top";
-    ctx.fillText(equations[i2].rawEquation, bx + PAD_H + BULLET, ty + 1);
-  }
-  ctx.restore();
-}
 function renderGraph(ctx, width, height, config4, evaluators) {
   var _a, _b, _c, _d;
   ctx.clearRect(0, 0, width, height);
@@ -45536,26 +45602,27 @@ function renderGraph(ctx, width, height, config4, evaluators) {
     }
   }
   ctx.restore();
-  if (config4.eqLoc) {
-    drawEquationLabel(
-      ctx,
-      config4.equations,
-      config4.eqLoc,
-      PAD.left,
-      PAD.top,
-      plotW,
-      plotH
-    );
-  }
   if (config4.title) {
     drawTitle(ctx, config4.title, PAD.left, plotW);
   }
 }
 
 // main.ts
+var PLOT_PAD = { top: 20, topTitle: 38, right: 20, bottom: 42, left: 58 };
+var LABEL_MARGIN = 10;
+function toDisplayLatex(s) {
+  if (s.includes("\\")) return s;
+  let r = s;
+  r = r.replace(/\bpi\b/g, "\\pi");
+  r = r.replace(/\b(sqrt|sin|cos|tan|csc|sec|cot|arcsin|arccos|arctan|sinh|cosh|tanh|ln|log|exp|abs)\b/g, "\\$1");
+  r = r.replace(/\\sqrt\(([^()]+)\)/g, "\\sqrt{$1}");
+  r = r.replace(/\\abs\(([^()]+)\)/g, "\\left|$1\\right|");
+  r = r.replace(/\^\(([^()]+)\)/g, "^{$1}");
+  return r;
+}
 var GrapherPlugin = class extends import_obsidian.Plugin {
   async onload() {
-    this.registerMarkdownCodeBlockProcessor("grapher", (source, el) => {
+    this.registerMarkdownCodeBlockProcessor("grapher", async (source, el) => {
       let config4;
       try {
         config4 = parseGrapherBlock(source);
@@ -45580,8 +45647,10 @@ var GrapherPlugin = class extends import_obsidian.Plugin {
       }
       const container = el.createDiv({ cls: "grapher-container" });
       container.style.width = config4.renderWidth;
+      container.style.position = "relative";
       const canvas = container.createEl("canvas");
       canvas.style.width = "100%";
+      canvas.style.display = "block";
       const draw = (displayWidth) => {
         const displayHeight = Math.round(displayWidth * 0.65);
         const dpr = window.devicePixelRatio || 1;
@@ -45593,6 +45662,67 @@ var GrapherPlugin = class extends import_obsidian.Plugin {
         ctx.scale(dpr, dpr);
         renderGraph(ctx, displayWidth, displayHeight, config4, evaluators);
       };
+      if (config4.eqLoc) {
+        const padTop = config4.title ? PLOT_PAD.topTitle : PLOT_PAD.top;
+        const overlay = container.createDiv();
+        overlay.style.position = "absolute";
+        overlay.style.top = "0";
+        overlay.style.left = "0";
+        overlay.style.right = "0";
+        overlay.style.bottom = "0";
+        overlay.style.pointerEvents = "none";
+        overlay.style.display = "flex";
+        switch (config4.eqLoc) {
+          case "above":
+            overlay.style.justifyContent = "center";
+            overlay.style.alignItems = "flex-start";
+            overlay.style.paddingTop = `${padTop + LABEL_MARGIN}px`;
+            overlay.style.paddingLeft = `${PLOT_PAD.left}px`;
+            overlay.style.paddingRight = `${PLOT_PAD.right}px`;
+            break;
+          case "below":
+            overlay.style.justifyContent = "center";
+            overlay.style.alignItems = "flex-end";
+            overlay.style.paddingBottom = `${PLOT_PAD.bottom + LABEL_MARGIN}px`;
+            overlay.style.paddingLeft = `${PLOT_PAD.left}px`;
+            overlay.style.paddingRight = `${PLOT_PAD.right}px`;
+            break;
+          case "left":
+            overlay.style.justifyContent = "flex-start";
+            overlay.style.alignItems = "flex-start";
+            overlay.style.paddingTop = `${padTop + LABEL_MARGIN}px`;
+            overlay.style.paddingLeft = `${PLOT_PAD.left + LABEL_MARGIN}px`;
+            break;
+          case "right":
+            overlay.style.justifyContent = "flex-end";
+            overlay.style.alignItems = "flex-start";
+            overlay.style.paddingTop = `${padTop + LABEL_MARGIN}px`;
+            overlay.style.paddingRight = `${PLOT_PAD.right + LABEL_MARGIN}px`;
+            break;
+        }
+        const labelBox = overlay.createDiv();
+        labelBox.style.background = "#ffffff";
+        labelBox.style.border = "0.5px solid #cccccc";
+        labelBox.style.padding = "4px 8px";
+        labelBox.style.display = "inline-flex";
+        labelBox.style.flexDirection = "column";
+        labelBox.style.gap = "3px";
+        for (const eq of config4.equations) {
+          const row2 = labelBox.createDiv();
+          row2.style.display = "flex";
+          row2.style.alignItems = "center";
+          row2.style.gap = "6px";
+          const bullet = row2.createSpan();
+          bullet.style.display = "inline-block";
+          bullet.style.width = "8px";
+          bullet.style.height = "8px";
+          bullet.style.flexShrink = "0";
+          bullet.style.background = eq.lineColor;
+          const mathEl = (0, import_obsidian.renderMath)(toDisplayLatex(eq.rawEquation), false);
+          row2.appendChild(mathEl);
+        }
+        await (0, import_obsidian.finishRenderMath)();
+      }
       const observer = new ResizeObserver((entries) => {
         const w = entries[0].contentRect.width;
         if (w > 0) draw(w);
