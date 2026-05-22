@@ -1,0 +1,17 @@
+.grapher-container {
+	margin: 1em 0;
+}
+
+.grapher-container canvas {
+	border-radius: 4px;
+	display: block;
+}
+
+.grapher-error {
+	color: var(--text-error);
+	font-family: var(--font-monospace);
+	font-size: 0.9em;
+	padding: 0.5em;
+	border: 1px solid var(--text-error);
+	border-radius: 4px;
+}

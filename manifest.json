@@ -1,0 +1,10 @@
+{
+  "id": "obsidian-grapher",
+  "name": "Grapher",
+  "version": "1.0.0",
+  "minAppVersion": "1.0.0",
+  "description": "Render mathematical equations as interactive graphs.",
+  "author": "jsglazer",
+  "authorUrl": "https://github.com/jsglazer",
+  "isDesktopOnly": false
+}
