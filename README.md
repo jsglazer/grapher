@@ -2,11 +2,11 @@
 
 An Obsidian plugin that renders mathematical equations as graphs directly in your notes using a `grapher` code block.
 
-**Repository:** https://github.com/jsglazer/obsidian-grapher-dev
+**Repository:** https://github.com/jsglazer/grapher-dev
 
 ---
 
-![Description of Image](quadcub.png)
+![Example](quadcub.png)
 
 
 ## Usage
