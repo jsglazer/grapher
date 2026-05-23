@@ -37,6 +37,41 @@ render: 60%
 | `scalex:` | X-axis range. Two values = `min,max`. Single value = symmetric `±n`. Omit for auto. | `scalex: -10,10` or `scalex: 5` |
 | `scaley:` | Y-axis range. Same format as `scalex`. | `scaley: -2,2` or `scaley: 3` |
 | `EqLoc:` | Position of equation label on the graph. Options: `left`, `right`, `above`, `below`. Omit to hide. | `EqLoc: left` |
+| `params:` | Named constants available to all equations, comma-separated `name=value` pairs. | `params: n=3, a=2` |
+
+### Constants (params)
+
+Use `params:` to define named constant values that can be referenced in any equation. This is useful for equations with variable exponents, scaling factors, or any expression that depends on a value you want to change without rewriting the equation.
+
+```
+eq: f(x) = x^{1/n}
+params: n=3
+```
+
+Multiple constants are comma-separated:
+
+```
+eq: f(x) = a * x^{1/n}
+params: n=3, a=2
+```
+
+Params apply to **all** equations in the block, so you can share a constant across curves:
+
+````
+```grapher
+eq1: f(x) = x^{1/n}
+eq2: g(x) = x^{2/n}
+params: n=3
+axis: #c2c2c2
+EqLoc: right
+```
+````
+
+When `EqLoc:` is set, param values are shown in the equation label below the curve list.
+
+> **Note:** Only `x` is the free variable. Every other letter in an equation must be given a value via `params:`, otherwise the curve will not render.
+
+---
 
 ### Per-equation options
 
