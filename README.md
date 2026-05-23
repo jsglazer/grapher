@@ -17,9 +17,9 @@ Create a fenced code block with the language set to `grapher`:
 ```grapher
 eq: f(x) = x^3 - 3x^2 - 4x
 axis: #c2c2c2
-lines: #1e56d9
+linecolor: #1e56d9
 linewidth: 2px
-render: 60%
+width: 60%
 ```
 ````
 
@@ -33,7 +33,7 @@ render: 60%
 |-----------|-------------|---------|
 | `title:` | Graph title displayed at the top in a white box | `title: My Graph` |
 | `axis:` | Color of axes, tick marks, and grid | `axis: #c2c2c2` |
-| `render:` | Width of the rendered graph (px or %) | `render: 50%` or `render: 400px` |
+| `width:` | Width of the rendered graph (px or %) | `width: 50%` or `width: 400px` |
 | `scalex:` | X-axis range. Two values = `min,max`. Single value = symmetric `±n`. Omit for auto. | `scalex: -10,10` or `scalex: 5` |
 | `scaley:` | Y-axis range. Same format as `scalex`. | `scaley: -2,2` or `scaley: 3` |
 | `EqLoc:` | Position of equation label on the graph. Options: `left`, `right`, `above`, `below`. Omit to hide. | `EqLoc: left` |
@@ -79,7 +79,7 @@ When `EqLoc:` is set, param values are shown in the equation label below the cur
 
 ```
 eq: f(x) = x^2
-lines: #1e56d9
+linecolor: #1e56d9
 linewidth: 2px
 intx: true
 ```
@@ -88,11 +88,11 @@ intx: true
 
 ```
 eq1: f(x) = x^2
- - lines: #1e56d9
+ - linecolor: #1e56d9
  - linewidth: 2px
  - intx: true
 eq2: g(x) = x + 1
- - lines: #d91e1e
+ - linecolor: #d91e1e
  - linewidth: 1px
 ```
 
@@ -100,10 +100,47 @@ eq2: g(x) = x + 1
 |-----------|-------------|---------|
 | `eq:` | Equation key for a **single** equation only. | `eq: f(x) = sin(x)` |
 | `eq1:` / `eq2:` / `eq3:` ... | Equation keys for **multiple** equations. | `eq1: f(x) = x^2` |
-| `lines:` | Curve color (hex) | `lines: #1e56d9` |
+| `linecolor:` | Curve color (hex) | `linecolor: #1e56d9` |
 | `linewidth:` | Stroke width in px | `linewidth: 2px` |
+| `linestyle:` | Stroke style. Options: `solid` (default), `dash`, `double`, `dash-double` | `linestyle: dash` |
 | `intx:` | Plot x-intercepts with coordinate labels | `intx: true` |
 | `inty:` | Plot y-intercept with coordinate label | `inty: true` |
+| `points:` | One or more user-defined points to display, as `{x,y}` pairs | `points: {1,2}, {-3,0.5}` |
+| `pointcolor:` | Color for user-defined points and their labels (defaults to curve color) | `pointcolor: #e08000` |
+
+---
+
+### Inline equation labels (`//`)
+
+Append `// label text` to any equation line to add a plain-text label that appears alongside the typeset equation in the overlay box. The label is displayed to the right of the equation in italics.
+
+```
+eq1: f(x) = e^x  //natural exponential
+eq2: g(x) = ln(x)  //natural log
+```
+
+If any equation has a `//` label, the overlay box is shown automatically in the `right` position (unless `EqLoc:` overrides the position).
+
+---
+
+### Standalone points (global)
+
+Use a top-level `points:` key to plot points that are not tied to any equation. These render with a **black** dot and black coordinate label.
+
+```
+eq: f(x) = x^2
+points: {-2,4}, {0,0}, {2,4}
+```
+
+Global `points:` and per-equation `- points:` can coexist in the same block.
+
+---
+
+## Settings — Graph Template
+
+Open **Settings → Grapher** to configure a default graph template. Enter any valid grapher block content in the text area (10 lines).
+
+Run the command **Grapher: Insert default graph** to insert the template as a fenced `grapher` block at the cursor position.
 
 ---
 
@@ -138,27 +175,41 @@ Example: `eq: f(x) = 2 + \frac{1}{x}` is valid.
 
 ### Piecewise-defined functions
 
-Use `\begin{cases}...\end{cases}` LaTeX notation. Each row is `expression & condition`, rows separated by `\\`. The last row's condition is optional (it acts as the default/else branch).
+Define each piece as its own equation with a domain restriction after ` : ` (space-colon-space):
+
+````
+```grapher
+eq1: x+3 : x < 1
+eq2: (x-2)^2 : x \ge 1
+```
+````
+
+Open circles ○ are drawn at strict-inequality boundaries (`<`, `>`); closed circles ● at inclusive boundaries (`\le`, `\ge`, `\leq`, `\geq`).
+
+Pieces are independent equations, so each can have its own `linecolor:` and `linewidth:`:
+
+````
+```grapher
+eq1: x+3 : x < 1
+ - linecolor: #1e56d9
+eq2: (x-2)^2 : x \ge 1
+ - linecolor: #1e56d9
+scalex: -3,5
+scaley: -1,6
+```
+````
+
+Any expression valid in a regular `eq:` field works as a piece, including LaTeX (`\frac`, `\sqrt`, trig), and `params:` constants.
+
+**Alternative — LaTeX cases notation**
+
+You can also use `\begin{cases}...\end{cases}` to express the whole piecewise function as a single equation (useful when you want one label entry):
 
 ````
 ```grapher
 eq: f(x) = \begin{cases} x+3 & x < 1 \\ (x-2)^2 & x \ge 1 \end{cases}
 ```
 ````
-
-Open circles ○ are drawn at strict-inequality boundaries (`<`, `>`); closed circles ● at inclusive boundaries (`\le`, `\ge`, `\leq`, `\geq`).
-
-More than two pieces are supported:
-
-````
-```grapher
-eq: f(x) = \begin{cases} -x & x < -1 \\ x^2 & -1 \le x < 2 \\ 4 & x \ge 2 \end{cases}
-scalex: -5,5
-scaley: -2,6
-```
-````
-
-Each piece can use any expression valid in a regular `eq:` field, including LaTeX like `\frac`, `\sqrt`, trig functions, and `params:` constants.
 
 ---
 
@@ -168,16 +219,16 @@ Each piece can use any expression valid in a regular `eq:` field, including LaTe
 ```grapher
 title: Quadratic vs Cubic
 eq1: f(x) = -2x^2 + 4x - 1
- - lines: #1e56d9
+ - linecolor: #1e56d9
  - linewidth: 2px
  - intx: true
  - inty: true
 eq2: g(x) = x^3 - 3x^2 - 4x
- - lines: #d91e1e
+ - linecolor: #d91e1e
  - linewidth: 1px
  - intx: true
 axis: #c2c2c2
-render: 75%
+width: 75%
 EqLoc: above
 scalex: -5,6
 scaley: 5

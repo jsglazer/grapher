@@ -1,0 +1,3 @@
+{
+  "graphTemplate": "eq1: f(x) = 2^x\n - lines: #1e56d9\neq2: y = log2(x)\n - lines: #a61e96\neq3: y = x\n - lines: #c2c2c2\naxis: #c2c2c2\nscalex: -5,5\nscaley: -5,5\nlinewidth: 2px\neqLoc: left\nrender: 500px"
+}

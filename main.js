@@ -2892,6 +2892,16 @@ function parsePiecewiseLatex(input) {
   }
   return { mathExpr, boundaries };
 }
+function parseDomainRestriction(rhs) {
+  const sepIdx = rhs.indexOf(" : ");
+  if (sepIdx === -1) return null;
+  const mathExpr = latexToMathjs(rhs.slice(0, sepIdx).trim());
+  const mathCond = latexCondToMathjs(rhs.slice(sepIdx + 3).trim());
+  const boundaries = [];
+  const bound = parseSingleBound(mathCond);
+  if (bound) boundaries.push({ x: bound.x, open: bound.open, pieceExpr: mathExpr });
+  return { mathExpr: `((${mathCond}) ? (${mathExpr}) : (NaN))`, boundaries };
+}
 function latexToMathjs(input) {
   if (!input.includes("\\") && !input.includes("{")) return input;
   let s = input;
@@ -2929,6 +2939,7 @@ function isEqKey(key) {
 function parseEquationRHS(raw) {
   const fnPrefix = raw.match(/^[a-zA-Z_][a-zA-Z0-9_]*\s*\([^)]*\)\s*=\s*/);
   if (fnPrefix) return raw.slice(fnPrefix[0].length).trim();
+  if (raw.includes(" : ")) return raw;
   const casesStart = raw.search(/\\begin\s*\{cases\}/);
   const eqIdx = raw.indexOf("=");
   if (casesStart !== -1 && (eqIdx === -1 || casesStart < eqIdx)) return raw;
@@ -2948,6 +2959,20 @@ function parseScale(raw) {
   const n = parseFloat(raw.trim());
   if (isNaN(n)) return [void 0, void 0];
   return [-Math.abs(n), Math.abs(n)];
+}
+function parsePointsList(raw) {
+  const pts = [];
+  const re = /\{([^}]+)\}/g;
+  let m;
+  while ((m = re.exec(raw)) !== null) {
+    const parts = m[1].split(",");
+    if (parts.length === 2) {
+      const px = parseFloat(parts[0].trim());
+      const py = parseFloat(parts[1].trim());
+      if (!isNaN(px) && !isNaN(py)) pts.push({ x: px, y: py });
+    }
+  }
+  return pts;
 }
 function parseGrapherBlock(source) {
   var _a;
@@ -2980,28 +3005,41 @@ function parseGrapherBlock(source) {
     throw new Error("Use eq1:, eq2:, ... for multiple equations. eq: is for a single equation only.");
   }
   const fallback = {
-    lines: globalRaw["lines"],
+    linecolor: globalRaw["linecolor"],
     linewidth: globalRaw["linewidth"],
+    linestyle: globalRaw["linestyle"],
     intx: globalRaw["intx"],
     inty: globalRaw["inty"]
   };
   const equations = eqBlocks.map((block) => {
-    var _a2, _b, _c, _d, _e, _f, _g, _h;
+    var _a2, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
     const lw = parseFloat(
       ((_b = (_a2 = block.sub["linewidth"]) != null ? _a2 : fallback.linewidth) != null ? _b : "").replace(/px$/i, "")
     );
-    const rhs = parseEquationRHS(block.rawValue);
-    const piecewise = parsePiecewiseLatex(rhs);
+    let rawValue = block.rawValue;
+    let label;
+    const labelIdx = rawValue.indexOf("//");
+    if (labelIdx !== -1) {
+      label = rawValue.slice(labelIdx + 2).trim() || void 0;
+      rawValue = rawValue.slice(0, labelIdx).trim();
+    }
+    const rhs = parseEquationRHS(rawValue);
+    const parsed = (_c = parseDomainRestriction(rhs)) != null ? _c : parsePiecewiseLatex(rhs);
+    const points = parsePointsList((_d = block.sub["points"]) != null ? _d : "");
     const eq = {
-      rawEquation: block.rawValue,
-      equation: piecewise ? piecewise.mathExpr : latexToMathjs(rhs),
-      lineColor: (_d = (_c = block.sub["lines"]) != null ? _c : fallback.lines) != null ? _d : EQ_DEFAULTS.lineColor,
+      rawEquation: rawValue,
+      equation: parsed ? parsed.mathExpr : latexToMathjs(rhs),
+      ...label !== void 0 && { label },
+      lineColor: (_f = (_e = block.sub["linecolor"]) != null ? _e : fallback.linecolor) != null ? _f : EQ_DEFAULTS.lineColor,
       lineWidth: isNaN(lw) ? EQ_DEFAULTS.lineWidth : lw,
-      showIntX: ((_f = (_e = block.sub["intx"]) != null ? _e : fallback.intx) != null ? _f : "false").toLowerCase() === "true",
-      showIntY: ((_h = (_g = block.sub["inty"]) != null ? _g : fallback.inty) != null ? _h : "false").toLowerCase() === "true"
+      lineStyle: (_g = block.sub["linestyle"]) != null ? _g : fallback.linestyle,
+      showIntX: ((_i = (_h = block.sub["intx"]) != null ? _h : fallback.intx) != null ? _i : "false").toLowerCase() === "true",
+      showIntY: ((_k = (_j = block.sub["inty"]) != null ? _j : fallback.inty) != null ? _k : "false").toLowerCase() === "true",
+      ...points.length > 0 && { points },
+      ...block.sub["pointcolor"] && { pointColor: block.sub["pointcolor"] }
     };
-    if (piecewise && piecewise.boundaries.length > 0) {
-      eq.piecewiseBoundaries = piecewise.boundaries;
+    if (parsed && parsed.boundaries.length > 0) {
+      eq.piecewiseBoundaries = parsed.boundaries;
     }
     return eq;
   });
@@ -3023,7 +3061,7 @@ function parseGrapherBlock(source) {
     ...Object.keys(params).length > 0 && { params },
     title: globalRaw["title"],
     axisColor: globalRaw["axis"] || GLOBAL_DEFAULTS.axisColor,
-    renderWidth: globalRaw["render"] || GLOBAL_DEFAULTS.renderWidth,
+    renderWidth: globalRaw["width"] || GLOBAL_DEFAULTS.renderWidth,
     eqLoc
   };
   if (globalRaw["xmin"]) config2.xMin = parseFloat(globalRaw["xmin"]);
@@ -3039,6 +3077,10 @@ function parseGrapherBlock(source) {
     const [lo, hi] = parseScale(globalRaw["scaley"]);
     if (lo !== void 0) config2.yMin = lo;
     if (hi !== void 0) config2.yMax = hi;
+  }
+  if (globalRaw["points"]) {
+    const gpts = parsePointsList(globalRaw["points"]);
+    if (gpts.length > 0) config2.globalPoints = gpts;
   }
   return config2;
 }
@@ -43809,6 +43851,16 @@ var STEPS = 800;
 var BASE_PAD = { top: 20, right: 20, bottom: 42, left: 58 };
 var TITLE_PAD_TOP = 38;
 var DOT_RADIUS = 4;
+function getLineDash(style) {
+  switch (style) {
+    case "dash":
+      return [8, 4];
+    case "dash-double":
+      return [10, 4, 4, 4];
+    default:
+      return [];
+  }
+}
 function niceTickSpacing(range, targetTicks = 8) {
   const rough = range / targetTicks;
   const exp2 = Math.floor(Math.log10(rough));
@@ -43851,7 +43903,7 @@ function drawOpenCircle(ctx, cx, cy, color) {
   ctx.stroke();
   ctx.restore();
 }
-function drawCoordLabel(ctx, text, dotX, dotY) {
+function drawCoordLabel(ctx, text, dotX, dotY, color = "#000000") {
   ctx.save();
   ctx.font = "bold 10px monospace";
   const tw = ctx.measureText(text).width;
@@ -43861,7 +43913,7 @@ function drawCoordLabel(ctx, text, dotX, dotY) {
   const ly = dotY - th - DOT_RADIUS - 1;
   ctx.fillStyle = "#ffffff";
   ctx.fillRect(lx - px, ly - py, tw + px * 2, th + py * 2);
-  ctx.fillStyle = "#000000";
+  ctx.fillStyle = color;
   ctx.textAlign = "left";
   ctx.textBaseline = "top";
   ctx.fillText(text, lx, ly);
@@ -43887,7 +43939,7 @@ function drawTitle(ctx, title, plotX, plotW) {
   ctx.restore();
 }
 function renderGraph(ctx, width, height, config2, evaluators) {
-  var _a, _b, _c, _d;
+  var _a, _b, _c, _d, _e;
   ctx.clearRect(0, 0, width, height);
   const PAD = { ...BASE_PAD, top: config2.title ? TITLE_PAD_TOP : BASE_PAD.top };
   const xMin = (_a = config2.xMin) != null ? _a : -10;
@@ -44003,6 +44055,7 @@ function renderGraph(ctx, width, height, config2, evaluators) {
     ctx.lineWidth = eq.lineWidth;
     ctx.lineJoin = "round";
     ctx.lineCap = "round";
+    ctx.setLineDash(getLineDash(eq.lineStyle));
     ctx.beginPath();
     let penDown = false;
     for (let i = 0; i <= STEPS; i++) {
@@ -44021,7 +44074,19 @@ function renderGraph(ctx, width, height, config2, evaluators) {
         penDown = true;
       } else ctx.lineTo(cx, cy);
     }
-    ctx.stroke();
+    if (eq.lineStyle === "double") {
+      ctx.save();
+      ctx.translate(-1.5, 0);
+      ctx.stroke();
+      ctx.restore();
+      ctx.save();
+      ctx.translate(1.5, 0);
+      ctx.stroke();
+      ctx.restore();
+    } else {
+      ctx.stroke();
+    }
+    ctx.setLineDash([]);
     if (eq.piecewiseBoundaries) {
       for (const b of eq.piecewiseBoundaries) {
         if (b.y === void 0 || !isFinite(b.y)) continue;
@@ -44037,7 +44102,7 @@ function renderGraph(ctx, width, height, config2, evaluators) {
         const cx = toX(rootX);
         const cy = toY(0);
         drawDot(ctx, cx, cy, eq.lineColor);
-        drawCoordLabel(ctx, `(${formatCoord(rootX)}, 0)`, cx, cy);
+        drawCoordLabel(ctx, `(${formatCoord(rootX)}, 0)`, cx, cy, eq.lineColor);
       }
     }
     if (eq.showIntY && xMin <= 0 && xMax >= 0) {
@@ -44046,8 +44111,27 @@ function renderGraph(ctx, width, height, config2, evaluators) {
         const cx = toX(0);
         const cy = toY(yi);
         drawDot(ctx, cx, cy, eq.lineColor);
-        drawCoordLabel(ctx, `(0, ${formatCoord(yi)})`, cx, cy);
+        drawCoordLabel(ctx, `(0, ${formatCoord(yi)})`, cx, cy, eq.lineColor);
       }
+    }
+    if (eq.points) {
+      const ptColor = (_e = eq.pointColor) != null ? _e : eq.lineColor;
+      for (const pt of eq.points) {
+        if (pt.x < xMin || pt.x > xMax || pt.y < yMin || pt.y > yMax) continue;
+        const cx = toX(pt.x);
+        const cy = toY(pt.y);
+        drawDot(ctx, cx, cy, ptColor);
+        drawCoordLabel(ctx, `(${formatCoord(pt.x)}, ${formatCoord(pt.y)})`, cx, cy, ptColor);
+      }
+    }
+  }
+  if (config2.globalPoints) {
+    for (const pt of config2.globalPoints) {
+      if (pt.x < xMin || pt.x > xMax || pt.y < yMin || pt.y > yMax) continue;
+      const cx = toX(pt.x);
+      const cy = toY(pt.y);
+      drawDot(ctx, cx, cy, "#000000");
+      drawCoordLabel(ctx, `(${formatCoord(pt.x)}, ${formatCoord(pt.y)})`, cx, cy, "#000000");
     }
   }
   ctx.restore();
@@ -44057,6 +44141,9 @@ function renderGraph(ctx, width, height, config2, evaluators) {
 }
 
 // main.ts
+var DEFAULT_SETTINGS = {
+  graphTemplate: ""
+};
 var PLOT_PAD = { top: 20, topTitle: 38, right: 20, bottom: 42, left: 58 };
 var LABEL_MARGIN = 10;
 function toDisplayLatex(s) {
@@ -44071,8 +44158,18 @@ function toDisplayLatex(s) {
 }
 var GrapherPlugin = class extends import_obsidian.Plugin {
   async onload() {
+    await this.loadSettings();
+    this.addSettingTab(new GrapherSettingTab(this.app, this));
+    this.addCommand({
+      id: "insert-default-graph",
+      name: "Insert default graph",
+      editorCallback: (editor, _view) => {
+        const tmpl = this.settings.graphTemplate;
+        editor.replaceRange("```grapher\n" + tmpl + "\n```\n", editor.getCursor());
+      }
+    });
     this.registerMarkdownCodeBlockProcessor("grapher", async (source, el) => {
-      var _a, _b;
+      var _a, _b, _c;
       let config2;
       try {
         config2 = parseGrapherBlock(source);
@@ -44122,7 +44219,9 @@ var GrapherPlugin = class extends import_obsidian.Plugin {
         ctx.scale(dpr, dpr);
         renderGraph(ctx, displayWidth, displayHeight, config2, evaluators);
       };
-      if (config2.eqLoc) {
+      const hasInlineLabels = config2.equations.some((eq) => eq.label);
+      const effectiveEqLoc = (_c = config2.eqLoc) != null ? _c : hasInlineLabels ? "right" : void 0;
+      if (effectiveEqLoc) {
         const padTop = config2.title ? PLOT_PAD.topTitle : PLOT_PAD.top;
         const overlay = container.createDiv();
         overlay.style.position = "absolute";
@@ -44132,7 +44231,7 @@ var GrapherPlugin = class extends import_obsidian.Plugin {
         overlay.style.bottom = "0";
         overlay.style.pointerEvents = "none";
         overlay.style.display = "flex";
-        switch (config2.eqLoc) {
+        switch (effectiveEqLoc) {
           case "above":
             overlay.style.justifyContent = "center";
             overlay.style.alignItems = "flex-start";
@@ -44180,6 +44279,13 @@ var GrapherPlugin = class extends import_obsidian.Plugin {
           bullet.style.background = eq.lineColor;
           const mathEl = (0, import_obsidian.renderMath)(toDisplayLatex(eq.rawEquation), false);
           row.appendChild(mathEl);
+          if (eq.label) {
+            const labelSpan = row.createSpan();
+            labelSpan.textContent = eq.label;
+            labelSpan.style.fontSize = "11px";
+            labelSpan.style.color = "#666666";
+            labelSpan.style.fontStyle = "italic";
+          }
         }
         if (config2.params && Object.keys(config2.params).length > 0) {
           const paramRow = labelBox.createDiv();
@@ -44196,6 +44302,32 @@ var GrapherPlugin = class extends import_obsidian.Plugin {
         if (w > 0) draw(w);
       });
       observer.observe(container);
+    });
+  }
+  async loadSettings() {
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+  }
+  async saveSettings() {
+    await this.saveData(this.settings);
+  }
+};
+var GrapherSettingTab = class extends import_obsidian.PluginSettingTab {
+  constructor(app, plugin) {
+    super(app, plugin);
+    this.plugin = plugin;
+  }
+  display() {
+    const { containerEl } = this;
+    containerEl.empty();
+    containerEl.createEl("h2", { text: "Graph Template" });
+    new import_obsidian.Setting(containerEl).setName("Default graph template").setDesc('Content inserted by the "Grapher: Insert default graph" command.').addTextArea((text) => {
+      text.inputEl.rows = 10;
+      text.inputEl.style.width = "100%";
+      text.inputEl.style.fontFamily = "monospace";
+      text.setValue(this.plugin.settings.graphTemplate).onChange(async (value) => {
+        this.plugin.settings.graphTemplate = value;
+        await this.plugin.saveSettings();
+      });
     });
   }
 };
