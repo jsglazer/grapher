@@ -2841,6 +2841,57 @@ function removeSubscripts(s) {
   s = s.replace(/_[a-zA-Z0-9]/g, "");
   return s;
 }
+function latexCondToMathjs(cond) {
+  let s = cond.trim();
+  s = s.replace(/\\geq(?![a-zA-Z])/g, ">=");
+  s = s.replace(/\\ge(?![a-zA-Z])/g, ">=");
+  s = s.replace(/\\leq(?![a-zA-Z])/g, "<=");
+  s = s.replace(/\\le(?![a-zA-Z])/g, "<=");
+  s = s.replace(/\\gt(?![a-zA-Z])/g, ">");
+  s = s.replace(/\\lt(?![a-zA-Z])/g, "<");
+  s = s.replace(/\\neq(?![a-zA-Z])/g, "!=");
+  return latexToMathjs(s);
+}
+function parseSingleBound(cond) {
+  const s = cond.trim();
+  let m = s.match(/^x\s*(<=|<)\s*(-?\d+(?:\.\d+)?)$/);
+  if (m) return { x: parseFloat(m[2]), open: m[1] === "<" };
+  m = s.match(/^x\s*(>=|>)\s*(-?\d+(?:\.\d+)?)$/);
+  if (m) return { x: parseFloat(m[2]), open: m[1] === ">" };
+  m = s.match(/^(-?\d+(?:\.\d+)?)\s*(<=|<)\s*x$/);
+  if (m) return { x: parseFloat(m[1]), open: m[2] === "<" };
+  m = s.match(/^(-?\d+(?:\.\d+)?)\s*(>=|>)\s*x$/);
+  if (m) return { x: parseFloat(m[1]), open: m[2] === ">" };
+  return null;
+}
+function parsePiecewiseLatex(input) {
+  const casesMatch = input.match(/\\begin\s*\{cases\}([\s\S]*?)\\end\s*\{cases\}/);
+  if (!casesMatch) return null;
+  const inner = casesMatch[1];
+  const rows = inner.split("\\\\").map((r) => r.trim()).filter((r) => r.length > 0);
+  if (rows.length < 2) return null;
+  const pieces = [];
+  for (const row of rows) {
+    const ampIdx = row.indexOf("&");
+    if (ampIdx === -1) continue;
+    const mathExpr2 = latexToMathjs(row.slice(0, ampIdx).trim());
+    const mathCond = latexCondToMathjs(row.slice(ampIdx + 1).trim());
+    pieces.push({ mathExpr: mathExpr2, mathCond });
+  }
+  if (pieces.length < 2) return null;
+  let mathExpr = pieces[pieces.length - 1].mathExpr;
+  for (let i = pieces.length - 2; i >= 0; i--) {
+    mathExpr = `((${pieces[i].mathCond}) ? (${pieces[i].mathExpr}) : (${mathExpr}))`;
+  }
+  const boundaries = [];
+  for (const piece of pieces) {
+    const bound = parseSingleBound(piece.mathCond);
+    if (bound) {
+      boundaries.push({ x: bound.x, open: bound.open, pieceExpr: piece.mathExpr });
+    }
+  }
+  return { mathExpr, boundaries };
+}
 function latexToMathjs(input) {
   if (!input.includes("\\") && !input.includes("{")) return input;
   let s = input;
@@ -2878,7 +2929,9 @@ function isEqKey(key) {
 function parseEquationRHS(raw) {
   const fnPrefix = raw.match(/^[a-zA-Z_][a-zA-Z0-9_]*\s*\([^)]*\)\s*=\s*/);
   if (fnPrefix) return raw.slice(fnPrefix[0].length).trim();
+  const casesStart = raw.search(/\\begin\s*\{cases\}/);
   const eqIdx = raw.indexOf("=");
+  if (casesStart !== -1 && (eqIdx === -1 || casesStart < eqIdx)) return raw;
   if (eqIdx !== -1) return raw.slice(eqIdx + 1).trim();
   return raw;
 }
@@ -2937,14 +2990,20 @@ function parseGrapherBlock(source) {
     const lw = parseFloat(
       ((_b = (_a2 = block.sub["linewidth"]) != null ? _a2 : fallback.linewidth) != null ? _b : "").replace(/px$/i, "")
     );
-    return {
+    const rhs = parseEquationRHS(block.rawValue);
+    const piecewise = parsePiecewiseLatex(rhs);
+    const eq = {
       rawEquation: block.rawValue,
-      equation: latexToMathjs(parseEquationRHS(block.rawValue)),
+      equation: piecewise ? piecewise.mathExpr : latexToMathjs(rhs),
       lineColor: (_d = (_c = block.sub["lines"]) != null ? _c : fallback.lines) != null ? _d : EQ_DEFAULTS.lineColor,
       lineWidth: isNaN(lw) ? EQ_DEFAULTS.lineWidth : lw,
       showIntX: ((_f = (_e = block.sub["intx"]) != null ? _e : fallback.intx) != null ? _f : "false").toLowerCase() === "true",
       showIntY: ((_h = (_g = block.sub["inty"]) != null ? _g : fallback.inty) != null ? _h : "false").toLowerCase() === "true"
     };
+    if (piecewise && piecewise.boundaries.length > 0) {
+      eq.piecewiseBoundaries = piecewise.boundaries;
+    }
+    return eq;
   });
   const paramsRaw = globalRaw["params"];
   const params = {};
@@ -43781,6 +43840,17 @@ function drawDot(ctx, cx, cy, color) {
   ctx.stroke();
   ctx.restore();
 }
+function drawOpenCircle(ctx, cx, cy, color) {
+  ctx.save();
+  ctx.fillStyle = "#ffffff";
+  ctx.strokeStyle = color;
+  ctx.lineWidth = 2;
+  ctx.beginPath();
+  ctx.arc(cx, cy, DOT_RADIUS, 0, Math.PI * 2);
+  ctx.fill();
+  ctx.stroke();
+  ctx.restore();
+}
 function drawCoordLabel(ctx, text, dotX, dotY) {
   ctx.save();
   ctx.font = "bold 10px monospace";
@@ -43952,6 +44022,16 @@ function renderGraph(ctx, width, height, config2, evaluators) {
       } else ctx.lineTo(cx, cy);
     }
     ctx.stroke();
+    if (eq.piecewiseBoundaries) {
+      for (const b of eq.piecewiseBoundaries) {
+        if (b.y === void 0 || !isFinite(b.y)) continue;
+        if (b.x < xMin || b.x > xMax) continue;
+        const cx = toX(b.x);
+        const cy = toY(b.y);
+        if (b.open) drawOpenCircle(ctx, cx, cy, eq.lineColor);
+        else drawDot(ctx, cx, cy, eq.lineColor);
+      }
+    }
     if (eq.showIntX) {
       for (const rootX of ev.findXIntercepts(xMin, xMax)) {
         const cx = toX(rootX);
@@ -43992,7 +44072,7 @@ function toDisplayLatex(s) {
 var GrapherPlugin = class extends import_obsidian.Plugin {
   async onload() {
     this.registerMarkdownCodeBlockProcessor("grapher", async (source, el) => {
-      var _a;
+      var _a, _b;
       let config2;
       try {
         config2 = parseGrapherBlock(source);
@@ -44013,6 +44093,16 @@ var GrapherPlugin = class extends import_obsidian.Plugin {
             text: `Grapher: invalid equation "${eq.rawEquation}" \u2014 ${e2 instanceof Error ? e2.message : String(e2)}`
           });
           return;
+        }
+        if (eq.piecewiseBoundaries) {
+          for (const b of eq.piecewiseBoundaries) {
+            try {
+              const pieceEv = new Evaluator(b.pieceExpr, (_b = config2.params) != null ? _b : {});
+              b.y = pieceEv.evaluate(b.x);
+            } catch (e2) {
+              b.y = void 0;
+            }
+          }
         }
       }
       const container = el.createDiv({ cls: "grapher-container" });

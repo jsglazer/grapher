@@ -136,6 +136,30 @@ LaTeX notation is also accepted and converted automatically. Common patterns:
 
 Example: `eq: f(x) = 2 + \frac{1}{x}` is valid.
 
+### Piecewise-defined functions
+
+Use `\begin{cases}...\end{cases}` LaTeX notation. Each row is `expression & condition`, rows separated by `\\`. The last row's condition is optional (it acts as the default/else branch).
+
+````
+```grapher
+eq: f(x) = \begin{cases} x+3 & x < 1 \\ (x-2)^2 & x \ge 1 \end{cases}
+```
+````
+
+Open circles ○ are drawn at strict-inequality boundaries (`<`, `>`); closed circles ● at inclusive boundaries (`\le`, `\ge`, `\leq`, `\geq`).
+
+More than two pieces are supported:
+
+````
+```grapher
+eq: f(x) = \begin{cases} -x & x < -1 \\ x^2 & -1 \le x < 2 \\ 4 & x \ge 2 \end{cases}
+scalex: -5,5
+scaley: -2,6
+```
+````
+
+Each piece can use any expression valid in a regular `eq:` field, including LaTeX like `\frac`, `\sqrt`, trig functions, and `params:` constants.
+
 ---
 
 ## Sample — multiple equations
