@@ -1,0 +1,35 @@
+{
+	"name": "grapher",
+	"version": "1.0.8",
+	"description": "Obsidian plugin to render mathematical equations as graphs",
+	"main": "main.js",
+	"scripts": {
+		"dev": "node esbuild.config.mjs",
+		"build": "tsc -noEmit -skipLibCheck && node esbuild.config.mjs production",
+		"lint": "eslint src",
+		"format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
+		"format:check": "prettier --check \"src/**/*.ts\" \"test/**/*.ts\"",
+		"test": "vitest run",
+		"test:watch": "vitest",
+		"test:coverage": "vitest run --coverage"
+	},
+	"dependencies": {
+		"mathjs": "^12.4.3"
+	},
+	"devDependencies": {
+		"@eslint/js": "^9.39.4",
+		"@eslint/json": "^0.14.0",
+		"@types/node": "^22.0.0",
+		"@vitest/coverage-v8": "^4.1.8",
+		"builtin-modules": "^3.3.0",
+		"esbuild": "^0.21.5",
+		"eslint": "^9.39.4",
+		"eslint-config-prettier": "^10.1.8",
+		"eslint-plugin-obsidianmd": "^0.3.0",
+		"obsidian": "latest",
+		"prettier": "^3.8.4",
+		"typescript": "^5.4.5",
+		"typescript-eslint": "^8.61.0",
+		"vitest": "^4.1.8"
+	}
+}
