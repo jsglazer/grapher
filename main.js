@@ -5,7 +5,11 @@ var __getOwnPropNames = Object.getOwnPropertyNames;
 var __getProtoOf = Object.getPrototypeOf;
 var __hasOwnProp = Object.prototype.hasOwnProperty;
 var __commonJS = (cb, mod2) => function __require() {
-  return mod2 || (0, cb[__getOwnPropNames(cb)[0]])((mod2 = { exports: {} }).exports, mod2), mod2.exports;
+  try {
+    return mod2 || (0, cb[__getOwnPropNames(cb)[0]])((mod2 = { exports: {} }).exports, mod2), mod2.exports;
+  } catch (e2) {
+    throw mod2 = 0, e2;
+  }
 };
 var __export = (target, all2) => {
   for (var name314 in all2)
@@ -34,7 +38,7 @@ var require_typed_function = __commonJS({
   "node_modules/typed-function/lib/umd/typed-function.js"(exports, module2) {
     (function(global, factory2) {
       typeof exports === "object" && typeof module2 !== "undefined" ? module2.exports = factory2() : typeof define === "function" && define.amd ? define(factory2) : (global = typeof globalThis !== "undefined" ? globalThis : global || self, global.typed = factory2());
-    })(exports, function() {
+    })(exports, (function() {
       "use strict";
       function ok() {
         return true;
@@ -1250,7 +1254,7 @@ var require_typed_function = __commonJS({
       }
       var typedFunction3 = create2();
       return typedFunction3;
-    });
+    }));
   }
 });
 
@@ -2920,7 +2924,10 @@ function latexToMathjs(input) {
   s = s.replace(/\\right\s*[\)\]]/g, ")");
   s = s.replace(/\\left\s*\./g, "");
   s = s.replace(/\\right\s*\./g, "");
-  s = s.replace(/\\(arcsin|arccos|arctan|sinh|cosh|tanh|sin|cos|tan|csc|sec|cot|exp|ln|log)/g, "$1");
+  s = s.replace(
+    /\\(arcsin|arccos|arctan|sinh|cosh|tanh|sin|cos|tan|csc|sec|cot|exp|ln|log)/g,
+    "$1"
+  );
   s = replaceFracs(s);
   s = replaceSqrts(s);
   s = replaceBraceExponents(s);
@@ -3002,7 +3009,9 @@ function parseGrapherBlock(source) {
     throw new Error("Missing required parameter: eq");
   }
   if (eqBlocks.length > 1 && eqBlocks.some((b) => b.key === "eq")) {
-    throw new Error("Use eq1:, eq2:, ... for multiple equations. eq: is for a single equation only.");
+    throw new Error(
+      "Use eq1:, eq2:, ... for multiple equations. eq: is for a single equation only."
+    );
   }
   const fallback = {
     linecolor: globalRaw["linecolor"],
@@ -3013,9 +3022,7 @@ function parseGrapherBlock(source) {
   };
   const equations = eqBlocks.map((block) => {
     var _a2, _b, _c, _d, _e, _f, _g, _h, _i, _j, _k;
-    const lw = parseFloat(
-      ((_b = (_a2 = block.sub["linewidth"]) != null ? _a2 : fallback.linewidth) != null ? _b : "").replace(/px$/i, "")
-    );
+    const lw = parseFloat(((_b = (_a2 = block.sub["linewidth"]) != null ? _a2 : fallback.linewidth) != null ? _b : "").replace(/px$/i, ""));
     let rawValue = block.rawValue;
     let label;
     const labelIdx = rawValue.indexOf("//");
@@ -5882,7 +5889,7 @@ function cosine(Ctor, x) {
   Ctor.precision -= k;
   return x;
 }
-var divide = /* @__PURE__ */ function() {
+var divide = /* @__PURE__ */ (function() {
   function multiplyInteger(x, k, base) {
     var temp, carry = 0, i = x.length;
     for (x = x.slice(); i--; ) {
@@ -6040,7 +6047,7 @@ var divide = /* @__PURE__ */ function() {
     }
     return q;
   };
-}();
+})();
 function finalise(x, sd, rm, isTruncated) {
   var digits2, i, j, k, rd, roundUp, w, xd, xdi, Ctor = x.constructor;
   out: if (sd != null) {
@@ -6997,7 +7004,7 @@ function tanh2(x) {
 function trunc(x) {
   return finalise(x = new this(x), x.e + 1, 1);
 }
-P[Symbol.for("nodejs.util.inspect.custom")] = P.toString;
+P[/* @__PURE__ */ Symbol.for("nodejs.util.inspect.custom")] = P.toString;
 P[Symbol.toStringTag] = "Decimal";
 var Decimal = P.constructor = clone2(DEFAULTS);
 LN10 = new Decimal(LN10);
@@ -9303,6 +9310,7 @@ var createDenseMatrixClass = /* @__PURE__ */ factory(name7, dependencies8, (_ref
     switch (arguments.length) {
       case 1:
         return _get(this, index);
+      // intentional fall through
       case 2:
       case 3:
         return _set(this, index, replacement, defaultValue);
@@ -10735,6 +10743,7 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
     switch (arguments.length) {
       case 1:
         return _getsubset(this, index);
+      // intentional fall through
       case 2:
       case 3:
         return _setsubset(this, index, replacement, defaultValue);
@@ -20165,6 +20174,7 @@ var createImmutableDenseMatrixClass = /* @__PURE__ */ factory(name157, dependenc
         }
         return m;
       }
+      // intentional fall through
       case 2:
       case 3:
         throw new Error("Cannot invoke set subset on an Immutable Matrix instance");
@@ -28438,6 +28448,7 @@ var createOperatorNode = /* @__PURE__ */ factory(name216, dependencies216, (_ref
     if (parenthesis === "all" || args.length > 2 && root.getIdentifier() !== "OperatorNode:add" && root.getIdentifier() !== "OperatorNode:multiply") {
       return args.map(function(arg) {
         switch (arg.getContent().type) {
+          // Nodes that don't need extra parentheses
           case "ArrayNode":
           case "ConstantNode":
           case "SymbolNode":
@@ -28886,6 +28897,7 @@ var createOperatorNode = /* @__PURE__ */ factory(name216, dependencies216, (_ref
             rhsTex = "{" + rhsTex + "}";
             switch (lhsIdentifier) {
               case "ConditionalNode":
+              //
               case "OperatorNode:divide":
                 lhsTex = "\\left(".concat(lhsTex, "\\right)");
             }
@@ -40048,6 +40060,7 @@ var createSimplify = /* @__PURE__ */ factory(name279, dependencies279, (_ref) =>
           rule = {
             s: rule
           };
+        /* falls through */
         case "object":
           newRule = _canonicalizeRule(rule, context);
           break;
@@ -40750,6 +40763,7 @@ var createSimplifyConstant = /* @__PURE__ */ factory(name280, dependencies280, (
           } else {
           }
         }
+      /* falls through */
       case "OperatorNode": {
         var fn = node.fn.toString();
         var _args;
@@ -40813,10 +40827,15 @@ var createSimplifyConstant = /* @__PURE__ */ factory(name280, dependencies280, (
         return new ObjectNode(foldProps);
       }
       case "AssignmentNode":
+      /* falls through */
       case "BlockNode":
+      /* falls through */
       case "FunctionAssignmentNode":
+      /* falls through */
       case "RangeNode":
+      /* falls through */
       case "ConditionalNode":
+      /* falls through */
       default:
         throw new Error("Unimplemented node type in simplifyConstant: ".concat(node.type));
     }
@@ -41307,6 +41326,7 @@ var createDerivative = /* @__PURE__ */ factory(name284, dependencies284, (_ref) 
           break;
         case "log10":
           arg1 = createConstantNode2(10);
+        /* fall through! */
         case "log":
           if (!arg1 && node.args.length === 1) {
             funcDerivative = arg0.clone();
@@ -41426,6 +41446,7 @@ var createDerivative = /* @__PURE__ */ factory(name284, dependencies284, (_ref) 
           funcDerivative = new OperatorNode("/", "divide", [new FunctionNode(new SymbolNode("abs"), [arg0.clone()]), arg0.clone()]);
           break;
         case "gamma":
+        // Needs digamma function, d/dx(gamma(x)) = gamma(x)digamma(x)
         default:
           throw new Error('Cannot process function "' + node.name + '" in derivative: the function is not supported, undefined, or the number of arguments passed to it are not supported');
       }
