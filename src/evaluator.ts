@@ -72,7 +72,7 @@ export class Evaluator {
 
 	evaluate(x: number): number {
 		try {
-			const result = this.compiled.evaluate({ x, ...this.params });
+			const result: unknown = this.compiled.evaluate({ x, ...this.params });
 			if (typeof result !== 'number') return NaN;
 			return result;
 		} catch {
