@@ -1,4 +1,4 @@
-import { App, Editor, MarkdownView, Plugin, PluginSettingTab, Setting, renderMath, finishRenderMath } from 'obsidian';
+import { App, Editor, MarkdownView, MarkdownFileInfo, Plugin, PluginSettingTab, Setting, renderMath, finishRenderMath } from 'obsidian';
 import { parseGrapherBlock } from './src/parser';
 import { Evaluator } from './src/evaluator';
 import { renderGraph } from './src/renderer';
@@ -38,7 +38,7 @@ export default class GrapherPlugin extends Plugin {
 		this.addCommand({
 			id: 'insert-default-graph',
 			name: 'Insert default graph',
-			editorCallback: (editor: Editor, _view: MarkdownView) => {
+			editorCallback: (editor: Editor, _view: MarkdownView | MarkdownFileInfo) => {
 				const tmpl = this.settings.graphTemplate;
 				editor.replaceRange('```grapher\n' + tmpl + '\n```\n', editor.getCursor());
 			},
