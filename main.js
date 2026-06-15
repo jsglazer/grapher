@@ -12,8 +12,8 @@ var __commonJS = (cb, mod2) => function __require() {
   }
 };
 var __export = (target, all2) => {
-  for (var name314 in all2)
-    __defProp(target, name314, { get: all2[name314], enumerable: true });
+  for (var name323 in all2)
+    __defProp(target, name323, { get: all2[name323], enumerable: true });
 };
 var __copyProps = (to, from, except, desc) => {
   if (from && typeof from === "object" || typeof from === "function") {
@@ -118,10 +118,10 @@ var require_typed_function = __commonJS({
             return type;
           }
           let message = 'Unknown type "' + typeName + '"';
-          const name314 = typeName.toLowerCase();
+          const name323 = typeName.toLowerCase();
           let otherName;
           for (otherName of typeList) {
-            if (otherName.toLowerCase() === name314) {
+            if (otherName.toLowerCase() === name323) {
               message += '. Did you mean "' + otherName + '" ?';
               break;
             }
@@ -172,8 +172,8 @@ var require_typed_function = __commonJS({
           nConversions = 0;
         }
         function findTypeNames(value) {
-          const matches = typeList.filter((name314) => {
-            const type = typeMap.get(name314);
+          const matches = typeList.filter((name323) => {
+            const type = typeMap.get(name323);
             return !type.isAny && type.test(value);
           });
           if (matches.length) {
@@ -202,9 +202,9 @@ var require_typed_function = __commonJS({
           let remainingSignatures;
           if (exact) {
             remainingSignatures = [];
-            let name314;
-            for (name314 in fn.signatures) {
-              remainingSignatures.push(fn._typedFunctionData.signatureMap.get(name314));
+            let name323;
+            for (name323 in fn.signatures) {
+              remainingSignatures.push(fn._typedFunctionData.signatureMap.get(name323));
             }
           } else {
             remainingSignatures = fn._typedFunctionData.signatures;
@@ -440,16 +440,16 @@ var require_typed_function = __commonJS({
           const typeSet = /* @__PURE__ */ new Set();
           signatures.forEach((signature) => {
             const paramSet = getTypeSetAtIndex(signature.params, index);
-            let name314;
-            for (name314 of paramSet) {
-              typeSet.add(name314);
+            let name323;
+            for (name323 of paramSet) {
+              typeSet.add(name323);
             }
           });
           return typeSet.has("any") ? ["any"] : Array.from(typeSet);
         }
-        function createError(name314, args, signatures) {
+        function createError(name323, args, signatures) {
           let err, expected;
-          const _name = name314 || "unnamed";
+          const _name = name323 || "unnamed";
           let matchingSignatures = signatures;
           let index;
           for (index = 0; index < args.length; index++) {
@@ -674,11 +674,11 @@ var require_typed_function = __commonJS({
         }
         function compileArgsPreprocessing(params, fn) {
           let fnConvert = fn;
-          let name314 = "";
+          let name323 = "";
           if (params.some((p) => p.hasConversion)) {
             const restParam = hasRestParam(params);
             const compiledConversions = params.map(compileArgConversion);
-            name314 = compiledConversions.map((conv) => conv.name).join(";");
+            name323 = compiledConversions.map((conv) => conv.name).join(";");
             fnConvert = function convertArgs() {
               const args = [];
               const last2 = restParam ? arguments.length - 1 : arguments.length;
@@ -698,8 +698,8 @@ var require_typed_function = __commonJS({
               return fnConvert.apply(this, slice(arguments, 0, offset).concat([slice(arguments, offset)]));
             };
           }
-          if (name314) Object.defineProperty(fnPreprocess, "name", {
-            value: name314
+          if (name323) Object.defineProperty(fnPreprocess, "name", {
+            value: name323
           });
           return fnPreprocess;
         }
@@ -707,16 +707,16 @@ var require_typed_function = __commonJS({
           let test0, test1, conversion0, conversion1;
           const tests = [];
           const conversions = [];
-          let name314 = "";
+          let name323 = "";
           param.types.forEach(function(type) {
             if (type.conversion) {
-              name314 += type.conversion.from + "~>" + type.conversion.to + ",";
+              name323 += type.conversion.from + "~>" + type.conversion.to + ",";
               tests.push(findType(type.conversion.from).test);
               conversions.push(type.conversion.convert);
             }
           });
-          if (name314) name314 = name314.slice(0, -1);
-          else name314 = "pass";
+          if (name323) name323 = name323.slice(0, -1);
+          else name323 = "pass";
           let convertor = (arg) => arg;
           switch (conversions.length) {
             case 0:
@@ -757,7 +757,7 @@ var require_typed_function = __commonJS({
               };
           }
           Object.defineProperty(convertor, "name", {
-            value: name314
+            value: name323
           });
           return convertor;
         }
@@ -804,9 +804,9 @@ var require_typed_function = __commonJS({
             const typeSet1 = getTypeSetAtIndex(params1, i);
             const typeSet2 = getTypeSetAtIndex(params2, i);
             let overlap = false;
-            let name314;
-            for (name314 of typeSet2) {
-              if (typeSet1.has(name314)) {
+            let name323;
+            for (name323 of typeSet2) {
+              if (typeSet1.has(name323)) {
                 overlap = true;
                 break;
               }
@@ -890,7 +890,7 @@ var require_typed_function = __commonJS({
             }
           });
         }
-        function createTypedFunction(name314, rawSignaturesMap) {
+        function createTypedFunction(name323, rawSignaturesMap) {
           typed2.createCount++;
           if (Object.keys(rawSignaturesMap).length === 0) {
             throw new SyntaxError("No signatures provided");
@@ -995,7 +995,7 @@ var require_typed_function = __commonJS({
                 return fns[i].apply(this, arguments);
               }
             }
-            return typed2.onMismatch(name314, arguments, signatures);
+            return typed2.onMismatch(name323, arguments, signatures);
           };
           function theTypedFn(arg0, arg1) {
             if (arguments.length === len0 && test00(arg0) && test01(arg1)) {
@@ -1020,7 +1020,7 @@ var require_typed_function = __commonJS({
           }
           try {
             Object.defineProperty(theTypedFn, "name", {
-              value: name314
+              value: name323
             });
           } catch (err) {
           }
@@ -1031,8 +1031,8 @@ var require_typed_function = __commonJS({
           };
           return theTypedFn;
         }
-        function _onMismatch(name314, args, signatures) {
-          throw createError(name314, args, signatures);
+        function _onMismatch(name323, args, signatures) {
+          throw createError(name323, args, signatures);
         }
         function initial(arr) {
           return slice(arr, 0, arr.length - 1);
@@ -1101,13 +1101,13 @@ var require_typed_function = __commonJS({
           return nameSoFar;
         }
         function getObjectName(obj) {
-          let name314;
+          let name323;
           for (const key in obj) {
             if (Object.prototype.hasOwnProperty.call(obj, key) && (isTypedFunction(obj[key]) || typeof obj[key].signature === "string")) {
-              name314 = checkName(name314, obj[key].name);
+              name323 = checkName(name323, obj[key].name);
             }
           }
-          return name314;
+          return name323;
         }
         function mergeSignatures(dest, source) {
           let key;
@@ -1132,7 +1132,7 @@ var require_typed_function = __commonJS({
         typed2 = function(maybeName) {
           const named = typeof maybeName === "string";
           const start = named ? 1 : 0;
-          let name314 = named ? maybeName : "";
+          let name323 = named ? maybeName : "";
           const allSignatures = {};
           for (let i = start; i < arguments.length; ++i) {
             const item = arguments[i];
@@ -1160,11 +1160,11 @@ var require_typed_function = __commonJS({
               throw err;
             }
             if (!named) {
-              name314 = checkName(name314, thisName);
+              name323 = checkName(name323, thisName);
             }
             mergeSignatures(allSignatures, theseSignatures);
           }
-          return createTypedFunction(name314 || "", allSignatures);
+          return createTypedFunction(name323 || "", allSignatures);
         };
         typed2.create = create2;
         typed2.createCount = saveTyped.createCount;
@@ -1255,651 +1255,6 @@ var require_typed_function = __commonJS({
       var typedFunction3 = create2();
       return typedFunction3;
     }));
-  }
-});
-
-// node_modules/fraction.js/fraction.js
-var require_fraction = __commonJS({
-  "node_modules/fraction.js/fraction.js"(exports, module2) {
-    (function(root) {
-      "use strict";
-      var MAX_CYCLE_LEN = 2e3;
-      var P4 = {
-        "s": 1,
-        "n": 0,
-        "d": 1
-      };
-      function assign(n, s) {
-        if (isNaN(n = parseInt(n, 10))) {
-          throw InvalidParameter();
-        }
-        return n * s;
-      }
-      function newFraction(n, d) {
-        if (d === 0) {
-          throw DivisionByZero();
-        }
-        var f = Object.create(Fraction2.prototype);
-        f["s"] = n < 0 ? -1 : 1;
-        n = n < 0 ? -n : n;
-        var a = gcd(n, d);
-        f["n"] = n / a;
-        f["d"] = d / a;
-        return f;
-      }
-      function factorize(num) {
-        var factors = {};
-        var n = num;
-        var i = 2;
-        var s = 4;
-        while (s <= n) {
-          while (n % i === 0) {
-            n /= i;
-            factors[i] = (factors[i] || 0) + 1;
-          }
-          s += 1 + 2 * i++;
-        }
-        if (n !== num) {
-          if (n > 1)
-            factors[n] = (factors[n] || 0) + 1;
-        } else {
-          factors[num] = (factors[num] || 0) + 1;
-        }
-        return factors;
-      }
-      var parse2 = function(p1, p2) {
-        var n = 0, d = 1, s = 1;
-        var v = 0, w = 0, x = 0, y = 1, z = 1;
-        var A = 0, B = 1;
-        var C = 1, D = 1;
-        var N = 1e7;
-        var M;
-        if (p1 === void 0 || p1 === null) {
-        } else if (p2 !== void 0) {
-          n = p1;
-          d = p2;
-          s = n * d;
-          if (n % 1 !== 0 || d % 1 !== 0) {
-            throw NonIntegerParameter();
-          }
-        } else
-          switch (typeof p1) {
-            case "object": {
-              if ("d" in p1 && "n" in p1) {
-                n = p1["n"];
-                d = p1["d"];
-                if ("s" in p1)
-                  n *= p1["s"];
-              } else if (0 in p1) {
-                n = p1[0];
-                if (1 in p1)
-                  d = p1[1];
-              } else {
-                throw InvalidParameter();
-              }
-              s = n * d;
-              break;
-            }
-            case "number": {
-              if (p1 < 0) {
-                s = p1;
-                p1 = -p1;
-              }
-              if (p1 % 1 === 0) {
-                n = p1;
-              } else if (p1 > 0) {
-                if (p1 >= 1) {
-                  z = Math.pow(10, Math.floor(1 + Math.log(p1) / Math.LN10));
-                  p1 /= z;
-                }
-                while (B <= N && D <= N) {
-                  M = (A + C) / (B + D);
-                  if (p1 === M) {
-                    if (B + D <= N) {
-                      n = A + C;
-                      d = B + D;
-                    } else if (D > B) {
-                      n = C;
-                      d = D;
-                    } else {
-                      n = A;
-                      d = B;
-                    }
-                    break;
-                  } else {
-                    if (p1 > M) {
-                      A += C;
-                      B += D;
-                    } else {
-                      C += A;
-                      D += B;
-                    }
-                    if (B > N) {
-                      n = C;
-                      d = D;
-                    } else {
-                      n = A;
-                      d = B;
-                    }
-                  }
-                }
-                n *= z;
-              } else if (isNaN(p1) || isNaN(p2)) {
-                d = n = NaN;
-              }
-              break;
-            }
-            case "string": {
-              B = p1.match(/\d+|./g);
-              if (B === null)
-                throw InvalidParameter();
-              if (B[A] === "-") {
-                s = -1;
-                A++;
-              } else if (B[A] === "+") {
-                A++;
-              }
-              if (B.length === A + 1) {
-                w = assign(B[A++], s);
-              } else if (B[A + 1] === "." || B[A] === ".") {
-                if (B[A] !== ".") {
-                  v = assign(B[A++], s);
-                }
-                A++;
-                if (A + 1 === B.length || B[A + 1] === "(" && B[A + 3] === ")" || B[A + 1] === "'" && B[A + 3] === "'") {
-                  w = assign(B[A], s);
-                  y = Math.pow(10, B[A].length);
-                  A++;
-                }
-                if (B[A] === "(" && B[A + 2] === ")" || B[A] === "'" && B[A + 2] === "'") {
-                  x = assign(B[A + 1], s);
-                  z = Math.pow(10, B[A + 1].length) - 1;
-                  A += 3;
-                }
-              } else if (B[A + 1] === "/" || B[A + 1] === ":") {
-                w = assign(B[A], s);
-                y = assign(B[A + 2], 1);
-                A += 3;
-              } else if (B[A + 3] === "/" && B[A + 1] === " ") {
-                v = assign(B[A], s);
-                w = assign(B[A + 2], s);
-                y = assign(B[A + 4], 1);
-                A += 5;
-              }
-              if (B.length <= A) {
-                d = y * z;
-                s = /* void */
-                n = x + d * v + z * w;
-                break;
-              }
-            }
-            default:
-              throw InvalidParameter();
-          }
-        if (d === 0) {
-          throw DivisionByZero();
-        }
-        P4["s"] = s < 0 ? -1 : 1;
-        P4["n"] = Math.abs(n);
-        P4["d"] = Math.abs(d);
-      };
-      function modpow(b, e2, m) {
-        var r = 1;
-        for (; e2 > 0; b = b * b % m, e2 >>= 1) {
-          if (e2 & 1) {
-            r = r * b % m;
-          }
-        }
-        return r;
-      }
-      function cycleLen(n, d) {
-        for (; d % 2 === 0; d /= 2) {
-        }
-        for (; d % 5 === 0; d /= 5) {
-        }
-        if (d === 1)
-          return 0;
-        var rem = 10 % d;
-        var t = 1;
-        for (; rem !== 1; t++) {
-          rem = rem * 10 % d;
-          if (t > MAX_CYCLE_LEN)
-            return 0;
-        }
-        return t;
-      }
-      function cycleStart(n, d, len) {
-        var rem1 = 1;
-        var rem2 = modpow(10, len, d);
-        for (var t = 0; t < 300; t++) {
-          if (rem1 === rem2)
-            return t;
-          rem1 = rem1 * 10 % d;
-          rem2 = rem2 * 10 % d;
-        }
-        return 0;
-      }
-      function gcd(a, b) {
-        if (!a)
-          return b;
-        if (!b)
-          return a;
-        while (1) {
-          a %= b;
-          if (!a)
-            return b;
-          b %= a;
-          if (!b)
-            return a;
-        }
-      }
-      ;
-      function Fraction2(a, b) {
-        parse2(a, b);
-        if (this instanceof Fraction2) {
-          a = gcd(P4["d"], P4["n"]);
-          this["s"] = P4["s"];
-          this["n"] = P4["n"] / a;
-          this["d"] = P4["d"] / a;
-        } else {
-          return newFraction(P4["s"] * P4["n"], P4["d"]);
-        }
-      }
-      var DivisionByZero = function() {
-        return new Error("Division by Zero");
-      };
-      var InvalidParameter = function() {
-        return new Error("Invalid argument");
-      };
-      var NonIntegerParameter = function() {
-        return new Error("Parameters must be integer");
-      };
-      Fraction2.prototype = {
-        "s": 1,
-        "n": 0,
-        "d": 1,
-        /**
-         * Calculates the absolute value
-         *
-         * Ex: new Fraction(-4).abs() => 4
-         **/
-        "abs": function() {
-          return newFraction(this["n"], this["d"]);
-        },
-        /**
-         * Inverts the sign of the current fraction
-         *
-         * Ex: new Fraction(-4).neg() => 4
-         **/
-        "neg": function() {
-          return newFraction(-this["s"] * this["n"], this["d"]);
-        },
-        /**
-         * Adds two rational numbers
-         *
-         * Ex: new Fraction({n: 2, d: 3}).add("14.9") => 467 / 30
-         **/
-        "add": function(a, b) {
-          parse2(a, b);
-          return newFraction(
-            this["s"] * this["n"] * P4["d"] + P4["s"] * this["d"] * P4["n"],
-            this["d"] * P4["d"]
-          );
-        },
-        /**
-         * Subtracts two rational numbers
-         *
-         * Ex: new Fraction({n: 2, d: 3}).add("14.9") => -427 / 30
-         **/
-        "sub": function(a, b) {
-          parse2(a, b);
-          return newFraction(
-            this["s"] * this["n"] * P4["d"] - P4["s"] * this["d"] * P4["n"],
-            this["d"] * P4["d"]
-          );
-        },
-        /**
-         * Multiplies two rational numbers
-         *
-         * Ex: new Fraction("-17.(345)").mul(3) => 5776 / 111
-         **/
-        "mul": function(a, b) {
-          parse2(a, b);
-          return newFraction(
-            this["s"] * P4["s"] * this["n"] * P4["n"],
-            this["d"] * P4["d"]
-          );
-        },
-        /**
-         * Divides two rational numbers
-         *
-         * Ex: new Fraction("-17.(345)").inverse().div(3)
-         **/
-        "div": function(a, b) {
-          parse2(a, b);
-          return newFraction(
-            this["s"] * P4["s"] * this["n"] * P4["d"],
-            this["d"] * P4["n"]
-          );
-        },
-        /**
-         * Clones the actual object
-         *
-         * Ex: new Fraction("-17.(345)").clone()
-         **/
-        "clone": function() {
-          return newFraction(this["s"] * this["n"], this["d"]);
-        },
-        /**
-         * Calculates the modulo of two rational numbers - a more precise fmod
-         *
-         * Ex: new Fraction('4.(3)').mod([7, 8]) => (13/3) % (7/8) = (5/6)
-         **/
-        "mod": function(a, b) {
-          if (isNaN(this["n"]) || isNaN(this["d"])) {
-            return new Fraction2(NaN);
-          }
-          if (a === void 0) {
-            return newFraction(this["s"] * this["n"] % this["d"], 1);
-          }
-          parse2(a, b);
-          if (0 === P4["n"] && 0 === this["d"]) {
-            throw DivisionByZero();
-          }
-          return newFraction(
-            this["s"] * (P4["d"] * this["n"]) % (P4["n"] * this["d"]),
-            P4["d"] * this["d"]
-          );
-        },
-        /**
-         * Calculates the fractional gcd of two rational numbers
-         *
-         * Ex: new Fraction(5,8).gcd(3,7) => 1/56
-         */
-        "gcd": function(a, b) {
-          parse2(a, b);
-          return newFraction(gcd(P4["n"], this["n"]) * gcd(P4["d"], this["d"]), P4["d"] * this["d"]);
-        },
-        /**
-         * Calculates the fractional lcm of two rational numbers
-         *
-         * Ex: new Fraction(5,8).lcm(3,7) => 15
-         */
-        "lcm": function(a, b) {
-          parse2(a, b);
-          if (P4["n"] === 0 && this["n"] === 0) {
-            return newFraction(0, 1);
-          }
-          return newFraction(P4["n"] * this["n"], gcd(P4["n"], this["n"]) * gcd(P4["d"], this["d"]));
-        },
-        /**
-         * Calculates the ceil of a rational number
-         *
-         * Ex: new Fraction('4.(3)').ceil() => (5 / 1)
-         **/
-        "ceil": function(places) {
-          places = Math.pow(10, places || 0);
-          if (isNaN(this["n"]) || isNaN(this["d"])) {
-            return new Fraction2(NaN);
-          }
-          return newFraction(Math.ceil(places * this["s"] * this["n"] / this["d"]), places);
-        },
-        /**
-         * Calculates the floor of a rational number
-         *
-         * Ex: new Fraction('4.(3)').floor() => (4 / 1)
-         **/
-        "floor": function(places) {
-          places = Math.pow(10, places || 0);
-          if (isNaN(this["n"]) || isNaN(this["d"])) {
-            return new Fraction2(NaN);
-          }
-          return newFraction(Math.floor(places * this["s"] * this["n"] / this["d"]), places);
-        },
-        /**
-         * Rounds a rational numbers
-         *
-         * Ex: new Fraction('4.(3)').round() => (4 / 1)
-         **/
-        "round": function(places) {
-          places = Math.pow(10, places || 0);
-          if (isNaN(this["n"]) || isNaN(this["d"])) {
-            return new Fraction2(NaN);
-          }
-          return newFraction(Math.round(places * this["s"] * this["n"] / this["d"]), places);
-        },
-        /**
-         * Gets the inverse of the fraction, means numerator and denominator are exchanged
-         *
-         * Ex: new Fraction([-3, 4]).inverse() => -4 / 3
-         **/
-        "inverse": function() {
-          return newFraction(this["s"] * this["d"], this["n"]);
-        },
-        /**
-         * Calculates the fraction to some rational exponent, if possible
-         *
-         * Ex: new Fraction(-1,2).pow(-3) => -8
-         */
-        "pow": function(a, b) {
-          parse2(a, b);
-          if (P4["d"] === 1) {
-            if (P4["s"] < 0) {
-              return newFraction(Math.pow(this["s"] * this["d"], P4["n"]), Math.pow(this["n"], P4["n"]));
-            } else {
-              return newFraction(Math.pow(this["s"] * this["n"], P4["n"]), Math.pow(this["d"], P4["n"]));
-            }
-          }
-          if (this["s"] < 0) return null;
-          var N = factorize(this["n"]);
-          var D = factorize(this["d"]);
-          var n = 1;
-          var d = 1;
-          for (var k in N) {
-            if (k === "1") continue;
-            if (k === "0") {
-              n = 0;
-              break;
-            }
-            N[k] *= P4["n"];
-            if (N[k] % P4["d"] === 0) {
-              N[k] /= P4["d"];
-            } else return null;
-            n *= Math.pow(k, N[k]);
-          }
-          for (var k in D) {
-            if (k === "1") continue;
-            D[k] *= P4["n"];
-            if (D[k] % P4["d"] === 0) {
-              D[k] /= P4["d"];
-            } else return null;
-            d *= Math.pow(k, D[k]);
-          }
-          if (P4["s"] < 0) {
-            return newFraction(d, n);
-          }
-          return newFraction(n, d);
-        },
-        /**
-         * Check if two rational numbers are the same
-         *
-         * Ex: new Fraction(19.6).equals([98, 5]);
-         **/
-        "equals": function(a, b) {
-          parse2(a, b);
-          return this["s"] * this["n"] * P4["d"] === P4["s"] * P4["n"] * this["d"];
-        },
-        /**
-         * Check if two rational numbers are the same
-         *
-         * Ex: new Fraction(19.6).equals([98, 5]);
-         **/
-        "compare": function(a, b) {
-          parse2(a, b);
-          var t = this["s"] * this["n"] * P4["d"] - P4["s"] * P4["n"] * this["d"];
-          return (0 < t) - (t < 0);
-        },
-        "simplify": function(eps) {
-          if (isNaN(this["n"]) || isNaN(this["d"])) {
-            return this;
-          }
-          eps = eps || 1e-3;
-          var thisABS = this["abs"]();
-          var cont = thisABS["toContinued"]();
-          for (var i = 1; i < cont.length; i++) {
-            var s = newFraction(cont[i - 1], 1);
-            for (var k = i - 2; k >= 0; k--) {
-              s = s["inverse"]()["add"](cont[k]);
-            }
-            if (Math.abs(s["sub"](thisABS).valueOf()) < eps) {
-              return s["mul"](this["s"]);
-            }
-          }
-          return this;
-        },
-        /**
-         * Check if two rational numbers are divisible
-         *
-         * Ex: new Fraction(19.6).divisible(1.5);
-         */
-        "divisible": function(a, b) {
-          parse2(a, b);
-          return !(!(P4["n"] * this["d"]) || this["n"] * P4["d"] % (P4["n"] * this["d"]));
-        },
-        /**
-         * Returns a decimal representation of the fraction
-         *
-         * Ex: new Fraction("100.'91823'").valueOf() => 100.91823918239183
-         **/
-        "valueOf": function() {
-          return this["s"] * this["n"] / this["d"];
-        },
-        /**
-         * Returns a string-fraction representation of a Fraction object
-         *
-         * Ex: new Fraction("1.'3'").toFraction(true) => "4 1/3"
-         **/
-        "toFraction": function(excludeWhole) {
-          var whole, str = "";
-          var n = this["n"];
-          var d = this["d"];
-          if (this["s"] < 0) {
-            str += "-";
-          }
-          if (d === 1) {
-            str += n;
-          } else {
-            if (excludeWhole && (whole = Math.floor(n / d)) > 0) {
-              str += whole;
-              str += " ";
-              n %= d;
-            }
-            str += n;
-            str += "/";
-            str += d;
-          }
-          return str;
-        },
-        /**
-         * Returns a latex representation of a Fraction object
-         *
-         * Ex: new Fraction("1.'3'").toLatex() => "\frac{4}{3}"
-         **/
-        "toLatex": function(excludeWhole) {
-          var whole, str = "";
-          var n = this["n"];
-          var d = this["d"];
-          if (this["s"] < 0) {
-            str += "-";
-          }
-          if (d === 1) {
-            str += n;
-          } else {
-            if (excludeWhole && (whole = Math.floor(n / d)) > 0) {
-              str += whole;
-              n %= d;
-            }
-            str += "\\frac{";
-            str += n;
-            str += "}{";
-            str += d;
-            str += "}";
-          }
-          return str;
-        },
-        /**
-         * Returns an array of continued fraction elements
-         *
-         * Ex: new Fraction("7/8").toContinued() => [0,1,7]
-         */
-        "toContinued": function() {
-          var t;
-          var a = this["n"];
-          var b = this["d"];
-          var res = [];
-          if (isNaN(a) || isNaN(b)) {
-            return res;
-          }
-          do {
-            res.push(Math.floor(a / b));
-            t = a % b;
-            a = b;
-            b = t;
-          } while (a !== 1);
-          return res;
-        },
-        /**
-         * Creates a string representation of a fraction with all digits
-         *
-         * Ex: new Fraction("100.'91823'").toString() => "100.(91823)"
-         **/
-        "toString": function(dec) {
-          var N = this["n"];
-          var D = this["d"];
-          if (isNaN(N) || isNaN(D)) {
-            return "NaN";
-          }
-          dec = dec || 15;
-          var cycLen = cycleLen(N, D);
-          var cycOff = cycleStart(N, D, cycLen);
-          var str = this["s"] < 0 ? "-" : "";
-          str += N / D | 0;
-          N %= D;
-          N *= 10;
-          if (N)
-            str += ".";
-          if (cycLen) {
-            for (var i = cycOff; i--; ) {
-              str += N / D | 0;
-              N %= D;
-              N *= 10;
-            }
-            str += "(";
-            for (var i = cycLen; i--; ) {
-              str += N / D | 0;
-              N %= D;
-              N *= 10;
-            }
-            str += ")";
-          } else {
-            for (var i = dec; N && i--; ) {
-              str += N / D | 0;
-              N %= D;
-              N *= 10;
-            }
-          }
-          return str;
-        }
-      };
-      if (typeof exports === "object") {
-        Object.defineProperty(Fraction2, "__esModule", { "value": true });
-        Fraction2["default"] = Fraction2;
-        Fraction2["Fraction"] = Fraction2;
-        module2["exports"] = Fraction2;
-      } else {
-        root["Fraction"] = Fraction2;
-      }
-    })(exports);
   }
 });
 
@@ -2705,27 +2060,27 @@ var require_tiny_emitter = __commonJS({
     function E() {
     }
     E.prototype = {
-      on: function(name314, callback, ctx) {
+      on: function(name323, callback, ctx) {
         var e2 = this.e || (this.e = {});
-        (e2[name314] || (e2[name314] = [])).push({
+        (e2[name323] || (e2[name323] = [])).push({
           fn: callback,
           ctx
         });
         return this;
       },
-      once: function(name314, callback, ctx) {
+      once: function(name323, callback, ctx) {
         var self2 = this;
         function listener() {
-          self2.off(name314, listener);
+          self2.off(name323, listener);
           callback.apply(ctx, arguments);
         }
         ;
         listener._ = callback;
-        return this.on(name314, listener, ctx);
+        return this.on(name323, listener, ctx);
       },
-      emit: function(name314) {
+      emit: function(name323) {
         var data = [].slice.call(arguments, 1);
-        var evtArr = ((this.e || (this.e = {}))[name314] || []).slice();
+        var evtArr = ((this.e || (this.e = {}))[name323] || []).slice();
         var i = 0;
         var len = evtArr.length;
         for (i; i < len; i++) {
@@ -2733,9 +2088,9 @@ var require_tiny_emitter = __commonJS({
         }
         return this;
       },
-      off: function(name314, callback) {
+      off: function(name323, callback) {
         var e2 = this.e || (this.e = {});
-        var evts = e2[name314];
+        var evts = e2[name323];
         var liveEvents = [];
         if (evts && callback) {
           for (var i = 0, len = evts.length; i < len; i++) {
@@ -2743,7 +2098,7 @@ var require_tiny_emitter = __commonJS({
               liveEvents.push(evts[i]);
           }
         }
-        liveEvents.length ? e2[name314] = liveEvents : delete e2[name314];
+        liveEvents.length ? e2[name323] = liveEvents : delete e2[name323];
         return this;
       }
     };
@@ -3056,9 +2411,9 @@ function parseGrapherBlock(source) {
     for (const pair of paramsRaw.split(",")) {
       const eqIdx2 = pair.indexOf("=");
       if (eqIdx2 === -1) continue;
-      const name314 = pair.slice(0, eqIdx2).trim();
+      const name323 = pair.slice(0, eqIdx2).trim();
       const num = parseFloat(pair.slice(eqIdx2 + 1).trim());
-      if (name314 && !isNaN(num)) params[name314] = num;
+      if (name323 && !isNaN(num)) params[name323] = num;
     }
   }
   const eqLocRaw = (_a = globalRaw["eqloc"]) == null ? void 0 : _a.toLowerCase();
@@ -3107,11 +2462,17 @@ function _extends() {
 var DEFAULT_CONFIG = {
   // minimum relative difference between two compared values,
   // used by all comparison functions
-  epsilon: 1e-12,
+  relTol: 1e-12,
+  // minimum absolute difference between two compared values,
+  // used by all comparison functions
+  absTol: 1e-15,
   // type of default matrix output. Choose 'matrix' (default) or 'array'
   matrix: "Matrix",
-  // type of default number output. Choose 'number' (default) 'BigNumber', or 'Fraction
+  // type of default number output. Choose 'number' (default) 'BigNumber', 'bigint', or 'Fraction'
   number: "number",
+  // type of fallback used for config { number: 'bigint' } when a value cannot be represented
+  // in the configured numeric type. Choose 'number' (default) or 'BigNumber'.
+  numberFallback: "number",
   // number of significant digits in BigNumbers
   precision: 64,
   // predictable output type of functions. When true, output type depends only
@@ -3121,8 +2482,203 @@ var DEFAULT_CONFIG = {
   predictable: false,
   // random seed for seeded pseudo random number generation
   // null = randomly seed
-  randomSeed: null
+  randomSeed: null,
+  // legacy behavior for matrix subset. When true, the subset function
+  // returns a matrix or array with the same size as the index (except for scalars).
+  // When false, it returns a matrix or array with a size depending on the type of index.
+  legacySubset: false
 };
+
+// node_modules/mathjs/lib/esm/utils/customs.js
+function getSafeProperty(object, prop) {
+  if (isSafeObjectProperty(object, prop) || isSafeArrayProperty(object, prop)) {
+    return object[prop];
+  }
+  if (isSafeMethod(object, prop)) {
+    throw new Error('Cannot access method "'.concat(prop, '" as a property'));
+  }
+  if (object === null || object === void 0) {
+    throw new TypeError('Cannot access property "'.concat(prop, '": object is ').concat(object));
+  }
+  throw new Error('No access to property "' + prop + '"');
+}
+function setSafeProperty(object, prop, value) {
+  if (isSafeObjectProperty(object, prop) || isSafeArrayProperty(object, prop)) {
+    object[prop] = value;
+    return value;
+  }
+  throw new Error('No access to property "'.concat(prop, '"'));
+}
+function isSafeObjectProperty(object, prop) {
+  if (!isPlainObject(object)) {
+    return false;
+  }
+  return !(prop in Object.prototype);
+}
+function isSafeArrayProperty(array, prop) {
+  if (!Array.isArray(array)) {
+    return false;
+  }
+  return typeof prop === "number" || typeof prop === "string" && isInteger(prop) || prop === "length";
+}
+function isInteger(prop) {
+  return /^\d+$/.test(prop);
+}
+function getSafeMethod(object, method) {
+  if (!isSafeMethod(object, method)) {
+    throw new Error('No access to method "' + method + '"');
+  }
+  return object[method];
+}
+function isSafeMethod(object, method) {
+  if (object === null || object === void 0 || typeof object[method] !== "function") {
+    return false;
+  }
+  if (hasOwnProperty(object, method) && Object.getPrototypeOf && method in Object.getPrototypeOf(object)) {
+    return false;
+  }
+  if (safeNativeMethods.has(method)) {
+    return true;
+  }
+  if (method in Object.prototype) {
+    return false;
+  }
+  if (method in Function.prototype) {
+    return false;
+  }
+  return true;
+}
+function isPlainObject(object) {
+  return typeof object === "object" && object && object.constructor === Object;
+}
+var safeNativeMethods = /* @__PURE__ */ new Set(["toString", "valueOf", "toLocaleString"]);
+
+// node_modules/mathjs/lib/esm/utils/map.js
+var ObjectWrappingMap = class {
+  constructor(object) {
+    this.wrappedObject = object;
+    this[Symbol.iterator] = this.entries;
+  }
+  keys() {
+    return Object.keys(this.wrappedObject).filter((key) => this.has(key)).values();
+  }
+  get(key) {
+    return getSafeProperty(this.wrappedObject, key);
+  }
+  set(key, value) {
+    setSafeProperty(this.wrappedObject, key, value);
+    return this;
+  }
+  has(key) {
+    return isSafeObjectProperty(this.wrappedObject, key) && key in this.wrappedObject;
+  }
+  entries() {
+    return mapIterator(this.keys(), (key) => [key, this.get(key)]);
+  }
+  forEach(callback) {
+    for (var key of this.keys()) {
+      callback(this.get(key), key, this);
+    }
+  }
+  delete(key) {
+    if (isSafeObjectProperty(this.wrappedObject, key)) {
+      delete this.wrappedObject[key];
+    }
+  }
+  clear() {
+    for (var key of this.keys()) {
+      this.delete(key);
+    }
+  }
+  get size() {
+    return Object.keys(this.wrappedObject).length;
+  }
+};
+var PartitionedMap = class {
+  /**
+   * @param {Map} a
+   * @param {Map} b
+   * @param {Set} bKeys
+   */
+  constructor(a, b, bKeys) {
+    this.a = a;
+    this.b = b;
+    this.bKeys = bKeys;
+    this[Symbol.iterator] = this.entries;
+  }
+  get(key) {
+    return this.bKeys.has(key) ? this.b.get(key) : this.a.get(key);
+  }
+  set(key, value) {
+    if (this.bKeys.has(key)) {
+      this.b.set(key, value);
+    } else {
+      this.a.set(key, value);
+    }
+    return this;
+  }
+  has(key) {
+    return this.b.has(key) || this.a.has(key);
+  }
+  keys() {
+    return (/* @__PURE__ */ new Set([...this.a.keys(), ...this.b.keys()]))[Symbol.iterator]();
+  }
+  entries() {
+    return mapIterator(this.keys(), (key) => [key, this.get(key)]);
+  }
+  forEach(callback) {
+    for (var key of this.keys()) {
+      callback(this.get(key), key, this);
+    }
+  }
+  delete(key) {
+    return this.bKeys.has(key) ? this.b.delete(key) : this.a.delete(key);
+  }
+  clear() {
+    this.a.clear();
+    this.b.clear();
+  }
+  get size() {
+    return [...this.keys()].length;
+  }
+};
+function mapIterator(it, callback) {
+  return {
+    next: () => {
+      var n = it.next();
+      return n.done ? n : {
+        value: callback(n.value),
+        done: false
+      };
+    }
+  };
+}
+function createEmptyMap() {
+  return /* @__PURE__ */ new Map();
+}
+function createMap(mapOrObject) {
+  if (!mapOrObject) {
+    return createEmptyMap();
+  }
+  if (isMap(mapOrObject)) {
+    return mapOrObject;
+  }
+  if (isObject(mapOrObject)) {
+    return new ObjectWrappingMap(mapOrObject);
+  }
+  throw new Error("createMap can create maps from objects or Maps");
+}
+function toObject(map2) {
+  if (map2 instanceof ObjectWrappingMap) {
+    return map2.wrappedObject;
+  }
+  var object = {};
+  for (var key of map2.keys()) {
+    var value = map2.get(key);
+    setSafeProperty(object, key, value);
+  }
+  return object;
+}
 
 // node_modules/mathjs/lib/esm/utils/is.js
 function isNumber(x) {
@@ -3139,6 +2695,9 @@ function isBigNumber(x) {
     return true;
   }
   return false;
+}
+function isBigInt(x) {
+  return typeof x === "bigint";
 }
 function isComplex(x) {
   return x && typeof x === "object" && Object.getPrototypeOf(x).isComplex === true || false;
@@ -3191,6 +2750,18 @@ function isRegExp(x) {
 }
 function isObject(x) {
   return !!(x && typeof x === "object" && x.constructor === Object && !isComplex(x) && !isFraction(x));
+}
+function isMap(object) {
+  if (!object) {
+    return false;
+  }
+  return object instanceof Map || object instanceof ObjectWrappingMap || typeof object.set === "function" && typeof object.get === "function" && typeof object.keys === "function" && typeof object.has === "function";
+}
+function isPartitionedMap(object) {
+  return isMap(object) && isMap(object.a) && isMap(object.b);
+}
+function isObjectWrappingMap(object) {
+  return isMap(object) && isObject(object.wrappedObject);
 }
 function isNull(x) {
   return x === null;
@@ -3266,7 +2837,7 @@ function typeOf(x) {
 // node_modules/mathjs/lib/esm/utils/object.js
 function clone(x) {
   var type = typeof x;
-  if (type === "number" || type === "string" || type === "boolean" || x === null || x === void 0) {
+  if (type === "number" || type === "bigint" || type === "string" || type === "boolean" || x === null || x === void 0) {
     return x;
   }
   if (typeof x.clone === "function") {
@@ -3281,6 +2852,9 @@ function clone(x) {
   if (isBigNumber(x)) return x;
   if (isObject(x)) {
     return mapObject(x, clone);
+  }
+  if (type === "function") {
+    return x;
   }
   throw new TypeError("Cannot clone: unknown type of value (value: ".concat(x, ")"));
 }
@@ -3382,7 +2956,7 @@ function lazy(object, prop, valueResolver) {
   var _uninitialized = true;
   var _value;
   Object.defineProperty(object, prop, {
-    get: function get() {
+    get: function get2() {
       if (_uninitialized) {
         _value = valueResolver();
         _uninitialized = false;
@@ -3417,20 +2991,31 @@ function pickShallow(object, properties2) {
 
 // node_modules/mathjs/lib/esm/core/function/config.js
 var MATRIX_OPTIONS = ["Matrix", "Array"];
-var NUMBER_OPTIONS = ["number", "BigNumber", "Fraction"];
+var NUMBER_OPTIONS = ["number", "BigNumber", "bigint", "Fraction"];
 function configFactory(config2, emit) {
   function _config(options) {
     if (options) {
-      var prev = mapObject(config2, clone);
+      if (options.epsilon !== void 0) {
+        console.warn('Warning: The configuration option "epsilon" is deprecated. Use "relTol" and "absTol" instead.');
+        var optionsFix = clone(options);
+        optionsFix.relTol = options.epsilon;
+        optionsFix.absTol = options.epsilon * 1e-3;
+        delete optionsFix.epsilon;
+        return _config(optionsFix);
+      }
+      if (options.legacySubset === true) {
+        console.warn('Warning: The configuration option "legacySubset" is for compatibility only and might be deprecated in the future.');
+      }
+      var prev = clone(config2);
       validateOption(options, "matrix", MATRIX_OPTIONS);
       validateOption(options, "number", NUMBER_OPTIONS);
       deepExtend(config2, options);
-      var curr = mapObject(config2, clone);
-      var changes = mapObject(options, clone);
+      var curr = clone(config2);
+      var changes = clone(options);
       emit("config", curr, prev, changes);
       return curr;
     } else {
-      return mapObject(config2, clone);
+      return clone(config2);
     }
   }
   _config.MATRIX_OPTIONS = MATRIX_OPTIONS;
@@ -3444,9 +3029,9 @@ function configFactory(config2, emit) {
   });
   return _config;
 }
-function validateOption(options, name314, values) {
-  if (options[name314] !== void 0 && !values.includes(options[name314])) {
-    console.warn('Warning: Unknown value "' + options[name314] + '" for configuration option "' + name314 + '". Available options: ' + values.map((value) => JSON.stringify(value)).join(", ") + ".");
+function validateOption(options, name323, values) {
+  if (options[name323] !== void 0 && !values.includes(options[name323])) {
+    console.warn('Warning: Unknown value "' + options[name323] + '" for configuration option "' + name323 + '". Available options: ' + values.map((value) => JSON.stringify(value)).join(", ") + ".");
   }
 }
 
@@ -3465,8 +3050,6 @@ __export(factoriesAny_exports, {
   createAddScalar: () => createAddScalar,
   createAnd: () => createAnd,
   createAndTransform: () => createAndTransform,
-  createApply: () => createApply,
-  createApplyTransform: () => createApplyTransform,
   createArg: () => createArg,
   createArrayNode: () => createArrayNode,
   createAsec: () => createAsec,
@@ -3480,7 +3063,9 @@ __export(factoriesAny_exports, {
   createAtomicMass: () => createAtomicMass,
   createAvogadro: () => createAvogadro,
   createBellNumbers: () => createBellNumbers,
+  createBernoulli: () => createBernoulli,
   createBigNumberClass: () => createBigNumberClass,
+  createBigint: () => createBigint,
   createBignumber: () => createBignumber,
   createBin: () => createBin,
   createBitAnd: () => createBitAnd,
@@ -3524,6 +3109,7 @@ __export(factoriesAny_exports, {
   createCot: () => createCot,
   createCoth: () => createCoth,
   createCoulomb: () => createCoulomb,
+  createCoulombConstant: () => createCoulombConstant,
   createCount: () => createCount,
   createCreateUnit: () => createCreateUnit,
   createCross: () => createCross,
@@ -3534,6 +3120,7 @@ __export(factoriesAny_exports, {
   createCumSum: () => createCumSum,
   createCumSumTransform: () => createCumSumTransform,
   createDeepEqual: () => createDeepEqual,
+  createDen: () => createDen,
   createDenseMatrixClass: () => createDenseMatrixClass,
   createDerivative: () => createDerivative,
   createDet: () => createDet,
@@ -3609,6 +3196,8 @@ __export(factoriesAny_exports, {
   createInv: () => createInv,
   createInverseConductanceQuantum: () => createInverseConductanceQuantum,
   createInvmod: () => createInvmod,
+  createIsBounded: () => createIsBounded,
+  createIsFinite: () => createIsFinite,
   createIsInteger: () => createIsInteger,
   createIsNaN: () => createIsNaN,
   createIsNegative: () => createIsNegative,
@@ -3643,6 +3232,8 @@ __export(factoriesAny_exports, {
   createMagneticConstant: () => createMagneticConstant,
   createMagneticFluxQuantum: () => createMagneticFluxQuantum,
   createMap: () => createMap2,
+  createMapSlices: () => createMapSlices,
+  createMapSlicesTransform: () => createMapSlicesTransform,
   createMapTransform: () => createMapTransform,
   createMatrix: () => createMatrix,
   createMatrixClass: () => createMatrixClass,
@@ -3674,6 +3265,9 @@ __export(factoriesAny_exports, {
   createNthRoots: () => createNthRoots,
   createNuclearMagneton: () => createNuclearMagneton,
   createNull: () => createNull,
+  createNullish: () => createNullish,
+  createNullishTransform: () => createNullishTransform,
+  createNum: () => createNum,
   createNumber: () => createNumber,
   createNumeric: () => createNumeric,
   createObjectNode: () => createObjectNode,
@@ -3789,6 +3383,7 @@ __export(factoriesAny_exports, {
   createTau: () => createTau,
   createThomsonCrossSection: () => createThomsonCrossSection,
   createTo: () => createTo,
+  createToBest: () => createToBest,
   createTrace: () => createTrace,
   createTranspose: () => createTranspose,
   createTrue: () => createTrue,
@@ -3819,12 +3414,54 @@ __export(factoriesAny_exports, {
 // node_modules/mathjs/lib/esm/core/function/typed.js
 var import_typed_function = __toESM(require_typed_function(), 1);
 
+// node_modules/mathjs/lib/esm/utils/factory.js
+function factory(name323, dependencies324, create2, meta) {
+  function assertAndCreate(scope) {
+    var deps = pickShallow(scope, dependencies324.map(stripOptionalNotation));
+    assertDependencies(name323, dependencies324, scope);
+    return create2(deps);
+  }
+  assertAndCreate.isFactory = true;
+  assertAndCreate.fn = name323;
+  assertAndCreate.dependencies = dependencies324.slice().sort();
+  if (meta) {
+    assertAndCreate.meta = meta;
+  }
+  return assertAndCreate;
+}
+function isFactory(obj) {
+  return typeof obj === "function" && typeof obj.fn === "string" && Array.isArray(obj.dependencies);
+}
+function assertDependencies(name323, dependencies324, scope) {
+  var allDefined = dependencies324.filter((dependency) => !isOptionalDependency(dependency)).every((dependency) => scope[dependency] !== void 0);
+  if (!allDefined) {
+    var missingDependencies = dependencies324.filter((dependency) => scope[dependency] === void 0);
+    throw new Error('Cannot create function "'.concat(name323, '", ') + "some dependencies are missing: ".concat(missingDependencies.map((d) => '"'.concat(d, '"')).join(", "), "."));
+  }
+}
+function isOptionalDependency(dependency) {
+  return dependency && dependency[0] === "?";
+}
+function stripOptionalNotation(dependency) {
+  return dependency && dependency[0] === "?" ? dependency.slice(1) : dependency;
+}
+
 // node_modules/mathjs/lib/esm/utils/number.js
-function isInteger(value) {
+function isInteger2(value) {
   if (typeof value === "boolean") {
     return true;
   }
-  return isFinite(value) ? value === Math.round(value) : false;
+  return Number.isFinite(value) ? value === Math.round(value) : false;
+}
+function safeNumberType(numberStr, config2) {
+  if (config2.number === "bigint") {
+    try {
+      BigInt(numberStr);
+    } catch (_unused) {
+      return config2.numberFallback;
+    }
+  }
+  return config2.number;
 }
 var sign = Math.sign || function(x) {
   if (x > 0) {
@@ -3853,7 +3490,7 @@ var cbrt = Math.cbrt || function cbrt2(x) {
   if (negate) {
     x = -x;
   }
-  if (isFinite(x)) {
+  if (Number.isFinite(x)) {
     result = Math.exp(Math.log(x) / 3);
     result = (x / (result * result) + 2 * result) / 3;
   } else {
@@ -3876,13 +3513,13 @@ function formatNumberToBase(n, base, size) {
     if (size < 1) {
       throw new Error("size must be in greater than 0");
     }
-    if (!isInteger(size)) {
+    if (!isInteger2(size)) {
       throw new Error("size must be an integer");
     }
     if (n > 2 ** (size - 1) - 1 || n < -(2 ** (size - 1))) {
       throw new Error("Value must be in range [-2^".concat(size - 1, ", 2^").concat(size - 1, "-1]"));
     }
-    if (!isInteger(n)) {
+    if (!isInteger2(n)) {
       throw new Error("Value must be an integer");
     }
     if (n < 0) {
@@ -3996,7 +3633,7 @@ function splitNumber(value) {
   };
 }
 function toEngineering(value, precision) {
-  if (isNaN(value) || !isFinite(value)) {
+  if (isNaN(value) || !Number.isFinite(value)) {
     return String(value);
   }
   var split = splitNumber(value);
@@ -4026,7 +3663,7 @@ function toEngineering(value, precision) {
   return rounded.sign + str;
 }
 function toFixed(value, precision) {
-  if (isNaN(value) || !isFinite(value)) {
+  if (isNaN(value) || !Number.isFinite(value)) {
     return String(value);
   }
   var splitValue = splitNumber(value);
@@ -4047,7 +3684,7 @@ function toFixed(value, precision) {
   return rounded.sign + c.join("");
 }
 function toExponential(value, precision) {
-  if (isNaN(value) || !isFinite(value)) {
+  if (isNaN(value) || !Number.isFinite(Number(value))) {
     return String(value);
   }
   var split = splitNumber(value);
@@ -4061,7 +3698,7 @@ function toExponential(value, precision) {
   return rounded.sign + first + (c.length > 0 ? "." + c.join("") : "") + "e" + (e2 >= 0 ? "+" : "") + e2;
 }
 function toPrecision(value, precision, options) {
-  if (isNaN(value) || !isFinite(value)) {
+  if (isNaN(value) || !Number.isFinite(value)) {
     return String(value);
   }
   var lowerExp = _toNumberOrDefault(options === null || options === void 0 ? void 0 : options.lowerExp, -3);
@@ -4126,26 +3763,25 @@ function zeros(length) {
 function digits(value) {
   return value.toExponential().replace(/e.*$/, "").replace(/^0\.?0*|\./, "").length;
 }
-var DBL_EPSILON = Number.EPSILON || 2220446049250313e-31;
-function nearlyEqual(x, y, epsilon) {
-  if (epsilon === null || epsilon === void 0) {
-    return x === y;
+function nearlyEqual(a, b) {
+  var relTol = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : 1e-8;
+  var absTol = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : 0;
+  if (relTol <= 0) {
+    throw new Error("Relative tolerance must be greater than 0");
   }
-  if (x === y) {
-    return true;
+  if (absTol < 0) {
+    throw new Error("Absolute tolerance must be at least 0");
   }
-  if (isNaN(x) || isNaN(y)) {
+  if (isNaN(a) || isNaN(b)) {
     return false;
   }
-  if (isFinite(x) && isFinite(y)) {
-    var diff = Math.abs(x - y);
-    if (diff <= DBL_EPSILON) {
-      return true;
-    } else {
-      return diff <= Math.max(Math.abs(x), Math.abs(y)) * epsilon;
-    }
+  if (!Number.isFinite(a) || !Number.isFinite(b)) {
+    return a === b;
   }
-  return false;
+  if (a === b) {
+    return true;
+  }
+  return Math.abs(a - b) <= Math.max(relTol * Math.max(Math.abs(a), Math.abs(b)), absTol);
 }
 var acosh = Math.acosh || function(x) {
   return Math.log(Math.sqrt(x * x - 1) + x);
@@ -4190,241 +3826,6 @@ function _toNumberOrDefault(value, defaultValue) {
   }
 }
 
-// node_modules/mathjs/lib/esm/utils/factory.js
-function factory(name314, dependencies314, create2, meta) {
-  function assertAndCreate(scope) {
-    var deps = pickShallow(scope, dependencies314.map(stripOptionalNotation));
-    assertDependencies(name314, dependencies314, scope);
-    return create2(deps);
-  }
-  assertAndCreate.isFactory = true;
-  assertAndCreate.fn = name314;
-  assertAndCreate.dependencies = dependencies314.slice().sort();
-  if (meta) {
-    assertAndCreate.meta = meta;
-  }
-  return assertAndCreate;
-}
-function isFactory(obj) {
-  return typeof obj === "function" && typeof obj.fn === "string" && Array.isArray(obj.dependencies);
-}
-function assertDependencies(name314, dependencies314, scope) {
-  var allDefined = dependencies314.filter((dependency) => !isOptionalDependency(dependency)).every((dependency) => scope[dependency] !== void 0);
-  if (!allDefined) {
-    var missingDependencies = dependencies314.filter((dependency) => scope[dependency] === void 0);
-    throw new Error('Cannot create function "'.concat(name314, '", ') + "some dependencies are missing: ".concat(missingDependencies.map((d) => '"'.concat(d, '"')).join(", "), "."));
-  }
-}
-function isOptionalDependency(dependency) {
-  return dependency && dependency[0] === "?";
-}
-function stripOptionalNotation(dependency) {
-  return dependency && dependency[0] === "?" ? dependency.slice(1) : dependency;
-}
-
-// node_modules/mathjs/lib/esm/utils/customs.js
-function getSafeProperty(object, prop) {
-  if (isPlainObject(object) && isSafeProperty(object, prop)) {
-    return object[prop];
-  }
-  if (typeof object[prop] === "function" && isSafeMethod(object, prop)) {
-    throw new Error('Cannot access method "' + prop + '" as a property');
-  }
-  throw new Error('No access to property "' + prop + '"');
-}
-function setSafeProperty(object, prop, value) {
-  if (isPlainObject(object) && isSafeProperty(object, prop)) {
-    object[prop] = value;
-    return value;
-  }
-  throw new Error('No access to property "' + prop + '"');
-}
-function hasSafeProperty(object, prop) {
-  return prop in object;
-}
-function isSafeProperty(object, prop) {
-  if (!object || typeof object !== "object") {
-    return false;
-  }
-  if (hasOwnProperty(safeNativeProperties, prop)) {
-    return true;
-  }
-  if (prop in Object.prototype) {
-    return false;
-  }
-  if (prop in Function.prototype) {
-    return false;
-  }
-  return true;
-}
-function getSafeMethod(object, method) {
-  if (!isSafeMethod(object, method)) {
-    throw new Error('No access to method "' + method + '"');
-  }
-  return object[method];
-}
-function isSafeMethod(object, method) {
-  if (object === null || object === void 0 || typeof object[method] !== "function") {
-    return false;
-  }
-  if (hasOwnProperty(object, method) && Object.getPrototypeOf && method in Object.getPrototypeOf(object)) {
-    return false;
-  }
-  if (hasOwnProperty(safeNativeMethods, method)) {
-    return true;
-  }
-  if (method in Object.prototype) {
-    return false;
-  }
-  if (method in Function.prototype) {
-    return false;
-  }
-  return true;
-}
-function isPlainObject(object) {
-  return typeof object === "object" && object && object.constructor === Object;
-}
-var safeNativeProperties = {
-  length: true,
-  name: true
-};
-var safeNativeMethods = {
-  toString: true,
-  valueOf: true,
-  toLocaleString: true
-};
-
-// node_modules/mathjs/lib/esm/utils/map.js
-var ObjectWrappingMap = class {
-  constructor(object) {
-    this.wrappedObject = object;
-    this[Symbol.iterator] = this.entries;
-  }
-  keys() {
-    return Object.keys(this.wrappedObject).values();
-  }
-  get(key) {
-    return getSafeProperty(this.wrappedObject, key);
-  }
-  set(key, value) {
-    setSafeProperty(this.wrappedObject, key, value);
-    return this;
-  }
-  has(key) {
-    return hasSafeProperty(this.wrappedObject, key);
-  }
-  entries() {
-    return mapIterator(this.keys(), (key) => [key, this.get(key)]);
-  }
-  forEach(callback) {
-    for (var key of this.keys()) {
-      callback(this.get(key), key, this);
-    }
-  }
-  delete(key) {
-    delete this.wrappedObject[key];
-  }
-  clear() {
-    for (var key of this.keys()) {
-      this.delete(key);
-    }
-  }
-  get size() {
-    return Object.keys(this.wrappedObject).length;
-  }
-};
-var PartitionedMap = class {
-  /**
-   * @param {Map} a
-   * @param {Map} b
-   * @param {Set} bKeys
-   */
-  constructor(a, b, bKeys) {
-    this.a = a;
-    this.b = b;
-    this.bKeys = bKeys;
-    this[Symbol.iterator] = this.entries;
-  }
-  get(key) {
-    return this.bKeys.has(key) ? this.b.get(key) : this.a.get(key);
-  }
-  set(key, value) {
-    if (this.bKeys.has(key)) {
-      this.b.set(key, value);
-    } else {
-      this.a.set(key, value);
-    }
-    return this;
-  }
-  has(key) {
-    return this.b.has(key) || this.a.has(key);
-  }
-  keys() {
-    return (/* @__PURE__ */ new Set([...this.a.keys(), ...this.b.keys()]))[Symbol.iterator]();
-  }
-  entries() {
-    return mapIterator(this.keys(), (key) => [key, this.get(key)]);
-  }
-  forEach(callback) {
-    for (var key of this.keys()) {
-      callback(this.get(key), key, this);
-    }
-  }
-  delete(key) {
-    return this.bKeys.has(key) ? this.b.delete(key) : this.a.delete(key);
-  }
-  clear() {
-    this.a.clear();
-    this.b.clear();
-  }
-  get size() {
-    return [...this.keys()].length;
-  }
-};
-function mapIterator(it, callback) {
-  return {
-    next: () => {
-      var n = it.next();
-      return n.done ? n : {
-        value: callback(n.value),
-        done: false
-      };
-    }
-  };
-}
-function createEmptyMap() {
-  return /* @__PURE__ */ new Map();
-}
-function createMap(mapOrObject) {
-  if (!mapOrObject) {
-    return createEmptyMap();
-  }
-  if (isMap(mapOrObject)) {
-    return mapOrObject;
-  }
-  if (isObject(mapOrObject)) {
-    return new ObjectWrappingMap(mapOrObject);
-  }
-  throw new Error("createMap can create maps from objects or Maps");
-}
-function toObject(map2) {
-  if (map2 instanceof ObjectWrappingMap) {
-    return map2.wrappedObject;
-  }
-  var object = {};
-  for (var key of map2.keys()) {
-    var value = map2.get(key);
-    setSafeProperty(object, key, value);
-  }
-  return object;
-}
-function isMap(object) {
-  if (!object) {
-    return false;
-  }
-  return object instanceof Map || object instanceof ObjectWrappingMap || typeof object.set === "function" && typeof object.get === "function" && typeof object.keys === "function" && typeof object.has === "function";
-}
-
 // node_modules/mathjs/lib/esm/core/function/typed.js
 var _createTyped2 = function _createTyped() {
   _createTyped2 = import_typed_function.default.create;
@@ -4454,6 +3855,10 @@ var createTyped = /* @__PURE__ */ factory("typed", dependencies, function create
       test: isBigNumber
     },
     {
+      name: "bigint",
+      test: isBigInt
+    },
+    {
       name: "Fraction",
       test: isFraction
     },
@@ -4465,9 +3870,10 @@ var createTyped = /* @__PURE__ */ factory("typed", dependencies, function create
     // string starting with an alphabetic character. It is used (at least)
     // in the definition of the derivative() function, as the argument telling
     // what to differentiate over must (currently) be a variable.
+    // TODO: deprecate the identifier type (it's not used anymore, see https://github.com/josdejong/mathjs/issues/3253)
     {
       name: "identifier",
-      test: (s) => isString && /^(?:[A-Za-z\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0560-\u0588\u05D0-\u05EA\u05EF-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u0860-\u086A\u0870-\u0887\u0889-\u088E\u08A0-\u08C9\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u09FC\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C5D\u0C60\u0C61\u0C80\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D04-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D54-\u0D56\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E86-\u0E8A\u0E8C-\u0EA3\u0EA5\u0EA7-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16F1-\u16F8\u1700-\u1711\u171F-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1878\u1880-\u1884\u1887-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4C\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1C80-\u1C88\u1C90-\u1CBA\u1CBD-\u1CBF\u1CE9-\u1CEC\u1CEE-\u1CF3\u1CF5\u1CF6\u1CFA\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2183\u2184\u2C00-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005\u3006\u3031-\u3035\u303B\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312F\u3131-\u318E\u31A0-\u31BF\u31F0-\u31FF\u3400-\u4DBF\u4E00-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6E5\uA717-\uA71F\uA722-\uA788\uA78B-\uA7CA\uA7D0\uA7D1\uA7D3\uA7D5-\uA7D9\uA7F2-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA8FE\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB69\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]|\uD800[\uDC00-\uDC0B\uDC0D-\uDC26\uDC28-\uDC3A\uDC3C\uDC3D\uDC3F-\uDC4D\uDC50-\uDC5D\uDC80-\uDCFA\uDE80-\uDE9C\uDEA0-\uDED0\uDF00-\uDF1F\uDF2D-\uDF40\uDF42-\uDF49\uDF50-\uDF75\uDF80-\uDF9D\uDFA0-\uDFC3\uDFC8-\uDFCF]|\uD801[\uDC00-\uDC9D\uDCB0-\uDCD3\uDCD8-\uDCFB\uDD00-\uDD27\uDD30-\uDD63\uDD70-\uDD7A\uDD7C-\uDD8A\uDD8C-\uDD92\uDD94\uDD95\uDD97-\uDDA1\uDDA3-\uDDB1\uDDB3-\uDDB9\uDDBB\uDDBC\uDE00-\uDF36\uDF40-\uDF55\uDF60-\uDF67\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDC00-\uDC05\uDC08\uDC0A-\uDC35\uDC37\uDC38\uDC3C\uDC3F-\uDC55\uDC60-\uDC76\uDC80-\uDC9E\uDCE0-\uDCF2\uDCF4\uDCF5\uDD00-\uDD15\uDD20-\uDD39\uDD80-\uDDB7\uDDBE\uDDBF\uDE00\uDE10-\uDE13\uDE15-\uDE17\uDE19-\uDE35\uDE60-\uDE7C\uDE80-\uDE9C\uDEC0-\uDEC7\uDEC9-\uDEE4\uDF00-\uDF35\uDF40-\uDF55\uDF60-\uDF72\uDF80-\uDF91]|\uD803[\uDC00-\uDC48\uDC80-\uDCB2\uDCC0-\uDCF2\uDD00-\uDD23\uDE80-\uDEA9\uDEB0\uDEB1\uDF00-\uDF1C\uDF27\uDF30-\uDF45\uDF70-\uDF81\uDFB0-\uDFC4\uDFE0-\uDFF6]|\uD804[\uDC03-\uDC37\uDC71\uDC72\uDC75\uDC83-\uDCAF\uDCD0-\uDCE8\uDD03-\uDD26\uDD44\uDD47\uDD50-\uDD72\uDD76\uDD83-\uDDB2\uDDC1-\uDDC4\uDDDA\uDDDC\uDE00-\uDE11\uDE13-\uDE2B\uDE3F\uDE40\uDE80-\uDE86\uDE88\uDE8A-\uDE8D\uDE8F-\uDE9D\uDE9F-\uDEA8\uDEB0-\uDEDE\uDF05-\uDF0C\uDF0F\uDF10\uDF13-\uDF28\uDF2A-\uDF30\uDF32\uDF33\uDF35-\uDF39\uDF3D\uDF50\uDF5D-\uDF61]|\uD805[\uDC00-\uDC34\uDC47-\uDC4A\uDC5F-\uDC61\uDC80-\uDCAF\uDCC4\uDCC5\uDCC7\uDD80-\uDDAE\uDDD8-\uDDDB\uDE00-\uDE2F\uDE44\uDE80-\uDEAA\uDEB8\uDF00-\uDF1A\uDF40-\uDF46]|\uD806[\uDC00-\uDC2B\uDCA0-\uDCDF\uDCFF-\uDD06\uDD09\uDD0C-\uDD13\uDD15\uDD16\uDD18-\uDD2F\uDD3F\uDD41\uDDA0-\uDDA7\uDDAA-\uDDD0\uDDE1\uDDE3\uDE00\uDE0B-\uDE32\uDE3A\uDE50\uDE5C-\uDE89\uDE9D\uDEB0-\uDEF8]|\uD807[\uDC00-\uDC08\uDC0A-\uDC2E\uDC40\uDC72-\uDC8F\uDD00-\uDD06\uDD08\uDD09\uDD0B-\uDD30\uDD46\uDD60-\uDD65\uDD67\uDD68\uDD6A-\uDD89\uDD98\uDEE0-\uDEF2\uDF02\uDF04-\uDF10\uDF12-\uDF33\uDFB0]|\uD808[\uDC00-\uDF99]|\uD809[\uDC80-\uDD43]|\uD80B[\uDF90-\uDFF0]|[\uD80C\uD81C-\uD820\uD822\uD840-\uD868\uD86A-\uD86C\uD86F-\uD872\uD874-\uD879\uD880-\uD883\uD885-\uD887][\uDC00-\uDFFF]|\uD80D[\uDC00-\uDC2F\uDC41-\uDC46]|\uD811[\uDC00-\uDE46]|\uD81A[\uDC00-\uDE38\uDE40-\uDE5E\uDE70-\uDEBE\uDED0-\uDEED\uDF00-\uDF2F\uDF40-\uDF43\uDF63-\uDF77\uDF7D-\uDF8F]|\uD81B[\uDE40-\uDE7F\uDF00-\uDF4A\uDF50\uDF93-\uDF9F\uDFE0\uDFE1\uDFE3]|\uD821[\uDC00-\uDFF7]|\uD823[\uDC00-\uDCD5\uDD00-\uDD08]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD82C[\uDC00-\uDD22\uDD32\uDD50-\uDD52\uDD55\uDD64-\uDD67\uDD70-\uDEFB]|\uD82F[\uDC00-\uDC6A\uDC70-\uDC7C\uDC80-\uDC88\uDC90-\uDC99]|\uD835[\uDC00-\uDC54\uDC56-\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD1E-\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD52-\uDEA5\uDEA8-\uDEC0\uDEC2-\uDEDA\uDEDC-\uDEFA\uDEFC-\uDF14\uDF16-\uDF34\uDF36-\uDF4E\uDF50-\uDF6E\uDF70-\uDF88\uDF8A-\uDFA8\uDFAA-\uDFC2\uDFC4-\uDFCB]|\uD837[\uDF00-\uDF1E\uDF25-\uDF2A]|\uD838[\uDC30-\uDC6D\uDD00-\uDD2C\uDD37-\uDD3D\uDD4E\uDE90-\uDEAD\uDEC0-\uDEEB]|\uD839[\uDCD0-\uDCEB\uDFE0-\uDFE6\uDFE8-\uDFEB\uDFED\uDFEE\uDFF0-\uDFFE]|\uD83A[\uDC00-\uDCC4\uDD00-\uDD43\uDD4B]|\uD83B[\uDE00-\uDE03\uDE05-\uDE1F\uDE21\uDE22\uDE24\uDE27\uDE29-\uDE32\uDE34-\uDE37\uDE39\uDE3B\uDE42\uDE47\uDE49\uDE4B\uDE4D-\uDE4F\uDE51\uDE52\uDE54\uDE57\uDE59\uDE5B\uDE5D\uDE5F\uDE61\uDE62\uDE64\uDE67-\uDE6A\uDE6C-\uDE72\uDE74-\uDE77\uDE79-\uDE7C\uDE7E\uDE80-\uDE89\uDE8B-\uDE9B\uDEA1-\uDEA3\uDEA5-\uDEA9\uDEAB-\uDEBB]|\uD869[\uDC00-\uDEDF\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF39\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D\uDC20-\uDFFF]|\uD873[\uDC00-\uDEA1\uDEB0-\uDFFF]|\uD87A[\uDC00-\uDFE0]|\uD87E[\uDC00-\uDE1D]|\uD884[\uDC00-\uDF4A\uDF50-\uDFFF]|\uD888[\uDC00-\uDFAF])(?:[0-9A-Za-z\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0560-\u0588\u05D0-\u05EA\u05EF-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u0860-\u086A\u0870-\u0887\u0889-\u088E\u08A0-\u08C9\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u09FC\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C5D\u0C60\u0C61\u0C80\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDD\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D04-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D54-\u0D56\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E86-\u0E8A\u0E8C-\u0EA3\u0EA5\u0EA7-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16F1-\u16F8\u1700-\u1711\u171F-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1878\u1880-\u1884\u1887-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4C\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1C80-\u1C88\u1C90-\u1CBA\u1CBD-\u1CBF\u1CE9-\u1CEC\u1CEE-\u1CF3\u1CF5\u1CF6\u1CFA\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2183\u2184\u2C00-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005\u3006\u3031-\u3035\u303B\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312F\u3131-\u318E\u31A0-\u31BF\u31F0-\u31FF\u3400-\u4DBF\u4E00-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6E5\uA717-\uA71F\uA722-\uA788\uA78B-\uA7CA\uA7D0\uA7D1\uA7D3\uA7D5-\uA7D9\uA7F2-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA8FE\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB69\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]|\uD800[\uDC00-\uDC0B\uDC0D-\uDC26\uDC28-\uDC3A\uDC3C\uDC3D\uDC3F-\uDC4D\uDC50-\uDC5D\uDC80-\uDCFA\uDE80-\uDE9C\uDEA0-\uDED0\uDF00-\uDF1F\uDF2D-\uDF40\uDF42-\uDF49\uDF50-\uDF75\uDF80-\uDF9D\uDFA0-\uDFC3\uDFC8-\uDFCF]|\uD801[\uDC00-\uDC9D\uDCB0-\uDCD3\uDCD8-\uDCFB\uDD00-\uDD27\uDD30-\uDD63\uDD70-\uDD7A\uDD7C-\uDD8A\uDD8C-\uDD92\uDD94\uDD95\uDD97-\uDDA1\uDDA3-\uDDB1\uDDB3-\uDDB9\uDDBB\uDDBC\uDE00-\uDF36\uDF40-\uDF55\uDF60-\uDF67\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDC00-\uDC05\uDC08\uDC0A-\uDC35\uDC37\uDC38\uDC3C\uDC3F-\uDC55\uDC60-\uDC76\uDC80-\uDC9E\uDCE0-\uDCF2\uDCF4\uDCF5\uDD00-\uDD15\uDD20-\uDD39\uDD80-\uDDB7\uDDBE\uDDBF\uDE00\uDE10-\uDE13\uDE15-\uDE17\uDE19-\uDE35\uDE60-\uDE7C\uDE80-\uDE9C\uDEC0-\uDEC7\uDEC9-\uDEE4\uDF00-\uDF35\uDF40-\uDF55\uDF60-\uDF72\uDF80-\uDF91]|\uD803[\uDC00-\uDC48\uDC80-\uDCB2\uDCC0-\uDCF2\uDD00-\uDD23\uDE80-\uDEA9\uDEB0\uDEB1\uDF00-\uDF1C\uDF27\uDF30-\uDF45\uDF70-\uDF81\uDFB0-\uDFC4\uDFE0-\uDFF6]|\uD804[\uDC03-\uDC37\uDC71\uDC72\uDC75\uDC83-\uDCAF\uDCD0-\uDCE8\uDD03-\uDD26\uDD44\uDD47\uDD50-\uDD72\uDD76\uDD83-\uDDB2\uDDC1-\uDDC4\uDDDA\uDDDC\uDE00-\uDE11\uDE13-\uDE2B\uDE3F\uDE40\uDE80-\uDE86\uDE88\uDE8A-\uDE8D\uDE8F-\uDE9D\uDE9F-\uDEA8\uDEB0-\uDEDE\uDF05-\uDF0C\uDF0F\uDF10\uDF13-\uDF28\uDF2A-\uDF30\uDF32\uDF33\uDF35-\uDF39\uDF3D\uDF50\uDF5D-\uDF61]|\uD805[\uDC00-\uDC34\uDC47-\uDC4A\uDC5F-\uDC61\uDC80-\uDCAF\uDCC4\uDCC5\uDCC7\uDD80-\uDDAE\uDDD8-\uDDDB\uDE00-\uDE2F\uDE44\uDE80-\uDEAA\uDEB8\uDF00-\uDF1A\uDF40-\uDF46]|\uD806[\uDC00-\uDC2B\uDCA0-\uDCDF\uDCFF-\uDD06\uDD09\uDD0C-\uDD13\uDD15\uDD16\uDD18-\uDD2F\uDD3F\uDD41\uDDA0-\uDDA7\uDDAA-\uDDD0\uDDE1\uDDE3\uDE00\uDE0B-\uDE32\uDE3A\uDE50\uDE5C-\uDE89\uDE9D\uDEB0-\uDEF8]|\uD807[\uDC00-\uDC08\uDC0A-\uDC2E\uDC40\uDC72-\uDC8F\uDD00-\uDD06\uDD08\uDD09\uDD0B-\uDD30\uDD46\uDD60-\uDD65\uDD67\uDD68\uDD6A-\uDD89\uDD98\uDEE0-\uDEF2\uDF02\uDF04-\uDF10\uDF12-\uDF33\uDFB0]|\uD808[\uDC00-\uDF99]|\uD809[\uDC80-\uDD43]|\uD80B[\uDF90-\uDFF0]|[\uD80C\uD81C-\uD820\uD822\uD840-\uD868\uD86A-\uD86C\uD86F-\uD872\uD874-\uD879\uD880-\uD883\uD885-\uD887][\uDC00-\uDFFF]|\uD80D[\uDC00-\uDC2F\uDC41-\uDC46]|\uD811[\uDC00-\uDE46]|\uD81A[\uDC00-\uDE38\uDE40-\uDE5E\uDE70-\uDEBE\uDED0-\uDEED\uDF00-\uDF2F\uDF40-\uDF43\uDF63-\uDF77\uDF7D-\uDF8F]|\uD81B[\uDE40-\uDE7F\uDF00-\uDF4A\uDF50\uDF93-\uDF9F\uDFE0\uDFE1\uDFE3]|\uD821[\uDC00-\uDFF7]|\uD823[\uDC00-\uDCD5\uDD00-\uDD08]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD82C[\uDC00-\uDD22\uDD32\uDD50-\uDD52\uDD55\uDD64-\uDD67\uDD70-\uDEFB]|\uD82F[\uDC00-\uDC6A\uDC70-\uDC7C\uDC80-\uDC88\uDC90-\uDC99]|\uD835[\uDC00-\uDC54\uDC56-\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD1E-\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD52-\uDEA5\uDEA8-\uDEC0\uDEC2-\uDEDA\uDEDC-\uDEFA\uDEFC-\uDF14\uDF16-\uDF34\uDF36-\uDF4E\uDF50-\uDF6E\uDF70-\uDF88\uDF8A-\uDFA8\uDFAA-\uDFC2\uDFC4-\uDFCB]|\uD837[\uDF00-\uDF1E\uDF25-\uDF2A]|\uD838[\uDC30-\uDC6D\uDD00-\uDD2C\uDD37-\uDD3D\uDD4E\uDE90-\uDEAD\uDEC0-\uDEEB]|\uD839[\uDCD0-\uDCEB\uDFE0-\uDFE6\uDFE8-\uDFEB\uDFED\uDFEE\uDFF0-\uDFFE]|\uD83A[\uDC00-\uDCC4\uDD00-\uDD43\uDD4B]|\uD83B[\uDE00-\uDE03\uDE05-\uDE1F\uDE21\uDE22\uDE24\uDE27\uDE29-\uDE32\uDE34-\uDE37\uDE39\uDE3B\uDE42\uDE47\uDE49\uDE4B\uDE4D-\uDE4F\uDE51\uDE52\uDE54\uDE57\uDE59\uDE5B\uDE5D\uDE5F\uDE61\uDE62\uDE64\uDE67-\uDE6A\uDE6C-\uDE72\uDE74-\uDE77\uDE79-\uDE7C\uDE7E\uDE80-\uDE89\uDE8B-\uDE9B\uDEA1-\uDEA3\uDEA5-\uDEA9\uDEAB-\uDEBB]|\uD869[\uDC00-\uDEDF\uDF00-\uDFFF]|\uD86D[\uDC00-\uDF39\uDF40-\uDFFF]|\uD86E[\uDC00-\uDC1D\uDC20-\uDFFF]|\uD873[\uDC00-\uDEA1\uDEB0-\uDFFF]|\uD87A[\uDC00-\uDFE0]|\uD87E[\uDC00-\uDE1D]|\uD884[\uDC00-\uDF4A\uDF50-\uDFFF]|\uD888[\uDC00-\uDFAF])*$/.test(s)
+      test: (s) => isString && /^(?:[A-Za-z\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0560-\u0588\u05D0-\u05EA\u05EF-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u0860-\u086A\u0870-\u0887\u0889-\u088F\u08A0-\u08C9\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u09FC\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C5C\u0C5D\u0C60\u0C61\u0C80\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDC-\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D04-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D54-\u0D56\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E86-\u0E8A\u0E8C-\u0EA3\u0EA5\u0EA7-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16F1-\u16F8\u1700-\u1711\u171F-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1878\u1880-\u1884\u1887-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4C\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1C80-\u1C8A\u1C90-\u1CBA\u1CBD-\u1CBF\u1CE9-\u1CEC\u1CEE-\u1CF3\u1CF5\u1CF6\u1CFA\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2183\u2184\u2C00-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005\u3006\u3031-\u3035\u303B\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312F\u3131-\u318E\u31A0-\u31BF\u31F0-\u31FF\u3400-\u4DBF\u4E00-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6E5\uA717-\uA71F\uA722-\uA788\uA78B-\uA7DC\uA7F1-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA8FE\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB69\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]|\uD800[\uDC00-\uDC0B\uDC0D-\uDC26\uDC28-\uDC3A\uDC3C\uDC3D\uDC3F-\uDC4D\uDC50-\uDC5D\uDC80-\uDCFA\uDE80-\uDE9C\uDEA0-\uDED0\uDF00-\uDF1F\uDF2D-\uDF40\uDF42-\uDF49\uDF50-\uDF75\uDF80-\uDF9D\uDFA0-\uDFC3\uDFC8-\uDFCF]|\uD801[\uDC00-\uDC9D\uDCB0-\uDCD3\uDCD8-\uDCFB\uDD00-\uDD27\uDD30-\uDD63\uDD70-\uDD7A\uDD7C-\uDD8A\uDD8C-\uDD92\uDD94\uDD95\uDD97-\uDDA1\uDDA3-\uDDB1\uDDB3-\uDDB9\uDDBB\uDDBC\uDDC0-\uDDF3\uDE00-\uDF36\uDF40-\uDF55\uDF60-\uDF67\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDC00-\uDC05\uDC08\uDC0A-\uDC35\uDC37\uDC38\uDC3C\uDC3F-\uDC55\uDC60-\uDC76\uDC80-\uDC9E\uDCE0-\uDCF2\uDCF4\uDCF5\uDD00-\uDD15\uDD20-\uDD39\uDD40-\uDD59\uDD80-\uDDB7\uDDBE\uDDBF\uDE00\uDE10-\uDE13\uDE15-\uDE17\uDE19-\uDE35\uDE60-\uDE7C\uDE80-\uDE9C\uDEC0-\uDEC7\uDEC9-\uDEE4\uDF00-\uDF35\uDF40-\uDF55\uDF60-\uDF72\uDF80-\uDF91]|\uD803[\uDC00-\uDC48\uDC80-\uDCB2\uDCC0-\uDCF2\uDD00-\uDD23\uDD4A-\uDD65\uDD6F-\uDD85\uDE80-\uDEA9\uDEB0\uDEB1\uDEC2-\uDEC7\uDF00-\uDF1C\uDF27\uDF30-\uDF45\uDF70-\uDF81\uDFB0-\uDFC4\uDFE0-\uDFF6]|\uD804[\uDC03-\uDC37\uDC71\uDC72\uDC75\uDC83-\uDCAF\uDCD0-\uDCE8\uDD03-\uDD26\uDD44\uDD47\uDD50-\uDD72\uDD76\uDD83-\uDDB2\uDDC1-\uDDC4\uDDDA\uDDDC\uDE00-\uDE11\uDE13-\uDE2B\uDE3F\uDE40\uDE80-\uDE86\uDE88\uDE8A-\uDE8D\uDE8F-\uDE9D\uDE9F-\uDEA8\uDEB0-\uDEDE\uDF05-\uDF0C\uDF0F\uDF10\uDF13-\uDF28\uDF2A-\uDF30\uDF32\uDF33\uDF35-\uDF39\uDF3D\uDF50\uDF5D-\uDF61\uDF80-\uDF89\uDF8B\uDF8E\uDF90-\uDFB5\uDFB7\uDFD1\uDFD3]|\uD805[\uDC00-\uDC34\uDC47-\uDC4A\uDC5F-\uDC61\uDC80-\uDCAF\uDCC4\uDCC5\uDCC7\uDD80-\uDDAE\uDDD8-\uDDDB\uDE00-\uDE2F\uDE44\uDE80-\uDEAA\uDEB8\uDF00-\uDF1A\uDF40-\uDF46]|\uD806[\uDC00-\uDC2B\uDCA0-\uDCDF\uDCFF-\uDD06\uDD09\uDD0C-\uDD13\uDD15\uDD16\uDD18-\uDD2F\uDD3F\uDD41\uDDA0-\uDDA7\uDDAA-\uDDD0\uDDE1\uDDE3\uDE00\uDE0B-\uDE32\uDE3A\uDE50\uDE5C-\uDE89\uDE9D\uDEB0-\uDEF8\uDFC0-\uDFE0]|\uD807[\uDC00-\uDC08\uDC0A-\uDC2E\uDC40\uDC72-\uDC8F\uDD00-\uDD06\uDD08\uDD09\uDD0B-\uDD30\uDD46\uDD60-\uDD65\uDD67\uDD68\uDD6A-\uDD89\uDD98\uDDB0-\uDDDB\uDEE0-\uDEF2\uDF02\uDF04-\uDF10\uDF12-\uDF33\uDFB0]|\uD808[\uDC00-\uDF99]|\uD809[\uDC80-\uDD43]|\uD80B[\uDF90-\uDFF0]|[\uD80C\uD80E\uD80F\uD81C-\uD822\uD840-\uD868\uD86A-\uD86D\uD86F-\uD872\uD874-\uD879\uD880-\uD883\uD885-\uD88C][\uDC00-\uDFFF]|\uD80D[\uDC00-\uDC2F\uDC41-\uDC46\uDC60-\uDFFF]|\uD810[\uDC00-\uDFFA]|\uD811[\uDC00-\uDE46]|\uD818[\uDD00-\uDD1D]|\uD81A[\uDC00-\uDE38\uDE40-\uDE5E\uDE70-\uDEBE\uDED0-\uDEED\uDF00-\uDF2F\uDF40-\uDF43\uDF63-\uDF77\uDF7D-\uDF8F]|\uD81B[\uDD40-\uDD6C\uDE40-\uDE7F\uDEA0-\uDEB8\uDEBB-\uDED3\uDF00-\uDF4A\uDF50\uDF93-\uDF9F\uDFE0\uDFE1\uDFE3\uDFF2\uDFF3]|\uD823[\uDC00-\uDCD5\uDCFF-\uDD1E\uDD80-\uDDF2]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD82C[\uDC00-\uDD22\uDD32\uDD50-\uDD52\uDD55\uDD64-\uDD67\uDD70-\uDEFB]|\uD82F[\uDC00-\uDC6A\uDC70-\uDC7C\uDC80-\uDC88\uDC90-\uDC99]|\uD835[\uDC00-\uDC54\uDC56-\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD1E-\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD52-\uDEA5\uDEA8-\uDEC0\uDEC2-\uDEDA\uDEDC-\uDEFA\uDEFC-\uDF14\uDF16-\uDF34\uDF36-\uDF4E\uDF50-\uDF6E\uDF70-\uDF88\uDF8A-\uDFA8\uDFAA-\uDFC2\uDFC4-\uDFCB]|\uD837[\uDF00-\uDF1E\uDF25-\uDF2A]|\uD838[\uDC30-\uDC6D\uDD00-\uDD2C\uDD37-\uDD3D\uDD4E\uDE90-\uDEAD\uDEC0-\uDEEB]|\uD839[\uDCD0-\uDCEB\uDDD0-\uDDED\uDDF0\uDEC0-\uDEDE\uDEE0-\uDEE2\uDEE4\uDEE5\uDEE7-\uDEED\uDEF0-\uDEF4\uDEFE\uDEFF\uDFE0-\uDFE6\uDFE8-\uDFEB\uDFED\uDFEE\uDFF0-\uDFFE]|\uD83A[\uDC00-\uDCC4\uDD00-\uDD43\uDD4B]|\uD83B[\uDE00-\uDE03\uDE05-\uDE1F\uDE21\uDE22\uDE24\uDE27\uDE29-\uDE32\uDE34-\uDE37\uDE39\uDE3B\uDE42\uDE47\uDE49\uDE4B\uDE4D-\uDE4F\uDE51\uDE52\uDE54\uDE57\uDE59\uDE5B\uDE5D\uDE5F\uDE61\uDE62\uDE64\uDE67-\uDE6A\uDE6C-\uDE72\uDE74-\uDE77\uDE79-\uDE7C\uDE7E\uDE80-\uDE89\uDE8B-\uDE9B\uDEA1-\uDEA3\uDEA5-\uDEA9\uDEAB-\uDEBB]|\uD869[\uDC00-\uDEDF\uDF00-\uDFFF]|\uD86E[\uDC00-\uDC1D\uDC20-\uDFFF]|\uD873[\uDC00-\uDEAD\uDEB0-\uDFFF]|\uD87A[\uDC00-\uDFE0\uDFF0-\uDFFF]|\uD87B[\uDC00-\uDE5D]|\uD87E[\uDC00-\uDE1D]|\uD884[\uDC00-\uDF4A\uDF50-\uDFFF]|\uD88D[\uDC00-\uDC79])(?:[0-9A-Za-z\xAA\xB5\xBA\xC0-\xD6\xD8-\xF6\xF8-\u02C1\u02C6-\u02D1\u02E0-\u02E4\u02EC\u02EE\u0370-\u0374\u0376\u0377\u037A-\u037D\u037F\u0386\u0388-\u038A\u038C\u038E-\u03A1\u03A3-\u03F5\u03F7-\u0481\u048A-\u052F\u0531-\u0556\u0559\u0560-\u0588\u05D0-\u05EA\u05EF-\u05F2\u0620-\u064A\u066E\u066F\u0671-\u06D3\u06D5\u06E5\u06E6\u06EE\u06EF\u06FA-\u06FC\u06FF\u0710\u0712-\u072F\u074D-\u07A5\u07B1\u07CA-\u07EA\u07F4\u07F5\u07FA\u0800-\u0815\u081A\u0824\u0828\u0840-\u0858\u0860-\u086A\u0870-\u0887\u0889-\u088F\u08A0-\u08C9\u0904-\u0939\u093D\u0950\u0958-\u0961\u0971-\u0980\u0985-\u098C\u098F\u0990\u0993-\u09A8\u09AA-\u09B0\u09B2\u09B6-\u09B9\u09BD\u09CE\u09DC\u09DD\u09DF-\u09E1\u09F0\u09F1\u09FC\u0A05-\u0A0A\u0A0F\u0A10\u0A13-\u0A28\u0A2A-\u0A30\u0A32\u0A33\u0A35\u0A36\u0A38\u0A39\u0A59-\u0A5C\u0A5E\u0A72-\u0A74\u0A85-\u0A8D\u0A8F-\u0A91\u0A93-\u0AA8\u0AAA-\u0AB0\u0AB2\u0AB3\u0AB5-\u0AB9\u0ABD\u0AD0\u0AE0\u0AE1\u0AF9\u0B05-\u0B0C\u0B0F\u0B10\u0B13-\u0B28\u0B2A-\u0B30\u0B32\u0B33\u0B35-\u0B39\u0B3D\u0B5C\u0B5D\u0B5F-\u0B61\u0B71\u0B83\u0B85-\u0B8A\u0B8E-\u0B90\u0B92-\u0B95\u0B99\u0B9A\u0B9C\u0B9E\u0B9F\u0BA3\u0BA4\u0BA8-\u0BAA\u0BAE-\u0BB9\u0BD0\u0C05-\u0C0C\u0C0E-\u0C10\u0C12-\u0C28\u0C2A-\u0C39\u0C3D\u0C58-\u0C5A\u0C5C\u0C5D\u0C60\u0C61\u0C80\u0C85-\u0C8C\u0C8E-\u0C90\u0C92-\u0CA8\u0CAA-\u0CB3\u0CB5-\u0CB9\u0CBD\u0CDC-\u0CDE\u0CE0\u0CE1\u0CF1\u0CF2\u0D04-\u0D0C\u0D0E-\u0D10\u0D12-\u0D3A\u0D3D\u0D4E\u0D54-\u0D56\u0D5F-\u0D61\u0D7A-\u0D7F\u0D85-\u0D96\u0D9A-\u0DB1\u0DB3-\u0DBB\u0DBD\u0DC0-\u0DC6\u0E01-\u0E30\u0E32\u0E33\u0E40-\u0E46\u0E81\u0E82\u0E84\u0E86-\u0E8A\u0E8C-\u0EA3\u0EA5\u0EA7-\u0EB0\u0EB2\u0EB3\u0EBD\u0EC0-\u0EC4\u0EC6\u0EDC-\u0EDF\u0F00\u0F40-\u0F47\u0F49-\u0F6C\u0F88-\u0F8C\u1000-\u102A\u103F\u1050-\u1055\u105A-\u105D\u1061\u1065\u1066\u106E-\u1070\u1075-\u1081\u108E\u10A0-\u10C5\u10C7\u10CD\u10D0-\u10FA\u10FC-\u1248\u124A-\u124D\u1250-\u1256\u1258\u125A-\u125D\u1260-\u1288\u128A-\u128D\u1290-\u12B0\u12B2-\u12B5\u12B8-\u12BE\u12C0\u12C2-\u12C5\u12C8-\u12D6\u12D8-\u1310\u1312-\u1315\u1318-\u135A\u1380-\u138F\u13A0-\u13F5\u13F8-\u13FD\u1401-\u166C\u166F-\u167F\u1681-\u169A\u16A0-\u16EA\u16F1-\u16F8\u1700-\u1711\u171F-\u1731\u1740-\u1751\u1760-\u176C\u176E-\u1770\u1780-\u17B3\u17D7\u17DC\u1820-\u1878\u1880-\u1884\u1887-\u18A8\u18AA\u18B0-\u18F5\u1900-\u191E\u1950-\u196D\u1970-\u1974\u1980-\u19AB\u19B0-\u19C9\u1A00-\u1A16\u1A20-\u1A54\u1AA7\u1B05-\u1B33\u1B45-\u1B4C\u1B83-\u1BA0\u1BAE\u1BAF\u1BBA-\u1BE5\u1C00-\u1C23\u1C4D-\u1C4F\u1C5A-\u1C7D\u1C80-\u1C8A\u1C90-\u1CBA\u1CBD-\u1CBF\u1CE9-\u1CEC\u1CEE-\u1CF3\u1CF5\u1CF6\u1CFA\u1D00-\u1DBF\u1E00-\u1F15\u1F18-\u1F1D\u1F20-\u1F45\u1F48-\u1F4D\u1F50-\u1F57\u1F59\u1F5B\u1F5D\u1F5F-\u1F7D\u1F80-\u1FB4\u1FB6-\u1FBC\u1FBE\u1FC2-\u1FC4\u1FC6-\u1FCC\u1FD0-\u1FD3\u1FD6-\u1FDB\u1FE0-\u1FEC\u1FF2-\u1FF4\u1FF6-\u1FFC\u2071\u207F\u2090-\u209C\u2102\u2107\u210A-\u2113\u2115\u2119-\u211D\u2124\u2126\u2128\u212A-\u212D\u212F-\u2139\u213C-\u213F\u2145-\u2149\u214E\u2183\u2184\u2C00-\u2CE4\u2CEB-\u2CEE\u2CF2\u2CF3\u2D00-\u2D25\u2D27\u2D2D\u2D30-\u2D67\u2D6F\u2D80-\u2D96\u2DA0-\u2DA6\u2DA8-\u2DAE\u2DB0-\u2DB6\u2DB8-\u2DBE\u2DC0-\u2DC6\u2DC8-\u2DCE\u2DD0-\u2DD6\u2DD8-\u2DDE\u2E2F\u3005\u3006\u3031-\u3035\u303B\u303C\u3041-\u3096\u309D-\u309F\u30A1-\u30FA\u30FC-\u30FF\u3105-\u312F\u3131-\u318E\u31A0-\u31BF\u31F0-\u31FF\u3400-\u4DBF\u4E00-\uA48C\uA4D0-\uA4FD\uA500-\uA60C\uA610-\uA61F\uA62A\uA62B\uA640-\uA66E\uA67F-\uA69D\uA6A0-\uA6E5\uA717-\uA71F\uA722-\uA788\uA78B-\uA7DC\uA7F1-\uA801\uA803-\uA805\uA807-\uA80A\uA80C-\uA822\uA840-\uA873\uA882-\uA8B3\uA8F2-\uA8F7\uA8FB\uA8FD\uA8FE\uA90A-\uA925\uA930-\uA946\uA960-\uA97C\uA984-\uA9B2\uA9CF\uA9E0-\uA9E4\uA9E6-\uA9EF\uA9FA-\uA9FE\uAA00-\uAA28\uAA40-\uAA42\uAA44-\uAA4B\uAA60-\uAA76\uAA7A\uAA7E-\uAAAF\uAAB1\uAAB5\uAAB6\uAAB9-\uAABD\uAAC0\uAAC2\uAADB-\uAADD\uAAE0-\uAAEA\uAAF2-\uAAF4\uAB01-\uAB06\uAB09-\uAB0E\uAB11-\uAB16\uAB20-\uAB26\uAB28-\uAB2E\uAB30-\uAB5A\uAB5C-\uAB69\uAB70-\uABE2\uAC00-\uD7A3\uD7B0-\uD7C6\uD7CB-\uD7FB\uF900-\uFA6D\uFA70-\uFAD9\uFB00-\uFB06\uFB13-\uFB17\uFB1D\uFB1F-\uFB28\uFB2A-\uFB36\uFB38-\uFB3C\uFB3E\uFB40\uFB41\uFB43\uFB44\uFB46-\uFBB1\uFBD3-\uFD3D\uFD50-\uFD8F\uFD92-\uFDC7\uFDF0-\uFDFB\uFE70-\uFE74\uFE76-\uFEFC\uFF21-\uFF3A\uFF41-\uFF5A\uFF66-\uFFBE\uFFC2-\uFFC7\uFFCA-\uFFCF\uFFD2-\uFFD7\uFFDA-\uFFDC]|\uD800[\uDC00-\uDC0B\uDC0D-\uDC26\uDC28-\uDC3A\uDC3C\uDC3D\uDC3F-\uDC4D\uDC50-\uDC5D\uDC80-\uDCFA\uDE80-\uDE9C\uDEA0-\uDED0\uDF00-\uDF1F\uDF2D-\uDF40\uDF42-\uDF49\uDF50-\uDF75\uDF80-\uDF9D\uDFA0-\uDFC3\uDFC8-\uDFCF]|\uD801[\uDC00-\uDC9D\uDCB0-\uDCD3\uDCD8-\uDCFB\uDD00-\uDD27\uDD30-\uDD63\uDD70-\uDD7A\uDD7C-\uDD8A\uDD8C-\uDD92\uDD94\uDD95\uDD97-\uDDA1\uDDA3-\uDDB1\uDDB3-\uDDB9\uDDBB\uDDBC\uDDC0-\uDDF3\uDE00-\uDF36\uDF40-\uDF55\uDF60-\uDF67\uDF80-\uDF85\uDF87-\uDFB0\uDFB2-\uDFBA]|\uD802[\uDC00-\uDC05\uDC08\uDC0A-\uDC35\uDC37\uDC38\uDC3C\uDC3F-\uDC55\uDC60-\uDC76\uDC80-\uDC9E\uDCE0-\uDCF2\uDCF4\uDCF5\uDD00-\uDD15\uDD20-\uDD39\uDD40-\uDD59\uDD80-\uDDB7\uDDBE\uDDBF\uDE00\uDE10-\uDE13\uDE15-\uDE17\uDE19-\uDE35\uDE60-\uDE7C\uDE80-\uDE9C\uDEC0-\uDEC7\uDEC9-\uDEE4\uDF00-\uDF35\uDF40-\uDF55\uDF60-\uDF72\uDF80-\uDF91]|\uD803[\uDC00-\uDC48\uDC80-\uDCB2\uDCC0-\uDCF2\uDD00-\uDD23\uDD4A-\uDD65\uDD6F-\uDD85\uDE80-\uDEA9\uDEB0\uDEB1\uDEC2-\uDEC7\uDF00-\uDF1C\uDF27\uDF30-\uDF45\uDF70-\uDF81\uDFB0-\uDFC4\uDFE0-\uDFF6]|\uD804[\uDC03-\uDC37\uDC71\uDC72\uDC75\uDC83-\uDCAF\uDCD0-\uDCE8\uDD03-\uDD26\uDD44\uDD47\uDD50-\uDD72\uDD76\uDD83-\uDDB2\uDDC1-\uDDC4\uDDDA\uDDDC\uDE00-\uDE11\uDE13-\uDE2B\uDE3F\uDE40\uDE80-\uDE86\uDE88\uDE8A-\uDE8D\uDE8F-\uDE9D\uDE9F-\uDEA8\uDEB0-\uDEDE\uDF05-\uDF0C\uDF0F\uDF10\uDF13-\uDF28\uDF2A-\uDF30\uDF32\uDF33\uDF35-\uDF39\uDF3D\uDF50\uDF5D-\uDF61\uDF80-\uDF89\uDF8B\uDF8E\uDF90-\uDFB5\uDFB7\uDFD1\uDFD3]|\uD805[\uDC00-\uDC34\uDC47-\uDC4A\uDC5F-\uDC61\uDC80-\uDCAF\uDCC4\uDCC5\uDCC7\uDD80-\uDDAE\uDDD8-\uDDDB\uDE00-\uDE2F\uDE44\uDE80-\uDEAA\uDEB8\uDF00-\uDF1A\uDF40-\uDF46]|\uD806[\uDC00-\uDC2B\uDCA0-\uDCDF\uDCFF-\uDD06\uDD09\uDD0C-\uDD13\uDD15\uDD16\uDD18-\uDD2F\uDD3F\uDD41\uDDA0-\uDDA7\uDDAA-\uDDD0\uDDE1\uDDE3\uDE00\uDE0B-\uDE32\uDE3A\uDE50\uDE5C-\uDE89\uDE9D\uDEB0-\uDEF8\uDFC0-\uDFE0]|\uD807[\uDC00-\uDC08\uDC0A-\uDC2E\uDC40\uDC72-\uDC8F\uDD00-\uDD06\uDD08\uDD09\uDD0B-\uDD30\uDD46\uDD60-\uDD65\uDD67\uDD68\uDD6A-\uDD89\uDD98\uDDB0-\uDDDB\uDEE0-\uDEF2\uDF02\uDF04-\uDF10\uDF12-\uDF33\uDFB0]|\uD808[\uDC00-\uDF99]|\uD809[\uDC80-\uDD43]|\uD80B[\uDF90-\uDFF0]|[\uD80C\uD80E\uD80F\uD81C-\uD822\uD840-\uD868\uD86A-\uD86D\uD86F-\uD872\uD874-\uD879\uD880-\uD883\uD885-\uD88C][\uDC00-\uDFFF]|\uD80D[\uDC00-\uDC2F\uDC41-\uDC46\uDC60-\uDFFF]|\uD810[\uDC00-\uDFFA]|\uD811[\uDC00-\uDE46]|\uD818[\uDD00-\uDD1D]|\uD81A[\uDC00-\uDE38\uDE40-\uDE5E\uDE70-\uDEBE\uDED0-\uDEED\uDF00-\uDF2F\uDF40-\uDF43\uDF63-\uDF77\uDF7D-\uDF8F]|\uD81B[\uDD40-\uDD6C\uDE40-\uDE7F\uDEA0-\uDEB8\uDEBB-\uDED3\uDF00-\uDF4A\uDF50\uDF93-\uDF9F\uDFE0\uDFE1\uDFE3\uDFF2\uDFF3]|\uD823[\uDC00-\uDCD5\uDCFF-\uDD1E\uDD80-\uDDF2]|\uD82B[\uDFF0-\uDFF3\uDFF5-\uDFFB\uDFFD\uDFFE]|\uD82C[\uDC00-\uDD22\uDD32\uDD50-\uDD52\uDD55\uDD64-\uDD67\uDD70-\uDEFB]|\uD82F[\uDC00-\uDC6A\uDC70-\uDC7C\uDC80-\uDC88\uDC90-\uDC99]|\uD835[\uDC00-\uDC54\uDC56-\uDC9C\uDC9E\uDC9F\uDCA2\uDCA5\uDCA6\uDCA9-\uDCAC\uDCAE-\uDCB9\uDCBB\uDCBD-\uDCC3\uDCC5-\uDD05\uDD07-\uDD0A\uDD0D-\uDD14\uDD16-\uDD1C\uDD1E-\uDD39\uDD3B-\uDD3E\uDD40-\uDD44\uDD46\uDD4A-\uDD50\uDD52-\uDEA5\uDEA8-\uDEC0\uDEC2-\uDEDA\uDEDC-\uDEFA\uDEFC-\uDF14\uDF16-\uDF34\uDF36-\uDF4E\uDF50-\uDF6E\uDF70-\uDF88\uDF8A-\uDFA8\uDFAA-\uDFC2\uDFC4-\uDFCB]|\uD837[\uDF00-\uDF1E\uDF25-\uDF2A]|\uD838[\uDC30-\uDC6D\uDD00-\uDD2C\uDD37-\uDD3D\uDD4E\uDE90-\uDEAD\uDEC0-\uDEEB]|\uD839[\uDCD0-\uDCEB\uDDD0-\uDDED\uDDF0\uDEC0-\uDEDE\uDEE0-\uDEE2\uDEE4\uDEE5\uDEE7-\uDEED\uDEF0-\uDEF4\uDEFE\uDEFF\uDFE0-\uDFE6\uDFE8-\uDFEB\uDFED\uDFEE\uDFF0-\uDFFE]|\uD83A[\uDC00-\uDCC4\uDD00-\uDD43\uDD4B]|\uD83B[\uDE00-\uDE03\uDE05-\uDE1F\uDE21\uDE22\uDE24\uDE27\uDE29-\uDE32\uDE34-\uDE37\uDE39\uDE3B\uDE42\uDE47\uDE49\uDE4B\uDE4D-\uDE4F\uDE51\uDE52\uDE54\uDE57\uDE59\uDE5B\uDE5D\uDE5F\uDE61\uDE62\uDE64\uDE67-\uDE6A\uDE6C-\uDE72\uDE74-\uDE77\uDE79-\uDE7C\uDE7E\uDE80-\uDE89\uDE8B-\uDE9B\uDEA1-\uDEA3\uDEA5-\uDEA9\uDEAB-\uDEBB]|\uD869[\uDC00-\uDEDF\uDF00-\uDFFF]|\uD86E[\uDC00-\uDC1D\uDC20-\uDFFF]|\uD873[\uDC00-\uDEAD\uDEB0-\uDFFF]|\uD87A[\uDC00-\uDFE0\uDFF0-\uDFFF]|\uD87B[\uDC00-\uDE5D]|\uD87E[\uDC00-\uDE1D]|\uD884[\uDC00-\uDF4A\uDF50-\uDFFF]|\uD88D[\uDC00-\uDC79])*$/.test(s)
     },
     {
       name: "string",
@@ -4638,6 +4044,33 @@ var createTyped = /* @__PURE__ */ factory("typed", dependencies, function create
       return new Complex2(x.toNumber(), 0);
     }
   }, {
+    from: "bigint",
+    to: "number",
+    convert: function convert(x) {
+      if (x > Number.MAX_SAFE_INTEGER) {
+        throw new TypeError("Cannot implicitly convert bigint to number: value exceeds the max safe integer value (value: " + x + ")");
+      }
+      return Number(x);
+    }
+  }, {
+    from: "bigint",
+    to: "BigNumber",
+    convert: function convert(x) {
+      if (!BigNumber) {
+        throwNoBignumber(x);
+      }
+      return new BigNumber(x.toString());
+    }
+  }, {
+    from: "bigint",
+    to: "Fraction",
+    convert: function convert(x) {
+      if (!Fraction2) {
+        throwNoFraction(x);
+      }
+      return new Fraction2(x);
+    }
+  }, {
     from: "Fraction",
     to: "BigNumber",
     convert: function convert(x) {
@@ -4697,6 +4130,16 @@ var createTyped = /* @__PURE__ */ factory("typed", dependencies, function create
     }
   }, {
     from: "string",
+    to: "bigint",
+    convert: function convert(x) {
+      try {
+        return BigInt(x);
+      } catch (err) {
+        throw new Error('Cannot convert "' + x + '" to BigInt');
+      }
+    }
+  }, {
+    from: "string",
     to: "Fraction",
     convert: function convert(x) {
       if (!Fraction2) {
@@ -4738,6 +4181,12 @@ var createTyped = /* @__PURE__ */ factory("typed", dependencies, function create
     }
   }, {
     from: "boolean",
+    to: "bigint",
+    convert: function convert(x) {
+      return BigInt(+x);
+    }
+  }, {
+    from: "boolean",
     to: "Fraction",
     convert: function convert(x) {
       if (!Fraction2) {
@@ -4767,21 +4216,21 @@ var createTyped = /* @__PURE__ */ factory("typed", dependencies, function create
       return matrix.valueOf();
     }
   }]);
-  typed2.onMismatch = (name314, args, signatures) => {
-    var usualError = typed2.createError(name314, args, signatures);
+  typed2.onMismatch = (name323, args, signatures) => {
+    var usualError = typed2.createError(name323, args, signatures);
     if (["wrongType", "mismatch"].includes(usualError.data.category) && args.length === 1 && isCollection(args[0]) && // check if the function can be unary:
     signatures.some((sig) => !sig.params.includes(","))) {
-      var err = new TypeError("Function '".concat(name314, "' doesn't apply to matrices. To call it ") + "elementwise on a matrix 'M', try 'map(M, ".concat(name314, ")'."));
+      var err = new TypeError("Function '".concat(name323, "' doesn't apply to matrices. To call it ") + "elementwise on a matrix 'M', try 'map(M, ".concat(name323, ")'."));
       err.data = usualError.data;
       throw err;
     }
     throw usualError;
   };
-  typed2.onMismatch = (name314, args, signatures) => {
-    var usualError = typed2.createError(name314, args, signatures);
+  typed2.onMismatch = (name323, args, signatures) => {
+    var usualError = typed2.createError(name323, args, signatures);
     if (["wrongType", "mismatch"].includes(usualError.data.category) && args.length === 1 && isCollection(args[0]) && // check if the function can be unary:
     signatures.some((sig) => !sig.params.includes(","))) {
-      var err = new TypeError("Function '".concat(name314, "' doesn't apply to matrices. To call it ") + "elementwise on a matrix 'M', try 'map(M, ".concat(name314, ")'."));
+      var err = new TypeError("Function '".concat(name323, "' doesn't apply to matrices. To call it ") + "elementwise on a matrix 'M', try 'map(M, ".concat(name323, ")'."));
       err.data = usualError.data;
       throw err;
     }
@@ -4818,7 +4267,7 @@ var createResultSet = /* @__PURE__ */ factory(name, dependencies2, () => {
     return this.entries;
   };
   ResultSet.prototype.toString = function() {
-    return "[" + this.entries.join(", ") + "]";
+    return "[" + this.entries.map(String).join(", ") + "]";
   };
   ResultSet.prototype.toJSON = function() {
     return {
@@ -8199,28 +7648,793 @@ var createComplexClass = /* @__PURE__ */ factory(name3, dependencies4, () => {
   isClass: true
 });
 
+// node_modules/fraction.js/dist/fraction.mjs
+if (typeof BigInt === "undefined") BigInt = function(n) {
+  if (isNaN(n)) throw new Error("");
+  return n;
+};
+var C_ZERO = BigInt(0);
+var C_ONE = BigInt(1);
+var C_TWO = BigInt(2);
+var C_THREE = BigInt(3);
+var C_FIVE = BigInt(5);
+var C_TEN = BigInt(10);
+var MAX_INTEGER = BigInt(Number.MAX_SAFE_INTEGER);
+var MAX_CYCLE_LEN = 2e3;
+var P3 = {
+  "s": C_ONE,
+  "n": C_ZERO,
+  "d": C_ONE
+};
+function assign(n, s) {
+  try {
+    n = BigInt(n);
+  } catch (e2) {
+    throw InvalidParameter();
+  }
+  return n * s;
+}
+function ifloor(x) {
+  return typeof x === "bigint" ? x : Math.floor(x);
+}
+function newFraction(n, d) {
+  if (d === C_ZERO) {
+    throw DivisionByZero();
+  }
+  const f = Object.create(Fraction.prototype);
+  f["s"] = n < C_ZERO ? -C_ONE : C_ONE;
+  n = n < C_ZERO ? -n : n;
+  const a = gcd(n, d);
+  f["n"] = n / a;
+  f["d"] = d / a;
+  return f;
+}
+var FACTORSTEPS = [C_TWO * C_TWO, C_TWO, C_TWO * C_TWO, C_TWO, C_TWO * C_TWO, C_TWO * C_THREE, C_TWO, C_TWO * C_THREE];
+function factorize(n) {
+  const factors = /* @__PURE__ */ Object.create(null);
+  if (n <= C_ONE) {
+    factors[n] = C_ONE;
+    return factors;
+  }
+  const add2 = (p) => {
+    factors[p] = (factors[p] || C_ZERO) + C_ONE;
+  };
+  while (n % C_TWO === C_ZERO) {
+    add2(C_TWO);
+    n /= C_TWO;
+  }
+  while (n % C_THREE === C_ZERO) {
+    add2(C_THREE);
+    n /= C_THREE;
+  }
+  while (n % C_FIVE === C_ZERO) {
+    add2(C_FIVE);
+    n /= C_FIVE;
+  }
+  for (let si = 0, p = C_TWO + C_FIVE; p * p <= n; ) {
+    while (n % p === C_ZERO) {
+      add2(p);
+      n /= p;
+    }
+    p += FACTORSTEPS[si];
+    si = si + 1 & 7;
+  }
+  if (n > C_ONE) add2(n);
+  return factors;
+}
+var parse2 = function(p1, p2) {
+  let n = C_ZERO, d = C_ONE, s = C_ONE;
+  if (p1 === void 0 || p1 === null) {
+  } else if (p2 !== void 0) {
+    if (typeof p1 === "bigint") {
+      n = p1;
+    } else if (isNaN(p1)) {
+      throw InvalidParameter();
+    } else if (p1 % 1 !== 0) {
+      throw NonIntegerParameter();
+    } else {
+      n = BigInt(p1);
+    }
+    if (typeof p2 === "bigint") {
+      d = p2;
+    } else if (isNaN(p2)) {
+      throw InvalidParameter();
+    } else if (p2 % 1 !== 0) {
+      throw NonIntegerParameter();
+    } else {
+      d = BigInt(p2);
+    }
+    s = n * d;
+  } else if (typeof p1 === "object") {
+    if ("d" in p1 && "n" in p1) {
+      n = BigInt(p1["n"]);
+      d = BigInt(p1["d"]);
+      if ("s" in p1)
+        n *= BigInt(p1["s"]);
+    } else if (0 in p1) {
+      n = BigInt(p1[0]);
+      if (1 in p1)
+        d = BigInt(p1[1]);
+    } else if (typeof p1 === "bigint") {
+      n = p1;
+    } else {
+      throw InvalidParameter();
+    }
+    s = n * d;
+  } else if (typeof p1 === "number") {
+    if (isNaN(p1)) {
+      throw InvalidParameter();
+    }
+    if (p1 < 0) {
+      s = -C_ONE;
+      p1 = -p1;
+    }
+    if (p1 % 1 === 0) {
+      n = BigInt(p1);
+    } else {
+      let z = 1;
+      let A = 0, B = 1;
+      let C = 1, D = 1;
+      let N = 1e7;
+      if (p1 >= 1) {
+        z = 10 ** Math.floor(1 + Math.log10(p1));
+        p1 /= z;
+      }
+      while (B <= N && D <= N) {
+        let M = (A + C) / (B + D);
+        if (p1 === M) {
+          if (B + D <= N) {
+            n = A + C;
+            d = B + D;
+          } else if (D > B) {
+            n = C;
+            d = D;
+          } else {
+            n = A;
+            d = B;
+          }
+          break;
+        } else {
+          if (p1 > M) {
+            A += C;
+            B += D;
+          } else {
+            C += A;
+            D += B;
+          }
+          if (B > N) {
+            n = C;
+            d = D;
+          } else {
+            n = A;
+            d = B;
+          }
+        }
+      }
+      n = BigInt(n) * BigInt(z);
+      d = BigInt(d);
+    }
+  } else if (typeof p1 === "string") {
+    let ndx = 0;
+    let v = C_ZERO, w = C_ZERO, x = C_ZERO, y = C_ONE, z = C_ONE;
+    let match = p1.replace(/_/g, "").match(/\d+|./g);
+    if (match === null)
+      throw InvalidParameter();
+    if (match[ndx] === "-") {
+      s = -C_ONE;
+      ndx++;
+    } else if (match[ndx] === "+") {
+      ndx++;
+    }
+    if (match.length === ndx + 1) {
+      w = assign(match[ndx++], s);
+    } else if (match[ndx + 1] === "." || match[ndx] === ".") {
+      if (match[ndx] !== ".") {
+        v = assign(match[ndx++], s);
+      }
+      ndx++;
+      if (ndx + 1 === match.length || match[ndx + 1] === "(" && match[ndx + 3] === ")" || match[ndx + 1] === "'" && match[ndx + 3] === "'") {
+        w = assign(match[ndx], s);
+        y = C_TEN ** BigInt(match[ndx].length);
+        ndx++;
+      }
+      if (match[ndx] === "(" && match[ndx + 2] === ")" || match[ndx] === "'" && match[ndx + 2] === "'") {
+        x = assign(match[ndx + 1], s);
+        z = C_TEN ** BigInt(match[ndx + 1].length) - C_ONE;
+        ndx += 3;
+      }
+    } else if (match[ndx + 1] === "/" || match[ndx + 1] === ":") {
+      w = assign(match[ndx], s);
+      y = assign(match[ndx + 2], C_ONE);
+      ndx += 3;
+    } else if (match[ndx + 3] === "/" && match[ndx + 1] === " ") {
+      v = assign(match[ndx], s);
+      w = assign(match[ndx + 2], s);
+      y = assign(match[ndx + 4], C_ONE);
+      ndx += 5;
+    }
+    if (match.length <= ndx) {
+      d = y * z;
+      s = /* void */
+      n = x + d * v + z * w;
+    } else {
+      throw InvalidParameter();
+    }
+  } else if (typeof p1 === "bigint") {
+    n = p1;
+    s = p1;
+    d = C_ONE;
+  } else {
+    throw InvalidParameter();
+  }
+  if (d === C_ZERO) {
+    throw DivisionByZero();
+  }
+  P3["s"] = s < C_ZERO ? -C_ONE : C_ONE;
+  P3["n"] = n < C_ZERO ? -n : n;
+  P3["d"] = d < C_ZERO ? -d : d;
+};
+function modpow(b, e2, m) {
+  let r = C_ONE;
+  for (; e2 > C_ZERO; b = b * b % m, e2 >>= C_ONE) {
+    if (e2 & C_ONE) {
+      r = r * b % m;
+    }
+  }
+  return r;
+}
+function cycleLen(n, d) {
+  for (; d % C_TWO === C_ZERO; d /= C_TWO) {
+  }
+  for (; d % C_FIVE === C_ZERO; d /= C_FIVE) {
+  }
+  if (d === C_ONE)
+    return C_ZERO;
+  let rem = C_TEN % d;
+  let t = 1;
+  for (; rem !== C_ONE; t++) {
+    rem = rem * C_TEN % d;
+    if (t > MAX_CYCLE_LEN)
+      return C_ZERO;
+  }
+  return BigInt(t);
+}
+function cycleStart(n, d, len) {
+  let rem1 = C_ONE;
+  let rem2 = modpow(C_TEN, len, d);
+  for (let t = 0; t < 300; t++) {
+    if (rem1 === rem2)
+      return BigInt(t);
+    rem1 = rem1 * C_TEN % d;
+    rem2 = rem2 * C_TEN % d;
+  }
+  return 0;
+}
+function gcd(a, b) {
+  if (!a)
+    return b;
+  if (!b)
+    return a;
+  while (1) {
+    a %= b;
+    if (!a)
+      return b;
+    b %= a;
+    if (!b)
+      return a;
+  }
+}
+function Fraction(a, b) {
+  parse2(a, b);
+  if (this instanceof Fraction) {
+    a = gcd(P3["d"], P3["n"]);
+    this["s"] = P3["s"];
+    this["n"] = P3["n"] / a;
+    this["d"] = P3["d"] / a;
+  } else {
+    return newFraction(P3["s"] * P3["n"], P3["d"]);
+  }
+}
+var DivisionByZero = function() {
+  return new Error("Division by Zero");
+};
+var InvalidParameter = function() {
+  return new Error("Invalid argument");
+};
+var NonIntegerParameter = function() {
+  return new Error("Parameters must be integer");
+};
+Fraction.prototype = {
+  "s": C_ONE,
+  "n": C_ZERO,
+  "d": C_ONE,
+  /**
+   * Calculates the absolute value
+   *
+   * Ex: new Fraction(-4).abs() => 4
+   **/
+  "abs": function() {
+    return newFraction(this["n"], this["d"]);
+  },
+  /**
+   * Inverts the sign of the current fraction
+   *
+   * Ex: new Fraction(-4).neg() => 4
+   **/
+  "neg": function() {
+    return newFraction(-this["s"] * this["n"], this["d"]);
+  },
+  /**
+   * Adds two rational numbers
+   *
+   * Ex: new Fraction({n: 2, d: 3}).add("14.9") => 467 / 30
+   **/
+  "add": function(a, b) {
+    parse2(a, b);
+    return newFraction(
+      this["s"] * this["n"] * P3["d"] + P3["s"] * this["d"] * P3["n"],
+      this["d"] * P3["d"]
+    );
+  },
+  /**
+   * Subtracts two rational numbers
+   *
+   * Ex: new Fraction({n: 2, d: 3}).add("14.9") => -427 / 30
+   **/
+  "sub": function(a, b) {
+    parse2(a, b);
+    return newFraction(
+      this["s"] * this["n"] * P3["d"] - P3["s"] * this["d"] * P3["n"],
+      this["d"] * P3["d"]
+    );
+  },
+  /**
+   * Multiplies two rational numbers
+   *
+   * Ex: new Fraction("-17.(345)").mul(3) => 5776 / 111
+   **/
+  "mul": function(a, b) {
+    parse2(a, b);
+    return newFraction(
+      this["s"] * P3["s"] * this["n"] * P3["n"],
+      this["d"] * P3["d"]
+    );
+  },
+  /**
+   * Divides two rational numbers
+   *
+   * Ex: new Fraction("-17.(345)").inverse().div(3)
+   **/
+  "div": function(a, b) {
+    parse2(a, b);
+    return newFraction(
+      this["s"] * P3["s"] * this["n"] * P3["d"],
+      this["d"] * P3["n"]
+    );
+  },
+  /**
+   * Clones the actual object
+   *
+   * Ex: new Fraction("-17.(345)").clone()
+   **/
+  "clone": function() {
+    return newFraction(this["s"] * this["n"], this["d"]);
+  },
+  /**
+   * Calculates the modulo of two rational numbers - a more precise fmod
+   *
+   * Ex: new Fraction('4.(3)').mod([7, 8]) => (13/3) % (7/8) = (5/6)
+   * Ex: new Fraction(20, 10).mod().equals(0) ? "is Integer"
+   **/
+  "mod": function(a, b) {
+    if (a === void 0) {
+      return newFraction(this["s"] * this["n"] % this["d"], C_ONE);
+    }
+    parse2(a, b);
+    if (C_ZERO === P3["n"] * this["d"]) {
+      throw DivisionByZero();
+    }
+    return newFraction(
+      this["s"] * (P3["d"] * this["n"]) % (P3["n"] * this["d"]),
+      P3["d"] * this["d"]
+    );
+  },
+  /**
+   * Calculates the fractional gcd of two rational numbers
+   *
+   * Ex: new Fraction(5,8).gcd(3,7) => 1/56
+   */
+  "gcd": function(a, b) {
+    parse2(a, b);
+    return newFraction(gcd(P3["n"], this["n"]) * gcd(P3["d"], this["d"]), P3["d"] * this["d"]);
+  },
+  /**
+   * Calculates the fractional lcm of two rational numbers
+   *
+   * Ex: new Fraction(5,8).lcm(3,7) => 15
+   */
+  "lcm": function(a, b) {
+    parse2(a, b);
+    if (P3["n"] === C_ZERO && this["n"] === C_ZERO) {
+      return newFraction(C_ZERO, C_ONE);
+    }
+    return newFraction(P3["n"] * this["n"], gcd(P3["n"], this["n"]) * gcd(P3["d"], this["d"]));
+  },
+  /**
+   * Gets the inverse of the fraction, means numerator and denominator are exchanged
+   *
+   * Ex: new Fraction([-3, 4]).inverse() => -4 / 3
+   **/
+  "inverse": function() {
+    return newFraction(this["s"] * this["d"], this["n"]);
+  },
+  /**
+   * Calculates the fraction to some integer exponent
+   *
+   * Ex: new Fraction(-1,2).pow(-3) => -8
+   */
+  "pow": function(a, b) {
+    parse2(a, b);
+    if (P3["d"] === C_ONE) {
+      if (P3["s"] < C_ZERO) {
+        return newFraction((this["s"] * this["d"]) ** P3["n"], this["n"] ** P3["n"]);
+      } else {
+        return newFraction((this["s"] * this["n"]) ** P3["n"], this["d"] ** P3["n"]);
+      }
+    }
+    if (this["s"] < C_ZERO) return null;
+    let N = factorize(this["n"]);
+    let D = factorize(this["d"]);
+    let n = C_ONE;
+    let d = C_ONE;
+    for (let k in N) {
+      if (k === "1") continue;
+      if (k === "0") {
+        n = C_ZERO;
+        break;
+      }
+      N[k] *= P3["n"];
+      if (N[k] % P3["d"] === C_ZERO) {
+        N[k] /= P3["d"];
+      } else return null;
+      n *= BigInt(k) ** N[k];
+    }
+    for (let k in D) {
+      if (k === "1") continue;
+      D[k] *= P3["n"];
+      if (D[k] % P3["d"] === C_ZERO) {
+        D[k] /= P3["d"];
+      } else return null;
+      d *= BigInt(k) ** D[k];
+    }
+    if (P3["s"] < C_ZERO) {
+      return newFraction(d, n);
+    }
+    return newFraction(n, d);
+  },
+  /**
+   * Calculates the logarithm of a fraction to a given rational base
+   *
+   * Ex: new Fraction(27, 8).log(9, 4) => 3/2
+   */
+  "log": function(a, b) {
+    parse2(a, b);
+    if (this["s"] <= C_ZERO || P3["s"] <= C_ZERO) return null;
+    const allPrimes = /* @__PURE__ */ Object.create(null);
+    const baseFactors = factorize(P3["n"]);
+    const T1 = factorize(P3["d"]);
+    const numberFactors = factorize(this["n"]);
+    const T2 = factorize(this["d"]);
+    for (const prime in T1) {
+      baseFactors[prime] = (baseFactors[prime] || C_ZERO) - T1[prime];
+    }
+    for (const prime in T2) {
+      numberFactors[prime] = (numberFactors[prime] || C_ZERO) - T2[prime];
+    }
+    for (const prime in baseFactors) {
+      if (prime === "1") continue;
+      allPrimes[prime] = true;
+    }
+    for (const prime in numberFactors) {
+      if (prime === "1") continue;
+      allPrimes[prime] = true;
+    }
+    let retN = null;
+    let retD = null;
+    for (const prime in allPrimes) {
+      const baseExponent = baseFactors[prime] || C_ZERO;
+      const numberExponent = numberFactors[prime] || C_ZERO;
+      if (baseExponent === C_ZERO) {
+        if (numberExponent !== C_ZERO) {
+          return null;
+        }
+        continue;
+      }
+      let curN = numberExponent;
+      let curD = baseExponent;
+      const gcdValue = gcd(curN, curD);
+      curN /= gcdValue;
+      curD /= gcdValue;
+      if (retN === null && retD === null) {
+        retN = curN;
+        retD = curD;
+      } else if (curN * retD !== retN * curD) {
+        return null;
+      }
+    }
+    return retN !== null && retD !== null ? newFraction(retN, retD) : null;
+  },
+  /**
+   * Check if two rational numbers are the same
+   *
+   * Ex: new Fraction(19.6).equals([98, 5]);
+   **/
+  "equals": function(a, b) {
+    parse2(a, b);
+    return this["s"] * this["n"] * P3["d"] === P3["s"] * P3["n"] * this["d"];
+  },
+  /**
+   * Check if this rational number is less than another
+   *
+   * Ex: new Fraction(19.6).lt([98, 5]);
+   **/
+  "lt": function(a, b) {
+    parse2(a, b);
+    return this["s"] * this["n"] * P3["d"] < P3["s"] * P3["n"] * this["d"];
+  },
+  /**
+   * Check if this rational number is less than or equal another
+   *
+   * Ex: new Fraction(19.6).lt([98, 5]);
+   **/
+  "lte": function(a, b) {
+    parse2(a, b);
+    return this["s"] * this["n"] * P3["d"] <= P3["s"] * P3["n"] * this["d"];
+  },
+  /**
+   * Check if this rational number is greater than another
+   *
+   * Ex: new Fraction(19.6).lt([98, 5]);
+   **/
+  "gt": function(a, b) {
+    parse2(a, b);
+    return this["s"] * this["n"] * P3["d"] > P3["s"] * P3["n"] * this["d"];
+  },
+  /**
+   * Check if this rational number is greater than or equal another
+   *
+   * Ex: new Fraction(19.6).lt([98, 5]);
+   **/
+  "gte": function(a, b) {
+    parse2(a, b);
+    return this["s"] * this["n"] * P3["d"] >= P3["s"] * P3["n"] * this["d"];
+  },
+  /**
+   * Compare two rational numbers
+   * < 0 iff this < that
+   * > 0 iff this > that
+   * = 0 iff this = that
+   *
+   * Ex: new Fraction(19.6).compare([98, 5]);
+   **/
+  "compare": function(a, b) {
+    parse2(a, b);
+    let t = this["s"] * this["n"] * P3["d"] - P3["s"] * P3["n"] * this["d"];
+    return (C_ZERO < t) - (t < C_ZERO);
+  },
+  /**
+   * Calculates the ceil of a rational number
+   *
+   * Ex: new Fraction('4.(3)').ceil() => (5 / 1)
+   **/
+  "ceil": function(places) {
+    places = C_TEN ** BigInt(places || 0);
+    return newFraction(
+      ifloor(this["s"] * places * this["n"] / this["d"]) + (places * this["n"] % this["d"] > C_ZERO && this["s"] >= C_ZERO ? C_ONE : C_ZERO),
+      places
+    );
+  },
+  /**
+   * Calculates the floor of a rational number
+   *
+   * Ex: new Fraction('4.(3)').floor() => (4 / 1)
+   **/
+  "floor": function(places) {
+    places = C_TEN ** BigInt(places || 0);
+    return newFraction(
+      ifloor(this["s"] * places * this["n"] / this["d"]) - (places * this["n"] % this["d"] > C_ZERO && this["s"] < C_ZERO ? C_ONE : C_ZERO),
+      places
+    );
+  },
+  /**
+   * Rounds a rational numbers
+   *
+   * Ex: new Fraction('4.(3)').round() => (4 / 1)
+   **/
+  "round": function(places) {
+    places = C_TEN ** BigInt(places || 0);
+    return newFraction(
+      ifloor(this["s"] * places * this["n"] / this["d"]) + this["s"] * ((this["s"] >= C_ZERO ? C_ONE : C_ZERO) + C_TWO * (places * this["n"] % this["d"]) > this["d"] ? C_ONE : C_ZERO),
+      places
+    );
+  },
+  /**
+    * Rounds a rational number to a multiple of another rational number
+    *
+    * Ex: new Fraction('0.9').roundTo("1/8") => 7 / 8
+    **/
+  "roundTo": function(a, b) {
+    parse2(a, b);
+    const n = this["n"] * P3["d"];
+    const d = this["d"] * P3["n"];
+    const r = n % d;
+    let k = ifloor(n / d);
+    if (r + r >= d) {
+      k++;
+    }
+    return newFraction(this["s"] * k * P3["n"], P3["d"]);
+  },
+  /**
+   * Check if two rational numbers are divisible
+   *
+   * Ex: new Fraction(19.6).divisible(1.5);
+   */
+  "divisible": function(a, b) {
+    parse2(a, b);
+    if (P3["n"] === C_ZERO) return false;
+    return this["n"] * P3["d"] % (P3["n"] * this["d"]) === C_ZERO;
+  },
+  /**
+   * Returns a decimal representation of the fraction
+   *
+   * Ex: new Fraction("100.'91823'").valueOf() => 100.91823918239183
+   **/
+  "valueOf": function() {
+    return Number(this["s"] * this["n"]) / Number(this["d"]);
+  },
+  /**
+   * Creates a string representation of a fraction with all digits
+   *
+   * Ex: new Fraction("100.'91823'").toString() => "100.(91823)"
+   **/
+  "toString": function(dec = 15) {
+    let N = this["n"];
+    let D = this["d"];
+    let cycLen = cycleLen(N, D);
+    let cycOff = cycleStart(N, D, cycLen);
+    let str = this["s"] < C_ZERO ? "-" : "";
+    str += ifloor(N / D);
+    N %= D;
+    N *= C_TEN;
+    if (N)
+      str += ".";
+    if (cycLen) {
+      for (let i = cycOff; i--; ) {
+        str += ifloor(N / D);
+        N %= D;
+        N *= C_TEN;
+      }
+      str += "(";
+      for (let i = cycLen; i--; ) {
+        str += ifloor(N / D);
+        N %= D;
+        N *= C_TEN;
+      }
+      str += ")";
+    } else {
+      for (let i = dec; N && i--; ) {
+        str += ifloor(N / D);
+        N %= D;
+        N *= C_TEN;
+      }
+    }
+    return str;
+  },
+  /**
+   * Returns a string-fraction representation of a Fraction object
+   *
+   * Ex: new Fraction("1.'3'").toFraction() => "4 1/3"
+   **/
+  "toFraction": function(showMixed = false) {
+    let n = this["n"];
+    let d = this["d"];
+    let str = this["s"] < C_ZERO ? "-" : "";
+    if (d === C_ONE) {
+      str += n;
+    } else {
+      const whole = ifloor(n / d);
+      if (showMixed && whole > C_ZERO) {
+        str += whole;
+        str += " ";
+        n %= d;
+      }
+      str += n;
+      str += "/";
+      str += d;
+    }
+    return str;
+  },
+  /**
+   * Returns a latex representation of a Fraction object
+   *
+   * Ex: new Fraction("1.'3'").toLatex() => "\frac{4}{3}"
+   **/
+  "toLatex": function(showMixed = false) {
+    let n = this["n"];
+    let d = this["d"];
+    let str = this["s"] < C_ZERO ? "-" : "";
+    if (d === C_ONE) {
+      str += n;
+    } else {
+      const whole = ifloor(n / d);
+      if (showMixed && whole > C_ZERO) {
+        str += whole;
+        n %= d;
+      }
+      str += "\\frac{";
+      str += n;
+      str += "}{";
+      str += d;
+      str += "}";
+    }
+    return str;
+  },
+  /**
+   * Returns an array of continued fraction elements
+   *
+   * Ex: new Fraction("7/8").toContinued() => [0,1,7]
+   */
+  "toContinued": function() {
+    let a = this["n"];
+    let b = this["d"];
+    const res = [];
+    while (b) {
+      res.push(ifloor(a / b));
+      const t = a % b;
+      a = b;
+      b = t;
+    }
+    return res;
+  },
+  "simplify": function(eps = 1e-3) {
+    const ieps = BigInt(Math.ceil(1 / eps));
+    const thisABS = this["abs"]();
+    const cont = thisABS["toContinued"]();
+    for (let i = 1; i < cont.length; i++) {
+      let s = newFraction(cont[i - 1], C_ONE);
+      for (let k = i - 2; k >= 0; k--) {
+        s = s["inverse"]()["add"](cont[k]);
+      }
+      let t = s["sub"](thisABS);
+      if (t["n"] * ieps < t["d"]) {
+        return s["mul"](this["s"]);
+      }
+    }
+    return this;
+  }
+};
+
 // node_modules/mathjs/lib/esm/type/fraction/Fraction.js
-var import_fraction = __toESM(require_fraction(), 1);
 var name4 = "Fraction";
 var dependencies5 = [];
 var createFractionClass = /* @__PURE__ */ factory(name4, dependencies5, () => {
-  Object.defineProperty(import_fraction.default, "name", {
+  Object.defineProperty(Fraction, "name", {
     value: "Fraction"
   });
-  import_fraction.default.prototype.constructor = import_fraction.default;
-  import_fraction.default.prototype.type = "Fraction";
-  import_fraction.default.prototype.isFraction = true;
-  import_fraction.default.prototype.toJSON = function() {
+  Fraction.prototype.constructor = Fraction;
+  Fraction.prototype.type = "Fraction";
+  Fraction.prototype.isFraction = true;
+  Fraction.prototype.toJSON = function() {
     return {
       mathjs: "Fraction",
-      n: this.s * this.n,
-      d: this.d
+      n: String(this.s * this.n),
+      d: String(this.d)
     };
   };
-  import_fraction.default.fromJSON = function(json) {
-    return new import_fraction.default(json);
+  Fraction.fromJSON = function(json) {
+    return new Fraction(json);
   };
-  return import_fraction.default;
+  return Fraction;
 }, {
   isClass: true
 });
@@ -8239,27 +8453,30 @@ var createRangeClass = /* @__PURE__ */ factory(name5, dependencies6, () => {
     if (hasStart) {
       if (isBigNumber(start)) {
         start = start.toNumber();
-      } else if (typeof start !== "number") {
-        throw new TypeError("Parameter start must be a number");
+      } else if (typeof start !== "number" && !isBigInt(start)) {
+        throw new TypeError("Parameter start must be a number or bigint");
       }
     }
     if (hasEnd) {
       if (isBigNumber(end)) {
         end = end.toNumber();
-      } else if (typeof end !== "number") {
-        throw new TypeError("Parameter end must be a number");
+      } else if (typeof end !== "number" && !isBigInt(end)) {
+        throw new TypeError("Parameter end must be a number or bigint");
       }
     }
     if (hasStep) {
       if (isBigNumber(step)) {
         step = step.toNumber();
-      } else if (typeof step !== "number") {
-        throw new TypeError("Parameter step must be a number");
+      } else if (typeof step !== "number" && !isBigInt(step)) {
+        throw new TypeError("Parameter step must be a number or bigint");
       }
     }
     this.start = hasStart ? parseFloat(start) : 0;
     this.end = hasEnd ? parseFloat(end) : 0;
     this.step = hasStep ? parseFloat(step) : 1;
+    if (hasStep && nearlyEqual(this.step, 0)) {
+      throw new Error("Step must not be zero");
+    }
   }
   Range.prototype.type = "Range";
   Range.prototype.isRange = true;
@@ -8468,7 +8685,7 @@ function formatBigNumberToBase(n, base, size) {
     if (size < 1) {
       throw new Error("size must be in greater than 0");
     }
-    if (!isInteger(size)) {
+    if (!isInteger2(size)) {
       throw new Error("size must be an integer");
     }
     if (n.greaterThan(big2.pow(size - 1).sub(1)) || n.lessThan(big2.pow(size - 1).mul(-1))) {
@@ -8593,7 +8810,7 @@ function _format(value, options) {
   }
   if (looksLikeFraction(value)) {
     if (!options || options.fraction !== "decimal") {
-      return value.s * value.n + "/" + value.d;
+      return "".concat(value.s * value.n, "/").concat(value.d);
     } else {
       return value.toString();
     }
@@ -8663,7 +8880,7 @@ function formatArray(array, options) {
   }
 }
 function looksLikeFraction(value) {
-  return value && typeof value === "object" && typeof value.s === "number" && typeof value.n === "number" && typeof value.d === "number" || false;
+  return value && typeof value === "object" && typeof value.s === "bigint" && typeof value.n === "bigint" && typeof value.d === "bigint" || false;
 }
 function compareText(x, y) {
   if (!isString(x)) {
@@ -8771,7 +8988,7 @@ function validateIndexSourceSize(value, index) {
 }
 function validateIndex(index, length) {
   if (index !== void 0) {
-    if (!isNumber(index) || !isInteger(index)) {
+    if (!isNumber(index) || !isInteger2(index)) {
       throw new TypeError("Index must be an integer (value: " + index + ")");
     }
     if (index < 0 || typeof length === "number" && index >= length) {
@@ -8806,7 +9023,7 @@ function resize(array, size, defaultValue) {
     throw new Error("Resizing to scalar is not supported");
   }
   size.forEach(function(value) {
-    if (!isNumber(value) || !isInteger(value) || value < 0) {
+    if (!isNumber(value) || !isInteger2(value) || value < 0) {
       throw new TypeError("Invalid size, must contain positive integers (size: " + format3(size) + ")");
     }
   });
@@ -8851,7 +9068,7 @@ function _resize(array, size, dim, defaultValue) {
   }
 }
 function reshape(array, sizes) {
-  var flatArray = flatten(array);
+  var flatArray = flatten(array, true);
   var currentLength = flatArray.length;
   if (!Array.isArray(array) || !Array.isArray(sizes)) {
     throw new TypeError("Array expected");
@@ -8969,18 +9186,41 @@ function _unsqueeze(array, dims, dim) {
   return array;
 }
 function flatten(array) {
+  var isRectangular = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
   if (!Array.isArray(array)) {
     return array;
   }
+  if (typeof isRectangular !== "boolean") {
+    throw new TypeError("Boolean expected for second argument of flatten");
+  }
   var flat = [];
-  array.forEach(function callback(value) {
-    if (Array.isArray(value)) {
-      value.forEach(callback);
-    } else {
-      flat.push(value);
-    }
-  });
+  if (isRectangular) {
+    _flattenRectangular(array);
+  } else {
+    _flatten(array);
+  }
   return flat;
+  function _flatten(array2) {
+    for (var i = 0; i < array2.length; i++) {
+      var item = array2[i];
+      if (Array.isArray(item)) {
+        _flatten(item);
+      } else {
+        flat.push(item);
+      }
+    }
+  }
+  function _flattenRectangular(array2) {
+    if (Array.isArray(array2[0])) {
+      for (var i = 0; i < array2.length; i++) {
+        _flattenRectangular(array2[i]);
+      }
+    } else {
+      for (var _i = 0; _i < array2.length; _i++) {
+        flat.push(array2[_i]);
+      }
+    }
+  }
 }
 function map(array, callback) {
   return Array.prototype.map.call(array, callback);
@@ -9109,8 +9349,8 @@ function broadcastSizes() {
       }
     }
   }
-  for (var _i = 0; _i < sizes.length; _i++) {
-    checkBroadcastingRules(sizes[_i], sizeMax);
+  for (var _i2 = 0; _i2 < sizes.length; _i2++) {
+    checkBroadcastingRules(sizes[_i2], sizeMax);
   }
   return sizeMax;
 }
@@ -9120,7 +9360,7 @@ function checkBroadcastingRules(size, toSize) {
   for (var j = 0; j < dim; j++) {
     var n = N - dim + j;
     if (size[j] < toSize[n] && size[j] > 1 || size[j] > toSize[n]) {
-      throw new Error("shape missmatch: missmatch is found in arg with shape (".concat(size, ") not possible to broadcast dimension ").concat(dim, " with size ").concat(size[j], " to size ").concat(toSize[n]));
+      throw new Error("shape mismatch: mismatch is found in arg with shape (".concat(size, ") not possible to broadcast dimension ").concat(dim, " with size ").concat(size[j], " to size ").concat(toSize[n]));
     }
   }
 }
@@ -9149,105 +9389,215 @@ function broadcastTo(array, toSize) {
 function stretch(arrayToStretch, sizeToStretch, dimToStretch) {
   return concat(...Array(sizeToStretch).fill(arrayToStretch), dimToStretch);
 }
+function get(array, index) {
+  if (!Array.isArray(array)) {
+    throw new Error("Array expected");
+  }
+  if (!Array.isArray(index)) {
+    throw new Error("Array expected for index");
+  }
+  var size = arraySize(array);
+  if (index.length !== size.length) {
+    throw new DimensionError(index.length, size.length);
+  }
+  for (var x = 0; x < index.length; x++) {
+    validateIndex(index[x], size[x]);
+  }
+  return index.reduce((acc, curr) => acc[curr], array);
+}
+function deepMap(array, callback) {
+  var skipIndex = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : false;
+  if (array.length === 0) {
+    return [];
+  }
+  if (skipIndex) {
+    return recursiveMap(array);
+  }
+  var index = [];
+  return recursiveMapWithIndex(array, 0);
+  function recursiveMapWithIndex(value, depth) {
+    if (Array.isArray(value)) {
+      var N = value.length;
+      var result = Array(N);
+      for (var i = 0; i < N; i++) {
+        index[depth] = i;
+        result[i] = recursiveMapWithIndex(value[i], depth + 1);
+      }
+      return result;
+    } else {
+      return callback(value, index.slice(0, depth), array);
+    }
+  }
+  function recursiveMap(value) {
+    if (Array.isArray(value)) {
+      var N = value.length;
+      var result = Array(N);
+      for (var i = 0; i < N; i++) {
+        result[i] = recursiveMap(value[i]);
+      }
+      return result;
+    } else {
+      return callback(value);
+    }
+  }
+}
+function deepForEach(array, callback) {
+  var skipIndex = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : false;
+  if (array.length === 0) {
+    return;
+  }
+  if (skipIndex) {
+    recursiveForEach(array);
+    return;
+  }
+  var index = [];
+  recursiveForEachWithIndex(array, 0);
+  function recursiveForEachWithIndex(value, depth) {
+    if (Array.isArray(value)) {
+      var N = value.length;
+      for (var i = 0; i < N; i++) {
+        index[depth] = i;
+        recursiveForEachWithIndex(value[i], depth + 1);
+      }
+    } else {
+      callback(value, index.slice(0, depth), array);
+    }
+  }
+  function recursiveForEach(value) {
+    if (Array.isArray(value)) {
+      var N = value.length;
+      for (var i = 0; i < N; i++) {
+        recursiveForEach(value[i]);
+      }
+    } else {
+      callback(value);
+    }
+  }
+}
 function clone3(array) {
   return _extends([], array);
 }
 
-// node_modules/mathjs/lib/esm/utils/lruQueue.js
-function lruQueue(limit) {
-  var size = 0;
-  var base = 1;
-  var queue = /* @__PURE__ */ Object.create(null);
-  var map2 = /* @__PURE__ */ Object.create(null);
-  var index = 0;
-  var del = function del2(id) {
-    var oldIndex = map2[id];
-    if (!oldIndex) return;
-    delete queue[oldIndex];
-    delete map2[id];
-    --size;
-    if (base !== oldIndex) return;
-    if (!size) {
-      index = 0;
-      base = 1;
-      return;
-    }
-    while (!Object.prototype.hasOwnProperty.call(queue, ++base)) {
-    }
-  };
-  limit = Math.abs(limit);
-  return {
-    hit: function hit(id) {
-      var oldIndex = map2[id];
-      var nuIndex = ++index;
-      queue[nuIndex] = id;
-      map2[id] = nuIndex;
-      if (!oldIndex) {
-        ++size;
-        if (size <= limit) return void 0;
-        id = queue[base];
-        del(id);
-        return id;
+// node_modules/mathjs/lib/esm/utils/optimizeCallback.js
+var import_typed_function2 = __toESM(require_typed_function(), 1);
+function optimizeCallback(callback, array, name323, isUnary) {
+  if (import_typed_function2.default.isTypedFunction(callback)) {
+    var numberOfArguments;
+    if (isUnary) {
+      numberOfArguments = 1;
+    } else {
+      var size = array.isMatrix ? array.size() : arraySize(array);
+      var isEmpty = size.length ? size[size.length - 1] === 0 : true;
+      if (isEmpty) {
+        return {
+          isUnary,
+          fn: callback
+        };
       }
-      delete queue[oldIndex];
-      if (base !== oldIndex) return void 0;
-      while (!Object.prototype.hasOwnProperty.call(queue, ++base)) {
-      }
-      return void 0;
-    },
-    delete: del,
-    clear: function clear() {
-      size = index = 0;
-      base = 1;
-      queue = /* @__PURE__ */ Object.create(null);
-      map2 = /* @__PURE__ */ Object.create(null);
+      var firstIndex = size.map(() => 0);
+      var firstValue = array.isMatrix ? array.get(firstIndex) : get(array, firstIndex);
+      numberOfArguments = _findNumberOfArgumentsTyped(callback, firstValue, firstIndex, array);
     }
-  };
-}
-
-// node_modules/mathjs/lib/esm/utils/function.js
-function memoize(fn) {
-  var {
-    hasher: hasher2,
-    limit
-  } = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
-  limit = limit == null ? Number.POSITIVE_INFINITY : limit;
-  hasher2 = hasher2 == null ? JSON.stringify : hasher2;
-  return function memoize2() {
-    if (typeof memoize2.cache !== "object") {
-      memoize2.cache = {
-        values: /* @__PURE__ */ new Map(),
-        lru: lruQueue(limit || Number.POSITIVE_INFINITY)
+    var fastCallback;
+    if (array.isMatrix && array.dataType !== "mixed" && array.dataType !== void 0) {
+      var singleSignature = _findSingleSignatureWithArity(callback, numberOfArguments);
+      fastCallback = singleSignature !== void 0 ? singleSignature : callback;
+    } else {
+      fastCallback = callback;
+    }
+    if (numberOfArguments >= 1 && numberOfArguments <= 3) {
+      return {
+        isUnary: numberOfArguments === 1,
+        fn: function fn() {
+          for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+            args[_key] = arguments[_key];
+          }
+          return _tryFunctionWithArgs(fastCallback, args.slice(0, numberOfArguments), name323, callback.name);
+        }
       };
     }
-    var args = [];
-    for (var i = 0; i < arguments.length; i++) {
-      args[i] = arguments[i];
-    }
-    var hash = hasher2(args);
-    if (memoize2.cache.values.has(hash)) {
-      memoize2.cache.lru.hit(hash);
-      return memoize2.cache.values.get(hash);
-    }
-    var newVal = fn.apply(fn, args);
-    memoize2.cache.values.set(hash, newVal);
-    memoize2.cache.values.delete(memoize2.cache.lru.hit(hash));
-    return newVal;
-  };
+    return {
+      isUnary: false,
+      fn: function fn() {
+        for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+          args[_key2] = arguments[_key2];
+        }
+        return _tryFunctionWithArgs(fastCallback, args, name323, callback.name);
+      }
+    };
+  }
+  if (isUnary === void 0) {
+    return {
+      isUnary: _findIfCallbackIsUnary(callback),
+      fn: callback
+    };
+  } else {
+    return {
+      isUnary,
+      fn: callback
+    };
+  }
 }
-function maxArgumentCount(fn) {
-  return Object.keys(fn.signatures || {}).reduce(function(args, signature) {
-    var count = (signature.match(/,/g) || []).length + 1;
-    return Math.max(args, count);
-  }, -1);
+function _findSingleSignatureWithArity(callback, arity) {
+  var matchingFunctions = [];
+  Object.entries(callback.signatures).forEach((_ref) => {
+    var [signature, func] = _ref;
+    if (signature.split(",").length === arity) {
+      matchingFunctions.push(func);
+    }
+  });
+  if (matchingFunctions.length === 1) {
+    return matchingFunctions[0];
+  }
+}
+function _findIfCallbackIsUnary(callback) {
+  if (callback.length !== 1) return false;
+  var callbackStr = callback.toString();
+  if (/arguments/.test(callbackStr)) return false;
+  var paramsStr = callbackStr.match(/\(.*?\)/);
+  if (/\.\.\./.test(paramsStr)) return false;
+  return true;
+}
+function _findNumberOfArgumentsTyped(callback, value, index, array) {
+  var testArgs = [value, index, array];
+  for (var i = 3; i > 0; i--) {
+    var args = testArgs.slice(0, i);
+    if (import_typed_function2.default.resolve(callback, args) !== null) {
+      return i;
+    }
+  }
+}
+function _tryFunctionWithArgs(func, args, mappingFnName, callbackName) {
+  try {
+    return func(...args);
+  } catch (err) {
+    _createCallbackError(err, args, mappingFnName, callbackName);
+  }
+}
+function _createCallbackError(err, args, mappingFnName, callbackName) {
+  var _err$data;
+  if (err instanceof TypeError && ((_err$data = err.data) === null || _err$data === void 0 ? void 0 : _err$data.category) === "wrongType") {
+    var argsDesc = [];
+    argsDesc.push("value: ".concat(typeOf(args[0])));
+    if (args.length >= 2) {
+      argsDesc.push("index: ".concat(typeOf(args[1])));
+    }
+    if (args.length >= 3) {
+      argsDesc.push("array: ".concat(typeOf(args[2])));
+    }
+    throw new TypeError("Function ".concat(mappingFnName, " cannot apply callback arguments ") + "".concat(callbackName, "(").concat(argsDesc.join(", "), ") at index ").concat(JSON.stringify(args[1])));
+  } else {
+    throw new TypeError("Function ".concat(mappingFnName, " cannot apply callback arguments ") + "to function ".concat(callbackName, ": ").concat(err.message));
+  }
 }
 
 // node_modules/mathjs/lib/esm/type/matrix/DenseMatrix.js
 var name7 = "DenseMatrix";
-var dependencies8 = ["Matrix"];
+var dependencies8 = ["Matrix", "config"];
 var createDenseMatrixClass = /* @__PURE__ */ factory(name7, dependencies8, (_ref) => {
   var {
-    Matrix
+    Matrix,
+    config: config2
   } = _ref;
   function DenseMatrix(data, datatype) {
     if (!(this instanceof DenseMatrix)) {
@@ -9319,22 +9669,7 @@ var createDenseMatrixClass = /* @__PURE__ */ factory(name7, dependencies8, (_ref
     }
   };
   DenseMatrix.prototype.get = function(index) {
-    if (!isArray(index)) {
-      throw new TypeError("Array expected");
-    }
-    if (index.length !== this._size.length) {
-      throw new DimensionError(index.length, this._size.length);
-    }
-    for (var x = 0; x < index.length; x++) {
-      validateIndex(index[x], this._size[x]);
-    }
-    var data = this._data;
-    for (var i = 0, ii = index.length; i < ii; i++) {
-      var indexI = index[i];
-      validateIndex(indexI, data.length);
-      data = data[indexI];
-    }
-    return data;
+    return get(this._data, index);
   };
   DenseMatrix.prototype.set = function(index, value, defaultValue) {
     if (!isArray(index)) {
@@ -9363,7 +9698,7 @@ var createDenseMatrixClass = /* @__PURE__ */ factory(name7, dependencies8, (_ref
     if (!isIndex(index)) {
       throw new TypeError("Invalid index");
     }
-    var isScalar = index.isScalar();
+    var isScalar = config2.legacySubset ? index.size().every((idx) => idx === 1) : index.isScalar();
     if (isScalar) {
       return matrix.get(index.min());
     } else {
@@ -9377,23 +9712,44 @@ var createDenseMatrixClass = /* @__PURE__ */ factory(name7, dependencies8, (_ref
         validateIndex(min2[i], matrix._size[i]);
         validateIndex(max2[i], matrix._size[i]);
       }
-      return new DenseMatrix(_getSubmatrix(matrix._data, index, size.length, 0), matrix._datatype);
+      var returnMatrix = new DenseMatrix();
+      var submatrix = _getSubmatrix(matrix._data, index);
+      returnMatrix._size = submatrix.size;
+      returnMatrix._datatype = matrix._datatype;
+      returnMatrix._data = submatrix.data;
+      return config2.legacySubset ? returnMatrix.reshape(index.size()) : returnMatrix;
     }
   }
-  function _getSubmatrix(data, index, dims, dim) {
-    var last = dim === dims - 1;
-    var range = index.dimension(dim);
-    if (last) {
-      return range.map(function(i) {
-        validateIndex(i, data.length);
-        return data[i];
-      }).valueOf();
-    } else {
-      return range.map(function(i) {
-        validateIndex(i, data.length);
-        var child = data[i];
-        return _getSubmatrix(child, index, dims, dim + 1);
-      }).valueOf();
+  function _getSubmatrix(data, index) {
+    var maxDepth = index.size().length - 1;
+    var size = Array(maxDepth);
+    return {
+      data: getSubmatrixRecursive(data),
+      size: size.filter((x) => x !== null)
+    };
+    function getSubmatrixRecursive(data2) {
+      var depth = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
+      var dims = index.dimension(depth);
+      function _mapIndex(dim, callback) {
+        if (isNumber(dim)) return callback(dim);
+        else return dim.map(callback).valueOf();
+      }
+      if (isNumber(dims)) {
+        size[depth] = null;
+      } else {
+        size[depth] = dims.size()[0];
+      }
+      if (depth < maxDepth) {
+        return _mapIndex(dims, (dimIndex) => {
+          validateIndex(dimIndex, data2.length);
+          return getSubmatrixRecursive(data2[dimIndex], depth + 1);
+        });
+      } else {
+        return _mapIndex(dims, (dimIndex) => {
+          validateIndex(dimIndex, data2.length);
+          return data2[dimIndex];
+        });
+      }
     }
   }
   function _set(matrix, index, submatrix, defaultValue) {
@@ -9402,71 +9758,77 @@ var createDenseMatrixClass = /* @__PURE__ */ factory(name7, dependencies8, (_ref
     }
     var iSize = index.size();
     var isScalar = index.isScalar();
-    var sSize;
+    var submatrixSize;
     if (isMatrix(submatrix)) {
-      sSize = submatrix.size();
+      submatrixSize = submatrix.size();
       submatrix = submatrix.valueOf();
     } else {
-      sSize = arraySize(submatrix);
+      submatrixSize = arraySize(submatrix);
     }
     if (isScalar) {
-      if (sSize.length !== 0) {
+      if (submatrixSize.length !== 0) {
         throw new TypeError("Scalar expected");
       }
       matrix.set(index.min(), submatrix, defaultValue);
     } else {
-      if (!deepStrictEqual(sSize, iSize)) {
-        try {
-          if (sSize.length === 0) {
-            submatrix = broadcastTo([submatrix], iSize);
-          } else {
+      if (!deepStrictEqual(submatrixSize, iSize)) {
+        if (submatrixSize.length === 0) {
+          submatrix = broadcastTo([submatrix], iSize);
+        } else {
+          try {
             submatrix = broadcastTo(submatrix, iSize);
+          } catch (error) {
           }
-          sSize = arraySize(submatrix);
-        } catch (_unused) {
         }
+        submatrixSize = arraySize(submatrix);
       }
       if (iSize.length < matrix._size.length) {
         throw new DimensionError(iSize.length, matrix._size.length, "<");
       }
-      if (sSize.length < iSize.length) {
+      if (submatrixSize.length < iSize.length) {
         var i = 0;
         var outer = 0;
-        while (iSize[i] === 1 && sSize[i] === 1) {
+        while (iSize[i] === 1 && submatrixSize[i] === 1) {
           i++;
         }
         while (iSize[i] === 1) {
           outer++;
           i++;
         }
-        submatrix = unsqueeze(submatrix, iSize.length, outer, sSize);
+        submatrix = unsqueeze(submatrix, iSize.length, outer, submatrixSize);
       }
-      if (!deepStrictEqual(iSize, sSize)) {
-        throw new DimensionError(iSize, sSize, ">");
+      if (!deepStrictEqual(iSize, submatrixSize)) {
+        throw new DimensionError(iSize, submatrixSize, ">");
       }
       var size = index.max().map(function(i2) {
         return i2 + 1;
       });
       _fit(matrix, size, defaultValue);
-      var dims = iSize.length;
-      var dim = 0;
-      _setSubmatrix(matrix._data, index, submatrix, dims, dim);
+      _setSubmatrix(matrix._data, index, submatrix);
     }
     return matrix;
   }
-  function _setSubmatrix(data, index, submatrix, dims, dim) {
-    var last = dim === dims - 1;
-    var range = index.dimension(dim);
-    if (last) {
-      range.forEach(function(dataIndex, subIndex) {
-        validateIndex(dataIndex);
-        data[dataIndex] = submatrix[subIndex[0]];
-      });
-    } else {
-      range.forEach(function(dataIndex, subIndex) {
-        validateIndex(dataIndex);
-        _setSubmatrix(data[dataIndex], index, submatrix[subIndex[0]], dims, dim + 1);
-      });
+  function _setSubmatrix(data, index, submatrix) {
+    var maxDepth = index.size().length - 1;
+    setSubmatrixRecursive(data, submatrix);
+    function setSubmatrixRecursive(data2, submatrix2) {
+      var depth = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : 0;
+      var range = index.dimension(depth);
+      var recursiveCallback = (rangeIndex, i) => {
+        validateIndex(rangeIndex, data2.length);
+        setSubmatrixRecursive(data2[rangeIndex], submatrix2[i[0]], depth + 1);
+      };
+      var finalCallback = (rangeIndex, i) => {
+        validateIndex(rangeIndex, data2.length);
+        data2[rangeIndex] = submatrix2[i[0]];
+      };
+      if (depth < maxDepth) {
+        if (isNumber(range)) recursiveCallback(range, [0]);
+        else range.forEach(recursiveCallback);
+      } else {
+        if (isNumber(range)) finalCallback(range, [0]);
+        else range.forEach(finalCallback);
+      }
     }
   }
   DenseMatrix.prototype.resize = function(size, defaultValue, copy) {
@@ -9527,54 +9889,140 @@ var createDenseMatrixClass = /* @__PURE__ */ factory(name7, dependencies8, (_ref
     return this._size.slice(0);
   };
   DenseMatrix.prototype.map = function(callback) {
+    var skipZeros = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
+    var isUnary = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : false;
     var me = this;
-    var args = maxArgumentCount(callback);
-    var recurse = function recurse2(value, index) {
-      if (isArray(value)) {
-        return value.map(function(child, i) {
-          return recurse2(child, index.concat(i));
-        });
+    var maxDepth = me._size.length - 1;
+    if (maxDepth < 0) return me.clone();
+    var fastCallback = optimizeCallback(callback, me, "map", isUnary);
+    var fastCallbackFn = fastCallback.fn;
+    var result = me.create(void 0, me._datatype);
+    result._size = me._size;
+    if (isUnary || fastCallback.isUnary) {
+      result._data = iterateUnary(me._data);
+      return result;
+    }
+    if (maxDepth === 0) {
+      var inputData = me.valueOf();
+      var data = Array(inputData.length);
+      for (var i = 0; i < inputData.length; i++) {
+        data[i] = fastCallbackFn(inputData[i], [i], me);
+      }
+      result._data = data;
+      return result;
+    }
+    var index = [];
+    result._data = iterate(me._data);
+    return result;
+    function iterate(data2) {
+      var depth = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
+      var result2 = Array(data2.length);
+      if (depth < maxDepth) {
+        for (var _i = 0; _i < data2.length; _i++) {
+          index[depth] = _i;
+          result2[_i] = iterate(data2[_i], depth + 1);
+        }
       } else {
-        if (args === 1) {
-          return callback(value);
-        } else if (args === 2) {
-          return callback(value, index);
-        } else {
-          return callback(value, index, me);
+        for (var _i2 = 0; _i2 < data2.length; _i2++) {
+          index[depth] = _i2;
+          result2[_i2] = fastCallbackFn(data2[_i2], index.slice(), me);
         }
       }
-    };
-    var data = recurse(this._data, []);
-    var datatype = this._datatype !== void 0 ? getArrayDataType(data, typeOf) : void 0;
-    return new DenseMatrix(data, datatype);
+      return result2;
+    }
+    function iterateUnary(data2) {
+      var depth = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
+      var result2 = Array(data2.length);
+      if (depth < maxDepth) {
+        for (var _i3 = 0; _i3 < data2.length; _i3++) {
+          result2[_i3] = iterateUnary(data2[_i3], depth + 1);
+        }
+      } else {
+        for (var _i4 = 0; _i4 < data2.length; _i4++) {
+          result2[_i4] = fastCallbackFn(data2[_i4]);
+        }
+      }
+      return result2;
+    }
   };
   DenseMatrix.prototype.forEach = function(callback) {
+    var skipZeros = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : false;
+    var isUnary = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : false;
     var me = this;
-    var recurse = function recurse2(value, index) {
-      if (isArray(value)) {
-        value.forEach(function(child, i) {
-          recurse2(child, index.concat(i));
-        });
-      } else {
-        callback(value, index, me);
+    var maxDepth = me._size.length - 1;
+    if (maxDepth < 0) return;
+    var fastCallback = optimizeCallback(callback, me, "map", isUnary);
+    var fastCallbackFn = fastCallback.fn;
+    if (isUnary || fastCallback.isUnary) {
+      iterateUnary(me._data);
+      return;
+    }
+    if (maxDepth === 0) {
+      for (var i = 0; i < me._data.length; i++) {
+        fastCallbackFn(me._data[i], [i], me);
       }
-    };
-    recurse(this._data, []);
-  };
-  DenseMatrix.prototype[Symbol.iterator] = function* () {
-    var recurse = function* recurse2(value, index) {
-      if (isArray(value)) {
-        for (var i = 0; i < value.length; i++) {
-          yield* recurse2(value[i], index.concat(i));
+      return;
+    }
+    var index = [];
+    iterate(me._data);
+    function iterate(data) {
+      var depth = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
+      if (depth < maxDepth) {
+        for (var _i5 = 0; _i5 < data.length; _i5++) {
+          index[depth] = _i5;
+          iterate(data[_i5], depth + 1);
         }
       } else {
+        for (var _i6 = 0; _i6 < data.length; _i6++) {
+          index[depth] = _i6;
+          fastCallbackFn(data[_i6], index.slice(), me);
+        }
+      }
+    }
+    function iterateUnary(data) {
+      var depth = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
+      if (depth < maxDepth) {
+        for (var _i7 = 0; _i7 < data.length; _i7++) {
+          iterateUnary(data[_i7], depth + 1);
+        }
+      } else {
+        for (var _i8 = 0; _i8 < data.length; _i8++) {
+          fastCallbackFn(data[_i8]);
+        }
+      }
+    }
+  };
+  DenseMatrix.prototype[Symbol.iterator] = function* () {
+    var maxDepth = this._size.length - 1;
+    if (maxDepth < 0) {
+      return;
+    }
+    if (maxDepth === 0) {
+      for (var i = 0; i < this._data.length; i++) {
         yield {
-          value,
-          index
+          value: this._data[i],
+          index: [i]
         };
       }
-    };
-    yield* recurse(this._data, []);
+      return;
+    }
+    var index = Array(maxDepth + 1).fill(0);
+    var totalElements = this._size.reduce((a, b) => a * b, 1);
+    for (var count = 0; count < totalElements; count++) {
+      var current = this._data;
+      for (var d = 0; d < maxDepth; d++) {
+        current = current[index[d]];
+      }
+      yield {
+        value: current[index[maxDepth]],
+        index: index.slice()
+      };
+      for (var _d = maxDepth; _d >= 0; _d--) {
+        index[_d]++;
+        if (index[_d] < this._size[_d]) break;
+        index[_d] = 0;
+      }
+    }
   };
   DenseMatrix.prototype.rows = function() {
     var result = [];
@@ -9630,7 +10078,7 @@ var createDenseMatrixClass = /* @__PURE__ */ factory(name7, dependencies8, (_ref
       if (isBigNumber(k)) {
         k = k.toNumber();
       }
-      if (!isNumber(k) || !isInteger(k)) {
+      if (!isNumber(k) || !isInteger2(k)) {
         throw new TypeError("The parameter k must be an integer number");
       }
     } else {
@@ -9662,7 +10110,7 @@ var createDenseMatrixClass = /* @__PURE__ */ factory(name7, dependencies8, (_ref
       if (isBigNumber(s)) {
         s = s.toNumber();
       }
-      if (!isNumber(s) || !isInteger(s) || s < 1) {
+      if (!isNumber(s) || !isInteger2(s) || s < 1) {
         throw new Error("Size values must be positive integers");
       }
       return s;
@@ -9671,7 +10119,7 @@ var createDenseMatrixClass = /* @__PURE__ */ factory(name7, dependencies8, (_ref
       if (isBigNumber(k)) {
         k = k.toNumber();
       }
-      if (!isNumber(k) || !isInteger(k)) {
+      if (!isNumber(k) || !isInteger2(k)) {
         throw new TypeError("The parameter k must be an integer number");
       }
     } else {
@@ -9722,7 +10170,7 @@ var createDenseMatrixClass = /* @__PURE__ */ factory(name7, dependencies8, (_ref
     return new DenseMatrix(json);
   };
   DenseMatrix.prototype.swapRows = function(i, j) {
-    if (!isNumber(i) || !isInteger(i) || !isNumber(j) || !isInteger(j)) {
+    if (!isNumber(i) || !isInteger2(i) || !isNumber(j) || !isInteger2(j)) {
       throw new Error("Row index must be positive integers");
     }
     if (this._size.length !== 2) {
@@ -9789,26 +10237,26 @@ function containsCollections(array) {
   }
   return false;
 }
-function deepForEach(array, callback) {
+function deepForEach2(array, callback) {
   if (isMatrix(array)) {
-    array = array.valueOf();
-  }
-  for (var i = 0, ii = array.length; i < ii; i++) {
-    var value = array[i];
-    if (Array.isArray(value)) {
-      deepForEach(value, callback);
-    } else {
-      callback(value);
-    }
+    array.forEach((x) => callback(x), false, true);
+  } else {
+    deepForEach(array, callback, true);
   }
 }
-function deepMap(array, callback, skipZeros) {
-  if (array && typeof array.map === "function") {
-    return array.map(function(x) {
-      return deepMap(x, callback, skipZeros);
-    });
+function deepMap2(array, callback, skipZeros) {
+  if (!skipZeros) {
+    if (isMatrix(array)) {
+      return array.map((x) => callback(x), false, true);
+    } else {
+      return deepMap(array, callback, true);
+    }
+  }
+  var skipZerosCallback = (x) => x === 0 ? x : callback(x);
+  if (isMatrix(array)) {
+    return array.map((x) => skipZerosCallback(x), false, true);
   } else {
-    return callback(array);
+    return deepMap(array, skipZerosCallback, true);
   }
 }
 function reduce(mat, dim, callback) {
@@ -9817,7 +10265,7 @@ function reduce(mat, dim, callback) {
     throw new IndexError(dim, size.length);
   }
   if (isMatrix(mat)) {
-    return mat.create(_reduce(mat.valueOf(), dim, callback));
+    return mat.create(_reduce(mat.valueOf(), dim, callback), mat.datatype());
   } else {
     return _reduce(mat, dim, callback);
   }
@@ -9884,21 +10332,18 @@ function scatter(a, j, w, x, u, mark, cindex, f, inverse, update, value) {
 
 // node_modules/mathjs/lib/esm/function/utils/isInteger.js
 var name9 = "isInteger";
-var dependencies10 = ["typed"];
+var dependencies10 = ["typed", "equal"];
 var createIsInteger = /* @__PURE__ */ factory(name9, dependencies10, (_ref) => {
   var {
-    typed: typed2
+    typed: typed2,
+    equal
   } = _ref;
   return typed2(name9, {
-    number: isInteger,
-    // TODO: what to do with isInteger(add(0.1, 0.2))  ?
-    BigNumber: function BigNumber(x) {
-      return x.isInt();
-    },
-    Fraction: function Fraction2(x) {
-      return x.d === 1 && isFinite(x.n);
-    },
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    number: (n) => Number.isFinite(n) ? equal(n, Math.round(n)) : false,
+    BigNumber: (b) => b.isFinite() ? equal(b.round(), b) : false,
+    bigint: (b) => true,
+    Fraction: (r) => r.d === /* @__PURE__ */ BigInt("1"),
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
@@ -9950,7 +10395,7 @@ function expm1Number(x) {
 }
 expm1Number.signature = n1;
 function gcdNumber(a, b) {
-  if (!isInteger(a) || !isInteger(b)) {
+  if (!isInteger2(a) || !isInteger2(b)) {
     throw new Error("Parameters in function gcd must be integer numbers");
   }
   var r;
@@ -9963,7 +10408,7 @@ function gcdNumber(a, b) {
 }
 gcdNumber.signature = n2;
 function lcmNumber(a, b) {
-  if (!isInteger(a) || !isInteger(b)) {
+  if (!isInteger2(a) || !isInteger2(b)) {
     throw new Error("Parameters in function lcm must be integer numbers");
   }
   if (a === 0 || b === 0) {
@@ -10043,7 +10488,7 @@ function xgcdNumber(a, b) {
   var lastx = 1;
   var y = 1;
   var lasty = 0;
-  if (!isInteger(a) || !isInteger(b)) {
+  if (!isInteger2(a) || !isInteger2(b)) {
     throw new Error("Parameters in function xgcd must be integer numbers");
   }
   while (b) {
@@ -10076,7 +10521,7 @@ function powNumber(x, y) {
 powNumber.signature = n2;
 function roundNumber(value) {
   var decimals = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
-  if (!isInteger(decimals) || decimals < 0 || decimals > 15) {
+  if (!isInteger2(decimals) || decimals < 0 || decimals > 15) {
     throw new Error("Number of decimals in function round must be an integer from 0 to 15 inclusive");
   }
   return parseFloat(toFixed(value, decimals));
@@ -10090,49 +10535,49 @@ normNumber.signature = n1;
 var n12 = "number";
 var n22 = "number, number";
 function bitAndNumber(x, y) {
-  if (!isInteger(x) || !isInteger(y)) {
+  if (!isInteger2(x) || !isInteger2(y)) {
     throw new Error("Integers expected in function bitAnd");
   }
   return x & y;
 }
 bitAndNumber.signature = n22;
 function bitNotNumber(x) {
-  if (!isInteger(x)) {
+  if (!isInteger2(x)) {
     throw new Error("Integer expected in function bitNot");
   }
   return ~x;
 }
 bitNotNumber.signature = n12;
 function bitOrNumber(x, y) {
-  if (!isInteger(x) || !isInteger(y)) {
+  if (!isInteger2(x) || !isInteger2(y)) {
     throw new Error("Integers expected in function bitOr");
   }
   return x | y;
 }
 bitOrNumber.signature = n22;
 function bitXorNumber(x, y) {
-  if (!isInteger(x) || !isInteger(y)) {
+  if (!isInteger2(x) || !isInteger2(y)) {
     throw new Error("Integers expected in function bitXor");
   }
   return x ^ y;
 }
 bitXorNumber.signature = n22;
 function leftShiftNumber(x, y) {
-  if (!isInteger(x) || !isInteger(y)) {
+  if (!isInteger2(x) || !isInteger2(y)) {
     throw new Error("Integers expected in function leftShift");
   }
   return x << y;
 }
 leftShiftNumber.signature = n22;
 function rightArithShiftNumber(x, y) {
-  if (!isInteger(x) || !isInteger(y)) {
+  if (!isInteger2(x) || !isInteger2(y)) {
     throw new Error("Integers expected in function rightArithShift");
   }
   return x >> y;
 }
 rightArithShiftNumber.signature = n22;
 function rightLogShiftNumber(x, y) {
-  if (!isInteger(x) || !isInteger(y)) {
+  if (!isInteger2(x) || !isInteger2(y)) {
     throw new Error("Integers expected in function rightLogShift");
   }
   return x >>> y;
@@ -10153,10 +10598,10 @@ function product2(i, n) {
 
 // node_modules/mathjs/lib/esm/plain/number/combinations.js
 function combinationsNumber(n, k) {
-  if (!isInteger(n) || n < 0) {
+  if (!isInteger2(n) || n < 0) {
     throw new TypeError("Positive integer value expected in function combinations");
   }
-  if (!isInteger(k) || k < 0) {
+  if (!isInteger2(k) || k < 0) {
     throw new TypeError("Positive integer value expected in function combinations");
   }
   if (k > n) {
@@ -10210,9 +10655,9 @@ andNumber.signature = n23;
 // node_modules/mathjs/lib/esm/plain/number/probability.js
 function gammaNumber(n) {
   var x;
-  if (isInteger(n)) {
+  if (isInteger2(n)) {
     if (n <= 0) {
-      return isFinite(n) ? Infinity : NaN;
+      return Number.isFinite(n) ? Infinity : NaN;
     }
     if (n > 171) {
       return Infinity;
@@ -10250,7 +10695,7 @@ var lgammaSeries = [1.000000000190015, 76.18009172947146, -86.50532032941678, 24
 function lgammaNumber(n) {
   if (n < 0) return NaN;
   if (n === 0) return Infinity;
-  if (!isFinite(n)) return n;
+  if (!Number.isFinite(n)) return n;
   if (n < 0.5) {
     return Math.log(Math.PI / Math.sin(Math.PI * n)) - lgammaNumber(1 - n);
   }
@@ -10280,7 +10725,7 @@ function acotNumber(x) {
 }
 acotNumber.signature = n14;
 function acothNumber(x) {
-  return isFinite(x) ? (Math.log((x + 1) / x) + Math.log(x / (x - 1))) / 2 : 0;
+  return Number.isFinite(x) ? (Math.log((x + 1) / x) + Math.log(x / (x - 1))) / 2 : 0;
 }
 acothNumber.signature = n14;
 function acscNumber(x) {
@@ -10379,7 +10824,7 @@ tanhNumber.signature = n14;
 // node_modules/mathjs/lib/esm/plain/number/utils.js
 var n15 = "number";
 function isIntegerNumber(x) {
-  return isInteger(x);
+  return isInteger2(x);
 }
 isIntegerNumber.signature = n15;
 function isNegativeNumber(x) {
@@ -10399,23 +10844,44 @@ function isNaNNumber(x) {
 }
 isNaNNumber.signature = n15;
 
+// node_modules/mathjs/lib/esm/utils/bignumber/nearlyEqual.js
+function nearlyEqual2(a, b) {
+  var relTol = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : 1e-9;
+  var absTol = arguments.length > 3 && arguments[3] !== void 0 ? arguments[3] : 0;
+  if (relTol <= 0) {
+    throw new Error("Relative tolerance must be greater than 0");
+  }
+  if (absTol < 0) {
+    throw new Error("Absolute tolerance must be at least 0");
+  }
+  if (a.isNaN() || b.isNaN()) {
+    return false;
+  }
+  if (!a.isFinite() || !b.isFinite()) {
+    return a.eq(b);
+  }
+  if (a.eq(b)) {
+    return true;
+  }
+  return a.minus(b).abs().lte(a.constructor.max(a.constructor.max(a.abs(), b.abs()).mul(relTol), absTol));
+}
+
 // node_modules/mathjs/lib/esm/function/utils/isNegative.js
 var name10 = "isNegative";
-var dependencies11 = ["typed"];
+var dependencies11 = ["typed", "config"];
 var createIsNegative = /* @__PURE__ */ factory(name10, dependencies11, (_ref) => {
   var {
-    typed: typed2
+    typed: typed2,
+    config: config2
   } = _ref;
   return typed2(name10, {
-    number: isNegativeNumber,
-    BigNumber: function BigNumber(x) {
-      return x.isNeg() && !x.isZero() && !x.isNaN();
-    },
-    Fraction: function Fraction2(x) {
-      return x.s < 0;
-    },
+    number: (x) => nearlyEqual(x, 0, config2.relTol, config2.absTol) ? false : isNegativeNumber(x),
+    BigNumber: (x) => nearlyEqual2(x, new x.constructor(0), config2.relTol, config2.absTol) ? false : x.isNeg() && !x.isZero() && !x.isNaN(),
+    bigint: (x) => x < /* @__PURE__ */ BigInt("0"),
+    Fraction: (x) => x.s < /* @__PURE__ */ BigInt("0"),
+    // It's enough to decide on the sign
     Unit: typed2.referToSelf((self2) => (x) => typed2.find(self2, x.valueType())(x.value)),
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
@@ -10427,9 +10893,9 @@ var createIsNumeric = /* @__PURE__ */ factory(name11, dependencies12, (_ref) => 
     typed: typed2
   } = _ref;
   return typed2(name11, {
-    "number | BigNumber | Fraction | boolean": () => true,
+    "number | BigNumber | bigint | Fraction | boolean": () => true,
     "Complex | Unit | string | null | undefined | Node": () => false,
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
@@ -10454,44 +10920,35 @@ var createHasNumericValue = /* @__PURE__ */ factory(name12, dependencies13, (_re
 
 // node_modules/mathjs/lib/esm/function/utils/isPositive.js
 var name13 = "isPositive";
-var dependencies14 = ["typed"];
+var dependencies14 = ["typed", "config"];
 var createIsPositive = /* @__PURE__ */ factory(name13, dependencies14, (_ref) => {
   var {
-    typed: typed2
+    typed: typed2,
+    config: config2
   } = _ref;
   return typed2(name13, {
-    number: isPositiveNumber,
-    BigNumber: function BigNumber(x) {
-      return !x.isNeg() && !x.isZero() && !x.isNaN();
-    },
-    Fraction: function Fraction2(x) {
-      return x.s > 0 && x.n > 0;
-    },
+    number: (x) => nearlyEqual(x, 0, config2.relTol, config2.absTol) ? false : isPositiveNumber(x),
+    BigNumber: (x) => nearlyEqual2(x, new x.constructor(0), config2.relTol, config2.absTol) ? false : !x.isNeg() && !x.isZero() && !x.isNaN(),
+    bigint: (x) => x > /* @__PURE__ */ BigInt("0"),
+    Fraction: (x) => x.s > /* @__PURE__ */ BigInt("0") && x.n > /* @__PURE__ */ BigInt("0"),
     Unit: typed2.referToSelf((self2) => (x) => typed2.find(self2, x.valueType())(x.value)),
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
 // node_modules/mathjs/lib/esm/function/utils/isZero.js
 var name14 = "isZero";
-var dependencies15 = ["typed"];
+var dependencies15 = ["typed", "equalScalar"];
 var createIsZero = /* @__PURE__ */ factory(name14, dependencies15, (_ref) => {
   var {
-    typed: typed2
+    typed: typed2,
+    equalScalar
   } = _ref;
   return typed2(name14, {
-    number: isZeroNumber,
-    BigNumber: function BigNumber(x) {
-      return x.isZero();
-    },
-    Complex: function Complex2(x) {
-      return x.re === 0 && x.im === 0;
-    },
-    Fraction: function Fraction2(x) {
-      return x.d === 1 && x.n === 0;
-    },
+    "number | BigNumber | Complex | Fraction": (x) => equalScalar(x, 0),
+    bigint: (x) => x === /* @__PURE__ */ BigInt("0"),
     Unit: typed2.referToSelf((self2) => (x) => typed2.find(self2, x.valueType())(x.value)),
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
@@ -10507,6 +10964,9 @@ var createIsNaN = /* @__PURE__ */ factory(name15, dependencies16, (_ref) => {
     BigNumber: function BigNumber(x) {
       return x.isNaN();
     },
+    bigint: function bigint(x) {
+      return false;
+    },
     Fraction: function Fraction2(x) {
       return false;
     },
@@ -10516,48 +10976,60 @@ var createIsNaN = /* @__PURE__ */ factory(name15, dependencies16, (_ref) => {
     Unit: function Unit(x) {
       return Number.isNaN(x.value);
     },
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
-// node_modules/mathjs/lib/esm/function/utils/typeOf.js
-var name16 = "typeOf";
+// node_modules/mathjs/lib/esm/function/utils/isBounded.js
+var name16 = "isBounded";
 var dependencies17 = ["typed"];
-var createTypeOf = /* @__PURE__ */ factory(name16, dependencies17, (_ref) => {
+var createIsBounded = /* @__PURE__ */ factory(name16, dependencies17, (_ref) => {
   var {
     typed: typed2
   } = _ref;
   return typed2(name16, {
+    number: (n) => Number.isFinite(n),
+    "BigNumber | Complex": (x) => x.isFinite(),
+    "bigint | Fraction": () => true,
+    "null | undefined": () => false,
+    Unit: typed2.referToSelf((self2) => (x) => self2(x.value)),
+    "Array | Matrix": typed2.referToSelf((self2) => (A) => {
+      if (!Array.isArray(A)) A = A.valueOf();
+      return A.every((entry) => self2(entry));
+    })
+  });
+});
+
+// node_modules/mathjs/lib/esm/function/utils/isFinite.js
+var name17 = "isFinite";
+var dependencies18 = ["typed", "isBounded", "map"];
+var createIsFinite = /* @__PURE__ */ factory(name17, dependencies18, (_ref) => {
+  var {
+    typed: typed2,
+    isBounded,
+    map: map2
+  } = _ref;
+  return typed2(name17, {
+    "Array | Matrix": (A) => map2(A, isBounded),
+    any: (x) => isBounded(x)
+  });
+});
+
+// node_modules/mathjs/lib/esm/function/utils/typeOf.js
+var name18 = "typeOf";
+var dependencies19 = ["typed"];
+var createTypeOf = /* @__PURE__ */ factory(name18, dependencies19, (_ref) => {
+  var {
+    typed: typed2
+  } = _ref;
+  return typed2(name18, {
     any: typeOf
   });
 });
 
-// node_modules/mathjs/lib/esm/utils/bignumber/nearlyEqual.js
-function nearlyEqual2(x, y, epsilon) {
-  if (epsilon === null || epsilon === void 0) {
-    return x.eq(y);
-  }
-  if (x.eq(y)) {
-    return true;
-  }
-  if (x.isNaN() || y.isNaN()) {
-    return false;
-  }
-  if (x.isFinite() && y.isFinite()) {
-    var diff = x.minus(y).abs();
-    if (diff.isZero()) {
-      return true;
-    } else {
-      var max2 = x.constructor.max(x.abs(), y.abs());
-      return diff.lte(max2.times(epsilon));
-    }
-  }
-  return false;
-}
-
 // node_modules/mathjs/lib/esm/utils/complex.js
-function complexEquals(x, y, epsilon) {
-  return nearlyEqual(x.re, y.re, epsilon) && nearlyEqual(x.im, y.im, epsilon);
+function complexEquals(x, y, relTol, absTol) {
+  return nearlyEqual(x.re, y.re, relTol, absTol) && nearlyEqual(x.im, y.im, relTol, absTol);
 }
 
 // node_modules/mathjs/lib/esm/function/relational/compareUnits.js
@@ -10576,9 +11048,9 @@ var createCompareUnits = /* @__PURE__ */ factory("compareUnits", ["typed"], (_re
 });
 
 // node_modules/mathjs/lib/esm/function/relational/equalScalar.js
-var name17 = "equalScalar";
-var dependencies18 = ["typed", "config"];
-var createEqualScalar = /* @__PURE__ */ factory(name17, dependencies18, (_ref) => {
+var name19 = "equalScalar";
+var dependencies20 = ["typed", "config"];
+var createEqualScalar = /* @__PURE__ */ factory(name19, dependencies20, (_ref) => {
   var {
     typed: typed2,
     config: config2
@@ -10586,40 +11058,43 @@ var createEqualScalar = /* @__PURE__ */ factory(name17, dependencies18, (_ref) =
   var compareUnits = createCompareUnits({
     typed: typed2
   });
-  return typed2(name17, {
-    "boolean, boolean": function booleanBoolean(x, y) {
+  return typed2(name19, {
+    "boolean, boolean": function boolean_boolean(x, y) {
       return x === y;
     },
-    "number, number": function numberNumber(x, y) {
-      return nearlyEqual(x, y, config2.epsilon);
+    "number, number": function number_number(x, y) {
+      return nearlyEqual(x, y, config2.relTol, config2.absTol);
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
-      return x.eq(y) || nearlyEqual2(x, y, config2.epsilon);
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, y) {
+      return x.eq(y) || nearlyEqual2(x, y, config2.relTol, config2.absTol);
     },
-    "Fraction, Fraction": function FractionFraction(x, y) {
+    "bigint, bigint": function bigint_bigint(x, y) {
+      return x === y;
+    },
+    "Fraction, Fraction": function Fraction_Fraction(x, y) {
       return x.equals(y);
     },
-    "Complex, Complex": function ComplexComplex(x, y) {
-      return complexEquals(x, y, config2.epsilon);
+    "Complex, Complex": function Complex_Complex(x, y) {
+      return complexEquals(x, y, config2.relTol, config2.absTol);
     }
   }, compareUnits);
 });
-var createEqualScalarNumber = factory(name17, ["typed", "config"], (_ref2) => {
+var createEqualScalarNumber = factory(name19, ["typed", "config"], (_ref2) => {
   var {
     typed: typed2,
     config: config2
   } = _ref2;
-  return typed2(name17, {
-    "number, number": function numberNumber(x, y) {
-      return nearlyEqual(x, y, config2.epsilon);
+  return typed2(name19, {
+    "number, number": function number_number(x, y) {
+      return nearlyEqual(x, y, config2.relTol, config2.absTol);
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/SparseMatrix.js
-var name18 = "SparseMatrix";
-var dependencies19 = ["typed", "equalScalar", "Matrix"];
-var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_ref) => {
+var name20 = "SparseMatrix";
+var dependencies21 = ["typed", "equalScalar", "Matrix"];
+var createSparseMatrixClass = /* @__PURE__ */ factory(name20, dependencies21, (_ref) => {
   var {
     typed: typed2,
     equalScalar,
@@ -10706,7 +11181,9 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
         j++;
       } while (j < columns);
     }
-    matrix._ptr.push(matrix._index.length);
+    while (matrix._ptr.length <= columns) {
+      matrix._ptr.push(matrix._index.length);
+    }
     matrix._size = [rows, columns];
   }
   SparseMatrix.prototype = new Matrix();
@@ -10777,14 +11254,16 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
     var columns = idx.dimension(1);
     var w = [];
     var pv = [];
-    rows.forEach(function(i2, r) {
+    function rowsCallback(i2, r) {
       pv[i2] = r[0];
       w[i2] = true;
-    });
+    }
+    if (Number.isInteger(rows)) rowsCallback(rows, [0]);
+    else rows.forEach(rowsCallback);
     var values = mvalues ? [] : void 0;
     var index = [];
     var ptr = [];
-    columns.forEach(function(j) {
+    function columnsCallback(j) {
       ptr.push(index.length);
       for (k = mptr[j], kk = mptr[j + 1]; k < kk; k++) {
         i = mindex[k];
@@ -10795,7 +11274,9 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
           }
         }
       }
-    });
+    }
+    if (Number.isInteger(columns)) columnsCallback(columns);
+    else columns.forEach(columnsCallback);
     ptr.push(index.length);
     return new SparseMatrix({
       values,
@@ -10844,16 +11325,16 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
       }
       if (iSize.length === 1) {
         var range = index.dimension(0);
-        range.forEach(function(dataIndex, subIndex) {
+        _forEachIndex(range, (dataIndex, subIndex) => {
           validateIndex(dataIndex);
           matrix.set([dataIndex, 0], submatrix[subIndex[0]], defaultValue);
         });
       } else {
         var firstDimensionRange = index.dimension(0);
         var secondDimensionRange = index.dimension(1);
-        firstDimensionRange.forEach(function(firstDataIndex, firstSubIndex) {
+        _forEachIndex(firstDimensionRange, (firstDataIndex, firstSubIndex) => {
           validateIndex(firstDataIndex);
-          secondDimensionRange.forEach(function(secondDataIndex, secondSubIndex) {
+          _forEachIndex(secondDimensionRange, (secondDataIndex, secondSubIndex) => {
             validateIndex(secondDataIndex);
             matrix.set([firstDataIndex, secondDataIndex], submatrix[firstSubIndex[0]][secondSubIndex[0]], defaultValue);
           });
@@ -10861,6 +11342,10 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
       }
     }
     return matrix;
+    function _forEachIndex(index2, callback) {
+      if (isNumber(index2)) callback(index2, [0]);
+      else index2.forEach(callback);
+    }
   }
   SparseMatrix.prototype.get = function(index) {
     if (!isArray(index)) {
@@ -10959,7 +11444,7 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
       throw new Error("Only two dimensions matrix are supported");
     }
     sizeArray.forEach(function(value) {
-      if (!isNumber(value) || !isInteger(value) || value < 0) {
+      if (!isNumber(value) || !isInteger2(value) || value < 0) {
         throw new TypeError("Invalid size, must contain positive integers (size: " + format3(sizeArray) + ")");
       }
     });
@@ -11040,7 +11525,7 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
       throw new Error("Sparse matrices can only be reshaped in two dimensions");
     }
     sizes.forEach(function(value) {
-      if (!isNumber(value) || !isInteger(value) || value <= -2 || value === 0) {
+      if (!isNumber(value) || !isInteger2(value) || value <= -2 || value === 0) {
         throw new TypeError("Invalid size, must contain positive integers or -1 (size: " + format3(sizes) + ")");
       }
     });
@@ -11105,15 +11590,13 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
     var me = this;
     var rows = this._size[0];
     var columns = this._size[1];
-    var args = maxArgumentCount(callback);
+    var fastCallback = optimizeCallback(callback, me, "map");
     var invoke = function invoke2(v, i, j) {
-      if (args === 1) return callback(v);
-      if (args === 2) return callback(v, [i, j]);
-      return callback(v, [i, j], me);
+      return fastCallback.fn(v, [i, j], me);
     };
-    return _map3(this, 0, rows - 1, 0, columns - 1, invoke, skipZeros);
+    return _map(this, 0, rows - 1, 0, columns - 1, invoke, skipZeros);
   };
-  function _map3(matrix, minRow, maxRow, minColumn, maxColumn, callback, skipZeros) {
+  function _map(matrix, minRow, maxRow, minColumn, maxColumn, callback, skipZeros) {
     var values = [];
     var index = [];
     var ptr = [];
@@ -11124,9 +11607,9 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
       zero = typed2.convert(0, matrix._datatype);
     }
     var invoke = function invoke2(v, x, y) {
-      v = callback(v, x, y);
-      if (!eq(v, zero)) {
-        values.push(v);
+      var value2 = callback(v, x, y);
+      if (!eq(value2, zero)) {
+        values.push(value2);
         index.push(x);
       }
     };
@@ -11168,13 +11651,14 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
     var me = this;
     var rows = this._size[0];
     var columns = this._size[1];
+    var fastCallback = optimizeCallback(callback, me, "forEach");
     for (var j = 0; j < columns; j++) {
       var k0 = this._ptr[j];
       var k1 = this._ptr[j + 1];
       if (skipZeros) {
         for (var k = k0; k < k1; k++) {
           var i = this._index[k];
-          callback(this._values[k], [i, j], me);
+          fastCallback.fn(this._values[k], [i, j], me);
         }
       } else {
         var values = {};
@@ -11184,7 +11668,7 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
         }
         for (var _i7 = 0; _i7 < rows; _i7++) {
           var value = _i7 in values ? values[_i7] : 0;
-          callback(value, [_i7, j], me);
+          fastCallback.fn(value, [_i7, j], me);
         }
       }
     }
@@ -11266,7 +11750,7 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
       if (isBigNumber(k)) {
         k = k.toNumber();
       }
-      if (!isNumber(k) || !isInteger(k)) {
+      if (!isNumber(k) || !isInteger2(k)) {
         throw new TypeError("The parameter k must be an integer number");
       }
     } else {
@@ -11315,7 +11799,7 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
       if (isBigNumber(s)) {
         s = s.toNumber();
       }
-      if (!isNumber(s) || !isInteger(s) || s < 1) {
+      if (!isNumber(s) || !isInteger2(s) || s < 1) {
         throw new Error("Size values must be positive integers");
       }
       return s;
@@ -11324,7 +11808,7 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
       if (isBigNumber(k)) {
         k = k.toNumber();
       }
-      if (!isNumber(k) || !isInteger(k)) {
+      if (!isNumber(k) || !isInteger2(k)) {
         throw new TypeError("The parameter k must be an integer number");
       }
     } else {
@@ -11385,7 +11869,7 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
     });
   };
   SparseMatrix.prototype.swapRows = function(i, j) {
-    if (!isNumber(i) || !isInteger(i) || !isNumber(j) || !isInteger(j)) {
+    if (!isNumber(i) || !isInteger2(i) || !isNumber(j) || !isInteger2(j)) {
       throw new Error("Row index must be positive integers");
     }
     if (this._size.length !== 2) {
@@ -11448,8 +11932,8 @@ var createSparseMatrixClass = /* @__PURE__ */ factory(name18, dependencies19, (_
 });
 
 // node_modules/mathjs/lib/esm/type/number.js
-var name19 = "number";
-var dependencies20 = ["typed"];
+var name21 = "number";
+var dependencies22 = ["typed"];
 function getNonDecimalNumberParts(input) {
   var nonDecimalWithRadixMatch = input.match(/(0[box])([0-9a-fA-F]*)\.([0-9a-fA-F]*)/);
   if (nonDecimalWithRadixMatch) {
@@ -11483,7 +11967,7 @@ function makeNumberFromNonDecimalParts(parts) {
   }
   return result;
 }
-var createNumber = /* @__PURE__ */ factory(name19, dependencies20, (_ref) => {
+var createNumber = /* @__PURE__ */ factory(name21, dependencies22, (_ref) => {
   var {
     typed: typed2
   } = _ref;
@@ -11523,6 +12007,9 @@ var createNumber = /* @__PURE__ */ factory(name19, dependencies20, (_ref) => {
     BigNumber: function BigNumber(x) {
       return x.toNumber();
     },
+    bigint: function bigint(x) {
+      return Number(x);
+    },
     Fraction: function Fraction2(x) {
       return x.valueOf();
     },
@@ -11534,10 +12021,10 @@ var createNumber = /* @__PURE__ */ factory(name19, dependencies20, (_ref) => {
     null: function _null(x) {
       return 0;
     },
-    "Unit, string | Unit": function UnitStringUnit(unit, valuelessUnit) {
+    "Unit, string | Unit": function Unit_string__Unit(unit, valuelessUnit) {
       return unit.toNumber(valuelessUnit);
     },
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
   number.fromJSON = function(json) {
     return parseFloat(json.value);
@@ -11545,14 +12032,51 @@ var createNumber = /* @__PURE__ */ factory(name19, dependencies20, (_ref) => {
   return number;
 });
 
-// node_modules/mathjs/lib/esm/type/string.js
-var name20 = "string";
-var dependencies21 = ["typed"];
-var createString = /* @__PURE__ */ factory(name20, dependencies21, (_ref) => {
+// node_modules/mathjs/lib/esm/type/bigint.js
+var name22 = "bigint";
+var dependencies23 = ["typed"];
+var createBigint = /* @__PURE__ */ factory(name22, dependencies23, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name20, {
+  var bigint = typed2("bigint", {
+    "": function _() {
+      return /* @__PURE__ */ BigInt("0");
+    },
+    bigint: function bigint2(x) {
+      return x;
+    },
+    number: function number(x) {
+      return BigInt(x.toFixed());
+    },
+    BigNumber: function BigNumber(x) {
+      return BigInt(x.round().toString());
+    },
+    Fraction: function Fraction2(x) {
+      return BigInt(x.valueOf().toFixed());
+    },
+    "string | boolean": function string__boolean(x) {
+      return BigInt(x);
+    },
+    null: function _null(x) {
+      return /* @__PURE__ */ BigInt("0");
+    },
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
+  });
+  bigint.fromJSON = function(json) {
+    return BigInt(json.value);
+  };
+  return bigint;
+});
+
+// node_modules/mathjs/lib/esm/type/string.js
+var name23 = "string";
+var dependencies24 = ["typed"];
+var createString = /* @__PURE__ */ factory(name23, dependencies24, (_ref) => {
+  var {
+    typed: typed2
+  } = _ref;
+  return typed2(name23, {
     "": function _() {
       return "";
     },
@@ -11566,7 +12090,7 @@ var createString = /* @__PURE__ */ factory(name20, dependencies21, (_ref) => {
     string: function string(x) {
       return x;
     },
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2)),
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2)),
     any: function any(x) {
       return String(x);
     }
@@ -11574,13 +12098,13 @@ var createString = /* @__PURE__ */ factory(name20, dependencies21, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/type/boolean.js
-var name21 = "boolean";
-var dependencies22 = ["typed"];
-var createBoolean = /* @__PURE__ */ factory(name21, dependencies22, (_ref) => {
+var name24 = "boolean";
+var dependencies25 = ["typed"];
+var createBoolean = /* @__PURE__ */ factory(name24, dependencies25, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name21, {
+  return typed2(name24, {
     "": function _() {
       return false;
     },
@@ -11609,14 +12133,14 @@ var createBoolean = /* @__PURE__ */ factory(name21, dependencies22, (_ref) => {
       }
       throw new Error('Cannot convert "' + x + '" to a boolean');
     },
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
 // node_modules/mathjs/lib/esm/type/bignumber/function/bignumber.js
-var name22 = "bignumber";
-var dependencies23 = ["typed", "BigNumber"];
-var createBignumber = /* @__PURE__ */ factory(name22, dependencies23, (_ref) => {
+var name25 = "bignumber";
+var dependencies26 = ["typed", "BigNumber"];
+var createBignumber = /* @__PURE__ */ factory(name25, dependencies26, (_ref) => {
   var {
     typed: typed2,
     BigNumber
@@ -11649,25 +12173,28 @@ var createBignumber = /* @__PURE__ */ factory(name22, dependencies23, (_ref) => 
     BigNumber: function BigNumber2(x) {
       return x;
     },
+    bigint: function bigint(x) {
+      return new BigNumber(x.toString());
+    },
     Unit: typed2.referToSelf((self2) => (x) => {
       var clone4 = x.clone();
       clone4.value = self2(x.value);
       return clone4;
     }),
     Fraction: function Fraction2(x) {
-      return new BigNumber(x.n).div(x.d).times(x.s);
+      return new BigNumber(String(x.n)).div(String(x.d)).times(String(x.s));
     },
-    null: function _null(x) {
+    null: function _null(_x) {
       return new BigNumber(0);
     },
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
 // node_modules/mathjs/lib/esm/type/complex/function/complex.js
-var name23 = "complex";
-var dependencies24 = ["typed", "Complex"];
-var createComplex = /* @__PURE__ */ factory(name23, dependencies24, (_ref) => {
+var name26 = "complex";
+var dependencies27 = ["typed", "Complex"];
+var createComplex = /* @__PURE__ */ factory(name26, dependencies27, (_ref) => {
   var {
     typed: typed2,
     Complex: Complex2
@@ -11679,11 +12206,11 @@ var createComplex = /* @__PURE__ */ factory(name23, dependencies24, (_ref) => {
     number: function number(x) {
       return new Complex2(x, 0);
     },
-    "number, number": function numberNumber(re, im) {
+    "number, number": function number_number(re, im) {
       return new Complex2(re, im);
     },
     // TODO: this signature should be redundant
-    "BigNumber, BigNumber": function BigNumberBigNumber(re, im) {
+    "BigNumber, BigNumber": function BigNumber_BigNumber(re, im) {
       return new Complex2(re.toNumber(), im.toNumber());
     },
     Fraction: function Fraction2(x) {
@@ -11707,21 +12234,21 @@ var createComplex = /* @__PURE__ */ factory(name23, dependencies24, (_ref) => {
       }
       throw new Error("Expected object with properties (re and im) or (r and phi) or (abs and arg)");
     },
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
 // node_modules/mathjs/lib/esm/type/fraction/function/fraction.js
-var name24 = "fraction";
-var dependencies25 = ["typed", "Fraction"];
-var createFraction = /* @__PURE__ */ factory(name24, dependencies25, (_ref) => {
+var name27 = "fraction";
+var dependencies28 = ["typed", "Fraction"];
+var createFraction = /* @__PURE__ */ factory(name27, dependencies28, (_ref) => {
   var {
     typed: typed2,
     Fraction: Fraction2
   } = _ref;
   return typed2("fraction", {
     number: function number(x) {
-      if (!isFinite(x) || isNaN(x)) {
+      if (!Number.isFinite(x) || isNaN(x)) {
         throw new Error(x + " cannot be represented as a fraction");
       }
       return new Fraction2(x);
@@ -11729,13 +12256,19 @@ var createFraction = /* @__PURE__ */ factory(name24, dependencies25, (_ref) => {
     string: function string(x) {
       return new Fraction2(x);
     },
-    "number, number": function numberNumber(numerator, denominator) {
+    "number, number": function number_number(numerator, denominator) {
+      return new Fraction2(numerator, denominator);
+    },
+    "bigint, bigint": function bigint_bigint(numerator, denominator) {
       return new Fraction2(numerator, denominator);
     },
     null: function _null(x) {
       return new Fraction2(0);
     },
     BigNumber: function BigNumber(x) {
+      return new Fraction2(x.toString());
+    },
+    bigint: function bigint(x) {
       return new Fraction2(x.toString());
     },
     Fraction: function Fraction3(x) {
@@ -11749,28 +12282,28 @@ var createFraction = /* @__PURE__ */ factory(name24, dependencies25, (_ref) => {
     Object: function Object2(x) {
       return new Fraction2(x);
     },
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/function/matrix.js
-var name25 = "matrix";
-var dependencies26 = ["typed", "Matrix", "DenseMatrix", "SparseMatrix"];
-var createMatrix = /* @__PURE__ */ factory(name25, dependencies26, (_ref) => {
+var name28 = "matrix";
+var dependencies29 = ["typed", "Matrix", "DenseMatrix", "SparseMatrix"];
+var createMatrix = /* @__PURE__ */ factory(name28, dependencies29, (_ref) => {
   var {
     typed: typed2,
     Matrix,
     DenseMatrix,
     SparseMatrix
   } = _ref;
-  return typed2(name25, {
+  return typed2(name28, {
     "": function _() {
       return _create([]);
     },
     string: function string(format4) {
       return _create([], format4);
     },
-    "string, string": function stringString(format4, datatype) {
+    "string, string": function string_string(format4, datatype) {
       return _create([], format4, datatype);
     },
     Array: function Array2(data) {
@@ -11794,31 +12327,31 @@ var createMatrix = /* @__PURE__ */ factory(name25, dependencies26, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/matrixFromFunction.js
-var name26 = "matrixFromFunction";
-var dependencies27 = ["typed", "matrix", "isZero"];
-var createMatrixFromFunction = /* @__PURE__ */ factory(name26, dependencies27, (_ref) => {
+var name29 = "matrixFromFunction";
+var dependencies30 = ["typed", "matrix", "isZero"];
+var createMatrixFromFunction = /* @__PURE__ */ factory(name29, dependencies30, (_ref) => {
   var {
     typed: typed2,
     matrix,
     isZero
   } = _ref;
-  return typed2(name26, {
-    "Array | Matrix, function, string, string": function ArrayMatrixFunctionStringString(size, fn, format4, datatype) {
+  return typed2(name29, {
+    "Array | Matrix, function, string, string": function Array__Matrix_function_string_string(size, fn, format4, datatype) {
       return _create(size, fn, format4, datatype);
     },
-    "Array | Matrix, function, string": function ArrayMatrixFunctionString(size, fn, format4) {
+    "Array | Matrix, function, string": function Array__Matrix_function_string(size, fn, format4) {
       return _create(size, fn, format4);
     },
-    "Matrix, function": function MatrixFunction(size, fn) {
+    "Matrix, function": function Matrix_function(size, fn) {
       return _create(size, fn, "dense");
     },
-    "Array, function": function ArrayFunction(size, fn) {
+    "Array, function": function Array_function(size, fn) {
       return _create(size, fn, "dense").toArray();
     },
-    "Array | Matrix, string, function": function ArrayMatrixStringFunction(size, format4, fn) {
+    "Array | Matrix, string, function": function Array__Matrix_string_function(size, format4, fn) {
       return _create(size, fn, format4);
     },
-    "Array | Matrix, string, string, function": function ArrayMatrixStringStringFunction(size, format4, datatype, fn) {
+    "Array | Matrix, string, string, function": function Array__Matrix_string_string_function(size, format4, datatype, fn) {
       return _create(size, fn, format4, datatype);
     }
   });
@@ -11840,16 +12373,16 @@ var createMatrixFromFunction = /* @__PURE__ */ factory(name26, dependencies27, (
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/matrixFromRows.js
-var name27 = "matrixFromRows";
-var dependencies28 = ["typed", "matrix", "flatten", "size"];
-var createMatrixFromRows = /* @__PURE__ */ factory(name27, dependencies28, (_ref) => {
+var name30 = "matrixFromRows";
+var dependencies31 = ["typed", "matrix", "flatten", "size"];
+var createMatrixFromRows = /* @__PURE__ */ factory(name30, dependencies31, (_ref) => {
   var {
     typed: typed2,
     matrix,
     flatten: flatten2,
     size
   } = _ref;
-  return typed2(name27, {
+  return typed2(name30, {
     "...Array": function Array2(arr) {
       return _createArray(arr);
     },
@@ -11890,16 +12423,16 @@ var createMatrixFromRows = /* @__PURE__ */ factory(name27, dependencies28, (_ref
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/matrixFromColumns.js
-var name28 = "matrixFromColumns";
-var dependencies29 = ["typed", "matrix", "flatten", "size"];
-var createMatrixFromColumns = /* @__PURE__ */ factory(name28, dependencies29, (_ref) => {
+var name31 = "matrixFromColumns";
+var dependencies32 = ["typed", "matrix", "flatten", "size"];
+var createMatrixFromColumns = /* @__PURE__ */ factory(name31, dependencies32, (_ref) => {
   var {
     typed: typed2,
     matrix,
     flatten: flatten2,
     size
   } = _ref;
-  return typed2(name28, {
+  return typed2(name31, {
     "...Array": function Array2(arr) {
       return _createArray(arr);
     },
@@ -11946,55 +12479,59 @@ var createMatrixFromColumns = /* @__PURE__ */ factory(name28, dependencies29, (_
 });
 
 // node_modules/mathjs/lib/esm/type/unit/function/splitUnit.js
-var name29 = "splitUnit";
-var dependencies30 = ["typed"];
-var createSplitUnit = /* @__PURE__ */ factory(name29, dependencies30, (_ref) => {
+var name32 = "splitUnit";
+var dependencies33 = ["typed"];
+var createSplitUnit = /* @__PURE__ */ factory(name32, dependencies33, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name29, {
-    "Unit, Array": function UnitArray(unit, parts) {
+  return typed2(name32, {
+    "Unit, Array": function Unit_Array(unit, parts) {
       return unit.splitUnit(parts);
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/unaryMinus.js
-var name30 = "unaryMinus";
-var dependencies31 = ["typed"];
-var createUnaryMinus = /* @__PURE__ */ factory(name30, dependencies31, (_ref) => {
+var name33 = "unaryMinus";
+var dependencies34 = ["typed"];
+var createUnaryMinus = /* @__PURE__ */ factory(name33, dependencies34, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name30, {
+  return typed2(name33, {
     number: unaryMinusNumber,
     "Complex | BigNumber | Fraction": (x) => x.neg(),
+    bigint: (x) => -x,
     Unit: typed2.referToSelf((self2) => (x) => {
       var res = x.clone();
       res.value = typed2.find(self2, res.valueType())(x.value);
       return res;
     }),
     // deep map collection, skip zeros since unaryMinus(0) = 0
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2, true))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2, true))
     // TODO: add support for string
   });
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/unaryPlus.js
-var name31 = "unaryPlus";
-var dependencies32 = ["typed", "config", "BigNumber"];
-var createUnaryPlus = /* @__PURE__ */ factory(name31, dependencies32, (_ref) => {
+var name34 = "unaryPlus";
+var dependencies35 = ["typed", "config", "numeric"];
+var createUnaryPlus = /* @__PURE__ */ factory(name34, dependencies35, (_ref) => {
   var {
     typed: typed2,
     config: config2,
-    BigNumber
+    numeric: numeric2
   } = _ref;
-  return typed2(name31, {
+  return typed2(name34, {
     number: unaryPlusNumber,
     Complex: function Complex2(x) {
       return x;
     },
-    BigNumber: function BigNumber2(x) {
+    BigNumber: function BigNumber(x) {
+      return x;
+    },
+    bigint: function bigint(x) {
       return x;
     },
     Fraction: function Fraction2(x) {
@@ -12004,39 +12541,43 @@ var createUnaryPlus = /* @__PURE__ */ factory(name31, dependencies32, (_ref) => 
       return x.clone();
     },
     // deep map collection, skip zeros since unaryPlus(0) = 0
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2, true)),
-    "boolean | string": function booleanString(x) {
-      return config2.number === "BigNumber" ? new BigNumber(+x) : +x;
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2, true)),
+    boolean: function boolean(x) {
+      return numeric2(x ? 1 : 0, config2.number);
+    },
+    string: function string(x) {
+      return numeric2(x, safeNumberType(x, config2));
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/abs.js
-var name32 = "abs";
-var dependencies33 = ["typed"];
-var createAbs = /* @__PURE__ */ factory(name32, dependencies33, (_ref) => {
+var name35 = "abs";
+var dependencies36 = ["typed"];
+var createAbs = /* @__PURE__ */ factory(name35, dependencies36, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name32, {
+  return typed2(name35, {
     number: absNumber,
     "Complex | BigNumber | Fraction | Unit": (x) => x.abs(),
+    bigint: (x) => x < /* @__PURE__ */ BigInt("0") ? -x : x,
     // deep map collection, skip zeros since abs(0) = 0
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2, true))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2, true))
   });
 });
 
-// node_modules/mathjs/lib/esm/function/matrix/apply.js
-var name33 = "apply";
-var dependencies34 = ["typed", "isInteger"];
-var createApply = /* @__PURE__ */ factory(name33, dependencies34, (_ref) => {
+// node_modules/mathjs/lib/esm/function/matrix/mapSlices.js
+var name36 = "mapSlices";
+var dependencies37 = ["typed", "isInteger"];
+var createMapSlices = /* @__PURE__ */ factory(name36, dependencies37, (_ref) => {
   var {
     typed: typed2,
-    isInteger: isInteger2
+    isInteger: isInteger3
   } = _ref;
-  return typed2(name33, {
-    "Array | Matrix, number | BigNumber, function": function ArrayMatrixNumberBigNumberFunction(mat, dim, callback) {
-      if (!isInteger2(dim)) {
+  return typed2(name36, {
+    "Array | Matrix, number | BigNumber, function": function Array__Matrix_number__BigNumber_function(mat, dim, callback) {
+      if (!isInteger3(dim)) {
         throw new TypeError("Integer number expected for dimension");
       }
       var size = Array.isArray(mat) ? arraySize(mat) : mat.size();
@@ -12044,14 +12585,16 @@ var createApply = /* @__PURE__ */ factory(name33, dependencies34, (_ref) => {
         throw new IndexError(dim, size.length);
       }
       if (isMatrix(mat)) {
-        return mat.create(_apply(mat.valueOf(), dim, callback));
+        return mat.create(_mapSlices(mat.valueOf(), dim, callback), mat.datatype());
       } else {
-        return _apply(mat, dim, callback);
+        return _mapSlices(mat, dim, callback);
       }
     }
   });
+}, {
+  formerly: "apply"
 });
-function _apply(mat, dim, callback) {
+function _mapSlices(mat, dim, callback) {
   var i, ret, tran;
   if (dim <= 0) {
     if (!Array.isArray(mat[0])) {
@@ -12060,14 +12603,14 @@ function _apply(mat, dim, callback) {
       tran = _switch2(mat);
       ret = [];
       for (i = 0; i < tran.length; i++) {
-        ret[i] = _apply(tran[i], dim - 1, callback);
+        ret[i] = _mapSlices(tran[i], dim - 1, callback);
       }
       return ret;
     }
   } else {
     ret = [];
     for (i = 0; i < mat.length; i++) {
-      ret[i] = _apply(mat[i], dim - 1, callback);
+      ret[i] = _mapSlices(mat[i], dim - 1, callback);
     }
     return ret;
   }
@@ -12088,21 +12631,24 @@ function _switch2(mat) {
 }
 
 // node_modules/mathjs/lib/esm/function/arithmetic/addScalar.js
-var name34 = "addScalar";
-var dependencies35 = ["typed"];
-var createAddScalar = /* @__PURE__ */ factory(name34, dependencies35, (_ref) => {
+var name37 = "addScalar";
+var dependencies38 = ["typed"];
+var createAddScalar = /* @__PURE__ */ factory(name37, dependencies38, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name34, {
+  return typed2(name37, {
     "number, number": addNumber,
-    "Complex, Complex": function ComplexComplex(x, y) {
+    "Complex, Complex": function Complex_Complex(x, y) {
       return x.add(y);
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, y) {
       return x.plus(y);
     },
-    "Fraction, Fraction": function FractionFraction(x, y) {
+    "bigint, bigint": function bigint_bigint(x, y) {
+      return x + y;
+    },
+    "Fraction, Fraction": function Fraction_Fraction(x, y) {
       return x.add(y);
     },
     "Unit, Unit": typed2.referToSelf((self2) => (x, y) => {
@@ -12122,21 +12668,24 @@ var createAddScalar = /* @__PURE__ */ factory(name34, dependencies35, (_ref) => 
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/subtractScalar.js
-var name35 = "subtractScalar";
-var dependencies36 = ["typed"];
-var createSubtractScalar = /* @__PURE__ */ factory(name35, dependencies36, (_ref) => {
+var name38 = "subtractScalar";
+var dependencies39 = ["typed"];
+var createSubtractScalar = /* @__PURE__ */ factory(name38, dependencies39, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name35, {
+  return typed2(name38, {
     "number, number": subtractNumber,
-    "Complex, Complex": function ComplexComplex(x, y) {
+    "Complex, Complex": function Complex_Complex(x, y) {
       return x.sub(y);
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, y) {
       return x.minus(y);
     },
-    "Fraction, Fraction": function FractionFraction(x, y) {
+    "bigint, bigint": function bigint_bigint(x, y) {
+      return x - y;
+    },
+    "Fraction, Fraction": function Fraction_Fraction(x, y) {
       return x.sub(y);
     },
     "Unit, Unit": typed2.referToSelf((self2) => (x, y) => {
@@ -12156,9 +12705,9 @@ var createSubtractScalar = /* @__PURE__ */ factory(name35, dependencies36, (_ref
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/cbrt.js
-var name36 = "cbrt";
-var dependencies37 = ["config", "typed", "isNegative", "unaryMinus", "matrix", "Complex", "BigNumber", "Fraction"];
-var createCbrt = /* @__PURE__ */ factory(name36, dependencies37, (_ref) => {
+var name39 = "cbrt";
+var dependencies40 = ["config", "typed", "isNegative", "unaryMinus", "matrix", "Complex", "BigNumber", "Fraction"];
+var createCbrt = /* @__PURE__ */ factory(name39, dependencies40, (_ref) => {
   var {
     config: config2,
     typed: typed2,
@@ -12169,7 +12718,7 @@ var createCbrt = /* @__PURE__ */ factory(name36, dependencies37, (_ref) => {
     BigNumber,
     Fraction: Fraction2
   } = _ref;
-  return typed2(name36, {
+  return typed2(name39, {
     number: cbrtNumber,
     // note: signature 'number, boolean' is also supported,
     //       created by typed as it knows how to convert number to Complex
@@ -12221,9 +12770,9 @@ var createCbrt = /* @__PURE__ */ factory(name36, dependencies37, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matAlgo11xS0s.js
-var name37 = "matAlgo11xS0s";
-var dependencies38 = ["typed", "equalScalar"];
-var createMatAlgo11xS0s = /* @__PURE__ */ factory(name37, dependencies38, (_ref) => {
+var name40 = "matAlgo11xS0s";
+var dependencies41 = ["typed", "equalScalar"];
+var createMatAlgo11xS0s = /* @__PURE__ */ factory(name40, dependencies41, (_ref) => {
   var {
     typed: typed2,
     equalScalar
@@ -12276,9 +12825,9 @@ var createMatAlgo11xS0s = /* @__PURE__ */ factory(name37, dependencies38, (_ref)
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matAlgo12xSfs.js
-var name38 = "matAlgo12xSfs";
-var dependencies39 = ["typed", "DenseMatrix"];
-var createMatAlgo12xSfs = /* @__PURE__ */ factory(name38, dependencies39, (_ref) => {
+var name41 = "matAlgo12xSfs";
+var dependencies42 = ["typed", "DenseMatrix"];
+var createMatAlgo12xSfs = /* @__PURE__ */ factory(name41, dependencies42, (_ref) => {
   var {
     typed: typed2,
     DenseMatrix
@@ -12331,9 +12880,9 @@ var createMatAlgo12xSfs = /* @__PURE__ */ factory(name38, dependencies39, (_ref)
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matAlgo14xDs.js
-var name39 = "matAlgo14xDs";
-var dependencies40 = ["typed"];
-var createMatAlgo14xDs = /* @__PURE__ */ factory(name39, dependencies40, (_ref) => {
+var name42 = "matAlgo14xDs";
+var dependencies43 = ["typed"];
+var createMatAlgo14xDs = /* @__PURE__ */ factory(name42, dependencies43, (_ref) => {
   var {
     typed: typed2
   } = _ref;
@@ -12371,35 +12920,39 @@ var createMatAlgo14xDs = /* @__PURE__ */ factory(name39, dependencies40, (_ref) 
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/ceil.js
-var name40 = "ceil";
-var dependencies41 = ["typed", "config", "round", "matrix", "equalScalar", "zeros", "DenseMatrix"];
-var createCeilNumber = /* @__PURE__ */ factory(name40, ["typed", "config", "round"], (_ref) => {
+var name43 = "ceil";
+var dependencies44 = ["typed", "config", "round", "matrix", "equalScalar", "zeros", "DenseMatrix"];
+var bigTen = new decimal_default(10);
+var createCeilNumber = /* @__PURE__ */ factory(name43, ["typed", "config", "round"], (_ref) => {
   var {
     typed: typed2,
     config: config2,
     round: round2
   } = _ref;
-  return typed2(name40, {
-    number: function number(x) {
-      if (nearlyEqual(x, round2(x), config2.epsilon)) {
-        return round2(x);
-      } else {
-        return Math.ceil(x);
+  function _ceilNumber(x) {
+    var c = Math.ceil(x);
+    var r = round2(x);
+    if (c === r) return c;
+    if (nearlyEqual(x, r, config2.relTol, config2.absTol) && !nearlyEqual(x, c, config2.relTol, config2.absTol)) {
+      return r;
+    }
+    return c;
+  }
+  return typed2(name43, {
+    number: _ceilNumber,
+    "number, number": function number_number(x, n) {
+      if (!isInteger2(n)) {
+        throw new RangeError("number of decimals in function ceil must be an integer");
       }
-    },
-    "number, number": function numberNumber(x, n) {
-      if (nearlyEqual(x, round2(x, n), config2.epsilon)) {
-        return round2(x, n);
-      } else {
-        var [number, exponent] = "".concat(x, "e").split("e");
-        var result = Math.ceil(Number("".concat(number, "e").concat(Number(exponent) + n)));
-        [number, exponent] = "".concat(result, "e").split("e");
-        return Number("".concat(number, "e").concat(Number(exponent) - n));
+      if (n < 0 || n > 15) {
+        throw new RangeError("number of decimals in ceil number must be in range 0-15");
       }
+      var shift = 10 ** n;
+      return _ceilNumber(x * shift) / shift;
     }
   });
 });
-var createCeil = /* @__PURE__ */ factory(name40, dependencies41, (_ref2) => {
+var createCeil = /* @__PURE__ */ factory(name43, dependencies44, (_ref2) => {
   var {
     typed: typed2,
     config: config2,
@@ -12425,46 +12978,57 @@ var createCeil = /* @__PURE__ */ factory(name40, dependencies41, (_ref2) => {
     config: config2,
     round: round2
   });
+  function _bigCeil(x) {
+    var bne = (a, b) => nearlyEqual2(a, b, config2.relTol, config2.absTol);
+    var c = x.ceil();
+    var r = round2(x);
+    if (c.eq(r)) return c;
+    if (bne(x, r) && !bne(x, c)) return r;
+    return c;
+  }
   return typed2("ceil", {
     number: ceilNumber.signatures.number,
     "number,number": ceilNumber.signatures["number,number"],
     Complex: function Complex2(x) {
       return x.ceil();
     },
-    "Complex, number": function ComplexNumber(x, n) {
+    "Complex, number": function Complex_number(x, n) {
       return x.ceil(n);
     },
-    "Complex, BigNumber": function ComplexBigNumber(x, n) {
+    "Complex, BigNumber": function Complex_BigNumber(x, n) {
       return x.ceil(n.toNumber());
     },
-    BigNumber: function BigNumber(x) {
-      if (nearlyEqual2(x, round2(x), config2.epsilon)) {
-        return round2(x);
-      } else {
-        return x.ceil();
-      }
+    BigNumber: _bigCeil,
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, n) {
+      var shift = bigTen.pow(n);
+      return _bigCeil(x.mul(shift)).div(shift);
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, n) {
-      if (nearlyEqual2(x, round2(x, n), config2.epsilon)) {
-        return round2(x, n);
-      } else {
-        return x.toDecimalPlaces(n.toNumber(), decimal_default.ROUND_CEIL);
-      }
-    },
+    bigint: (b) => b,
+    "bigint, number": (b, _dummy) => b,
+    "bigint, BigNumber": (b, _dummy) => b,
     Fraction: function Fraction2(x) {
       return x.ceil();
     },
-    "Fraction, number": function FractionNumber(x, n) {
+    "Fraction, number": function Fraction_number(x, n) {
       return x.ceil(n);
     },
-    "Fraction, BigNumber": function FractionBigNumber(x, n) {
+    "Fraction, BigNumber": function Fraction_BigNumber(x, n) {
       return x.ceil(n.toNumber());
     },
+    "Unit, number, Unit": typed2.referToSelf((self2) => function(x, n, unit) {
+      var valueless = x.toNumeric(unit);
+      return unit.multiply(self2(valueless, n));
+    }),
+    "Unit, BigNumber, Unit": typed2.referToSelf((self2) => (x, n, unit) => self2(x, n.toNumber(), unit)),
+    "Array | Matrix, number | BigNumber, Unit": typed2.referToSelf((self2) => (x, n, unit) => {
+      return deepMap2(x, (value) => self2(value, n, unit), true);
+    }),
+    "Array | Matrix | Unit, Unit": typed2.referToSelf((self2) => (x, unit) => self2(x, 0, unit)),
     "Array | Matrix": typed2.referToSelf((self2) => (x) => {
-      return deepMap(x, self2, true);
+      return deepMap2(x, self2, true);
     }),
     "Array, number | BigNumber": typed2.referToSelf((self2) => (x, n) => {
-      return deepMap(x, (i) => self2(i, n), true);
+      return deepMap2(x, (i) => self2(i, n), true);
     }),
     "SparseMatrix, number | BigNumber": typed2.referToSelf((self2) => (x, y) => {
       return matAlgo11xS0s(x, y, self2, false);
@@ -12486,19 +13050,22 @@ var createCeil = /* @__PURE__ */ factory(name40, dependencies41, (_ref2) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/cube.js
-var name41 = "cube";
-var dependencies42 = ["typed"];
-var createCube = /* @__PURE__ */ factory(name41, dependencies42, (_ref) => {
+var name44 = "cube";
+var dependencies45 = ["typed"];
+var createCube = /* @__PURE__ */ factory(name44, dependencies45, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name41, {
+  return typed2(name44, {
     number: cubeNumber,
     Complex: function Complex2(x) {
       return x.mul(x).mul(x);
     },
     BigNumber: function BigNumber(x) {
       return x.times(x).times(x);
+    },
+    bigint: function bigint(x) {
+      return x * x * x;
     },
     Fraction: function Fraction2(x) {
       return x.pow(3);
@@ -12510,13 +13077,13 @@ var createCube = /* @__PURE__ */ factory(name41, dependencies42, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/exp.js
-var name42 = "exp";
-var dependencies43 = ["typed"];
-var createExp = /* @__PURE__ */ factory(name42, dependencies43, (_ref) => {
+var name45 = "exp";
+var dependencies46 = ["typed"];
+var createExp = /* @__PURE__ */ factory(name45, dependencies46, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name42, {
+  return typed2(name45, {
     number: expNumber,
     Complex: function Complex2(x) {
       return x.exp();
@@ -12528,14 +13095,14 @@ var createExp = /* @__PURE__ */ factory(name42, dependencies43, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/expm1.js
-var name43 = "expm1";
-var dependencies44 = ["typed", "Complex"];
-var createExpm1 = /* @__PURE__ */ factory(name43, dependencies44, (_ref) => {
+var name46 = "expm1";
+var dependencies47 = ["typed", "Complex"];
+var createExpm1 = /* @__PURE__ */ factory(name46, dependencies47, (_ref) => {
   var {
     typed: typed2,
     Complex: _Complex
   } = _ref;
-  return typed2(name43, {
+  return typed2(name46, {
     number: expm1Number,
     Complex: function Complex2(x) {
       var r = Math.exp(x.re);
@@ -12548,24 +13115,24 @@ var createExpm1 = /* @__PURE__ */ factory(name43, dependencies44, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/fix.js
-var name44 = "fix";
-var dependencies45 = ["typed", "Complex", "matrix", "ceil", "floor", "equalScalar", "zeros", "DenseMatrix"];
-var createFixNumber = /* @__PURE__ */ factory(name44, ["typed", "ceil", "floor"], (_ref) => {
+var name47 = "fix";
+var dependencies48 = ["typed", "Complex", "matrix", "ceil", "floor", "equalScalar", "zeros", "DenseMatrix"];
+var createFixNumber = /* @__PURE__ */ factory(name47, ["typed", "ceil", "floor"], (_ref) => {
   var {
     typed: typed2,
     ceil: ceil2,
     floor: floor2
   } = _ref;
-  return typed2(name44, {
+  return typed2(name47, {
     number: function number(x) {
       return x > 0 ? floor2(x) : ceil2(x);
     },
-    "number, number": function numberNumber(x, n) {
+    "number, number": function number_number(x, n) {
       return x > 0 ? floor2(x, n) : ceil2(x, n);
     }
   });
 });
-var createFix = /* @__PURE__ */ factory(name44, dependencies45, (_ref2) => {
+var createFix = /* @__PURE__ */ factory(name47, dependencies48, (_ref2) => {
   var {
     typed: typed2,
     Complex: _Complex,
@@ -12594,30 +13161,42 @@ var createFix = /* @__PURE__ */ factory(name44, dependencies45, (_ref2) => {
     Complex: function Complex2(x) {
       return new _Complex(x.re > 0 ? Math.floor(x.re) : Math.ceil(x.re), x.im > 0 ? Math.floor(x.im) : Math.ceil(x.im));
     },
-    "Complex, number": function ComplexNumber(x, n) {
+    "Complex, number": function Complex_number(x, n) {
       return new _Complex(x.re > 0 ? floor2(x.re, n) : ceil2(x.re, n), x.im > 0 ? floor2(x.im, n) : ceil2(x.im, n));
     },
-    "Complex, BigNumber": function ComplexBigNumber(x, bn) {
+    "Complex, BigNumber": function Complex_BigNumber(x, bn) {
       var n = bn.toNumber();
       return new _Complex(x.re > 0 ? floor2(x.re, n) : ceil2(x.re, n), x.im > 0 ? floor2(x.im, n) : ceil2(x.im, n));
     },
     BigNumber: function BigNumber(x) {
       return x.isNegative() ? ceil2(x) : floor2(x);
     },
-    "BigNumber, number | BigNumber": function BigNumberNumberBigNumber(x, n) {
+    "BigNumber, number | BigNumber": function BigNumber_number__BigNumber(x, n) {
       return x.isNegative() ? ceil2(x, n) : floor2(x, n);
     },
+    bigint: (b) => b,
+    "bigint, number": (b, _dummy) => b,
+    "bigint, BigNumber": (b, _dummy) => b,
     Fraction: function Fraction2(x) {
-      return x.s < 0 ? x.ceil() : x.floor();
+      return x.s < /* @__PURE__ */ BigInt("0") ? x.ceil() : x.floor();
     },
-    "Fraction, number | BigNumber": function FractionNumberBigNumber(x, n) {
-      return x.s < 0 ? ceil2(x, n) : floor2(x, n);
+    "Fraction, number | BigNumber": function Fraction_number__BigNumber(x, n) {
+      return x.s < /* @__PURE__ */ BigInt("0") ? ceil2(x, n) : floor2(x, n);
     },
+    "Unit, number, Unit": typed2.referToSelf((self2) => function(x, n, unit) {
+      var valueless = x.toNumeric(unit);
+      return unit.multiply(self2(valueless, n));
+    }),
+    "Unit, BigNumber, Unit": typed2.referToSelf((self2) => (x, n, unit) => self2(x, n.toNumber(), unit)),
+    "Array | Matrix, number | BigNumber, Unit": typed2.referToSelf((self2) => (x, n, unit) => {
+      return deepMap2(x, (value) => self2(value, n, unit), true);
+    }),
+    "Array | Matrix | Unit, Unit": typed2.referToSelf((self2) => (x, unit) => self2(x, 0, unit)),
     "Array | Matrix": typed2.referToSelf((self2) => (x) => {
-      return deepMap(x, self2, true);
+      return deepMap2(x, self2, true);
     }),
     "Array | Matrix, number | BigNumber": typed2.referToSelf((self2) => (x, n) => {
-      return deepMap(x, (i) => self2(i, n), true);
+      return deepMap2(x, (i) => self2(i, n), true);
     }),
     "number | Complex | Fraction | BigNumber, Array": typed2.referToSelf((self2) => (x, y) => {
       return matAlgo14xDs(matrix(y), x, self2, true).valueOf();
@@ -12633,35 +13212,39 @@ var createFix = /* @__PURE__ */ factory(name44, dependencies45, (_ref2) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/floor.js
-var name45 = "floor";
-var dependencies46 = ["typed", "config", "round", "matrix", "equalScalar", "zeros", "DenseMatrix"];
-var createFloorNumber = /* @__PURE__ */ factory(name45, ["typed", "config", "round"], (_ref) => {
+var name48 = "floor";
+var dependencies49 = ["typed", "config", "round", "matrix", "equalScalar", "zeros", "DenseMatrix"];
+var bigTen2 = new decimal_default(10);
+var createFloorNumber = /* @__PURE__ */ factory(name48, ["typed", "config", "round"], (_ref) => {
   var {
     typed: typed2,
     config: config2,
     round: round2
   } = _ref;
-  return typed2(name45, {
-    number: function number(x) {
-      if (nearlyEqual(x, round2(x), config2.epsilon)) {
-        return round2(x);
-      } else {
-        return Math.floor(x);
+  function _floorNumber(x) {
+    var f = Math.floor(x);
+    var r = round2(x);
+    if (f === r) return f;
+    if (nearlyEqual(x, r, config2.relTol, config2.absTol) && !nearlyEqual(x, f, config2.relTol, config2.absTol)) {
+      return r;
+    }
+    return f;
+  }
+  return typed2(name48, {
+    number: _floorNumber,
+    "number, number": function number_number(x, n) {
+      if (!isInteger2(n)) {
+        throw new RangeError("number of decimals in function floor must be an integer");
       }
-    },
-    "number, number": function numberNumber(x, n) {
-      if (nearlyEqual(x, round2(x, n), config2.epsilon)) {
-        return round2(x, n);
-      } else {
-        var [number, exponent] = "".concat(x, "e").split("e");
-        var result = Math.floor(Number("".concat(number, "e").concat(Number(exponent) + n)));
-        [number, exponent] = "".concat(result, "e").split("e");
-        return Number("".concat(number, "e").concat(Number(exponent) - n));
+      if (n < 0 || n > 15) {
+        throw new RangeError("number of decimals in floor number must be in range 0 - 15");
       }
+      var shift = 10 ** n;
+      return _floorNumber(x * shift) / shift;
     }
   });
 });
-var createFloor = /* @__PURE__ */ factory(name45, dependencies46, (_ref2) => {
+var createFloor = /* @__PURE__ */ factory(name48, dependencies49, (_ref2) => {
   var {
     typed: typed2,
     config: config2,
@@ -12687,46 +13270,57 @@ var createFloor = /* @__PURE__ */ factory(name45, dependencies46, (_ref2) => {
     config: config2,
     round: round2
   });
+  function _bigFloor(x) {
+    var bne = (a, b) => nearlyEqual2(a, b, config2.relTol, config2.absTol);
+    var f = x.floor();
+    var r = round2(x);
+    if (f.eq(r)) return f;
+    if (bne(x, r) && !bne(x, f)) return r;
+    return f;
+  }
   return typed2("floor", {
     number: floorNumber.signatures.number,
     "number,number": floorNumber.signatures["number,number"],
     Complex: function Complex2(x) {
       return x.floor();
     },
-    "Complex, number": function ComplexNumber(x, n) {
+    "Complex, number": function Complex_number(x, n) {
       return x.floor(n);
     },
-    "Complex, BigNumber": function ComplexBigNumber(x, n) {
+    "Complex, BigNumber": function Complex_BigNumber(x, n) {
       return x.floor(n.toNumber());
     },
-    BigNumber: function BigNumber(x) {
-      if (nearlyEqual2(x, round2(x), config2.epsilon)) {
-        return round2(x);
-      } else {
-        return x.floor();
-      }
+    BigNumber: _bigFloor,
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, n) {
+      var shift = bigTen2.pow(n);
+      return _bigFloor(x.mul(shift)).div(shift);
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, n) {
-      if (nearlyEqual2(x, round2(x, n), config2.epsilon)) {
-        return round2(x, n);
-      } else {
-        return x.toDecimalPlaces(n.toNumber(), decimal_default.ROUND_FLOOR);
-      }
-    },
+    bigint: (b) => b,
+    "bigint, number": (b, _dummy) => b,
+    "bigint, BigNumber": (b, _dummy) => b,
     Fraction: function Fraction2(x) {
       return x.floor();
     },
-    "Fraction, number": function FractionNumber(x, n) {
+    "Fraction, number": function Fraction_number(x, n) {
       return x.floor(n);
     },
-    "Fraction, BigNumber": function FractionBigNumber(x, n) {
+    "Fraction, BigNumber": function Fraction_BigNumber(x, n) {
       return x.floor(n.toNumber());
     },
+    "Unit, number, Unit": typed2.referToSelf((self2) => function(x, n, unit) {
+      var valueless = x.toNumeric(unit);
+      return unit.multiply(self2(valueless, n));
+    }),
+    "Unit, BigNumber, Unit": typed2.referToSelf((self2) => (x, n, unit) => self2(x, n.toNumber(), unit)),
+    "Array | Matrix, number | BigNumber, Unit": typed2.referToSelf((self2) => (x, n, unit) => {
+      return deepMap2(x, (value) => self2(value, n, unit), true);
+    }),
+    "Array | Matrix | Unit, Unit": typed2.referToSelf((self2) => (x, unit) => self2(x, 0, unit)),
     "Array | Matrix": typed2.referToSelf((self2) => (x) => {
-      return deepMap(x, self2, true);
+      return deepMap2(x, self2, true);
     }),
     "Array, number | BigNumber": typed2.referToSelf((self2) => (x, n) => {
-      return deepMap(x, (i) => self2(i, n), true);
+      return deepMap2(x, (i) => self2(i, n), true);
     }),
     "SparseMatrix, number | BigNumber": typed2.referToSelf((self2) => (x, y) => {
       return matAlgo11xS0s(x, y, self2, false);
@@ -12748,9 +13342,9 @@ var createFloor = /* @__PURE__ */ factory(name45, dependencies46, (_ref2) => {
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matAlgo02xDS0.js
-var name46 = "matAlgo02xDS0";
-var dependencies47 = ["typed", "equalScalar"];
-var createMatAlgo02xDS0 = /* @__PURE__ */ factory(name46, dependencies47, (_ref) => {
+var name49 = "matAlgo02xDS0";
+var dependencies50 = ["typed", "equalScalar"];
+var createMatAlgo02xDS0 = /* @__PURE__ */ factory(name49, dependencies50, (_ref) => {
   var {
     typed: typed2,
     equalScalar
@@ -12811,9 +13405,9 @@ var createMatAlgo02xDS0 = /* @__PURE__ */ factory(name46, dependencies47, (_ref)
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matAlgo03xDSf.js
-var name47 = "matAlgo03xDSf";
-var dependencies48 = ["typed"];
-var createMatAlgo03xDSf = /* @__PURE__ */ factory(name47, dependencies48, (_ref) => {
+var name50 = "matAlgo03xDSf";
+var dependencies51 = ["typed"];
+var createMatAlgo03xDSf = /* @__PURE__ */ factory(name50, dependencies51, (_ref) => {
   var {
     typed: typed2
   } = _ref;
@@ -12875,9 +13469,9 @@ var createMatAlgo03xDSf = /* @__PURE__ */ factory(name47, dependencies48, (_ref)
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matAlgo05xSfSf.js
-var name48 = "matAlgo05xSfSf";
-var dependencies49 = ["typed", "equalScalar"];
-var createMatAlgo05xSfSf = /* @__PURE__ */ factory(name48, dependencies49, (_ref) => {
+var name51 = "matAlgo05xSfSf";
+var dependencies52 = ["typed", "equalScalar"];
+var createMatAlgo05xSfSf = /* @__PURE__ */ factory(name51, dependencies52, (_ref) => {
   var {
     typed: typed2,
     equalScalar
@@ -12972,9 +13566,9 @@ var createMatAlgo05xSfSf = /* @__PURE__ */ factory(name48, dependencies49, (_ref
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matAlgo13xDD.js
-var name49 = "matAlgo13xDD";
-var dependencies50 = ["typed"];
-var createMatAlgo13xDD = /* @__PURE__ */ factory(name49, dependencies50, (_ref) => {
+var name52 = "matAlgo13xDD";
+var dependencies53 = ["typed"];
+var createMatAlgo13xDD = /* @__PURE__ */ factory(name52, dependencies53, (_ref) => {
   var {
     typed: typed2
   } = _ref;
@@ -13024,69 +13618,33 @@ var createMatAlgo13xDD = /* @__PURE__ */ factory(name49, dependencies50, (_ref) 
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/broadcast.js
-var name50 = "broadcast";
-var dependancies = ["concat"];
-var createBroadcast = /* @__PURE__ */ factory(name50, dependancies, (_ref) => {
-  var {
-    concat: concat2
-  } = _ref;
-  return function(A, B) {
-    var N = Math.max(A._size.length, B._size.length);
-    if (A._size.length === B._size.length) {
-      if (A._size.every((dim2, i) => dim2 === B._size[i])) {
-        return [A, B];
-      }
-    }
-    var sizeA = _padLeft(A._size, N, 0);
-    var sizeB = _padLeft(B._size, N, 0);
-    var sizeMax = [];
-    for (var dim = 0; dim < N; dim++) {
-      sizeMax[dim] = Math.max(sizeA[dim], sizeB[dim]);
-    }
-    checkBroadcastingRules(sizeA, sizeMax);
-    checkBroadcastingRules(sizeB, sizeMax);
-    var AA = A.clone();
-    var BB = B.clone();
-    if (AA._size.length < N) {
-      AA.reshape(_padLeft(AA._size, N, 1));
-    } else if (BB._size.length < N) {
-      BB.reshape(_padLeft(BB._size, N, 1));
-    }
-    for (var _dim = 0; _dim < N; _dim++) {
-      if (AA._size[_dim] < sizeMax[_dim]) {
-        AA = _stretch(AA, sizeMax[_dim], _dim);
-      }
-      if (BB._size[_dim] < sizeMax[_dim]) {
-        BB = _stretch(BB, sizeMax[_dim], _dim);
-      }
-    }
-    return [AA, BB];
-  };
-  function _padLeft(shape, N, filler) {
-    return [...Array(N - shape.length).fill(filler), ...shape];
+function broadcast(A, B) {
+  if (deepStrictEqual(A.size(), B.size())) {
+    return [A, B];
   }
-  function _stretch(arrayToStretch, sizeToStretch, dimToStretch) {
-    return concat2(...Array(sizeToStretch).fill(arrayToStretch), dimToStretch);
+  var newSize = broadcastSizes(A.size(), B.size());
+  return [A, B].map((M) => _broadcastTo(M, newSize));
+}
+function _broadcastTo(M, size) {
+  if (deepStrictEqual(M.size(), size)) {
+    return M;
   }
-});
+  return M.create(broadcastTo(M.valueOf(), size), M.datatype());
+}
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matrixAlgorithmSuite.js
-var name51 = "matrixAlgorithmSuite";
-var dependencies51 = ["typed", "matrix", "concat"];
-var createMatrixAlgorithmSuite = /* @__PURE__ */ factory(name51, dependencies51, (_ref) => {
+var name53 = "matrixAlgorithmSuite";
+var dependencies54 = ["typed", "matrix"];
+var createMatrixAlgorithmSuite = /* @__PURE__ */ factory(name53, dependencies54, (_ref) => {
   var {
     typed: typed2,
-    matrix,
-    concat: concat2
+    matrix
   } = _ref;
   var matAlgo13xDD = createMatAlgo13xDD({
     typed: typed2
   });
   var matAlgo14xDs = createMatAlgo14xDs({
     typed: typed2
-  });
-  var broadcast = createBroadcast({
-    concat: concat2
   });
   return function matrixAlgorithmSuite(options) {
     var elop = options.elop;
@@ -13198,9 +13756,9 @@ var createMatrixAlgorithmSuite = /* @__PURE__ */ factory(name51, dependencies51,
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/mod.js
-var name52 = "mod";
-var dependencies52 = ["typed", "config", "round", "matrix", "equalScalar", "zeros", "DenseMatrix", "concat"];
-var createMod = /* @__PURE__ */ factory(name52, dependencies52, (_ref) => {
+var name54 = "mod";
+var dependencies55 = ["typed", "config", "round", "matrix", "equalScalar", "zeros", "DenseMatrix", "concat"];
+var createMod = /* @__PURE__ */ factory(name54, dependencies55, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -13244,12 +13802,22 @@ var createMod = /* @__PURE__ */ factory(name52, dependencies52, (_ref) => {
     matrix,
     concat: concat2
   });
-  return typed2(name52, {
+  return typed2(name54, {
     "number, number": _modNumber,
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, y) {
       return y.isZero() ? x : x.sub(y.mul(floor2(x.div(y))));
     },
-    "Fraction, Fraction": function FractionFraction(x, y) {
+    "bigint, bigint": function bigint_bigint(x, y) {
+      if (y === /* @__PURE__ */ BigInt("0")) {
+        return x;
+      }
+      if (x < 0) {
+        var m = x % y;
+        return m === /* @__PURE__ */ BigInt("0") ? m : m + y;
+      }
+      return x % y;
+    },
+    "Fraction, Fraction": function Fraction_Fraction(x, y) {
       return y.equals(0) ? x : x.sub(y.mul(floor2(x.div(y))));
     }
   }, matrixAlgorithmSuite({
@@ -13265,9 +13833,9 @@ var createMod = /* @__PURE__ */ factory(name52, dependencies52, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matAlgo01xDSid.js
-var name53 = "matAlgo01xDSid";
-var dependencies53 = ["typed"];
-var createMatAlgo01xDSid = /* @__PURE__ */ factory(name53, dependencies53, (_ref) => {
+var name55 = "matAlgo01xDSid";
+var dependencies56 = ["typed"];
+var createMatAlgo01xDSid = /* @__PURE__ */ factory(name55, dependencies56, (_ref) => {
   var {
     typed: typed2
   } = _ref;
@@ -13324,9 +13892,9 @@ var createMatAlgo01xDSid = /* @__PURE__ */ factory(name53, dependencies53, (_ref
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matAlgo04xSidSid.js
-var name54 = "matAlgo04xSidSid";
-var dependencies54 = ["typed", "equalScalar"];
-var createMatAlgo04xSidSid = /* @__PURE__ */ factory(name54, dependencies54, (_ref) => {
+var name56 = "matAlgo04xSidSid";
+var dependencies57 = ["typed", "equalScalar"];
+var createMatAlgo04xSidSid = /* @__PURE__ */ factory(name56, dependencies57, (_ref) => {
   var {
     typed: typed2,
     equalScalar
@@ -13426,9 +13994,9 @@ var createMatAlgo04xSidSid = /* @__PURE__ */ factory(name54, dependencies54, (_r
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matAlgo10xSids.js
-var name55 = "matAlgo10xSids";
-var dependencies55 = ["typed", "DenseMatrix"];
-var createMatAlgo10xSids = /* @__PURE__ */ factory(name55, dependencies55, (_ref) => {
+var name57 = "matAlgo10xSids";
+var dependencies58 = ["typed", "DenseMatrix"];
+var createMatAlgo10xSids = /* @__PURE__ */ factory(name57, dependencies58, (_ref) => {
   var {
     typed: typed2,
     DenseMatrix
@@ -13498,14 +14066,14 @@ ArgumentsError.prototype.name = "ArgumentsError";
 ArgumentsError.prototype.isArgumentsError = true;
 
 // node_modules/mathjs/lib/esm/function/arithmetic/gcd.js
-var name56 = "gcd";
-var dependencies56 = ["typed", "config", "round", "matrix", "equalScalar", "zeros", "BigNumber", "DenseMatrix", "concat"];
+var name58 = "gcd";
+var dependencies59 = ["typed", "config", "round", "matrix", "equalScalar", "zeros", "BigNumber", "DenseMatrix", "concat"];
 var gcdTypes = "number | BigNumber | Fraction | Matrix | Array";
 var gcdManyTypesSignature = "".concat(gcdTypes, ", ").concat(gcdTypes, ", ...").concat(gcdTypes);
 function is1d(array) {
   return !array.some((element) => Array.isArray(element));
 }
-var createGcd = /* @__PURE__ */ factory(name56, dependencies56, (_ref) => {
+var createGcd = /* @__PURE__ */ factory(name58, dependencies59, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -13543,7 +14111,7 @@ var createGcd = /* @__PURE__ */ factory(name56, dependencies56, (_ref) => {
     matrix,
     concat: concat2
   });
-  return typed2(name56, {
+  return typed2(name58, {
     "number, number": _gcdNumber,
     "BigNumber, BigNumber": _gcdBigNumber,
     "Fraction, Fraction": (x, y) => x.gcd(y)
@@ -13573,7 +14141,7 @@ var createGcd = /* @__PURE__ */ factory(name56, dependencies56, (_ref) => {
     })
   });
   function _gcdNumber(a, b) {
-    if (!isInteger(a) || !isInteger(b)) {
+    if (!isInteger2(a) || !isInteger2(b)) {
       throw new Error("Parameters in function gcd must be integer numbers");
     }
     var r;
@@ -13599,9 +14167,9 @@ var createGcd = /* @__PURE__ */ factory(name56, dependencies56, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matAlgo06xS0S0.js
-var name57 = "matAlgo06xS0S0";
-var dependencies57 = ["typed", "equalScalar"];
-var createMatAlgo06xS0S0 = /* @__PURE__ */ factory(name57, dependencies57, (_ref) => {
+var name59 = "matAlgo06xS0S0";
+var dependencies60 = ["typed", "equalScalar"];
+var createMatAlgo06xS0S0 = /* @__PURE__ */ factory(name59, dependencies60, (_ref) => {
   var {
     typed: typed2,
     equalScalar
@@ -13682,9 +14250,9 @@ var createMatAlgo06xS0S0 = /* @__PURE__ */ factory(name57, dependencies57, (_ref
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/lcm.js
-var name58 = "lcm";
-var dependencies58 = ["typed", "matrix", "equalScalar", "concat"];
-var createLcm = /* @__PURE__ */ factory(name58, dependencies58, (_ref) => {
+var name60 = "lcm";
+var dependencies61 = ["typed", "matrix", "equalScalar", "concat"];
+var createLcm = /* @__PURE__ */ factory(name60, dependencies61, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -13717,7 +14285,7 @@ var createLcm = /* @__PURE__ */ factory(name58, dependencies58, (_ref) => {
     }
     return res;
   });
-  return typed2(name58, {
+  return typed2(name60, {
     "number, number": lcmNumber,
     "BigNumber, BigNumber": _lcmBigNumber,
     "Fraction, Fraction": (x, y) => x.lcm(y)
@@ -13746,63 +14314,86 @@ var createLcm = /* @__PURE__ */ factory(name58, dependencies58, (_ref) => {
   }
 });
 
-// node_modules/mathjs/lib/esm/function/arithmetic/log10.js
-var name59 = "log10";
-var dependencies59 = ["typed", "config", "Complex"];
-var createLog10 = /* @__PURE__ */ factory(name59, dependencies59, (_ref) => {
-  var {
-    typed: typed2,
-    config: config2,
-    Complex: _Complex
-  } = _ref;
-  return typed2(name59, {
-    number: function number(x) {
-      if (x >= 0 || config2.predictable) {
-        return log10Number(x);
-      } else {
-        return new _Complex(x, 0).log().div(Math.LN10);
-      }
-    },
-    Complex: function Complex2(x) {
-      return new _Complex(x).log().div(Math.LN10);
-    },
-    BigNumber: function BigNumber(x) {
-      if (!x.isNegative() || config2.predictable) {
-        return x.log();
-      } else {
-        return new _Complex(x.toNumber(), 0).log().div(Math.LN10);
-      }
-    },
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
-  });
-});
+// node_modules/mathjs/lib/esm/utils/bigint.js
+function promoteLogarithm(log162, numberLog, config2, cplx) {
+  return function(b) {
+    if (b > 0 || config2.predictable) {
+      if (b <= 0) return NaN;
+      var s = b.toString(16);
+      var s15 = s.substring(0, 15);
+      return log162 * (s.length - s15.length) + numberLog(Number("0x" + s15));
+    }
+    return cplx(b.toNumber());
+  };
+}
 
-// node_modules/mathjs/lib/esm/function/arithmetic/log2.js
-var name60 = "log2";
-var dependencies60 = ["typed", "config", "Complex"];
-var createLog2 = /* @__PURE__ */ factory(name60, dependencies60, (_ref) => {
+// node_modules/mathjs/lib/esm/function/arithmetic/log10.js
+var name61 = "log10";
+var dependencies62 = ["typed", "config", "Complex"];
+var log16 = log10Number(16);
+var createLog10 = /* @__PURE__ */ factory(name61, dependencies62, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     Complex: Complex2
   } = _ref;
-  return typed2(name60, {
+  function complexLog(c) {
+    return c.log().div(Math.LN10);
+  }
+  function complexLogNumber(x) {
+    return complexLog(new Complex2(x, 0));
+  }
+  return typed2(name61, {
+    number: function number(x) {
+      if (x >= 0 || config2.predictable) {
+        return log10Number(x);
+      } else {
+        return complexLogNumber(x);
+      }
+    },
+    bigint: promoteLogarithm(log16, log10Number, config2, complexLogNumber),
+    Complex: complexLog,
+    BigNumber: function BigNumber(x) {
+      if (!x.isNegative() || config2.predictable) {
+        return x.log();
+      } else {
+        return complexLogNumber(x.toNumber());
+      }
+    },
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
+  });
+});
+
+// node_modules/mathjs/lib/esm/function/arithmetic/log2.js
+var name62 = "log2";
+var dependencies63 = ["typed", "config", "Complex"];
+var createLog2 = /* @__PURE__ */ factory(name62, dependencies63, (_ref) => {
+  var {
+    typed: typed2,
+    config: config2,
+    Complex: Complex2
+  } = _ref;
+  function complexLog2Number(x) {
+    return _log2Complex(new Complex2(x, 0));
+  }
+  return typed2(name62, {
     number: function number(x) {
       if (x >= 0 || config2.predictable) {
         return log2Number(x);
       } else {
-        return _log2Complex(new Complex2(x, 0));
+        return complexLog2Number(x);
       }
     },
+    bigint: promoteLogarithm(4, log2Number, config2, complexLog2Number),
     Complex: _log2Complex,
     BigNumber: function BigNumber(x) {
       if (!x.isNegative() || config2.predictable) {
         return x.log(2);
       } else {
-        return _log2Complex(new Complex2(x.toNumber(), 0));
+        return complexLog2Number(x.toNumber());
       }
     },
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
   function _log2Complex(x) {
     var newX = Math.sqrt(x.re * x.re + x.im * x.im);
@@ -13811,21 +14402,24 @@ var createLog2 = /* @__PURE__ */ factory(name60, dependencies60, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/multiplyScalar.js
-var name61 = "multiplyScalar";
-var dependencies61 = ["typed"];
-var createMultiplyScalar = /* @__PURE__ */ factory(name61, dependencies61, (_ref) => {
+var name63 = "multiplyScalar";
+var dependencies64 = ["typed"];
+var createMultiplyScalar = /* @__PURE__ */ factory(name63, dependencies64, (_ref) => {
   var {
     typed: typed2
   } = _ref;
   return typed2("multiplyScalar", {
     "number, number": multiplyNumber,
-    "Complex, Complex": function ComplexComplex(x, y) {
+    "Complex, Complex": function Complex_Complex(x, y) {
       return x.mul(y);
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, y) {
       return x.times(y);
     },
-    "Fraction, Fraction": function FractionFraction(x, y) {
+    "bigint, bigint": function bigint_bigint(x, y) {
+      return x * y;
+    },
+    "Fraction, Fraction": function Fraction_Fraction(x, y) {
       return x.mul(y);
     },
     "number | Fraction | BigNumber | Complex, Unit": (x, y) => y.multiply(x),
@@ -13834,9 +14428,9 @@ var createMultiplyScalar = /* @__PURE__ */ factory(name61, dependencies61, (_ref
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/multiply.js
-var name62 = "multiply";
-var dependencies62 = ["typed", "matrix", "addScalar", "multiplyScalar", "equalScalar", "dot"];
-var createMultiply = /* @__PURE__ */ factory(name62, dependencies62, (_ref) => {
+var name64 = "multiply";
+var dependencies65 = ["typed", "matrix", "addScalar", "multiplyScalar", "equalScalar", "dot"];
+var createMultiply = /* @__PURE__ */ factory(name64, dependencies65, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -14264,14 +14858,14 @@ var createMultiply = /* @__PURE__ */ factory(name62, dependencies62, (_ref) => {
     cptr[bcolumns] = cindex.length;
     return c;
   }
-  return typed2(name62, multiplyScalar, {
+  return typed2(name64, multiplyScalar, {
     // we extend the signatures of multiplyScalar with signatures dealing with matrices
     "Array, Array": typed2.referTo("Matrix, Matrix", (selfMM) => (x, y) => {
       _validateMatrixDimensions(arraySize(x), arraySize(y));
       var m = selfMM(matrix(x), matrix(y));
       return isMatrix(m) ? m.valueOf() : m;
     }),
-    "Matrix, Matrix": function MatrixMatrix(x, y) {
+    "Matrix, Matrix": function Matrix_Matrix(x, y) {
       var xsize = x.size();
       var ysize = y.size();
       _validateMatrixDimensions(xsize, ysize);
@@ -14290,22 +14884,22 @@ var createMultiply = /* @__PURE__ */ factory(name62, dependencies62, (_ref) => {
     "Array, Matrix": typed2.referToSelf((self2) => (x, y) => {
       return self2(matrix(x, y.storage()), y);
     }),
-    "SparseMatrix, any": function SparseMatrixAny(x, y) {
+    "SparseMatrix, any": function SparseMatrix_any(x, y) {
       return matAlgo11xS0s(x, y, multiplyScalar, false);
     },
-    "DenseMatrix, any": function DenseMatrixAny(x, y) {
+    "DenseMatrix, any": function DenseMatrix_any(x, y) {
       return matAlgo14xDs(x, y, multiplyScalar, false);
     },
-    "any, SparseMatrix": function anySparseMatrix(x, y) {
+    "any, SparseMatrix": function any_SparseMatrix(x, y) {
       return matAlgo11xS0s(y, x, multiplyScalar, true);
     },
-    "any, DenseMatrix": function anyDenseMatrix(x, y) {
+    "any, DenseMatrix": function any_DenseMatrix(x, y) {
       return matAlgo14xDs(y, x, multiplyScalar, true);
     },
-    "Array, any": function ArrayAny(x, y) {
+    "Array, any": function Array_any(x, y) {
       return matAlgo14xDs(matrix(x), y, multiplyScalar, false).valueOf();
     },
-    "any, Array": function anyArray(x, y) {
+    "any, Array": function any_Array(x, y) {
       return matAlgo14xDs(matrix(y), x, multiplyScalar, true).valueOf();
     },
     "any, any": multiplyScalar,
@@ -14320,9 +14914,9 @@ var createMultiply = /* @__PURE__ */ factory(name62, dependencies62, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/nthRoot.js
-var name63 = "nthRoot";
-var dependencies63 = ["typed", "matrix", "equalScalar", "BigNumber", "concat"];
-var createNthRoot = /* @__PURE__ */ factory(name63, dependencies63, (_ref) => {
+var name65 = "nthRoot";
+var dependencies66 = ["typed", "matrix", "equalScalar", "BigNumber", "concat"];
+var createNthRoot = /* @__PURE__ */ factory(name65, dependencies66, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -14353,7 +14947,7 @@ var createNthRoot = /* @__PURE__ */ factory(name63, dependencies63, (_ref) => {
   function complexErr() {
     throw new Error("Complex number not supported in function nthRoot. Use nthRoots instead.");
   }
-  return typed2(name63, {
+  return typed2(name65, {
     number: nthRootNumber,
     "number, number": nthRootNumber,
     BigNumber: (x) => _bigNthRoot(x, new _BigNumber(2)),
@@ -14421,16 +15015,16 @@ var createNthRoot = /* @__PURE__ */ factory(name63, dependencies63, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/sign.js
-var name64 = "sign";
-var dependencies64 = ["typed", "BigNumber", "Fraction", "complex"];
-var createSign = /* @__PURE__ */ factory(name64, dependencies64, (_ref) => {
+var name66 = "sign";
+var dependencies67 = ["typed", "BigNumber", "Fraction", "complex"];
+var createSign = /* @__PURE__ */ factory(name66, dependencies67, (_ref) => {
   var {
     typed: typed2,
     BigNumber: _BigNumber,
     complex,
     Fraction: _Fraction
   } = _ref;
-  return typed2(name64, {
+  return typed2(name66, {
     number: signNumber,
     Complex: function Complex2(x) {
       return x.im === 0 ? complex(signNumber(x.re)) : x.sign();
@@ -14438,11 +15032,14 @@ var createSign = /* @__PURE__ */ factory(name64, dependencies64, (_ref) => {
     BigNumber: function BigNumber(x) {
       return new _BigNumber(x.cmp(0));
     },
+    bigint: function bigint(x) {
+      return x > /* @__PURE__ */ BigInt("0") ? /* @__PURE__ */ BigInt("1") : x < /* @__PURE__ */ BigInt("0") ? -/* @__PURE__ */ BigInt("1") : /* @__PURE__ */ BigInt("0");
+    },
     Fraction: function Fraction2(x) {
-      return new _Fraction(x.s, 1);
+      return x.n === /* @__PURE__ */ BigInt("0") ? new _Fraction(0) : new _Fraction(x.s);
     },
     // deep map collection, skip zeros since sign(0) = 0
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2, true)),
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2, true)),
     Unit: typed2.referToSelf((self2) => (x) => {
       if (!x._isDerived() && x.units[0].unit.offset !== 0) {
         throw new TypeError("sign is ambiguous for units with offset");
@@ -14453,9 +15050,9 @@ var createSign = /* @__PURE__ */ factory(name64, dependencies64, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/sqrt.js
-var name65 = "sqrt";
-var dependencies65 = ["config", "typed", "Complex"];
-var createSqrt = /* @__PURE__ */ factory(name65, dependencies65, (_ref) => {
+var name67 = "sqrt";
+var dependencies68 = ["config", "typed", "Complex"];
+var createSqrt = /* @__PURE__ */ factory(name67, dependencies68, (_ref) => {
   var {
     config: config2,
     typed: typed2,
@@ -14489,19 +15086,22 @@ var createSqrt = /* @__PURE__ */ factory(name65, dependencies65, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/square.js
-var name66 = "square";
-var dependencies66 = ["typed"];
-var createSquare = /* @__PURE__ */ factory(name66, dependencies66, (_ref) => {
+var name68 = "square";
+var dependencies69 = ["typed"];
+var createSquare = /* @__PURE__ */ factory(name68, dependencies69, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name66, {
+  return typed2(name68, {
     number: squareNumber,
     Complex: function Complex2(x) {
       return x.mul(x);
     },
     BigNumber: function BigNumber(x) {
       return x.times(x);
+    },
+    bigint: function bigint(x) {
+      return x * x;
     },
     Fraction: function Fraction2(x) {
       return x.mul(x);
@@ -14513,9 +15113,9 @@ var createSquare = /* @__PURE__ */ factory(name66, dependencies66, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/subtract.js
-var name67 = "subtract";
-var dependencies67 = ["typed", "matrix", "equalScalar", "subtractScalar", "unaryMinus", "DenseMatrix", "concat"];
-var createSubtract = /* @__PURE__ */ factory(name67, dependencies67, (_ref) => {
+var name69 = "subtract";
+var dependencies70 = ["typed", "matrix", "equalScalar", "subtractScalar", "unaryMinus", "DenseMatrix", "concat"];
+var createSubtract = /* @__PURE__ */ factory(name69, dependencies70, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -14548,7 +15148,7 @@ var createSubtract = /* @__PURE__ */ factory(name67, dependencies67, (_ref) => {
     matrix,
     concat: concat2
   });
-  return typed2(name67, {
+  return typed2(name69, {
     "any, any": subtractScalar
   }, matrixAlgorithmSuite({
     elop: subtractScalar,
@@ -14561,17 +15161,17 @@ var createSubtract = /* @__PURE__ */ factory(name67, dependencies67, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/xgcd.js
-var name68 = "xgcd";
-var dependencies68 = ["typed", "config", "matrix", "BigNumber"];
-var createXgcd = /* @__PURE__ */ factory(name68, dependencies68, (_ref) => {
+var name70 = "xgcd";
+var dependencies71 = ["typed", "config", "matrix", "BigNumber"];
+var createXgcd = /* @__PURE__ */ factory(name70, dependencies71, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     matrix,
     BigNumber
   } = _ref;
-  return typed2(name68, {
-    "number, number": function numberNumber(a, b) {
+  return typed2(name70, {
+    "number, number": function number_number(a, b) {
       var res = xgcdNumber(a, b);
       return config2.matrix === "Array" ? res : matrix(res);
     },
@@ -14614,9 +15214,9 @@ var createXgcd = /* @__PURE__ */ factory(name68, dependencies68, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/invmod.js
-var name69 = "invmod";
-var dependencies69 = ["typed", "config", "BigNumber", "xgcd", "equal", "smaller", "mod", "add", "isInteger"];
-var createInvmod = /* @__PURE__ */ factory(name69, dependencies69, (_ref) => {
+var name71 = "invmod";
+var dependencies72 = ["typed", "config", "BigNumber", "xgcd", "equal", "smaller", "mod", "add", "isInteger"];
+var createInvmod = /* @__PURE__ */ factory(name71, dependencies72, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -14626,20 +15226,20 @@ var createInvmod = /* @__PURE__ */ factory(name69, dependencies69, (_ref) => {
     smaller,
     mod: mod2,
     add: add2,
-    isInteger: isInteger2
+    isInteger: isInteger3
   } = _ref;
-  return typed2(name69, {
+  return typed2(name71, {
     "number, number": invmod,
     "BigNumber, BigNumber": invmod
   });
   function invmod(a, b) {
-    if (!isInteger2(a) || !isInteger2(b)) throw new Error("Parameters in function invmod must be integer numbers");
+    if (!isInteger3(a) || !isInteger3(b)) throw new Error("Parameters in function invmod must be integer numbers");
     a = mod2(a, b);
     if (equal(b, 0)) throw new Error("Divisor must be non zero");
     var res = xgcd(a, b);
     res = res.valueOf();
-    var [gcd, inv] = res;
-    if (!equal(gcd, BigNumber(1))) return NaN;
+    var [gcd2, inv] = res;
+    if (!equal(gcd2, BigNumber(1))) return NaN;
     inv = mod2(inv, b);
     if (smaller(inv, BigNumber(0))) inv = add2(inv, b);
     return inv;
@@ -14647,9 +15247,9 @@ var createInvmod = /* @__PURE__ */ factory(name69, dependencies69, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matAlgo09xS0Sf.js
-var name70 = "matAlgo09xS0Sf";
-var dependencies70 = ["typed", "equalScalar"];
-var createMatAlgo09xS0Sf = /* @__PURE__ */ factory(name70, dependencies70, (_ref) => {
+var name72 = "matAlgo09xS0Sf";
+var dependencies73 = ["typed", "equalScalar"];
+var createMatAlgo09xS0Sf = /* @__PURE__ */ factory(name72, dependencies73, (_ref) => {
   var {
     typed: typed2,
     equalScalar
@@ -14725,9 +15325,9 @@ var createMatAlgo09xS0Sf = /* @__PURE__ */ factory(name70, dependencies70, (_ref
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/dotMultiply.js
-var name71 = "dotMultiply";
-var dependencies71 = ["typed", "matrix", "equalScalar", "multiplyScalar", "concat"];
-var createDotMultiply = /* @__PURE__ */ factory(name71, dependencies71, (_ref) => {
+var name73 = "dotMultiply";
+var dependencies74 = ["typed", "matrix", "equalScalar", "multiplyScalar", "concat"];
+var createDotMultiply = /* @__PURE__ */ factory(name73, dependencies74, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -14752,7 +15352,7 @@ var createDotMultiply = /* @__PURE__ */ factory(name71, dependencies71, (_ref) =
     matrix,
     concat: concat2
   });
-  return typed2(name71, matrixAlgorithmSuite({
+  return typed2(name73, matrixAlgorithmSuite({
     elop: multiplyScalar,
     SS: matAlgo09xS0Sf,
     DS: matAlgo02xDS0,
@@ -15036,9 +15636,9 @@ function rightArithShiftBigNumber(x, y) {
 }
 
 // node_modules/mathjs/lib/esm/function/bitwise/bitAnd.js
-var name72 = "bitAnd";
-var dependencies72 = ["typed", "matrix", "equalScalar", "concat"];
-var createBitAnd = /* @__PURE__ */ factory(name72, dependencies72, (_ref) => {
+var name74 = "bitAnd";
+var dependencies75 = ["typed", "matrix", "equalScalar", "concat"];
+var createBitAnd = /* @__PURE__ */ factory(name74, dependencies75, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -15062,9 +15662,10 @@ var createBitAnd = /* @__PURE__ */ factory(name72, dependencies72, (_ref) => {
     matrix,
     concat: concat2
   });
-  return typed2(name72, {
+  return typed2(name74, {
     "number, number": bitAndNumber,
-    "BigNumber, BigNumber": bitAndBigNumber
+    "BigNumber, BigNumber": bitAndBigNumber,
+    "bigint, bigint": (x, y) => x & y
   }, matrixAlgorithmSuite({
     SS: matAlgo06xS0S0,
     DS: matAlgo02xDS0,
@@ -15073,23 +15674,24 @@ var createBitAnd = /* @__PURE__ */ factory(name72, dependencies72, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/bitwise/bitNot.js
-var name73 = "bitNot";
-var dependencies73 = ["typed"];
-var createBitNot = /* @__PURE__ */ factory(name73, dependencies73, (_ref) => {
+var name75 = "bitNot";
+var dependencies76 = ["typed"];
+var createBitNot = /* @__PURE__ */ factory(name75, dependencies76, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name73, {
+  return typed2(name75, {
     number: bitNotNumber,
     BigNumber: bitNotBigNumber,
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    bigint: (x) => ~x,
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
 // node_modules/mathjs/lib/esm/function/bitwise/bitOr.js
-var name74 = "bitOr";
-var dependencies74 = ["typed", "matrix", "equalScalar", "DenseMatrix", "concat"];
-var createBitOr = /* @__PURE__ */ factory(name74, dependencies74, (_ref) => {
+var name76 = "bitOr";
+var dependencies77 = ["typed", "matrix", "equalScalar", "DenseMatrix", "concat"];
+var createBitOr = /* @__PURE__ */ factory(name76, dependencies77, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -15113,9 +15715,10 @@ var createBitOr = /* @__PURE__ */ factory(name74, dependencies74, (_ref) => {
     matrix,
     concat: concat2
   });
-  return typed2(name74, {
+  return typed2(name76, {
     "number, number": bitOrNumber,
-    "BigNumber, BigNumber": bitOrBigNumber
+    "BigNumber, BigNumber": bitOrBigNumber,
+    "bigint, bigint": (x, y) => x | y
   }, matrixAlgorithmSuite({
     SS: matAlgo04xSidSid,
     DS: matAlgo01xDSid,
@@ -15124,12 +15727,12 @@ var createBitOr = /* @__PURE__ */ factory(name74, dependencies74, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matAlgo07xSSf.js
-var name75 = "matAlgo07xSSf";
-var dependencies75 = ["typed", "DenseMatrix"];
-var createMatAlgo07xSSf = /* @__PURE__ */ factory(name75, dependencies75, (_ref) => {
+var name77 = "matAlgo07xSSf";
+var dependencies78 = ["typed", "SparseMatrix"];
+var createMatAlgo07xSSf = /* @__PURE__ */ factory(name77, dependencies78, (_ref) => {
   var {
     typed: typed2,
-    DenseMatrix
+    SparseMatrix
   } = _ref;
   return function matAlgo07xSSf(a, b, callback) {
     var asize = a._size;
@@ -15152,27 +15755,34 @@ var createMatAlgo07xSSf = /* @__PURE__ */ factory(name75, dependencies75, (_ref)
       zero = typed2.convert(0, dt);
       cf = typed2.find(callback, [dt, dt]);
     }
-    var i, j;
-    var cdata = [];
-    for (i = 0; i < rows; i++) {
-      cdata[i] = [];
-    }
+    var cvalues = [];
+    var cindex = [];
+    var cptr = new Array(columns + 1).fill(0);
     var xa = [];
     var xb = [];
     var wa = [];
     var wb = [];
-    for (j = 0; j < columns; j++) {
+    for (var j = 0; j < columns; j++) {
       var mark = j + 1;
+      var nonZeroCount = 0;
       _scatter(a, j, wa, xa, mark);
       _scatter(b, j, wb, xb, mark);
-      for (i = 0; i < rows; i++) {
+      for (var i = 0; i < rows; i++) {
         var va = wa[i] === mark ? xa[i] : zero;
         var vb = wb[i] === mark ? xb[i] : zero;
-        cdata[i][j] = cf(va, vb);
+        var cij = cf(va, vb);
+        if (cij !== 0 && cij !== false) {
+          cindex.push(i);
+          cvalues.push(cij);
+          nonZeroCount++;
+        }
       }
+      cptr[j + 1] = cptr[j] + nonZeroCount;
     }
-    return new DenseMatrix({
-      data: cdata,
+    return new SparseMatrix({
+      values: cvalues,
+      index: cindex,
+      ptr: cptr,
       size: [rows, columns],
       datatype: adt === a._datatype && bdt === b._datatype ? dt : void 0
     });
@@ -15190,21 +15800,22 @@ var createMatAlgo07xSSf = /* @__PURE__ */ factory(name75, dependencies75, (_ref)
 });
 
 // node_modules/mathjs/lib/esm/function/bitwise/bitXor.js
-var name76 = "bitXor";
-var dependencies76 = ["typed", "matrix", "DenseMatrix", "concat"];
-var createBitXor = /* @__PURE__ */ factory(name76, dependencies76, (_ref) => {
+var name78 = "bitXor";
+var dependencies79 = ["typed", "matrix", "DenseMatrix", "concat", "SparseMatrix"];
+var createBitXor = /* @__PURE__ */ factory(name78, dependencies79, (_ref) => {
   var {
     typed: typed2,
     matrix,
     DenseMatrix,
-    concat: concat2
+    concat: concat2,
+    SparseMatrix
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed: typed2
   });
   var matAlgo07xSSf = createMatAlgo07xSSf({
     typed: typed2,
-    DenseMatrix
+    SparseMatrix
   });
   var matAlgo12xSfs = createMatAlgo12xSfs({
     typed: typed2,
@@ -15215,9 +15826,10 @@ var createBitXor = /* @__PURE__ */ factory(name76, dependencies76, (_ref) => {
     matrix,
     concat: concat2
   });
-  return typed2(name76, {
+  return typed2(name78, {
     "number, number": bitXorNumber,
-    "BigNumber, BigNumber": bitXor
+    "BigNumber, BigNumber": bitXor,
+    "bigint, bigint": (x, y) => x ^ y
   }, matrixAlgorithmSuite({
     SS: matAlgo07xSSf,
     DS: matAlgo03xDSf,
@@ -15226,13 +15838,13 @@ var createBitXor = /* @__PURE__ */ factory(name76, dependencies76, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/complex/arg.js
-var name77 = "arg";
-var dependencies77 = ["typed"];
-var createArg = /* @__PURE__ */ factory(name77, dependencies77, (_ref) => {
+var name79 = "arg";
+var dependencies80 = ["typed"];
+var createArg = /* @__PURE__ */ factory(name79, dependencies80, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name77, {
+  return typed2(name79, {
     number: function number(x) {
       return Math.atan2(0, x);
     },
@@ -15243,61 +15855,62 @@ var createArg = /* @__PURE__ */ factory(name77, dependencies77, (_ref) => {
       return x.arg();
     },
     // TODO: implement BigNumber support for function arg
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
 // node_modules/mathjs/lib/esm/function/complex/conj.js
-var name78 = "conj";
-var dependencies78 = ["typed"];
-var createConj = /* @__PURE__ */ factory(name78, dependencies78, (_ref) => {
-  var {
-    typed: typed2
-  } = _ref;
-  return typed2(name78, {
-    "number | BigNumber | Fraction": (x) => x,
-    Complex: (x) => x.conjugate(),
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
-  });
-});
-
-// node_modules/mathjs/lib/esm/function/complex/im.js
-var name79 = "im";
-var dependencies79 = ["typed"];
-var createIm = /* @__PURE__ */ factory(name79, dependencies79, (_ref) => {
-  var {
-    typed: typed2
-  } = _ref;
-  return typed2(name79, {
-    number: () => 0,
-    "BigNumber | Fraction": (x) => x.mul(0),
-    Complex: (x) => x.im,
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
-  });
-});
-
-// node_modules/mathjs/lib/esm/function/complex/re.js
-var name80 = "re";
-var dependencies80 = ["typed"];
-var createRe = /* @__PURE__ */ factory(name80, dependencies80, (_ref) => {
+var name80 = "conj";
+var dependencies81 = ["typed"];
+var createConj = /* @__PURE__ */ factory(name80, dependencies81, (_ref) => {
   var {
     typed: typed2
   } = _ref;
   return typed2(name80, {
     "number | BigNumber | Fraction": (x) => x,
-    Complex: (x) => x.re,
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    Complex: (x) => x.conjugate(),
+    Unit: typed2.referToSelf((self2) => (x) => new x.constructor(self2(x.toNumeric()), x.formatUnits())),
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
-// node_modules/mathjs/lib/esm/function/logical/not.js
-var name81 = "not";
-var dependencies81 = ["typed"];
-var createNot = /* @__PURE__ */ factory(name81, dependencies81, (_ref) => {
+// node_modules/mathjs/lib/esm/function/complex/im.js
+var name81 = "im";
+var dependencies82 = ["typed"];
+var createIm = /* @__PURE__ */ factory(name81, dependencies82, (_ref) => {
   var {
     typed: typed2
   } = _ref;
   return typed2(name81, {
+    number: () => 0,
+    "BigNumber | Fraction": (x) => x.mul(0),
+    Complex: (x) => x.im,
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
+  });
+});
+
+// node_modules/mathjs/lib/esm/function/complex/re.js
+var name82 = "re";
+var dependencies83 = ["typed"];
+var createRe = /* @__PURE__ */ factory(name82, dependencies83, (_ref) => {
+  var {
+    typed: typed2
+  } = _ref;
+  return typed2(name82, {
+    "number | BigNumber | Fraction": (x) => x,
+    Complex: (x) => x.re,
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
+  });
+});
+
+// node_modules/mathjs/lib/esm/function/logical/not.js
+var name83 = "not";
+var dependencies84 = ["typed"];
+var createNot = /* @__PURE__ */ factory(name83, dependencies84, (_ref) => {
+  var {
+    typed: typed2
+  } = _ref;
+  return typed2(name83, {
     "null | undefined": () => true,
     number: notNumber,
     Complex: function Complex2(x) {
@@ -15306,15 +15919,61 @@ var createNot = /* @__PURE__ */ factory(name81, dependencies81, (_ref) => {
     BigNumber: function BigNumber(x) {
       return x.isZero() || x.isNaN();
     },
+    bigint: (x) => !x,
     Unit: typed2.referToSelf((self2) => (x) => typed2.find(self2, x.valueType())(x.value)),
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
+  });
+});
+
+// node_modules/mathjs/lib/esm/function/logical/nullish.js
+var name84 = "nullish";
+var dependencies85 = ["typed", "matrix", "size", "flatten", "deepEqual"];
+var createNullish = /* @__PURE__ */ factory(name84, dependencies85, (_ref) => {
+  var {
+    typed: typed2,
+    matrix,
+    size,
+    flatten: flatten2,
+    deepEqual
+  } = _ref;
+  var matAlgo03xDSf = createMatAlgo03xDSf({
+    typed: typed2
+  });
+  var matAlgo14xDs = createMatAlgo14xDs({
+    typed: typed2
+  });
+  var matAlgo13xDD = createMatAlgo13xDD({
+    typed: typed2
+  });
+  return typed2(name84, {
+    // Scalar and SparseMatrix-first short-circuit handlers
+    "number|bigint|Complex|BigNumber|Fraction|Unit|string|boolean|SparseMatrix, any": (x, _y) => x,
+    "null, any": (_x, y) => y,
+    "undefined, any": (_x, y) => y,
+    // SparseMatrix-first with collection RHS: enforce exact shape match
+    "SparseMatrix, Array | Matrix": (x, y) => {
+      var sx = size(x);
+      var sy = size(y);
+      if (deepEqual(sx, sy)) return x;
+      throw new DimensionError(sx, sy);
+    },
+    // DenseMatrix-first handlers (no broadcasting between collections)
+    "DenseMatrix, DenseMatrix": typed2.referToSelf((self2) => (x, y) => matAlgo13xDD(x, y, self2)),
+    "DenseMatrix, SparseMatrix": typed2.referToSelf((self2) => (x, y) => matAlgo03xDSf(x, y, self2, false)),
+    "DenseMatrix, Array": typed2.referToSelf((self2) => (x, y) => matAlgo13xDD(x, matrix(y), self2)),
+    "DenseMatrix, any": typed2.referToSelf((self2) => (x, y) => matAlgo14xDs(x, y, self2, false)),
+    // Array-first handlers (bridge via matrix() where needed)
+    "Array, Array": typed2.referToSelf((self2) => (x, y) => matAlgo13xDD(matrix(x), matrix(y), self2).valueOf()),
+    "Array, DenseMatrix": typed2.referToSelf((self2) => (x, y) => matAlgo13xDD(matrix(x), y, self2)),
+    "Array, SparseMatrix": typed2.referToSelf((self2) => (x, y) => matAlgo03xDSf(matrix(x), y, self2, false)),
+    "Array, any": typed2.referToSelf((self2) => (x, y) => matAlgo14xDs(matrix(x), y, self2, false).valueOf())
   });
 });
 
 // node_modules/mathjs/lib/esm/function/logical/or.js
-var name82 = "or";
-var dependencies82 = ["typed", "matrix", "equalScalar", "DenseMatrix", "concat"];
-var createOr = /* @__PURE__ */ factory(name82, dependencies82, (_ref) => {
+var name85 = "or";
+var dependencies86 = ["typed", "matrix", "equalScalar", "DenseMatrix", "concat"];
+var createOr = /* @__PURE__ */ factory(name85, dependencies86, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -15338,14 +15997,15 @@ var createOr = /* @__PURE__ */ factory(name82, dependencies82, (_ref) => {
     matrix,
     concat: concat2
   });
-  return typed2(name82, {
+  return typed2(name85, {
     "number, number": orNumber,
-    "Complex, Complex": function ComplexComplex(x, y) {
+    "Complex, Complex": function Complex_Complex(x, y) {
       return x.re !== 0 || x.im !== 0 || y.re !== 0 || y.im !== 0;
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, y) {
       return !x.isZero() && !x.isNaN() || !y.isZero() && !y.isNaN();
     },
+    "bigint, bigint": orNumber,
     "Unit, Unit": typed2.referToSelf((self2) => (x, y) => self2(x.value || 0, y.value || 0))
   }, matrixAlgorithmSuite({
     SS: matAlgo05xSfSf,
@@ -15355,21 +16015,22 @@ var createOr = /* @__PURE__ */ factory(name82, dependencies82, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/logical/xor.js
-var name83 = "xor";
-var dependencies83 = ["typed", "matrix", "DenseMatrix", "concat"];
-var createXor = /* @__PURE__ */ factory(name83, dependencies83, (_ref) => {
+var name86 = "xor";
+var dependencies87 = ["typed", "matrix", "DenseMatrix", "concat", "SparseMatrix"];
+var createXor = /* @__PURE__ */ factory(name86, dependencies87, (_ref) => {
   var {
     typed: typed2,
     matrix,
     DenseMatrix,
-    concat: concat2
+    concat: concat2,
+    SparseMatrix
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed: typed2
   });
   var matAlgo07xSSf = createMatAlgo07xSSf({
     typed: typed2,
-    DenseMatrix
+    SparseMatrix
   });
   var matAlgo12xSfs = createMatAlgo12xSfs({
     typed: typed2,
@@ -15380,12 +16041,13 @@ var createXor = /* @__PURE__ */ factory(name83, dependencies83, (_ref) => {
     matrix,
     concat: concat2
   });
-  return typed2(name83, {
+  return typed2(name86, {
     "number, number": xorNumber,
-    "Complex, Complex": function ComplexComplex(x, y) {
+    "Complex, Complex": function Complex_Complex(x, y) {
       return (x.re !== 0 || x.im !== 0) !== (y.re !== 0 || y.im !== 0);
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
+    "bigint, bigint": xorNumber,
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, y) {
       return (!x.isZero() && !x.isNaN()) !== (!y.isZero() && !y.isNaN());
     },
     "Unit, Unit": typed2.referToSelf((self2) => (x, y) => self2(x.value || 0, y.value || 0))
@@ -15397,17 +16059,17 @@ var createXor = /* @__PURE__ */ factory(name83, dependencies83, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/concat.js
-var name84 = "concat";
-var dependencies84 = ["typed", "matrix", "isInteger"];
-var createConcat = /* @__PURE__ */ factory(name84, dependencies84, (_ref) => {
+var name87 = "concat";
+var dependencies88 = ["typed", "matrix", "isInteger"];
+var createConcat = /* @__PURE__ */ factory(name87, dependencies88, (_ref) => {
   var {
     typed: typed2,
     matrix,
-    isInteger: isInteger2
+    isInteger: isInteger3
   } = _ref;
-  return typed2(name84, {
+  return typed2(name87, {
     // TODO: change signature to '...Array | Matrix, dim?' when supported
-    "...Array | Matrix | number | BigNumber": function ArrayMatrixNumberBigNumber(args) {
+    "...Array | Matrix | number | BigNumber": function Array__Matrix__number__BigNumber(args) {
       var i;
       var len = args.length;
       var dim = -1;
@@ -15425,7 +16087,7 @@ var createConcat = /* @__PURE__ */ factory(name84, dependencies84, (_ref) => {
           }
           prevDim = dim;
           dim = arg.valueOf();
-          if (!isInteger2(dim)) {
+          if (!isInteger3(dim)) {
             throw new TypeError("Integer number expected for dimension");
           }
           if (dim < 0 || i > 0 && dim > prevDim) {
@@ -15458,18 +16120,18 @@ var createConcat = /* @__PURE__ */ factory(name84, dependencies84, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/column.js
-var name85 = "column";
-var dependencies85 = ["typed", "Index", "matrix", "range"];
-var createColumn = /* @__PURE__ */ factory(name85, dependencies85, (_ref) => {
+var name88 = "column";
+var dependencies89 = ["typed", "Index", "matrix", "range"];
+var createColumn = /* @__PURE__ */ factory(name88, dependencies89, (_ref) => {
   var {
     typed: typed2,
     Index,
     matrix,
     range
   } = _ref;
-  return typed2(name85, {
+  return typed2(name88, {
     "Matrix, number": _column,
-    "Array, number": function ArrayNumber(value, column) {
+    "Array, number": function Array_number(value, column) {
       return _column(matrix(clone(value)), column).valueOf();
     }
   });
@@ -15479,49 +16141,49 @@ var createColumn = /* @__PURE__ */ factory(name85, dependencies85, (_ref) => {
     }
     validateIndex(column, value.size()[1]);
     var rowRange = range(0, value.size()[0]);
-    var index = new Index(rowRange, column);
+    var index = new Index(rowRange, [column]);
     var result = value.subset(index);
     return isMatrix(result) ? result : matrix([[result]]);
   }
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/count.js
-var name86 = "count";
-var dependencies86 = ["typed", "size", "prod"];
-var createCount = /* @__PURE__ */ factory(name86, dependencies86, (_ref) => {
+var name89 = "count";
+var dependencies90 = ["typed", "size", "prod"];
+var createCount = /* @__PURE__ */ factory(name89, dependencies90, (_ref) => {
   var {
     typed: typed2,
     size,
     prod
   } = _ref;
-  return typed2(name86, {
+  return typed2(name89, {
     string: function string(x) {
       return x.length;
     },
-    "Matrix | Array": function MatrixArray(x) {
+    "Matrix | Array": function Matrix__Array(x) {
       return prod(size(x));
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/cross.js
-var name87 = "cross";
-var dependencies87 = ["typed", "matrix", "subtract", "multiply"];
-var createCross = /* @__PURE__ */ factory(name87, dependencies87, (_ref) => {
+var name90 = "cross";
+var dependencies91 = ["typed", "matrix", "subtract", "multiply"];
+var createCross = /* @__PURE__ */ factory(name90, dependencies91, (_ref) => {
   var {
     typed: typed2,
     matrix,
     subtract,
     multiply
   } = _ref;
-  return typed2(name87, {
-    "Matrix, Matrix": function MatrixMatrix(x, y) {
+  return typed2(name90, {
+    "Matrix, Matrix": function Matrix_Matrix(x, y) {
       return matrix(_cross(x.toArray(), y.toArray()));
     },
-    "Matrix, Array": function MatrixArray(x, y) {
+    "Matrix, Array": function Matrix_Array(x, y) {
       return matrix(_cross(x.toArray(), y));
     },
-    "Array, Matrix": function ArrayMatrix(x, y) {
+    "Array, Matrix": function Array_Matrix(x, y) {
       return matrix(_cross(x, y.toArray()));
     },
     "Array, Array": _cross
@@ -15545,56 +16207,56 @@ var createCross = /* @__PURE__ */ factory(name87, dependencies87, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/diag.js
-var name88 = "diag";
-var dependencies88 = ["typed", "matrix", "DenseMatrix", "SparseMatrix"];
-var createDiag = /* @__PURE__ */ factory(name88, dependencies88, (_ref) => {
+var name91 = "diag";
+var dependencies92 = ["typed", "matrix", "DenseMatrix", "SparseMatrix"];
+var createDiag = /* @__PURE__ */ factory(name91, dependencies92, (_ref) => {
   var {
     typed: typed2,
     matrix,
     DenseMatrix,
     SparseMatrix
   } = _ref;
-  return typed2(name88, {
+  return typed2(name91, {
     // FIXME: simplify this huge amount of signatures as soon as typed-function supports optional arguments
     Array: function Array2(x) {
       return _diag(x, 0, arraySize(x), null);
     },
-    "Array, number": function ArrayNumber(x, k) {
+    "Array, number": function Array_number(x, k) {
       return _diag(x, k, arraySize(x), null);
     },
-    "Array, BigNumber": function ArrayBigNumber(x, k) {
+    "Array, BigNumber": function Array_BigNumber(x, k) {
       return _diag(x, k.toNumber(), arraySize(x), null);
     },
-    "Array, string": function ArrayString(x, format4) {
+    "Array, string": function Array_string(x, format4) {
       return _diag(x, 0, arraySize(x), format4);
     },
-    "Array, number, string": function ArrayNumberString(x, k, format4) {
+    "Array, number, string": function Array_number_string(x, k, format4) {
       return _diag(x, k, arraySize(x), format4);
     },
-    "Array, BigNumber, string": function ArrayBigNumberString(x, k, format4) {
+    "Array, BigNumber, string": function Array_BigNumber_string(x, k, format4) {
       return _diag(x, k.toNumber(), arraySize(x), format4);
     },
     Matrix: function Matrix(x) {
       return _diag(x, 0, x.size(), x.storage());
     },
-    "Matrix, number": function MatrixNumber(x, k) {
+    "Matrix, number": function Matrix_number(x, k) {
       return _diag(x, k, x.size(), x.storage());
     },
-    "Matrix, BigNumber": function MatrixBigNumber(x, k) {
+    "Matrix, BigNumber": function Matrix_BigNumber(x, k) {
       return _diag(x, k.toNumber(), x.size(), x.storage());
     },
-    "Matrix, string": function MatrixString(x, format4) {
+    "Matrix, string": function Matrix_string(x, format4) {
       return _diag(x, 0, x.size(), format4);
     },
-    "Matrix, number, string": function MatrixNumberString(x, k, format4) {
+    "Matrix, number, string": function Matrix_number_string(x, k, format4) {
       return _diag(x, k, x.size(), format4);
     },
-    "Matrix, BigNumber, string": function MatrixBigNumberString(x, k, format4) {
+    "Matrix, BigNumber, string": function Matrix_BigNumber_string(x, k, format4) {
       return _diag(x, k.toNumber(), x.size(), format4);
     }
   });
   function _diag(x, k, size, format4) {
-    if (!isInteger(k)) {
+    if (!isInteger2(k)) {
       throw new TypeError("Second parameter in function diag must be an integer");
     }
     var kSuper = k > 0 ? k : 0;
@@ -15635,129 +16297,81 @@ var createDiag = /* @__PURE__ */ factory(name88, dependencies88, (_ref) => {
   }
 });
 
-// node_modules/mathjs/lib/esm/utils/applyCallback.js
-var import_typed_function2 = __toESM(require_typed_function(), 1);
-function applyCallback(callback, value, index, array, mappingFnName) {
-  if (import_typed_function2.default.isTypedFunction(callback)) {
-    var args3 = [value, index, array];
-    var signature3 = import_typed_function2.default.resolve(callback, args3);
-    if (signature3) {
-      return tryWithArgs(signature3.implementation, args3);
-    }
-    var args2 = [value, index];
-    var signature2 = import_typed_function2.default.resolve(callback, args2);
-    if (signature2) {
-      return tryWithArgs(signature2.implementation, args2);
-    }
-    var args1 = [value];
-    var signature1 = import_typed_function2.default.resolve(callback, args1);
-    if (signature1) {
-      return tryWithArgs(signature1.implementation, args1);
-    }
-    return tryWithArgs(callback, args3);
-  } else {
-    return callback(value, index, array);
-  }
-  function tryWithArgs(signature, args) {
-    try {
-      return signature.apply(signature, args);
-    } catch (err) {
-      var _err$data;
-      if (err instanceof TypeError && ((_err$data = err.data) === null || _err$data === void 0 ? void 0 : _err$data.category) === "wrongType") {
-        var argsDesc = [];
-        argsDesc.push("value: ".concat(typeOf(value)));
-        if (args.length >= 2) {
-          argsDesc.push("index: ".concat(typeOf(index)));
-        }
-        if (args.length >= 3) {
-          argsDesc.push("array: ".concat(typeOf(array)));
-        }
-        throw new TypeError("Function ".concat(mappingFnName, " cannot apply callback arguments ") + "".concat(callback.name, "(").concat(argsDesc.join(", "), ") at index ").concat(JSON.stringify(index)));
-      } else {
-        throw new TypeError("Function ".concat(mappingFnName, " cannot apply callback arguments ") + "to function ".concat(callback.name, ": ").concat(err.message));
-      }
-    }
-  }
-}
-
 // node_modules/mathjs/lib/esm/function/matrix/filter.js
-var name89 = "filter";
-var dependencies89 = ["typed"];
-var createFilter = /* @__PURE__ */ factory(name89, dependencies89, (_ref) => {
+var name92 = "filter";
+var dependencies93 = ["typed"];
+var createFilter = /* @__PURE__ */ factory(name92, dependencies93, (_ref) => {
   var {
     typed: typed2
   } = _ref;
   return typed2("filter", {
     "Array, function": _filterCallback,
-    "Matrix, function": function MatrixFunction(x, test) {
-      return x.create(_filterCallback(x.toArray(), test));
+    "Matrix, function": function Matrix_function(x, test) {
+      return x.create(_filterCallback(x.valueOf(), test), x.datatype());
     },
     "Array, RegExp": filterRegExp,
-    "Matrix, RegExp": function MatrixRegExp(x, test) {
-      return x.create(filterRegExp(x.toArray(), test));
+    "Matrix, RegExp": function Matrix_RegExp(x, test) {
+      return x.create(filterRegExp(x.valueOf(), test), x.datatype());
     }
   });
 });
 function _filterCallback(x, callback) {
+  var fastCallback = optimizeCallback(callback, x, "filter");
+  if (fastCallback.isUnary) {
+    return filter(x, fastCallback.fn);
+  }
   return filter(x, function(value, index, array) {
-    return applyCallback(callback, value, [index], array, "filter");
+    return fastCallback.fn(value, [index], array);
   });
 }
 
 // node_modules/mathjs/lib/esm/function/matrix/flatten.js
-var name90 = "flatten";
-var dependencies90 = ["typed", "matrix"];
-var createFlatten = /* @__PURE__ */ factory(name90, dependencies90, (_ref) => {
+var name93 = "flatten";
+var dependencies94 = ["typed"];
+var createFlatten = /* @__PURE__ */ factory(name93, dependencies94, (_ref) => {
   var {
-    typed: typed2,
-    matrix
+    typed: typed2
   } = _ref;
-  return typed2(name90, {
+  return typed2(name93, {
     Array: function Array2(x) {
       return flatten(x);
     },
-    Matrix: function Matrix(x) {
-      var flat = flatten(x.toArray());
-      return matrix(flat);
+    DenseMatrix: function DenseMatrix(x) {
+      return x.create(flatten(x.valueOf(), true), x.datatype());
+    },
+    SparseMatrix: function SparseMatrix(_x) {
+      throw new TypeError("SparseMatrix is not supported by function flatten because it does not support 1D vectors. Convert to a DenseMatrix or Array first. Example: flatten(x.toArray())");
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/forEach.js
-var name91 = "forEach";
-var dependencies91 = ["typed"];
-var createForEach = /* @__PURE__ */ factory(name91, dependencies91, (_ref) => {
+var name94 = "forEach";
+var dependencies95 = ["typed"];
+var createForEach = /* @__PURE__ */ factory(name94, dependencies95, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name91, {
+  return typed2(name94, {
     "Array, function": _forEach,
-    "Matrix, function": function MatrixFunction(x, callback) {
+    "Matrix, function": function Matrix_function(x, callback) {
       x.forEach(callback);
     }
   });
 });
 function _forEach(array, callback) {
-  var recurse = function recurse2(value, index) {
-    if (Array.isArray(value)) {
-      forEach(value, function(child, i) {
-        recurse2(child, index.concat(i));
-      });
-    } else {
-      return applyCallback(callback, value, index, array, "forEach");
-    }
-  };
-  recurse(array, []);
+  var fastCallback = optimizeCallback(callback, array, name94);
+  deepForEach(array, fastCallback.fn, fastCallback.isUnary);
 }
 
 // node_modules/mathjs/lib/esm/function/matrix/getMatrixDataType.js
-var name92 = "getMatrixDataType";
-var dependencies92 = ["typed"];
-var createGetMatrixDataType = /* @__PURE__ */ factory(name92, dependencies92, (_ref) => {
+var name95 = "getMatrixDataType";
+var dependencies96 = ["typed"];
+var createGetMatrixDataType = /* @__PURE__ */ factory(name95, dependencies96, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name92, {
+  return typed2(name95, {
     Array: function Array2(x) {
       return getArrayDataType(x, typeOf);
     },
@@ -15768,9 +16382,9 @@ var createGetMatrixDataType = /* @__PURE__ */ factory(name92, dependencies92, (_
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/identity.js
-var name93 = "identity";
-var dependencies93 = ["typed", "config", "matrix", "BigNumber", "DenseMatrix", "SparseMatrix"];
-var createIdentity = /* @__PURE__ */ factory(name93, dependencies93, (_ref) => {
+var name96 = "identity";
+var dependencies97 = ["typed", "config", "matrix", "BigNumber", "DenseMatrix", "SparseMatrix"];
+var createIdentity = /* @__PURE__ */ factory(name96, dependencies97, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -15779,35 +16393,35 @@ var createIdentity = /* @__PURE__ */ factory(name93, dependencies93, (_ref) => {
     DenseMatrix,
     SparseMatrix
   } = _ref;
-  return typed2(name93, {
+  return typed2(name96, {
     "": function _() {
       return config2.matrix === "Matrix" ? matrix([]) : [];
     },
     string: function string(format4) {
       return matrix(format4);
     },
-    "number | BigNumber": function numberBigNumber(rows) {
+    "number | BigNumber": function number__BigNumber(rows) {
       return _identity(rows, rows, config2.matrix === "Matrix" ? "dense" : void 0);
     },
-    "number | BigNumber, string": function numberBigNumberString(rows, format4) {
+    "number | BigNumber, string": function number__BigNumber_string(rows, format4) {
       return _identity(rows, rows, format4);
     },
-    "number | BigNumber, number | BigNumber": function numberBigNumberNumberBigNumber(rows, cols) {
+    "number | BigNumber, number | BigNumber": function number__BigNumber_number__BigNumber(rows, cols) {
       return _identity(rows, cols, config2.matrix === "Matrix" ? "dense" : void 0);
     },
-    "number | BigNumber, number | BigNumber, string": function numberBigNumberNumberBigNumberString(rows, cols, format4) {
+    "number | BigNumber, number | BigNumber, string": function number__BigNumber_number__BigNumber_string(rows, cols, format4) {
       return _identity(rows, cols, format4);
     },
     Array: function Array2(size) {
       return _identityVector(size);
     },
-    "Array, string": function ArrayString(size, format4) {
+    "Array, string": function Array_string(size, format4) {
       return _identityVector(size, format4);
     },
     Matrix: function Matrix(size) {
       return _identityVector(size.valueOf(), size.storage());
     },
-    "Matrix, string": function MatrixString(size, format4) {
+    "Matrix, string": function Matrix_string(size, format4) {
       return _identityVector(size.valueOf(), format4);
     }
   });
@@ -15827,10 +16441,10 @@ var createIdentity = /* @__PURE__ */ factory(name93, dependencies93, (_ref) => {
     var Big = isBigNumber(rows) || isBigNumber(cols) ? BigNumber : null;
     if (isBigNumber(rows)) rows = rows.toNumber();
     if (isBigNumber(cols)) cols = cols.toNumber();
-    if (!isInteger(rows) || rows < 1) {
+    if (!isInteger2(rows) || rows < 1) {
       throw new Error("Parameters in function identity must be positive integers");
     }
-    if (!isInteger(cols) || cols < 1) {
+    if (!isInteger2(cols) || cols < 1) {
       throw new Error("Parameters in function identity must be positive integers");
     }
     var one = Big ? new BigNumber(1) : 1;
@@ -15855,99 +16469,187 @@ var createIdentity = /* @__PURE__ */ factory(name93, dependencies93, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/kron.js
-var name94 = "kron";
-var dependencies94 = ["typed", "matrix", "multiplyScalar"];
-var createKron = /* @__PURE__ */ factory(name94, dependencies94, (_ref) => {
+var name97 = "kron";
+var dependencies98 = ["typed", "matrix", "multiplyScalar"];
+var createKron = /* @__PURE__ */ factory(name97, dependencies98, (_ref) => {
   var {
     typed: typed2,
     matrix,
     multiplyScalar
   } = _ref;
-  return typed2(name94, {
-    "Matrix, Matrix": function MatrixMatrix(x, y) {
+  return typed2(name97, {
+    "Matrix, Matrix": function Matrix_Matrix(x, y) {
       return matrix(_kron(x.toArray(), y.toArray()));
     },
-    "Matrix, Array": function MatrixArray(x, y) {
+    "Matrix, Array": function Matrix_Array(x, y) {
       return matrix(_kron(x.toArray(), y));
     },
-    "Array, Matrix": function ArrayMatrix(x, y) {
+    "Array, Matrix": function Array_Matrix(x, y) {
       return matrix(_kron(x, y.toArray()));
     },
     "Array, Array": _kron
   });
+  function _kron1d(a, b) {
+    return a.flatMap((x) => b.map((y) => multiplyScalar(x, y)));
+  }
   function _kron(a, b) {
-    if (arraySize(a).length === 1) {
-      a = [a];
+    var d = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : -1;
+    if (d < 0) {
+      var adim = arraySize(a).length;
+      var bdim = arraySize(b).length;
+      d = Math.max(adim, bdim);
+      while (adim++ < d) a = [a];
+      while (bdim++ < d) b = [b];
     }
-    if (arraySize(b).length === 1) {
-      b = [b];
-    }
-    if (arraySize(a).length > 2 || arraySize(b).length > 2) {
-      throw new RangeError("Vectors with dimensions greater then 2 are not supported expected (Size x = " + JSON.stringify(a.length) + ", y = " + JSON.stringify(b.length) + ")");
-    }
-    var t = [];
-    var r = [];
-    return a.map(function(a2) {
-      return b.map(function(b2) {
-        r = [];
-        t.push(r);
-        return a2.map(function(y) {
-          return b2.map(function(x) {
-            return r.push(multiplyScalar(y, x));
-          });
-        });
-      });
-    }) && t;
+    if (d === 1) return _kron1d(a, b);
+    return a.flatMap((aSlice) => b.map((bSlice) => _kron(aSlice, bSlice, d - 1)));
   }
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/map.js
-var name95 = "map";
-var dependencies95 = ["typed"];
-var createMap2 = /* @__PURE__ */ factory(name95, dependencies95, (_ref) => {
+var name98 = "map";
+var dependencies99 = ["typed"];
+var createMap2 = /* @__PURE__ */ factory(name98, dependencies99, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name95, {
-    "Array, function": _map,
-    "Matrix, function": function MatrixFunction(x, callback) {
+  return typed2(name98, {
+    "Array, function": _mapArray,
+    "Matrix, function": function Matrix_function(x, callback) {
       return x.map(callback);
-    }
+    },
+    "Array|Matrix, Array|Matrix, ...Array|Matrix|function": (A, B, rest) => _mapMultiple([A, B, ...rest.slice(0, rest.length - 1)], rest[rest.length - 1])
   });
-});
-function _map(array, callback) {
-  var recurse = function recurse2(value, index) {
-    if (Array.isArray(value)) {
-      return value.map(function(child, i) {
-        return recurse2(child, index.concat(i));
-      });
-    } else {
-      return applyCallback(callback, value, index, array, "map");
+  function _mapMultiple(Arrays, multiCallback) {
+    if (typeof multiCallback !== "function") {
+      throw new Error("Last argument must be a callback function");
     }
-  };
-  return recurse(array, []);
-}
+    var firstArrayIsMatrix = Arrays[0].isMatrix;
+    var sizes = Arrays.map((M) => M.isMatrix ? M.size() : arraySize(M));
+    var newSize = broadcastSizes(...sizes);
+    var numberOfArrays = Arrays.length;
+    var _get = firstArrayIsMatrix ? (matrix, idx) => matrix.get(idx) : get;
+    var firstValues = Arrays.map((collection, i) => {
+      var firstIndex = sizes[i].map(() => 0);
+      return collection.isMatrix ? collection.get(firstIndex) : get(collection, firstIndex);
+    });
+    var callbackArgCount = typed2.isTypedFunction(multiCallback) ? _getTypedCallbackArgCount(multiCallback, firstValues, newSize.map(() => 0), Arrays) : _getCallbackArgCount(multiCallback, numberOfArrays);
+    if (callbackArgCount < 2) {
+      var _callback = _getLimitedCallback(callbackArgCount, multiCallback, null);
+      return mapMultiple(Arrays, _callback);
+    }
+    var broadcastedArrays = firstArrayIsMatrix ? Arrays.map((M) => M.isMatrix ? M.create(broadcastTo(M.toArray(), newSize), M.datatype()) : Arrays[0].create(broadcastTo(M.valueOf(), newSize))) : Arrays.map((M) => M.isMatrix ? broadcastTo(M.toArray(), newSize) : broadcastTo(M, newSize));
+    var callback = _getLimitedCallback(callbackArgCount, multiCallback, broadcastedArrays);
+    var broadcastedArraysCallback = (x, idx) => callback([x, ...broadcastedArrays.slice(1).map((array) => _get(array, idx))], idx);
+    if (firstArrayIsMatrix) {
+      return broadcastedArrays[0].map(broadcastedArraysCallback);
+    } else {
+      return _mapArray(broadcastedArrays[0], broadcastedArraysCallback);
+    }
+  }
+  function mapMultiple(collections, callback) {
+    var firstCollection = collections[0];
+    var arrays = collections.map((collection) => collection.isMatrix ? collection.valueOf() : collection);
+    var sizes = collections.map((collection) => collection.isMatrix ? collection.size() : arraySize(collection));
+    var finalSize = broadcastSizes(...sizes);
+    var offsets = sizes.map((size) => finalSize.length - size.length);
+    var maxDepth = finalSize.length - 1;
+    var callbackUsesIndex = callback.length > 1;
+    var index = callbackUsesIndex ? [] : null;
+    var resultsArray = iterate(arrays, 0);
+    if (firstCollection.isMatrix) {
+      var resultsMatrix = firstCollection.create();
+      resultsMatrix._data = resultsArray;
+      resultsMatrix._size = finalSize;
+      return resultsMatrix;
+    } else {
+      return resultsArray;
+    }
+    function iterate(arrays2) {
+      var depth = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : 0;
+      var currentDimensionSize = finalSize[depth];
+      var result = Array(currentDimensionSize);
+      if (depth < maxDepth) {
+        var _loop = function _loop3(i2) {
+          if (index) index[depth] = i2;
+          result[i2] = iterate(arrays2.map((array, arrayIndex) => offsets[arrayIndex] > depth ? array : array.length === 1 ? array[0] : array[i2]), depth + 1);
+        };
+        for (var i = 0; i < currentDimensionSize; i++) {
+          _loop(i);
+        }
+      } else {
+        var _loop2 = function _loop22(_i2) {
+          if (index) index[depth] = _i2;
+          result[_i2] = callback(arrays2.map((a) => a.length === 1 ? a[0] : a[_i2]), index ? index.slice() : void 0);
+        };
+        for (var _i = 0; _i < currentDimensionSize; _i++) {
+          _loop2(_i);
+        }
+      }
+      return result;
+    }
+  }
+  function _getLimitedCallback(callbackArgCount, multiCallback, broadcastedArrays) {
+    switch (callbackArgCount) {
+      case 0:
+        return (x) => multiCallback(...x);
+      case 1:
+        return (x, idx) => multiCallback(...x, idx);
+      case 2:
+        return (x, idx) => multiCallback(...x, idx, ...broadcastedArrays);
+    }
+  }
+  function _getCallbackArgCount(callback, numberOfArrays) {
+    var callbackStr = callback.toString();
+    if (/arguments/.test(callbackStr)) return 2;
+    var paramsStr = callbackStr.match(/\(.*?\)/);
+    if (/\.\.\./.test(paramsStr)) return 2;
+    if (callback.length > numberOfArrays + 1) {
+      return 2;
+    }
+    if (callback.length === numberOfArrays + 1) {
+      return 1;
+    }
+    return 0;
+  }
+  function _getTypedCallbackArgCount(callback, values, idx, arrays) {
+    if (typed2.resolve(callback, [...values, idx, ...arrays]) !== null) {
+      return 2;
+    }
+    if (typed2.resolve(callback, [...values, idx]) !== null) {
+      return 1;
+    }
+    if (typed2.resolve(callback, values) !== null) {
+      return 0;
+    }
+    return 0;
+  }
+  function _mapArray(array, callback) {
+    var fastCallback = optimizeCallback(callback, array, name98);
+    return deepMap(array, fastCallback.fn, fastCallback.isUnary);
+  }
+});
 
 // node_modules/mathjs/lib/esm/function/matrix/diff.js
-var name96 = "diff";
-var dependencies96 = ["typed", "matrix", "subtract", "number"];
-var createDiff = /* @__PURE__ */ factory(name96, dependencies96, (_ref) => {
+var name99 = "diff";
+var dependencies100 = ["typed", "matrix", "subtract", "number"];
+var createDiff = /* @__PURE__ */ factory(name99, dependencies100, (_ref) => {
   var {
     typed: typed2,
     matrix,
     subtract,
     number
   } = _ref;
-  return typed2(name96, {
-    "Array | Matrix": function ArrayMatrix(arr) {
+  return typed2(name99, {
+    "Array | Matrix": function Array__Matrix(arr) {
       if (isMatrix(arr)) {
         return matrix(_diff(arr.toArray()));
       } else {
         return _diff(arr);
       }
     },
-    "Array | Matrix, number": function ArrayMatrixNumber(arr, dim) {
-      if (!isInteger(dim)) throw new RangeError("Dimension must be a whole number");
+    "Array | Matrix, number": function Array__Matrix_number(arr, dim) {
+      if (!isInteger2(dim)) throw new RangeError("Dimension must be a whole number");
       if (isMatrix(arr)) {
         return matrix(_recursive(arr.toArray(), dim));
       } else {
@@ -16011,9 +16713,9 @@ var createDiff = /* @__PURE__ */ factory(name96, dependencies96, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/ones.js
-var name97 = "ones";
-var dependencies97 = ["typed", "config", "matrix", "BigNumber"];
-var createOnes = /* @__PURE__ */ factory(name97, dependencies97, (_ref) => {
+var name100 = "ones";
+var dependencies101 = ["typed", "config", "matrix", "BigNumber"];
+var createOnes = /* @__PURE__ */ factory(name100, dependencies101, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -16026,7 +16728,7 @@ var createOnes = /* @__PURE__ */ factory(name97, dependencies97, (_ref) => {
     },
     // math.ones(m, n, p, ..., format)
     // TODO: more accurate signature '...number | BigNumber, string' as soon as typed-function supports this
-    "...number | BigNumber | string": function numberBigNumberString(size) {
+    "...number | BigNumber | string": function number__BigNumber__string(size) {
       var last = size[size.length - 1];
       if (typeof last === "string") {
         var format4 = size.pop();
@@ -16042,7 +16744,7 @@ var createOnes = /* @__PURE__ */ factory(name97, dependencies97, (_ref) => {
       var format4 = size.storage();
       return _ones(size.valueOf(), format4);
     },
-    "Array | Matrix, string": function ArrayMatrixString(size, format4) {
+    "Array | Matrix, string": function Array__Matrix_string(size, format4) {
       return _ones(size.valueOf(), format4);
     }
   });
@@ -16076,7 +16778,7 @@ var createOnes = /* @__PURE__ */ factory(name97, dependencies97, (_ref) => {
   }
   function _validate2(size) {
     size.forEach(function(value) {
-      if (typeof value !== "number" || !isInteger(value) || value < 0) {
+      if (typeof value !== "number" || !isInteger2(value) || value < 0) {
         throw new Error("Parameters in function ones must be positive integers");
       }
     });
@@ -16095,9 +16797,9 @@ function noMatrix() {
 }
 
 // node_modules/mathjs/lib/esm/function/matrix/range.js
-var name98 = "range";
-var dependencies98 = ["typed", "config", "?matrix", "?bignumber", "smaller", "smallerEq", "larger", "largerEq", "add", "isPositive"];
-var createRange = /* @__PURE__ */ factory(name98, dependencies98, (_ref) => {
+var name101 = "range";
+var dependencies102 = ["typed", "config", "?matrix", "?bignumber", "equal", "smaller", "smallerEq", "larger", "largerEq", "add", "isZero", "isPositive"];
+var createRange = /* @__PURE__ */ factory(name101, dependencies102, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -16108,43 +16810,86 @@ var createRange = /* @__PURE__ */ factory(name98, dependencies98, (_ref) => {
     larger,
     largerEq,
     add: add2,
+    isZero,
     isPositive
   } = _ref;
-  return typed2(name98, {
+  return typed2(name101, {
     // TODO: simplify signatures when typed-function supports default values and optional arguments
-    // TODO: a number or boolean should not be converted to string here
     string: _strRange,
     "string, boolean": _strRange,
-    "number, number": function numberNumber(start, end) {
+    number: function number(oops) {
+      throw new TypeError("Too few arguments to function range(): ".concat(oops));
+    },
+    boolean: function boolean(oops) {
+      throw new TypeError("Unexpected type of argument 1 to function range(): ".concat(oops, ", number|bigint|BigNumber|Fraction"));
+    },
+    "number, number": function number_number(start, end) {
       return _out(_range(start, end, 1, false));
     },
-    "number, number, number": function numberNumberNumber(start, end, step) {
+    "number, number, number": function number_number_number(start, end, step) {
       return _out(_range(start, end, step, false));
     },
-    "number, number, boolean": function numberNumberBoolean(start, end, includeEnd) {
+    "number, number, boolean": function number_number_boolean(start, end, includeEnd) {
       return _out(_range(start, end, 1, includeEnd));
     },
-    "number, number, number, boolean": function numberNumberNumberBoolean(start, end, step, includeEnd) {
+    "number, number, number, boolean": function number_number_number_boolean(start, end, step, includeEnd) {
       return _out(_range(start, end, step, includeEnd));
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(start, end) {
+    // Handle bigints; if either limit is bigint, range should be too
+    "bigint, bigint|number": function bigint_bigintNumber(start, end) {
+      return _out(_range(start, end, /* @__PURE__ */ BigInt("1"), false));
+    },
+    "number, bigint": function number_bigint(start, end) {
+      return _out(_range(BigInt(start), end, /* @__PURE__ */ BigInt("1"), false));
+    },
+    "bigint, bigint|number, bigint|number": function bigint_bigintNumber_bigintNumber(start, end, step) {
+      return _out(_range(start, end, BigInt(step), false));
+    },
+    "number, bigint, bigint|number": function number_bigint_bigintNumber(start, end, step) {
+      return _out(_range(BigInt(start), end, BigInt(step), false));
+    },
+    "bigint, bigint|number, boolean": function bigint_bigintNumber_boolean(start, end, includeEnd) {
+      return _out(_range(start, end, /* @__PURE__ */ BigInt("1"), includeEnd));
+    },
+    "number, bigint, boolean": function number_bigint_boolean(start, end, includeEnd) {
+      return _out(_range(BigInt(start), end, /* @__PURE__ */ BigInt("1"), includeEnd));
+    },
+    "bigint, bigint|number, bigint|number, boolean": function bigint_bigintNumber_bigintNumber_boolean(start, end, step, includeEnd) {
+      return _out(_range(start, end, BigInt(step), includeEnd));
+    },
+    "number, bigint, bigint|number, boolean": function number_bigint_bigintNumber_boolean(start, end, step, includeEnd) {
+      return _out(_range(BigInt(start), end, BigInt(step), includeEnd));
+    },
+    "BigNumber, BigNumber": function BigNumber_BigNumber(start, end) {
       var BigNumber = start.constructor;
       return _out(_range(start, end, new BigNumber(1), false));
     },
-    "BigNumber, BigNumber, BigNumber": function BigNumberBigNumberBigNumber(start, end, step) {
+    "BigNumber, BigNumber, BigNumber": function BigNumber_BigNumber_BigNumber(start, end, step) {
       return _out(_range(start, end, step, false));
     },
-    "BigNumber, BigNumber, boolean": function BigNumberBigNumberBoolean(start, end, includeEnd) {
+    "BigNumber, BigNumber, boolean": function BigNumber_BigNumber_boolean(start, end, includeEnd) {
       var BigNumber = start.constructor;
       return _out(_range(start, end, new BigNumber(1), includeEnd));
     },
-    "BigNumber, BigNumber, BigNumber, boolean": function BigNumberBigNumberBigNumberBoolean(start, end, step, includeEnd) {
+    "BigNumber, BigNumber, BigNumber, boolean": function BigNumber_BigNumber_BigNumber_boolean(start, end, step, includeEnd) {
       return _out(_range(start, end, step, includeEnd));
     },
-    "Unit, Unit, Unit": function UnitUnitUnit(start, end, step) {
+    "Fraction, Fraction": function Fraction_Fraction(start, end) {
+      return _out(_range(start, end, 1, false));
+    },
+    "Fraction, Fraction, Fraction": function Fraction_Fraction_Fraction(start, end, step) {
       return _out(_range(start, end, step, false));
     },
-    "Unit, Unit, Unit, boolean": function UnitUnitUnitBoolean(start, end, step, includeEnd) {
+    "Fraction, Fraction, boolean": function Fraction_Fraction_boolean(start, end, includeEnd) {
+      return _out(_range(start, end, 1, includeEnd));
+    },
+    "Fraction, Fraction, Fraction, boolean": function Fraction_Fraction_Fraction_boolean(start, end, step, includeEnd) {
+      return _out(_range(start, end, step, includeEnd));
+    },
+    "Unit, Unit, Unit": function Unit_Unit_Unit(start, end, step) {
+      return _out(_range(start, end, step, false));
+    },
+    "Unit, Unit, Unit, boolean": function Unit_Unit_Unit_boolean(start, end, step, includeEnd) {
       return _out(_range(start, end, step, includeEnd));
     }
   });
@@ -16170,6 +16915,7 @@ var createRange = /* @__PURE__ */ factory(name98, dependencies98, (_ref) => {
   }
   function _range(start, end, step, includeEnd) {
     var array = [];
+    if (isZero(step)) throw new Error("Step must be non-zero");
     var ongoing = isPositive(step) ? includeEnd ? smallerEq : smaller : includeEnd ? largerEq : larger;
     var x = start;
     while (ongoing(x, end)) {
@@ -16209,20 +16955,20 @@ var createRange = /* @__PURE__ */ factory(name98, dependencies98, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/reshape.js
-var name99 = "reshape";
-var dependencies99 = ["typed", "isInteger", "matrix"];
-var createReshape = /* @__PURE__ */ factory(name99, dependencies99, (_ref) => {
+var name102 = "reshape";
+var dependencies103 = ["typed", "isInteger", "matrix"];
+var createReshape = /* @__PURE__ */ factory(name102, dependencies103, (_ref) => {
   var {
     typed: typed2,
-    isInteger: isInteger2
+    isInteger: isInteger3
   } = _ref;
-  return typed2(name99, {
-    "Matrix, Array": function MatrixArray(x, sizes) {
+  return typed2(name102, {
+    "Matrix, Array": function Matrix_Array(x, sizes) {
       return x.reshape(sizes, true);
     },
-    "Array, Array": function ArrayArray(x, sizes) {
+    "Array, Array": function Array_Array(x, sizes) {
       sizes.forEach(function(size) {
-        if (!isInteger2(size)) {
+        if (!isInteger3(size)) {
           throw new TypeError("Invalid size for dimension: " + size);
         }
       });
@@ -16232,9 +16978,9 @@ var createReshape = /* @__PURE__ */ factory(name99, dependencies99, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/resize.js
-var name100 = "resize";
-var dependencies100 = ["config", "matrix"];
-var createResize = /* @__PURE__ */ factory(name100, dependencies100, (_ref) => {
+var name103 = "resize";
+var dependencies104 = ["config", "matrix"];
+var createResize = /* @__PURE__ */ factory(name103, dependencies104, (_ref) => {
   var {
     config: config2,
     matrix
@@ -16284,7 +17030,7 @@ var createResize = /* @__PURE__ */ factory(name100, dependencies100, (_ref) => {
       throw new DimensionError(size.length, 1);
     }
     var len = size[0];
-    if (typeof len !== "number" || !isInteger(len)) {
+    if (typeof len !== "number" || !isInteger2(len)) {
       throw new TypeError("Invalid size, must contain positive integers (size: " + format3(size) + ")");
     }
     if (str.length > len) {
@@ -16302,30 +17048,30 @@ var createResize = /* @__PURE__ */ factory(name100, dependencies100, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/rotate.js
-var name101 = "rotate";
-var dependencies101 = ["typed", "multiply", "rotationMatrix"];
-var createRotate = /* @__PURE__ */ factory(name101, dependencies101, (_ref) => {
+var name104 = "rotate";
+var dependencies105 = ["typed", "multiply", "rotationMatrix"];
+var createRotate = /* @__PURE__ */ factory(name104, dependencies105, (_ref) => {
   var {
     typed: typed2,
     multiply,
     rotationMatrix
   } = _ref;
-  return typed2(name101, {
-    "Array , number | BigNumber | Complex | Unit": function ArrayNumberBigNumberComplexUnit(w, theta) {
+  return typed2(name104, {
+    "Array , number | BigNumber | Complex | Unit": function Array__number__BigNumber__Complex__Unit(w, theta) {
       _validateSize(w, 2);
       var matrixRes = multiply(rotationMatrix(theta), w);
       return matrixRes.toArray();
     },
-    "Matrix , number | BigNumber | Complex | Unit": function MatrixNumberBigNumberComplexUnit(w, theta) {
+    "Matrix , number | BigNumber | Complex | Unit": function Matrix__number__BigNumber__Complex__Unit(w, theta) {
       _validateSize(w, 2);
       return multiply(rotationMatrix(theta), w);
     },
-    "Array, number | BigNumber | Complex | Unit, Array | Matrix": function ArrayNumberBigNumberComplexUnitArrayMatrix(w, theta, v) {
+    "Array, number | BigNumber | Complex | Unit, Array | Matrix": function Array_number__BigNumber__Complex__Unit_Array__Matrix(w, theta, v) {
       _validateSize(w, 3);
       var matrixRes = multiply(rotationMatrix(theta, v), w);
       return matrixRes;
     },
-    "Matrix, number | BigNumber | Complex | Unit, Array | Matrix": function MatrixNumberBigNumberComplexUnitArrayMatrix(w, theta, v) {
+    "Matrix, number | BigNumber | Complex | Unit, Array | Matrix": function Matrix_number__BigNumber__Complex__Unit_Array__Matrix(w, theta, v) {
       _validateSize(w, 3);
       return multiply(rotationMatrix(theta, v), w);
     }
@@ -16345,9 +17091,9 @@ var createRotate = /* @__PURE__ */ factory(name101, dependencies101, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/rotationMatrix.js
-var name102 = "rotationMatrix";
-var dependencies102 = ["typed", "config", "multiplyScalar", "addScalar", "unaryMinus", "norm", "matrix", "BigNumber", "DenseMatrix", "SparseMatrix", "cos", "sin"];
-var createRotationMatrix = /* @__PURE__ */ factory(name102, dependencies102, (_ref) => {
+var name105 = "rotationMatrix";
+var dependencies106 = ["typed", "config", "multiplyScalar", "addScalar", "unaryMinus", "norm", "matrix", "BigNumber", "DenseMatrix", "SparseMatrix", "cos", "sin"];
+var createRotationMatrix = /* @__PURE__ */ factory(name105, dependencies106, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -16362,35 +17108,35 @@ var createRotationMatrix = /* @__PURE__ */ factory(name102, dependencies102, (_r
     cos: cos2,
     sin: sin2
   } = _ref;
-  return typed2(name102, {
+  return typed2(name105, {
     "": function _() {
       return config2.matrix === "Matrix" ? matrix([]) : [];
     },
     string: function string(format4) {
       return matrix(format4);
     },
-    "number | BigNumber | Complex | Unit": function numberBigNumberComplexUnit(theta) {
+    "number | BigNumber | Complex | Unit": function number__BigNumber__Complex__Unit(theta) {
       return _rotationMatrix2x2(theta, config2.matrix === "Matrix" ? "dense" : void 0);
     },
-    "number | BigNumber | Complex | Unit, string": function numberBigNumberComplexUnitString(theta, format4) {
+    "number | BigNumber | Complex | Unit, string": function number__BigNumber__Complex__Unit_string(theta, format4) {
       return _rotationMatrix2x2(theta, format4);
     },
-    "number | BigNumber | Complex | Unit, Array": function numberBigNumberComplexUnitArray(theta, v) {
+    "number | BigNumber | Complex | Unit, Array": function number__BigNumber__Complex__Unit_Array(theta, v) {
       var matrixV = matrix(v);
       _validateVector(matrixV);
       return _rotationMatrix3x3(theta, matrixV, void 0);
     },
-    "number | BigNumber | Complex | Unit, Matrix": function numberBigNumberComplexUnitMatrix(theta, v) {
+    "number | BigNumber | Complex | Unit, Matrix": function number__BigNumber__Complex__Unit_Matrix(theta, v) {
       _validateVector(v);
       var storageType = v.storage() || (config2.matrix === "Matrix" ? "dense" : void 0);
       return _rotationMatrix3x3(theta, v, storageType);
     },
-    "number | BigNumber | Complex | Unit, Array, string": function numberBigNumberComplexUnitArrayString(theta, v, format4) {
+    "number | BigNumber | Complex | Unit, Array, string": function number__BigNumber__Complex__Unit_Array_string(theta, v, format4) {
       var matrixV = matrix(v);
       _validateVector(matrixV);
       return _rotationMatrix3x3(theta, matrixV, format4);
     },
-    "number | BigNumber | Complex | Unit, Matrix, string": function numberBigNumberComplexUnitMatrixString(theta, v, format4) {
+    "number | BigNumber | Complex | Unit, Matrix, string": function number__BigNumber__Complex__Unit_Matrix_string(theta, v, format4) {
       _validateVector(v);
       return _rotationMatrix3x3(theta, v, format4);
     }
@@ -16453,18 +17199,18 @@ var createRotationMatrix = /* @__PURE__ */ factory(name102, dependencies102, (_r
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/row.js
-var name103 = "row";
-var dependencies103 = ["typed", "Index", "matrix", "range"];
-var createRow = /* @__PURE__ */ factory(name103, dependencies103, (_ref) => {
+var name106 = "row";
+var dependencies107 = ["typed", "Index", "matrix", "range"];
+var createRow = /* @__PURE__ */ factory(name106, dependencies107, (_ref) => {
   var {
     typed: typed2,
     Index,
     matrix,
     range
   } = _ref;
-  return typed2(name103, {
+  return typed2(name106, {
     "Matrix, number": _row,
-    "Array, number": function ArrayNumber(value, row) {
+    "Array, number": function Array_number(value, row) {
       return _row(matrix(clone(value)), row).valueOf();
     }
   });
@@ -16474,50 +17220,42 @@ var createRow = /* @__PURE__ */ factory(name103, dependencies103, (_ref) => {
     }
     validateIndex(row, value.size()[0]);
     var columnRange = range(0, value.size()[1]);
-    var index = new Index(row, columnRange);
+    var index = new Index([row], columnRange);
     var result = value.subset(index);
     return isMatrix(result) ? result : matrix([[result]]);
   }
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/size.js
-var name104 = "size";
-var dependencies104 = ["typed", "config", "?matrix"];
-var createSize = /* @__PURE__ */ factory(name104, dependencies104, (_ref) => {
+var name107 = "size";
+var dependencies108 = ["typed"];
+var createSize = /* @__PURE__ */ factory(name107, dependencies108, (_ref) => {
   var {
-    typed: typed2,
-    config: config2,
-    matrix
+    typed: typed2
   } = _ref;
-  return typed2(name104, {
-    Matrix: function Matrix(x) {
-      return x.create(x.size());
-    },
+  return typed2(name107, {
+    Matrix: (x) => x.size(),
     Array: arraySize,
-    string: function string(x) {
-      return config2.matrix === "Array" ? [x.length] : matrix([x.length]);
-    },
-    "number | Complex | BigNumber | Unit | boolean | null": function numberComplexBigNumberUnitBooleanNull(x) {
-      return config2.matrix === "Array" ? [] : matrix ? matrix([]) : noMatrix();
-    }
+    string: (x) => [x.length],
+    // scalar
+    "number | Complex | BigNumber | Unit | boolean | null": (_x) => []
   });
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/squeeze.js
-var name105 = "squeeze";
-var dependencies105 = ["typed", "matrix"];
-var createSqueeze = /* @__PURE__ */ factory(name105, dependencies105, (_ref) => {
+var name108 = "squeeze";
+var dependencies109 = ["typed"];
+var createSqueeze = /* @__PURE__ */ factory(name108, dependencies109, (_ref) => {
   var {
-    typed: typed2,
-    matrix
+    typed: typed2
   } = _ref;
-  return typed2(name105, {
+  return typed2(name108, {
     Array: function Array2(x) {
       return squeeze(clone(x));
     },
     Matrix: function Matrix(x) {
       var res = squeeze(x.toArray());
-      return Array.isArray(res) ? matrix(res) : res;
+      return Array.isArray(res) ? x.create(res, x.datatype()) : res;
     },
     any: function any(x) {
       return clone(x);
@@ -16526,18 +17264,18 @@ var createSqueeze = /* @__PURE__ */ factory(name105, dependencies105, (_ref) => 
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/subset.js
-var name106 = "subset";
-var dependencies106 = ["typed", "matrix", "zeros", "add"];
-var createSubset = /* @__PURE__ */ factory(name106, dependencies106, (_ref) => {
+var name109 = "subset";
+var dependencies110 = ["typed", "matrix", "zeros", "add"];
+var createSubset = /* @__PURE__ */ factory(name109, dependencies110, (_ref) => {
   var {
     typed: typed2,
     matrix,
     zeros: zeros2,
     add: add2
   } = _ref;
-  return typed2(name106, {
+  return typed2(name109, {
     // get subset
-    "Matrix, Index": function MatrixIndex(value, index) {
+    "Matrix, Index": function Matrix_Index(value, index) {
       if (isEmptyIndex(index)) {
         return matrix();
       }
@@ -16553,7 +17291,7 @@ var createSubset = /* @__PURE__ */ factory(name106, dependencies106, (_ref) => {
     "Object, Index": _getObjectProperty,
     "string, Index": _getSubstring,
     // set subset
-    "Matrix, Index, any, any": function MatrixIndexAnyAny(value, index, replacement, defaultValue) {
+    "Matrix, Index, any, any": function Matrix_Index_any_any(value, index, replacement, defaultValue) {
       if (isEmptyIndex(index)) {
         return value;
       }
@@ -16584,7 +17322,7 @@ var createSubset = /* @__PURE__ */ factory(name106, dependencies106, (_ref) => {
     if (typeof replacement === "string") {
       throw new Error("can't boradcast a string");
     }
-    if (index._isScalar) {
+    if (index.isScalar()) {
       return replacement;
     }
     var indexSize = index.size();
@@ -16615,9 +17353,14 @@ function _getSubstring(str, index) {
   validateIndex(index.max()[0], strLen);
   var range = index.dimension(0);
   var substr = "";
-  range.forEach(function(v) {
+  function callback(v) {
     substr += str.charAt(v);
-  });
+  }
+  if (Number.isInteger(range)) {
+    callback(range);
+  } else {
+    range.forEach(callback);
+  }
   return substr;
 }
 function _setSubstring(str, index, replacement, defaultValue) {
@@ -16639,7 +17382,7 @@ function _setSubstring(str, index, replacement, defaultValue) {
     defaultValue = " ";
   }
   var range = index.dimension(0);
-  var len = range.size()[0];
+  var len = Number.isInteger(range) ? 1 : range.size()[0];
   if (len !== replacement.length) {
     throw new DimensionError(range.size()[0], replacement.length);
   }
@@ -16650,9 +17393,14 @@ function _setSubstring(str, index, replacement, defaultValue) {
   for (var i = 0; i < strLen; i++) {
     chars[i] = str.charAt(i);
   }
-  range.forEach(function(v, i2) {
+  function callback(v, i2) {
     chars[v] = replacement.charAt(i2[0]);
-  });
+  }
+  if (Number.isInteger(range)) {
+    callback(range, [0]);
+  } else {
+    range.forEach(callback);
+  }
   if (chars.length > strLen) {
     for (var _i = strLen - 1, _len = chars.length; _i < _len; _i++) {
       if (!chars[_i]) {
@@ -16692,14 +17440,14 @@ function _setObjectProperty(object, index, replacement) {
 }
 
 // node_modules/mathjs/lib/esm/function/matrix/transpose.js
-var name107 = "transpose";
-var dependencies107 = ["typed", "matrix"];
-var createTranspose = /* @__PURE__ */ factory(name107, dependencies107, (_ref) => {
+var name110 = "transpose";
+var dependencies111 = ["typed", "matrix"];
+var createTranspose = /* @__PURE__ */ factory(name110, dependencies111, (_ref) => {
   var {
     typed: typed2,
     matrix
   } = _ref;
-  return typed2(name107, {
+  return typed2(name110, {
     Array: (x) => transposeMatrix(matrix(x)).valueOf(),
     Matrix: transposeMatrix,
     any: clone
@@ -16792,15 +17540,15 @@ var createTranspose = /* @__PURE__ */ factory(name107, dependencies107, (_ref) =
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/ctranspose.js
-var name108 = "ctranspose";
-var dependencies108 = ["typed", "transpose", "conj"];
-var createCtranspose = /* @__PURE__ */ factory(name108, dependencies108, (_ref) => {
+var name111 = "ctranspose";
+var dependencies112 = ["typed", "transpose", "conj"];
+var createCtranspose = /* @__PURE__ */ factory(name111, dependencies112, (_ref) => {
   var {
     typed: typed2,
     transpose,
     conj
   } = _ref;
-  return typed2(name108, {
+  return typed2(name111, {
     any: function any(x) {
       return conj(transpose(x));
     }
@@ -16808,22 +17556,22 @@ var createCtranspose = /* @__PURE__ */ factory(name108, dependencies108, (_ref) 
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/zeros.js
-var name109 = "zeros";
-var dependencies109 = ["typed", "config", "matrix", "BigNumber"];
-var createZeros = /* @__PURE__ */ factory(name109, dependencies109, (_ref) => {
+var name112 = "zeros";
+var dependencies113 = ["typed", "config", "matrix", "BigNumber"];
+var createZeros = /* @__PURE__ */ factory(name112, dependencies113, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     matrix,
     BigNumber
   } = _ref;
-  return typed2(name109, {
+  return typed2(name112, {
     "": function _() {
       return config2.matrix === "Array" ? _zeros([]) : _zeros([], "default");
     },
     // math.zeros(m, n, p, ..., format)
     // TODO: more accurate signature '...number | BigNumber, string' as soon as typed-function supports this
-    "...number | BigNumber | string": function numberBigNumberString(size) {
+    "...number | BigNumber | string": function number__BigNumber__string(size) {
       var last = size[size.length - 1];
       if (typeof last === "string") {
         var format4 = size.pop();
@@ -16839,7 +17587,7 @@ var createZeros = /* @__PURE__ */ factory(name109, dependencies109, (_ref) => {
       var format4 = size.storage();
       return _zeros(size.valueOf(), format4);
     },
-    "Array | Matrix, string": function ArrayMatrixString(size, format4) {
+    "Array | Matrix, string": function Array__Matrix_string(size, format4) {
       return _zeros(size.valueOf(), format4);
     }
   });
@@ -16873,7 +17621,7 @@ var createZeros = /* @__PURE__ */ factory(name109, dependencies109, (_ref) => {
   }
   function _validate2(size) {
     size.forEach(function(value) {
-      if (typeof value !== "number" || !isInteger(value) || value < 0) {
+      if (typeof value !== "number" || !isInteger2(value) || value < 0) {
         throw new Error("Parameters in function zeros must be positive integers");
       }
     });
@@ -16881,9 +17629,9 @@ var createZeros = /* @__PURE__ */ factory(name109, dependencies109, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/fft.js
-var name110 = "fft";
-var dependencies110 = ["typed", "matrix", "addScalar", "multiplyScalar", "divideScalar", "exp", "tau", "i", "dotDivide", "conj", "pow", "ceil", "log2"];
-var createFft = /* @__PURE__ */ factory(name110, dependencies110, (_ref) => {
+var name113 = "fft";
+var dependencies114 = ["typed", "matrix", "addScalar", "multiplyScalar", "divideScalar", "exp", "tau", "i", "dotDivide", "conj", "pow", "ceil", "log2"];
+var createFft = /* @__PURE__ */ factory(name113, dependencies114, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -16899,10 +17647,10 @@ var createFft = /* @__PURE__ */ factory(name110, dependencies110, (_ref) => {
     ceil: ceil2,
     log2: log24
   } = _ref;
-  return typed2(name110, {
+  return typed2(name113, {
     Array: _ndFft,
     Matrix: function Matrix(matrix2) {
-      return matrix2.create(_ndFft(matrix2.toArray()));
+      return matrix2.create(_ndFft(matrix2.valueOf()), matrix2.datatype());
     }
   });
   function _ndFft(arr) {
@@ -16959,17 +17707,17 @@ var createFft = /* @__PURE__ */ factory(name110, dependencies110, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/ifft.js
-var name111 = "ifft";
-var dependencies111 = ["typed", "fft", "dotDivide", "conj"];
-var createIfft = /* @__PURE__ */ factory(name111, dependencies111, (_ref) => {
+var name114 = "ifft";
+var dependencies115 = ["typed", "fft", "dotDivide", "conj"];
+var createIfft = /* @__PURE__ */ factory(name114, dependencies115, (_ref) => {
   var {
     typed: typed2,
     fft,
     dotDivide,
     conj
   } = _ref;
-  return typed2(name111, {
-    "Array | Matrix": function ArrayMatrix(arr) {
+  return typed2(name114, {
+    "Array | Matrix": function Array__Matrix(arr) {
       var size = isMatrix(arr) ? arr.size() : arraySize(arr);
       return dotDivide(conj(fft(conj(arr))), size.reduce((acc, curr) => acc * curr, 1));
     }
@@ -17036,9 +17784,9 @@ function _objectSpread(e2) {
   }
   return e2;
 }
-var name112 = "solveODE";
-var dependencies112 = ["typed", "add", "subtract", "multiply", "divide", "max", "map", "abs", "isPositive", "isNegative", "larger", "smaller", "matrix", "bignumber", "unaryMinus"];
-var createSolveODE = /* @__PURE__ */ factory(name112, dependencies112, (_ref) => {
+var name115 = "solveODE";
+var dependencies116 = ["typed", "add", "subtract", "multiply", "divide", "max", "map", "abs", "isPositive", "isNegative", "larger", "smaller", "matrix", "bignumber", "unaryMinus"];
+var createSolveODE = /* @__PURE__ */ factory(name115, dependencies116, (_ref) => {
   var {
     typed: typed2,
     add: add2,
@@ -17232,9 +17980,9 @@ var createSolveODE = /* @__PURE__ */ factory(name112, dependencies112, (_ref) =>
 });
 
 // node_modules/mathjs/lib/esm/function/special/erf.js
-var name113 = "erf";
-var dependencies113 = ["typed"];
-var createErf = /* @__PURE__ */ factory(name113, dependencies113, (_ref) => {
+var name116 = "erf";
+var dependencies117 = ["typed"];
+var createErf = /* @__PURE__ */ factory(name116, dependencies117, (_ref) => {
   var {
     typed: typed2
   } = _ref;
@@ -17252,44 +18000,44 @@ var createErf = /* @__PURE__ */ factory(name113, dependencies113, (_ref) => {
       }
       return sign(x) * (1 - erfc3(y));
     },
-    "Array | Matrix": typed2.referToSelf((self2) => (n) => deepMap(n, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (n) => deepMap2(n, self2))
     // TODO: For complex numbers, use the approximation for the Faddeeva function
     //  from "More Efficient Computation of the Complex Error Function" (AMS)
   });
   function erf1(y) {
     var ysq = y * y;
-    var xnum = P3[0][4] * ysq;
+    var xnum = P4[0][4] * ysq;
     var xden = ysq;
     var i;
     for (i = 0; i < 3; i += 1) {
-      xnum = (xnum + P3[0][i]) * ysq;
+      xnum = (xnum + P4[0][i]) * ysq;
       xden = (xden + Q[0][i]) * ysq;
     }
-    return y * (xnum + P3[0][3]) / (xden + Q[0][3]);
+    return y * (xnum + P4[0][3]) / (xden + Q[0][3]);
   }
   function erfc2(y) {
-    var xnum = P3[1][8] * y;
+    var xnum = P4[1][8] * y;
     var xden = y;
     var i;
     for (i = 0; i < 7; i += 1) {
-      xnum = (xnum + P3[1][i]) * y;
+      xnum = (xnum + P4[1][i]) * y;
       xden = (xden + Q[1][i]) * y;
     }
-    var result = (xnum + P3[1][7]) / (xden + Q[1][7]);
+    var result = (xnum + P4[1][7]) / (xden + Q[1][7]);
     var ysq = parseInt(y * 16) / 16;
     var del = (y - ysq) * (y + ysq);
     return Math.exp(-ysq * ysq) * Math.exp(-del) * result;
   }
   function erfc3(y) {
     var ysq = 1 / (y * y);
-    var xnum = P3[2][5] * ysq;
+    var xnum = P4[2][5] * ysq;
     var xden = ysq;
     var i;
     for (i = 0; i < 4; i += 1) {
-      xnum = (xnum + P3[2][i]) * ysq;
+      xnum = (xnum + P4[2][i]) * ysq;
       xden = (xden + Q[2][i]) * ysq;
     }
-    var result = ysq * (xnum + P3[2][4]) / (xden + Q[2][4]);
+    var result = ysq * (xnum + P4[2][4]) / (xden + Q[2][4]);
     result = (SQRPI - result) / y;
     ysq = parseInt(y * 16) / 16;
     var del = (y - ysq) * (y + ysq);
@@ -17298,14 +18046,14 @@ var createErf = /* @__PURE__ */ factory(name113, dependencies113, (_ref) => {
 });
 var THRESH = 0.46875;
 var SQRPI = 0.5641895835477563;
-var P3 = [[3.1611237438705655, 113.86415415105016, 377.485237685302, 3209.3775891384694, 0.18577770618460315], [0.5641884969886701, 8.883149794388377, 66.11919063714163, 298.6351381974001, 881.952221241769, 1712.0476126340707, 2051.0783778260716, 1230.3393547979972, 21531153547440383e-24], [0.30532663496123236, 0.36034489994980445, 0.12578172611122926, 0.016083785148742275, 6587491615298378e-19, 0.016315387137302097]];
+var P4 = [[3.1611237438705655, 113.86415415105016, 377.485237685302, 3209.3775891384694, 0.18577770618460315], [0.5641884969886701, 8.883149794388377, 66.11919063714163, 298.6351381974001, 881.952221241769, 1712.0476126340707, 2051.0783778260716, 1230.3393547979972, 21531153547440383e-24], [0.30532663496123236, 0.36034489994980445, 0.12578172611122926, 0.016083785148742275, 6587491615298378e-19, 0.016315387137302097]];
 var Q = [[23.601290952344122, 244.02463793444417, 1282.6165260773723, 2844.236833439171], [15.744926110709835, 117.6939508913125, 537.1811018620099, 1621.3895745666903, 3290.7992357334597, 4362.619090143247, 3439.3676741437216, 1230.3393548037495], [2.568520192289822, 1.8729528499234604, 0.5279051029514285, 0.06051834131244132, 0.0023352049762686918]];
 var MAX_NUM = Math.pow(2, 53);
 
 // node_modules/mathjs/lib/esm/function/special/zeta.js
-var name114 = "zeta";
-var dependencies114 = ["typed", "config", "multiply", "pow", "divide", "factorial", "equal", "smallerEq", "isNegative", "gamma", "sin", "subtract", "add", "?Complex", "?BigNumber", "pi"];
-var createZeta = /* @__PURE__ */ factory(name114, dependencies114, (_ref) => {
+var name117 = "zeta";
+var dependencies118 = ["typed", "config", "multiply", "pow", "divide", "factorial", "equal", "smallerEq", "isBounded", "isNegative", "gamma", "sin", "subtract", "add", "?Complex", "?BigNumber", "pi"];
+var createZeta = /* @__PURE__ */ factory(name117, dependencies118, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -17315,6 +18063,7 @@ var createZeta = /* @__PURE__ */ factory(name114, dependencies114, (_ref) => {
     factorial,
     equal,
     smallerEq,
+    isBounded,
     isNegative,
     gamma,
     sin: sin2,
@@ -17324,10 +18073,10 @@ var createZeta = /* @__PURE__ */ factory(name114, dependencies114, (_ref) => {
     BigNumber: _BigNumber,
     pi: pi2
   } = _ref;
-  return typed2(name114, {
+  return typed2(name117, {
     number: (s) => zetaNumeric(s, (value) => value, () => 20),
     BigNumber: (s) => zetaNumeric(s, (value) => new _BigNumber(value), () => {
-      return Math.abs(Math.log10(config2.epsilon));
+      return Math.abs(Math.log10(config2.relTol));
     }),
     Complex: zetaComplex
   });
@@ -17338,7 +18087,7 @@ var createZeta = /* @__PURE__ */ factory(name114, dependencies114, (_ref) => {
     if (equal(s, 1)) {
       return createValue(NaN);
     }
-    if (!isFinite(s)) {
+    if (!isBounded(s)) {
       return isNegative(s) ? createValue(NaN) : createValue(1);
     }
     return zeta(s, createValue, determineDigits, (s2) => s2);
@@ -17388,15 +18137,15 @@ var createZeta = /* @__PURE__ */ factory(name114, dependencies114, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/statistics/mode.js
-var name115 = "mode";
-var dependencies115 = ["typed", "isNaN", "isNumeric"];
-var createMode = /* @__PURE__ */ factory(name115, dependencies115, (_ref) => {
+var name118 = "mode";
+var dependencies119 = ["typed", "isNaN", "isNumeric"];
+var createMode = /* @__PURE__ */ factory(name118, dependencies119, (_ref) => {
   var {
     typed: typed2,
-    isNaN: isNaN2,
+    isNaN: mathIsNaN,
     isNumeric
   } = _ref;
-  return typed2(name115, {
+  return typed2(name118, {
     "Array | Matrix": _mode,
     "...": function _(args) {
       return _mode(args);
@@ -17413,7 +18162,7 @@ var createMode = /* @__PURE__ */ factory(name115, dependencies115, (_ref) => {
     var max2 = 0;
     for (var i = 0; i < values.length; i++) {
       var value = values[i];
-      if (isNumeric(value) && isNaN2(value)) {
+      if (isNumeric(value) && mathIsNaN(value)) {
         throw new Error("Cannot calculate mode of an array containing NaN values");
       }
       if (!(value in count)) {
@@ -17446,20 +18195,20 @@ function improveErrorMessage(err, fnName, value) {
 }
 
 // node_modules/mathjs/lib/esm/function/statistics/prod.js
-var name116 = "prod";
-var dependencies116 = ["typed", "config", "multiplyScalar", "numeric"];
-var createProd = /* @__PURE__ */ factory(name116, dependencies116, (_ref) => {
+var name119 = "prod";
+var dependencies120 = ["typed", "config", "multiplyScalar", "numeric"];
+var createProd = /* @__PURE__ */ factory(name119, dependencies120, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     multiplyScalar,
     numeric: numeric2
   } = _ref;
-  return typed2(name116, {
+  return typed2(name119, {
     // prod([a, b, c, d, ...])
     "Array | Matrix": _prod,
     // prod([a, b, c, d, ...], dim)
-    "Array | Matrix, number | BigNumber": function ArrayMatrixNumberBigNumber(array, dim) {
+    "Array | Matrix, number | BigNumber": function Array__Matrix_number__BigNumber(array, dim) {
       throw new Error("prod(A, dim) is not yet supported");
     },
     // prod(a, b, c, d, ...)
@@ -17469,7 +18218,7 @@ var createProd = /* @__PURE__ */ factory(name116, dependencies116, (_ref) => {
   });
   function _prod(array) {
     var prod;
-    deepForEach(array, function(value) {
+    deepForEach2(array, function(value) {
       try {
         prod = prod === void 0 ? value : multiplyScalar(prod, value);
       } catch (err) {
@@ -17477,7 +18226,7 @@ var createProd = /* @__PURE__ */ factory(name116, dependencies116, (_ref) => {
       }
     });
     if (typeof prod === "string") {
-      prod = numeric2(prod, config2.number);
+      prod = numeric2(prod, safeNumberType(prod, config2));
     }
     if (prod === void 0) {
       throw new Error("Cannot calculate prod of an empty array");
@@ -17487,33 +18236,33 @@ var createProd = /* @__PURE__ */ factory(name116, dependencies116, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/string/format.js
-var name117 = "format";
-var dependencies117 = ["typed"];
-var createFormat = /* @__PURE__ */ factory(name117, dependencies117, (_ref) => {
+var name120 = "format";
+var dependencies121 = ["typed"];
+var createFormat = /* @__PURE__ */ factory(name120, dependencies121, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name117, {
+  return typed2(name120, {
     any: format3,
     "any, Object | function | number | BigNumber": format3
   });
 });
 
 // node_modules/mathjs/lib/esm/function/string/bin.js
-var name118 = "bin";
-var dependencies118 = ["typed", "format"];
-var createBin = factory(name118, dependencies118, (_ref) => {
+var name121 = "bin";
+var dependencies122 = ["typed", "format"];
+var createBin = factory(name121, dependencies122, (_ref) => {
   var {
     typed: typed2,
     format: format4
   } = _ref;
-  return typed2(name118, {
-    "number | BigNumber": function numberBigNumber(n) {
+  return typed2(name121, {
+    "number | BigNumber": function number__BigNumber(n) {
       return format4(n, {
         notation: "bin"
       });
     },
-    "number | BigNumber, number | BigNumber": function numberBigNumberNumberBigNumber(n, wordSize) {
+    "number | BigNumber, number | BigNumber": function number__BigNumber_number__BigNumber(n, wordSize) {
       return format4(n, {
         notation: "bin",
         wordSize
@@ -17523,20 +18272,20 @@ var createBin = factory(name118, dependencies118, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/string/oct.js
-var name119 = "oct";
-var dependencies119 = ["typed", "format"];
-var createOct = factory(name119, dependencies119, (_ref) => {
+var name122 = "oct";
+var dependencies123 = ["typed", "format"];
+var createOct = factory(name122, dependencies123, (_ref) => {
   var {
     typed: typed2,
     format: format4
   } = _ref;
-  return typed2(name119, {
-    "number | BigNumber": function numberBigNumber(n) {
+  return typed2(name122, {
+    "number | BigNumber": function number__BigNumber(n) {
       return format4(n, {
         notation: "oct"
       });
     },
-    "number | BigNumber, number | BigNumber": function numberBigNumberNumberBigNumber(n, wordSize) {
+    "number | BigNumber, number | BigNumber": function number__BigNumber_number__BigNumber(n, wordSize) {
       return format4(n, {
         notation: "oct",
         wordSize
@@ -17546,20 +18295,20 @@ var createOct = factory(name119, dependencies119, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/string/hex.js
-var name120 = "hex";
-var dependencies120 = ["typed", "format"];
-var createHex = factory(name120, dependencies120, (_ref) => {
+var name123 = "hex";
+var dependencies124 = ["typed", "format"];
+var createHex = factory(name123, dependencies124, (_ref) => {
   var {
     typed: typed2,
     format: format4
   } = _ref;
-  return typed2(name120, {
-    "number | BigNumber": function numberBigNumber(n) {
+  return typed2(name123, {
+    "number | BigNumber": function number__BigNumber(n) {
       return format4(n, {
         notation: "hex"
       });
     },
-    "number | BigNumber, number | BigNumber": function numberBigNumberNumberBigNumber(n, wordSize) {
+    "number | BigNumber, number | BigNumber": function number__BigNumber_number__BigNumber(n, wordSize) {
       return format4(n, {
         notation: "hex",
         wordSize
@@ -17572,13 +18321,13 @@ var createHex = factory(name120, dependencies120, (_ref) => {
 var printTemplate = /\$([\w.]+)/g;
 
 // node_modules/mathjs/lib/esm/function/string/print.js
-var name121 = "print";
-var dependencies121 = ["typed"];
-var createPrint = /* @__PURE__ */ factory(name121, dependencies121, (_ref) => {
+var name124 = "print";
+var dependencies125 = ["typed"];
+var createPrint = /* @__PURE__ */ factory(name124, dependencies125, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name121, {
+  return typed2(name124, {
     // note: Matrix will be converted automatically to an Array
     "string, Object | Array": _print,
     "string, Object | Array, number | Object": _print
@@ -17607,9 +18356,9 @@ function _print(template, values, options) {
 }
 
 // node_modules/mathjs/lib/esm/function/unit/to.js
-var name122 = "to";
-var dependencies122 = ["typed", "matrix", "concat"];
-var createTo = /* @__PURE__ */ factory(name122, dependencies122, (_ref) => {
+var name125 = "to";
+var dependencies126 = ["typed", "matrix", "concat"];
+var createTo = /* @__PURE__ */ factory(name125, dependencies126, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -17620,25 +18369,38 @@ var createTo = /* @__PURE__ */ factory(name122, dependencies122, (_ref) => {
     matrix,
     concat: concat2
   });
-  return typed2(name122, {
+  return typed2(name125, {
     "Unit, Unit | string": (x, unit) => x.to(unit)
   }, matrixAlgorithmSuite({
     Ds: true
   }));
 });
 
-// node_modules/mathjs/lib/esm/function/utils/isPrime.js
-var name123 = "isPrime";
-var dependencies123 = ["typed"];
-var createIsPrime = /* @__PURE__ */ factory(name123, dependencies123, (_ref) => {
+// node_modules/mathjs/lib/esm/function/unit/toBest.js
+var name126 = "toBest";
+var dependencies127 = ["typed"];
+var createToBest = /* @__PURE__ */ factory(name126, dependencies127, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name123, {
+  return typed2(name126, {
+    Unit: (x) => x.toBest(),
+    "Unit, string": (x, unitList) => x.toBest(unitList.split(",")),
+    "Unit, string, Object": (x, unitList, options) => x.toBest(unitList.split(","), options),
+    "Unit, Array": (x, unitList) => x.toBest(unitList),
+    "Unit, Array, Object": (x, unitList, options) => x.toBest(unitList, options)
+  });
+});
+
+// node_modules/mathjs/lib/esm/function/utils/isPrime.js
+var name127 = "isPrime";
+var dependencies128 = ["typed"];
+var createIsPrime = /* @__PURE__ */ factory(name127, dependencies128, (_ref) => {
+  var {
+    typed: typed2
+  } = _ref;
+  return typed2(name127, {
     number: function number(x) {
-      if (x * 0 !== 0) {
-        return false;
-      }
       if (x <= 3) {
         return x > 1;
       }
@@ -17652,10 +18414,21 @@ var createIsPrime = /* @__PURE__ */ factory(name123, dependencies123, (_ref) => 
       }
       return true;
     },
-    BigNumber: function BigNumber(n) {
-      if (n.toNumber() * 0 !== 0) {
+    bigint: function bigint(x) {
+      if (x <= /* @__PURE__ */ BigInt("3")) {
+        return x > /* @__PURE__ */ BigInt("1");
+      }
+      if (x % /* @__PURE__ */ BigInt("2") === /* @__PURE__ */ BigInt("0") || x % /* @__PURE__ */ BigInt("3") === /* @__PURE__ */ BigInt("0")) {
         return false;
       }
+      for (var i = /* @__PURE__ */ BigInt("5"); i * i <= x; i += /* @__PURE__ */ BigInt("6")) {
+        if (x % i === /* @__PURE__ */ BigInt("0") || x % (i + /* @__PURE__ */ BigInt("2")) === /* @__PURE__ */ BigInt("0")) {
+          return false;
+        }
+      }
+      return true;
+    },
+    BigNumber: function BigNumber(n) {
       if (n.lte(3)) return n.gt(1);
       if (n.mod(2).eq(0) || n.mod(3).eq(0)) return false;
       if (n.lt(Math.pow(2, 32))) {
@@ -17713,14 +18486,14 @@ var createIsPrime = /* @__PURE__ */ factory(name123, dependencies123, (_ref) => 
       }
       return true;
     },
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
 // node_modules/mathjs/lib/esm/function/utils/numeric.js
-var name124 = "numeric";
-var dependencies124 = ["number", "?bignumber", "?fraction"];
-var createNumeric = /* @__PURE__ */ factory(name124, dependencies124, (_ref) => {
+var name128 = "numeric";
+var dependencies129 = ["number", "?bignumber", "?fraction"];
+var createNumeric = /* @__PURE__ */ factory(name128, dependencies129, (_ref) => {
   var {
     number: _number,
     bignumber,
@@ -17735,6 +18508,7 @@ var createNumeric = /* @__PURE__ */ factory(name124, dependencies124, (_ref) => 
   var validOutputTypes = {
     number: (x) => _number(x),
     BigNumber: bignumber ? (x) => bignumber(x) : noBignumber,
+    bigint: (x) => BigInt(x),
     Fraction: fraction ? (x) => fraction(x) : noFraction
   };
   return function numeric2(value) {
@@ -17759,24 +18533,27 @@ var createNumeric = /* @__PURE__ */ factory(name124, dependencies124, (_ref) => 
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/divideScalar.js
-var name125 = "divideScalar";
-var dependencies125 = ["typed", "numeric"];
-var createDivideScalar = /* @__PURE__ */ factory(name125, dependencies125, (_ref) => {
+var name129 = "divideScalar";
+var dependencies130 = ["typed", "numeric"];
+var createDivideScalar = /* @__PURE__ */ factory(name129, dependencies130, (_ref) => {
   var {
     typed: typed2,
     numeric: numeric2
   } = _ref;
-  return typed2(name125, {
-    "number, number": function numberNumber(x, y) {
+  return typed2(name129, {
+    "number, number": function number_number(x, y) {
       return x / y;
     },
-    "Complex, Complex": function ComplexComplex(x, y) {
+    "Complex, Complex": function Complex_Complex(x, y) {
       return x.div(y);
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, y) {
       return x.div(y);
     },
-    "Fraction, Fraction": function FractionFraction(x, y) {
+    "bigint, bigint": function bigint_bigint(x, y) {
+      return x / y;
+    },
+    "Fraction, Fraction": function Fraction_Fraction(x, y) {
       return x.div(y);
     },
     "Unit, number | Complex | Fraction | BigNumber | Unit": (x, y) => x.divide(y),
@@ -17785,9 +18562,9 @@ var createDivideScalar = /* @__PURE__ */ factory(name125, dependencies125, (_ref
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/pow.js
-var name126 = "pow";
-var dependencies126 = ["typed", "config", "identity", "multiply", "matrix", "inv", "fraction", "number", "Complex"];
-var createPow = /* @__PURE__ */ factory(name126, dependencies126, (_ref) => {
+var name130 = "pow";
+var dependencies131 = ["typed", "config", "identity", "multiply", "matrix", "inv", "fraction", "number", "Complex"];
+var createPow = /* @__PURE__ */ factory(name130, dependencies131, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -17799,19 +18576,20 @@ var createPow = /* @__PURE__ */ factory(name126, dependencies126, (_ref) => {
     fraction,
     Complex: Complex2
   } = _ref;
-  return typed2(name126, {
+  return typed2(name130, {
     "number, number": _pow,
-    "Complex, Complex": function ComplexComplex(x, y) {
+    "Complex, Complex": function Complex_Complex(x, y) {
       return x.pow(y);
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, y) {
       if (y.isInteger() || x >= 0 || config2.predictable) {
         return x.pow(y);
       } else {
         return new Complex2(x.toNumber(), 0).pow(y.toNumber(), 0);
       }
     },
-    "Fraction, Fraction": function FractionFraction(x, y) {
+    "bigint, bigint": (x, y) => x ** y,
+    "Fraction, Fraction": function Fraction_Fraction(x, y) {
       var result = x.pow(y);
       if (result != null) {
         return result;
@@ -17823,25 +18601,25 @@ var createPow = /* @__PURE__ */ factory(name126, dependencies126, (_ref) => {
       }
     },
     "Array, number": _powArray,
-    "Array, BigNumber": function ArrayBigNumber(x, y) {
+    "Array, BigNumber": function Array_BigNumber(x, y) {
       return _powArray(x, y.toNumber());
     },
     "Matrix, number": _powMatrix,
-    "Matrix, BigNumber": function MatrixBigNumber(x, y) {
+    "Matrix, BigNumber": function Matrix_BigNumber(x, y) {
       return _powMatrix(x, y.toNumber());
     },
-    "Unit, number | BigNumber": function UnitNumberBigNumber(x, y) {
+    "Unit, number | BigNumber": function Unit_number__BigNumber(x, y) {
       return x.pow(y);
     }
   });
   function _pow(x, y) {
-    if (config2.predictable && !isInteger(y) && x < 0) {
+    if (config2.predictable && !isInteger2(y) && x < 0) {
       try {
         var yFrac = fraction(y);
         var yNum = number(yFrac);
         if (y === yNum || Math.abs((y - yNum) / y) < 1e-14) {
-          if (yFrac.d % 2 === 1) {
-            return (yFrac.n % 2 === 0 ? 1 : -1) * Math.pow(-x, y);
+          if (yFrac.d % /* @__PURE__ */ BigInt("2") === /* @__PURE__ */ BigInt("1")) {
+            return (yFrac.n % /* @__PURE__ */ BigInt("2") === /* @__PURE__ */ BigInt("0") ? 1 : -1) * Math.pow(-x, y);
           }
         }
       } catch (ex) {
@@ -17850,7 +18628,7 @@ var createPow = /* @__PURE__ */ factory(name126, dependencies126, (_ref) => {
     if (config2.predictable && (x < -1 && y === Infinity || x > -1 && x < 0 && y === -Infinity)) {
       return NaN;
     }
-    if (isInteger(y) || x >= 0 || config2.predictable) {
+    if (isInteger2(y) || x >= 0 || config2.predictable) {
       return powNumber(x, y);
     } else {
       if (x * x < 1 && y === Infinity || x * x > 1 && y === -Infinity) {
@@ -17860,7 +18638,7 @@ var createPow = /* @__PURE__ */ factory(name126, dependencies126, (_ref) => {
     }
   }
   function _powArray(x, y) {
-    if (!isInteger(y)) {
+    if (!isInteger2(y)) {
       throw new TypeError("For A^b, b must be an integer (value is " + y + ")");
     }
     var s = arraySize(x);
@@ -17898,9 +18676,9 @@ var createPow = /* @__PURE__ */ factory(name126, dependencies126, (_ref) => {
 
 // node_modules/mathjs/lib/esm/function/arithmetic/round.js
 var NO_INT = "Number of decimals in function round must be an integer";
-var name127 = "round";
-var dependencies127 = ["typed", "config", "matrix", "equalScalar", "zeros", "BigNumber", "DenseMatrix"];
-var createRound = /* @__PURE__ */ factory(name127, dependencies127, (_ref) => {
+var name131 = "round";
+var dependencies132 = ["typed", "config", "matrix", "equalScalar", "zeros", "BigNumber", "DenseMatrix"];
+var createRound = /* @__PURE__ */ factory(name131, dependencies132, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -17924,22 +18702,22 @@ var createRound = /* @__PURE__ */ factory(name127, dependencies127, (_ref) => {
   function toExponent(epsilon) {
     return Math.abs(splitNumber(epsilon).exponent);
   }
-  return typed2(name127, {
+  return typed2(name131, {
     number: function number(x) {
-      var xEpsilon = roundNumber(x, toExponent(config2.epsilon));
-      var xSelected = nearlyEqual(x, xEpsilon, config2.epsilon) ? xEpsilon : x;
+      var xEpsilon = roundNumber(x, toExponent(config2.relTol));
+      var xSelected = nearlyEqual(x, xEpsilon, config2.relTol, config2.absTol) ? xEpsilon : x;
       return roundNumber(xSelected);
     },
-    "number, number": function numberNumber(x, n) {
-      var epsilonExponent = toExponent(config2.epsilon);
+    "number, number": function number_number(x, n) {
+      var epsilonExponent = toExponent(config2.relTol);
       if (n >= epsilonExponent) {
         return roundNumber(x, n);
       }
       var xEpsilon = roundNumber(x, epsilonExponent);
-      var xSelected = nearlyEqual(x, xEpsilon, config2.epsilon) ? xEpsilon : x;
+      var xSelected = nearlyEqual(x, xEpsilon, config2.relTol, config2.absTol) ? xEpsilon : x;
       return roundNumber(xSelected, n);
     },
-    "number, BigNumber": function numberBigNumber(x, n) {
+    "number, BigNumber": function number_BigNumber(x, n) {
       if (!n.isInteger()) {
         throw new TypeError(NO_INT);
       }
@@ -17948,13 +18726,13 @@ var createRound = /* @__PURE__ */ factory(name127, dependencies127, (_ref) => {
     Complex: function Complex2(x) {
       return x.round();
     },
-    "Complex, number": function ComplexNumber(x, n) {
+    "Complex, number": function Complex_number(x, n) {
       if (n % 1) {
         throw new TypeError(NO_INT);
       }
       return x.round(n);
     },
-    "Complex, BigNumber": function ComplexBigNumber(x, n) {
+    "Complex, BigNumber": function Complex_BigNumber(x, n) {
       if (!n.isInteger()) {
         throw new TypeError(NO_INT);
       }
@@ -17962,32 +18740,36 @@ var createRound = /* @__PURE__ */ factory(name127, dependencies127, (_ref) => {
       return x.round(_n);
     },
     BigNumber: function BigNumber(x) {
-      var xEpsilon = new _BigNumber(x).toDecimalPlaces(toExponent(config2.epsilon));
-      var xSelected = nearlyEqual2(x, xEpsilon, config2.epsilon) ? xEpsilon : x;
+      var xEpsilon = new _BigNumber(x).toDecimalPlaces(toExponent(config2.relTol));
+      var xSelected = nearlyEqual2(x, xEpsilon, config2.relTol, config2.absTol) ? xEpsilon : x;
       return xSelected.toDecimalPlaces(0);
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, n) {
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, n) {
       if (!n.isInteger()) {
         throw new TypeError(NO_INT);
       }
-      var epsilonExponent = toExponent(config2.epsilon);
+      var epsilonExponent = toExponent(config2.relTol);
       if (n >= epsilonExponent) {
         return x.toDecimalPlaces(n.toNumber());
       }
       var xEpsilon = x.toDecimalPlaces(epsilonExponent);
-      var xSelected = nearlyEqual2(x, xEpsilon, config2.epsilon) ? xEpsilon : x;
+      var xSelected = nearlyEqual2(x, xEpsilon, config2.relTol, config2.absTol) ? xEpsilon : x;
       return xSelected.toDecimalPlaces(n.toNumber());
     },
+    // bigints can't be rounded
+    bigint: (b) => b,
+    "bigint, number": (b, _dummy) => b,
+    "bigint, BigNumber": (b, _dummy) => b,
     Fraction: function Fraction2(x) {
       return x.round();
     },
-    "Fraction, number": function FractionNumber(x, n) {
+    "Fraction, number": function Fraction_number(x, n) {
       if (n % 1) {
         throw new TypeError(NO_INT);
       }
       return x.round(n);
     },
-    "Fraction, BigNumber": function FractionBigNumber(x, n) {
+    "Fraction, BigNumber": function Fraction_BigNumber(x, n) {
       if (!n.isInteger()) {
         throw new TypeError(NO_INT);
       }
@@ -17998,14 +18780,12 @@ var createRound = /* @__PURE__ */ factory(name127, dependencies127, (_ref) => {
       return unit.multiply(self2(valueless, n));
     }),
     "Unit, BigNumber, Unit": typed2.referToSelf((self2) => (x, n, unit) => self2(x, n.toNumber(), unit)),
-    "Unit, Unit": typed2.referToSelf((self2) => (x, unit) => self2(x, 0, unit)),
-    "Array | Matrix, number, Unit": typed2.referToSelf((self2) => (x, n, unit) => {
-      return deepMap(x, (value) => self2(value, n, unit), true);
+    "Array | Matrix, number | BigNumber, Unit": typed2.referToSelf((self2) => (x, n, unit) => {
+      return deepMap2(x, (value) => self2(value, n, unit), true);
     }),
-    "Array | Matrix, BigNumber, Unit": typed2.referToSelf((self2) => (x, n, unit) => self2(x, n.toNumber(), unit)),
-    "Array | Matrix, Unit": typed2.referToSelf((self2) => (x, unit) => self2(x, 0, unit)),
+    "Array | Matrix | Unit, Unit": typed2.referToSelf((self2) => (x, unit) => self2(x, 0, unit)),
     "Array | Matrix": typed2.referToSelf((self2) => (x) => {
-      return deepMap(x, self2, true);
+      return deepMap2(x, self2, true);
     }),
     "SparseMatrix, number | BigNumber": typed2.referToSelf((self2) => (x, n) => {
       return matAlgo11xS0s(x, n, self2, false);
@@ -18035,43 +18815,56 @@ var createRound = /* @__PURE__ */ factory(name127, dependencies127, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/log.js
-var name128 = "log";
-var dependencies128 = ["config", "typed", "divideScalar", "Complex"];
-var createLog = /* @__PURE__ */ factory(name128, dependencies128, (_ref) => {
+var name132 = "log";
+var dependencies133 = ["config", "typed", "typeOf", "divideScalar", "Complex"];
+var nlg16 = Math.log(16);
+var createLog = /* @__PURE__ */ factory(name132, dependencies133, (_ref) => {
   var {
     typed: typed2,
+    typeOf: typeOf2,
     config: config2,
     divideScalar,
     Complex: Complex2
   } = _ref;
-  return typed2(name128, {
+  function complexLog(c) {
+    return c.log();
+  }
+  function complexLogNumber(x) {
+    return complexLog(new Complex2(x, 0));
+  }
+  return typed2(name132, {
     number: function number(x) {
       if (x >= 0 || config2.predictable) {
         return logNumber(x);
       } else {
-        return new Complex2(x, 0).log();
+        return complexLogNumber(x);
       }
     },
-    Complex: function Complex3(x) {
-      return x.log();
-    },
+    bigint: promoteLogarithm(nlg16, logNumber, config2, complexLogNumber),
+    Complex: complexLog,
     BigNumber: function BigNumber(x) {
       if (!x.isNegative() || config2.predictable) {
         return x.ln();
       } else {
-        return new Complex2(x.toNumber(), 0).log();
+        return complexLogNumber(x.toNumber());
       }
     },
     "any, any": typed2.referToSelf((self2) => (x, base) => {
+      if (typeOf2(x) === "Fraction" && typeOf2(base) === "Fraction") {
+        var result = x.log(base);
+        if (result !== null) {
+          return result;
+        }
+      }
       return divideScalar(self2(x), self2(base));
     })
   });
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/log1p.js
-var name129 = "log1p";
-var dependencies129 = ["typed", "config", "divideScalar", "log", "Complex"];
-var createLog1p = /* @__PURE__ */ factory(name129, dependencies129, (_ref) => {
+var name133 = "log1p";
+var dependencies134 = ["typed", "config", "divideScalar", "log", "Complex"];
+var createLog1p = /* @__PURE__ */ factory(name133, dependencies134, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -18079,7 +18872,7 @@ var createLog1p = /* @__PURE__ */ factory(name129, dependencies129, (_ref) => {
     log: log3,
     Complex: Complex2
   } = _ref;
-  return typed2(name129, {
+  return typed2(name133, {
     number: function number(x) {
       if (x >= -1 || config2.predictable) {
         return log1p(x);
@@ -18096,7 +18889,7 @@ var createLog1p = /* @__PURE__ */ factory(name129, dependencies129, (_ref) => {
         return _log1pComplex(new Complex2(x.toNumber(), 0));
       }
     },
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2)),
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2)),
     "any, any": typed2.referToSelf((self2) => (x, base) => {
       return divideScalar(self2(x), log3(base));
     })
@@ -18108,9 +18901,9 @@ var createLog1p = /* @__PURE__ */ factory(name129, dependencies129, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/nthRoots.js
-var name130 = "nthRoots";
-var dependencies130 = ["config", "typed", "divideScalar", "Complex"];
-var createNthRoots = /* @__PURE__ */ factory(name130, dependencies130, (_ref) => {
+var name134 = "nthRoots";
+var dependencies135 = ["config", "typed", "divideScalar", "Complex"];
+var createNthRoots = /* @__PURE__ */ factory(name134, dependencies135, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -18159,7 +18952,7 @@ var createNthRoots = /* @__PURE__ */ factory(name130, dependencies130, (_ref) =>
     }
     return roots;
   }
-  return typed2(name130, {
+  return typed2(name134, {
     Complex: function Complex3(x) {
       return _nthComplexRoots(x, 2);
     },
@@ -18168,23 +18961,24 @@ var createNthRoots = /* @__PURE__ */ factory(name130, dependencies130, (_ref) =>
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/dotPow.js
-var name131 = "dotPow";
-var dependencies131 = ["typed", "equalScalar", "matrix", "pow", "DenseMatrix", "concat"];
-var createDotPow = /* @__PURE__ */ factory(name131, dependencies131, (_ref) => {
+var name135 = "dotPow";
+var dependencies136 = ["typed", "equalScalar", "matrix", "pow", "DenseMatrix", "concat", "SparseMatrix"];
+var createDotPow = /* @__PURE__ */ factory(name135, dependencies136, (_ref) => {
   var {
     typed: typed2,
     equalScalar,
     matrix,
     pow: pow2,
     DenseMatrix,
-    concat: concat2
+    concat: concat2,
+    SparseMatrix
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed: typed2
   });
   var matAlgo07xSSf = createMatAlgo07xSSf({
     typed: typed2,
-    DenseMatrix
+    SparseMatrix
   });
   var matAlgo11xS0s = createMatAlgo11xS0s({
     typed: typed2,
@@ -18208,7 +19002,7 @@ var createDotPow = /* @__PURE__ */ factory(name131, dependencies131, (_ref) => {
     }
   }
   var powScalar = typed2(powScalarSignatures);
-  return typed2(name131, matrixAlgorithmSuite({
+  return typed2(name135, matrixAlgorithmSuite({
     elop: powScalar,
     SS: matAlgo07xSSf,
     DS: matAlgo03xDSf,
@@ -18218,16 +19012,17 @@ var createDotPow = /* @__PURE__ */ factory(name131, dependencies131, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/dotDivide.js
-var name132 = "dotDivide";
-var dependencies132 = ["typed", "matrix", "equalScalar", "divideScalar", "DenseMatrix", "concat"];
-var createDotDivide = /* @__PURE__ */ factory(name132, dependencies132, (_ref) => {
+var name136 = "dotDivide";
+var dependencies137 = ["typed", "matrix", "equalScalar", "divideScalar", "DenseMatrix", "concat", "SparseMatrix"];
+var createDotDivide = /* @__PURE__ */ factory(name136, dependencies137, (_ref) => {
   var {
     typed: typed2,
     matrix,
     equalScalar,
     divideScalar,
     DenseMatrix,
-    concat: concat2
+    concat: concat2,
+    SparseMatrix
   } = _ref;
   var matAlgo02xDS0 = createMatAlgo02xDS0({
     typed: typed2,
@@ -18238,7 +19033,7 @@ var createDotDivide = /* @__PURE__ */ factory(name132, dependencies132, (_ref) =
   });
   var matAlgo07xSSf = createMatAlgo07xSSf({
     typed: typed2,
-    DenseMatrix
+    SparseMatrix
   });
   var matAlgo11xS0s = createMatAlgo11xS0s({
     typed: typed2,
@@ -18253,7 +19048,7 @@ var createDotDivide = /* @__PURE__ */ factory(name132, dependencies132, (_ref) =
     matrix,
     concat: concat2
   });
-  return typed2(name132, matrixAlgorithmSuite({
+  return typed2(name136, matrixAlgorithmSuite({
     elop: divideScalar,
     SS: matAlgo07xSSf,
     DS: matAlgo03xDSf,
@@ -18365,9 +19160,9 @@ function createSolveValidation(_ref) {
 }
 
 // node_modules/mathjs/lib/esm/function/algebra/solver/lsolve.js
-var name133 = "lsolve";
-var dependencies133 = ["typed", "matrix", "divideScalar", "multiplyScalar", "subtractScalar", "equalScalar", "DenseMatrix"];
-var createLsolve = /* @__PURE__ */ factory(name133, dependencies133, (_ref) => {
+var name137 = "lsolve";
+var dependencies138 = ["typed", "matrix", "divideScalar", "multiplyScalar", "subtractScalar", "equalScalar", "DenseMatrix"];
+var createLsolve = /* @__PURE__ */ factory(name137, dependencies138, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -18380,14 +19175,14 @@ var createLsolve = /* @__PURE__ */ factory(name133, dependencies133, (_ref) => {
   var solveValidation = createSolveValidation({
     DenseMatrix
   });
-  return typed2(name133, {
-    "SparseMatrix, Array | Matrix": function SparseMatrixArrayMatrix(m, b) {
+  return typed2(name137, {
+    "SparseMatrix, Array | Matrix": function SparseMatrix_Array__Matrix(m, b) {
       return _sparseForwardSubstitution(m, b);
     },
-    "DenseMatrix, Array | Matrix": function DenseMatrixArrayMatrix(m, b) {
+    "DenseMatrix, Array | Matrix": function DenseMatrix_Array__Matrix(m, b) {
       return _denseForwardSubstitution(m, b);
     },
-    "Array, Array | Matrix": function ArrayArrayMatrix(a, b) {
+    "Array, Array | Matrix": function Array_Array__Matrix(a, b) {
       var m = matrix(a);
       var r = _denseForwardSubstitution(m, b);
       return r.valueOf();
@@ -18469,9 +19264,9 @@ var createLsolve = /* @__PURE__ */ factory(name133, dependencies133, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/solver/usolve.js
-var name134 = "usolve";
-var dependencies134 = ["typed", "matrix", "divideScalar", "multiplyScalar", "subtractScalar", "equalScalar", "DenseMatrix"];
-var createUsolve = /* @__PURE__ */ factory(name134, dependencies134, (_ref) => {
+var name138 = "usolve";
+var dependencies139 = ["typed", "matrix", "divideScalar", "multiplyScalar", "subtractScalar", "equalScalar", "DenseMatrix"];
+var createUsolve = /* @__PURE__ */ factory(name138, dependencies139, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -18484,14 +19279,14 @@ var createUsolve = /* @__PURE__ */ factory(name134, dependencies134, (_ref) => {
   var solveValidation = createSolveValidation({
     DenseMatrix
   });
-  return typed2(name134, {
-    "SparseMatrix, Array | Matrix": function SparseMatrixArrayMatrix(m, b) {
+  return typed2(name138, {
+    "SparseMatrix, Array | Matrix": function SparseMatrix_Array__Matrix(m, b) {
       return _sparseBackwardSubstitution(m, b);
     },
-    "DenseMatrix, Array | Matrix": function DenseMatrixArrayMatrix(m, b) {
+    "DenseMatrix, Array | Matrix": function DenseMatrix_Array__Matrix(m, b) {
       return _denseBackwardSubstitution(m, b);
     },
-    "Array, Array | Matrix": function ArrayArrayMatrix(a, b) {
+    "Array, Array | Matrix": function Array_Array__Matrix(a, b) {
       var m = matrix(a);
       var r = _denseBackwardSubstitution(m, b);
       return r.valueOf();
@@ -18573,9 +19368,9 @@ var createUsolve = /* @__PURE__ */ factory(name134, dependencies134, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/solver/lsolveAll.js
-var name135 = "lsolveAll";
-var dependencies135 = ["typed", "matrix", "divideScalar", "multiplyScalar", "subtractScalar", "equalScalar", "DenseMatrix"];
-var createLsolveAll = /* @__PURE__ */ factory(name135, dependencies135, (_ref) => {
+var name139 = "lsolveAll";
+var dependencies140 = ["typed", "matrix", "divideScalar", "multiplyScalar", "subtractScalar", "equalScalar", "DenseMatrix"];
+var createLsolveAll = /* @__PURE__ */ factory(name139, dependencies140, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -18588,14 +19383,14 @@ var createLsolveAll = /* @__PURE__ */ factory(name135, dependencies135, (_ref) =
   var solveValidation = createSolveValidation({
     DenseMatrix
   });
-  return typed2(name135, {
-    "SparseMatrix, Array | Matrix": function SparseMatrixArrayMatrix(m, b) {
+  return typed2(name139, {
+    "SparseMatrix, Array | Matrix": function SparseMatrix_Array__Matrix(m, b) {
       return _sparseForwardSubstitution(m, b);
     },
-    "DenseMatrix, Array | Matrix": function DenseMatrixArrayMatrix(m, b) {
+    "DenseMatrix, Array | Matrix": function DenseMatrix_Array__Matrix(m, b) {
       return _denseForwardSubstitution(m, b);
     },
-    "Array, Array | Matrix": function ArrayArrayMatrix(a, b) {
+    "Array, Array | Matrix": function Array_Array__Matrix(a, b) {
       var m = matrix(a);
       var R = _denseForwardSubstitution(m, b);
       return R.map((r) => r.valueOf());
@@ -18696,9 +19491,9 @@ var createLsolveAll = /* @__PURE__ */ factory(name135, dependencies135, (_ref) =
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/solver/usolveAll.js
-var name136 = "usolveAll";
-var dependencies136 = ["typed", "matrix", "divideScalar", "multiplyScalar", "subtractScalar", "equalScalar", "DenseMatrix"];
-var createUsolveAll = /* @__PURE__ */ factory(name136, dependencies136, (_ref) => {
+var name140 = "usolveAll";
+var dependencies141 = ["typed", "matrix", "divideScalar", "multiplyScalar", "subtractScalar", "equalScalar", "DenseMatrix"];
+var createUsolveAll = /* @__PURE__ */ factory(name140, dependencies141, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -18711,14 +19506,14 @@ var createUsolveAll = /* @__PURE__ */ factory(name136, dependencies136, (_ref) =
   var solveValidation = createSolveValidation({
     DenseMatrix
   });
-  return typed2(name136, {
-    "SparseMatrix, Array | Matrix": function SparseMatrixArrayMatrix(m, b) {
+  return typed2(name140, {
+    "SparseMatrix, Array | Matrix": function SparseMatrix_Array__Matrix(m, b) {
       return _sparseBackwardSubstitution(m, b);
     },
-    "DenseMatrix, Array | Matrix": function DenseMatrixArrayMatrix(m, b) {
+    "DenseMatrix, Array | Matrix": function DenseMatrix_Array__Matrix(m, b) {
       return _denseBackwardSubstitution(m, b);
     },
-    "Array, Array | Matrix": function ArrayArrayMatrix(a, b) {
+    "Array, Array | Matrix": function Array_Array__Matrix(a, b) {
       var m = matrix(a);
       var R = _denseBackwardSubstitution(m, b);
       return R.map((r) => r.valueOf());
@@ -18819,9 +19614,9 @@ var createUsolveAll = /* @__PURE__ */ factory(name136, dependencies136, (_ref) =
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/utils/matAlgo08xS0Sid.js
-var name137 = "matAlgo08xS0Sid";
-var dependencies137 = ["typed", "equalScalar"];
-var createMatAlgo08xS0Sid = /* @__PURE__ */ factory(name137, dependencies137, (_ref) => {
+var name141 = "matAlgo08xS0Sid";
+var dependencies142 = ["typed", "equalScalar"];
+var createMatAlgo08xS0Sid = /* @__PURE__ */ factory(name141, dependencies142, (_ref) => {
   var {
     typed: typed2,
     equalScalar
@@ -18917,9 +19712,9 @@ var createUseMatrixForArrayScalar = /* @__PURE__ */ factory("useMatrixForArraySc
 });
 
 // node_modules/mathjs/lib/esm/function/bitwise/leftShift.js
-var name138 = "leftShift";
-var dependencies138 = ["typed", "matrix", "equalScalar", "zeros", "DenseMatrix", "concat"];
-var createLeftShift = /* @__PURE__ */ factory(name138, dependencies138, (_ref) => {
+var name142 = "leftShift";
+var dependencies143 = ["typed", "matrix", "equalScalar", "zeros", "DenseMatrix", "concat"];
+var createLeftShift = /* @__PURE__ */ factory(name142, dependencies143, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -18959,9 +19754,10 @@ var createLeftShift = /* @__PURE__ */ factory(name138, dependencies138, (_ref) =
     typed: typed2,
     matrix
   });
-  return typed2(name138, {
+  return typed2(name142, {
     "number, number": leftShiftNumber,
     "BigNumber, BigNumber": leftShiftBigNumber,
+    "bigint, bigint": (x, y) => x << y,
     "SparseMatrix, number | BigNumber": typed2.referToSelf((self2) => (x, y) => {
       if (equalScalar(y, 0)) {
         return x.clone();
@@ -18994,9 +19790,9 @@ var createLeftShift = /* @__PURE__ */ factory(name138, dependencies138, (_ref) =
 });
 
 // node_modules/mathjs/lib/esm/function/bitwise/rightArithShift.js
-var name139 = "rightArithShift";
-var dependencies139 = ["typed", "matrix", "equalScalar", "zeros", "DenseMatrix", "concat"];
-var createRightArithShift = /* @__PURE__ */ factory(name139, dependencies139, (_ref) => {
+var name143 = "rightArithShift";
+var dependencies144 = ["typed", "matrix", "equalScalar", "zeros", "DenseMatrix", "concat"];
+var createRightArithShift = /* @__PURE__ */ factory(name143, dependencies144, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -19036,9 +19832,10 @@ var createRightArithShift = /* @__PURE__ */ factory(name139, dependencies139, (_
     typed: typed2,
     matrix
   });
-  return typed2(name139, {
+  return typed2(name143, {
     "number, number": rightArithShiftNumber,
     "BigNumber, BigNumber": rightArithShiftBigNumber,
+    "bigint, bigint": (x, y) => x >> y,
     "SparseMatrix, number | BigNumber": typed2.referToSelf((self2) => (x, y) => {
       if (equalScalar(y, 0)) {
         return x.clone();
@@ -19071,9 +19868,9 @@ var createRightArithShift = /* @__PURE__ */ factory(name139, dependencies139, (_
 });
 
 // node_modules/mathjs/lib/esm/function/bitwise/rightLogShift.js
-var name140 = "rightLogShift";
-var dependencies140 = ["typed", "matrix", "equalScalar", "zeros", "DenseMatrix", "concat"];
-var createRightLogShift = /* @__PURE__ */ factory(name140, dependencies140, (_ref) => {
+var name144 = "rightLogShift";
+var dependencies145 = ["typed", "matrix", "equalScalar", "zeros", "DenseMatrix", "concat"];
+var createRightLogShift = /* @__PURE__ */ factory(name144, dependencies145, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -19113,7 +19910,7 @@ var createRightLogShift = /* @__PURE__ */ factory(name140, dependencies140, (_re
     typed: typed2,
     matrix
   });
-  return typed2(name140, {
+  return typed2(name144, {
     "number, number": rightLogShiftNumber,
     // 'BigNumber, BigNumber': ..., // TODO: implement BigNumber support for rightLogShift
     "SparseMatrix, number | BigNumber": typed2.referToSelf((self2) => (x, y) => {
@@ -19148,9 +19945,9 @@ var createRightLogShift = /* @__PURE__ */ factory(name140, dependencies140, (_re
 });
 
 // node_modules/mathjs/lib/esm/function/logical/and.js
-var name141 = "and";
-var dependencies141 = ["typed", "matrix", "equalScalar", "zeros", "not", "concat"];
-var createAnd = /* @__PURE__ */ factory(name141, dependencies141, (_ref) => {
+var name145 = "and";
+var dependencies146 = ["typed", "matrix", "equalScalar", "zeros", "not", "concat"];
+var createAnd = /* @__PURE__ */ factory(name145, dependencies146, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -19179,14 +19976,15 @@ var createAnd = /* @__PURE__ */ factory(name141, dependencies141, (_ref) => {
     matrix,
     concat: concat2
   });
-  return typed2(name141, {
+  return typed2(name145, {
     "number, number": andNumber,
-    "Complex, Complex": function ComplexComplex(x, y) {
+    "Complex, Complex": function Complex_Complex(x, y) {
       return (x.re !== 0 || x.im !== 0) && (y.re !== 0 || y.im !== 0);
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, y) {
       return !x.isZero() && !y.isZero() && !x.isNaN() && !y.isNaN();
     },
+    "bigint, bigint": andNumber,
     "Unit, Unit": typed2.referToSelf((self2) => (x, y) => self2(x.value || 0, y.value || 0)),
     "SparseMatrix, any": typed2.referToSelf((self2) => (x, y) => {
       if (not(y)) {
@@ -19225,9 +20023,9 @@ var createAnd = /* @__PURE__ */ factory(name141, dependencies141, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/relational/compare.js
-var name142 = "compare";
-var dependencies142 = ["typed", "config", "matrix", "equalScalar", "BigNumber", "Fraction", "DenseMatrix", "concat"];
-var createCompare = /* @__PURE__ */ factory(name142, dependencies142, (_ref) => {
+var name146 = "compare";
+var dependencies147 = ["typed", "config", "matrix", "equalScalar", "BigNumber", "Fraction", "DenseMatrix", "concat"];
+var createCompare = /* @__PURE__ */ factory(name146, dependencies147, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -19257,20 +20055,23 @@ var createCompare = /* @__PURE__ */ factory(name142, dependencies142, (_ref) => 
   var compareUnits = createCompareUnits({
     typed: typed2
   });
-  return typed2(name142, createCompareNumber({
+  return typed2(name146, createCompareNumber({
     typed: typed2,
     config: config2
   }), {
-    "boolean, boolean": function booleanBoolean(x, y) {
+    "boolean, boolean": function boolean_boolean(x, y) {
       return x === y ? 0 : x > y ? 1 : -1;
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
-      return nearlyEqual2(x, y, config2.epsilon) ? new BigNumber(0) : new BigNumber(x.cmp(y));
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, y) {
+      return nearlyEqual2(x, y, config2.relTol, config2.absTol) ? new BigNumber(0) : new BigNumber(x.cmp(y));
     },
-    "Fraction, Fraction": function FractionFraction(x, y) {
+    "bigint, bigint": function bigint_bigint(x, y) {
+      return x === y ? /* @__PURE__ */ BigInt("0") : x > y ? /* @__PURE__ */ BigInt("1") : -/* @__PURE__ */ BigInt("1");
+    },
+    "Fraction, Fraction": function Fraction_Fraction(x, y) {
       return new Fraction2(x.compare(y));
     },
-    "Complex, Complex": function ComplexComplex() {
+    "Complex, Complex": function Complex_Complex() {
       throw new TypeError("No ordering relation is defined for complex numbers");
     }
   }, compareUnits, matrixAlgorithmSuite({
@@ -19279,36 +20080,36 @@ var createCompare = /* @__PURE__ */ factory(name142, dependencies142, (_ref) => 
     Ss: matAlgo12xSfs
   }));
 });
-var createCompareNumber = /* @__PURE__ */ factory(name142, ["typed", "config"], (_ref2) => {
+var createCompareNumber = /* @__PURE__ */ factory(name146, ["typed", "config"], (_ref2) => {
   var {
     typed: typed2,
     config: config2
   } = _ref2;
-  return typed2(name142, {
-    "number, number": function numberNumber(x, y) {
-      return nearlyEqual(x, y, config2.epsilon) ? 0 : x > y ? 1 : -1;
+  return typed2(name146, {
+    "number, number": function number_number(x, y) {
+      return nearlyEqual(x, y, config2.relTol, config2.absTol) ? 0 : x > y ? 1 : -1;
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/function/relational/compareNatural.js
 var import_javascript_natural_sort = __toESM(require_naturalSort(), 1);
-var name143 = "compareNatural";
-var dependencies143 = ["typed", "compare"];
-var createCompareNatural = /* @__PURE__ */ factory(name143, dependencies143, (_ref) => {
+var name147 = "compareNatural";
+var dependencies148 = ["typed", "compare"];
+var createCompareNatural = /* @__PURE__ */ factory(name147, dependencies148, (_ref) => {
   var {
     typed: typed2,
     compare
   } = _ref;
   var compareBooleans = compare.signatures["boolean,boolean"];
-  return typed2(name143, {
+  return typed2(name147, {
     "any, any": _compareNatural
   });
   function _compareNatural(x, y) {
     var typeX = typeOf(x);
     var typeY = typeOf(y);
     var c;
-    if ((typeX === "number" || typeX === "BigNumber" || typeX === "Fraction") && (typeY === "number" || typeY === "BigNumber" || typeY === "Fraction")) {
+    if ((typeX === "number" || typeX === "BigNumber" || typeX === "Fraction" || typeX === "bigint") && (typeY === "number" || typeY === "BigNumber" || typeY === "Fraction" || typeY === "bigint")) {
       c = compare(x, y);
       if (c.toString() !== "0") {
         return c > 0 ? 1 : -1;
@@ -19428,10 +20229,10 @@ function compareComplexNumbers(x, y) {
 }
 
 // node_modules/mathjs/lib/esm/function/relational/compareText.js
-var name144 = "compareText";
-var dependencies144 = ["typed", "matrix", "concat"];
+var name148 = "compareText";
+var dependencies149 = ["typed", "matrix", "concat"];
 compareText.signature = "any, any";
-var createCompareText = /* @__PURE__ */ factory(name144, dependencies144, (_ref) => {
+var createCompareText = /* @__PURE__ */ factory(name148, dependencies149, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -19442,29 +20243,30 @@ var createCompareText = /* @__PURE__ */ factory(name144, dependencies144, (_ref)
     matrix,
     concat: concat2
   });
-  return typed2(name144, compareText, matrixAlgorithmSuite({
+  return typed2(name148, compareText, matrixAlgorithmSuite({
     elop: compareText,
     Ds: true
   }));
 });
 
 // node_modules/mathjs/lib/esm/function/relational/equal.js
-var name145 = "equal";
-var dependencies145 = ["typed", "matrix", "equalScalar", "DenseMatrix", "concat"];
-var createEqual = /* @__PURE__ */ factory(name145, dependencies145, (_ref) => {
+var name149 = "equal";
+var dependencies150 = ["typed", "matrix", "equalScalar", "DenseMatrix", "SparseMatrix"];
+var createEqual = /* @__PURE__ */ factory(name149, dependencies150, (_ref) => {
   var {
     typed: typed2,
     matrix,
     equalScalar,
     DenseMatrix,
-    concat: concat2
+    concat: concat2,
+    SparseMatrix
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed: typed2
   });
   var matAlgo07xSSf = createMatAlgo07xSSf({
     typed: typed2,
-    DenseMatrix
+    SparseMatrix
   });
   var matAlgo12xSfs = createMatAlgo12xSfs({
     typed: typed2,
@@ -19472,10 +20274,9 @@ var createEqual = /* @__PURE__ */ factory(name145, dependencies145, (_ref) => {
   });
   var matrixAlgorithmSuite = createMatrixAlgorithmSuite({
     typed: typed2,
-    matrix,
-    concat: concat2
+    matrix
   });
-  return typed2(name145, createEqualNumber({
+  return typed2(name149, createEqualNumber({
     typed: typed2,
     equalScalar
   }), matrixAlgorithmSuite({
@@ -19485,13 +20286,13 @@ var createEqual = /* @__PURE__ */ factory(name145, dependencies145, (_ref) => {
     Ss: matAlgo12xSfs
   }));
 });
-var createEqualNumber = factory(name145, ["typed", "equalScalar"], (_ref2) => {
+var createEqualNumber = factory(name149, ["typed", "equalScalar"], (_ref2) => {
   var {
     typed: typed2,
     equalScalar
   } = _ref2;
-  return typed2(name145, {
-    "any, any": function anyAny(x, y) {
+  return typed2(name149, {
+    "any, any": function any_any(x, y) {
       if (x === null) {
         return y === null;
       }
@@ -19510,38 +20311,40 @@ var createEqualNumber = factory(name145, ["typed", "equalScalar"], (_ref2) => {
 });
 
 // node_modules/mathjs/lib/esm/function/relational/equalText.js
-var name146 = "equalText";
-var dependencies146 = ["typed", "compareText", "isZero"];
-var createEqualText = /* @__PURE__ */ factory(name146, dependencies146, (_ref) => {
+var name150 = "equalText";
+var dependencies151 = ["typed", "compareText", "isZero"];
+var createEqualText = /* @__PURE__ */ factory(name150, dependencies151, (_ref) => {
   var {
     typed: typed2,
     compareText: compareText2,
     isZero
   } = _ref;
-  return typed2(name146, {
-    "any, any": function anyAny(x, y) {
+  return typed2(name150, {
+    "any, any": function any_any(x, y) {
       return isZero(compareText2(x, y));
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/function/relational/smaller.js
-var name147 = "smaller";
-var dependencies147 = ["typed", "config", "matrix", "DenseMatrix", "concat"];
-var createSmaller = /* @__PURE__ */ factory(name147, dependencies147, (_ref) => {
+var name151 = "smaller";
+var dependencies152 = ["typed", "config", "bignumber", "matrix", "DenseMatrix", "concat", "SparseMatrix"];
+var createSmaller = /* @__PURE__ */ factory(name151, dependencies152, (_ref) => {
   var {
     typed: typed2,
     config: config2,
+    bignumber,
     matrix,
     DenseMatrix,
-    concat: concat2
+    concat: concat2,
+    SparseMatrix
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed: typed2
   });
   var matAlgo07xSSf = createMatAlgo07xSSf({
     typed: typed2,
-    DenseMatrix
+    SparseMatrix
   });
   var matAlgo12xSfs = createMatAlgo12xSfs({
     typed: typed2,
@@ -19555,16 +20358,24 @@ var createSmaller = /* @__PURE__ */ factory(name147, dependencies147, (_ref) => 
   var compareUnits = createCompareUnits({
     typed: typed2
   });
-  return typed2(name147, createSmallerNumber({
+  function bignumSmaller(x, y) {
+    return x.lt(y) && !nearlyEqual2(x, y, config2.relTol, config2.absTol);
+  }
+  return typed2(name151, createSmallerNumber({
     typed: typed2,
     config: config2
   }), {
     "boolean, boolean": (x, y) => x < y,
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
-      return x.lt(y) && !nearlyEqual2(x, y, config2.epsilon);
-    },
+    "BigNumber, BigNumber": bignumSmaller,
+    "bigint, bigint": (x, y) => x < y,
     "Fraction, Fraction": (x, y) => x.compare(y) === -1,
-    "Complex, Complex": function ComplexComplex(x, y) {
+    "Fraction, BigNumber": function Fraction_BigNumber(x, y) {
+      return bignumSmaller(bignumber(x), y);
+    },
+    "BigNumber, Fraction": function BigNumber_Fraction(x, y) {
+      return bignumSmaller(x, bignumber(y));
+    },
+    "Complex, Complex": function Complex_Complex(x, y) {
       throw new TypeError("No ordering relation is defined for complex numbers");
     }
   }, compareUnits, matrixAlgorithmSuite({
@@ -19573,35 +20384,36 @@ var createSmaller = /* @__PURE__ */ factory(name147, dependencies147, (_ref) => 
     Ss: matAlgo12xSfs
   }));
 });
-var createSmallerNumber = /* @__PURE__ */ factory(name147, ["typed", "config"], (_ref2) => {
+var createSmallerNumber = /* @__PURE__ */ factory(name151, ["typed", "config"], (_ref2) => {
   var {
     typed: typed2,
     config: config2
   } = _ref2;
-  return typed2(name147, {
-    "number, number": function numberNumber(x, y) {
-      return x < y && !nearlyEqual(x, y, config2.epsilon);
+  return typed2(name151, {
+    "number, number": function number_number(x, y) {
+      return x < y && !nearlyEqual(x, y, config2.relTol, config2.absTol);
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/function/relational/smallerEq.js
-var name148 = "smallerEq";
-var dependencies148 = ["typed", "config", "matrix", "DenseMatrix", "concat"];
-var createSmallerEq = /* @__PURE__ */ factory(name148, dependencies148, (_ref) => {
+var name152 = "smallerEq";
+var dependencies153 = ["typed", "config", "matrix", "DenseMatrix", "concat", "SparseMatrix"];
+var createSmallerEq = /* @__PURE__ */ factory(name152, dependencies153, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     matrix,
     DenseMatrix,
-    concat: concat2
+    concat: concat2,
+    SparseMatrix
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed: typed2
   });
   var matAlgo07xSSf = createMatAlgo07xSSf({
     typed: typed2,
-    DenseMatrix
+    SparseMatrix
   });
   var matAlgo12xSfs = createMatAlgo12xSfs({
     typed: typed2,
@@ -19615,16 +20427,17 @@ var createSmallerEq = /* @__PURE__ */ factory(name148, dependencies148, (_ref) =
   var compareUnits = createCompareUnits({
     typed: typed2
   });
-  return typed2(name148, createSmallerEqNumber({
+  return typed2(name152, createSmallerEqNumber({
     typed: typed2,
     config: config2
   }), {
     "boolean, boolean": (x, y) => x <= y,
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
-      return x.lte(y) || nearlyEqual2(x, y, config2.epsilon);
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, y) {
+      return x.lte(y) || nearlyEqual2(x, y, config2.relTol, config2.absTol);
     },
+    "bigint, bigint": (x, y) => x <= y,
     "Fraction, Fraction": (x, y) => x.compare(y) !== 1,
-    "Complex, Complex": function ComplexComplex() {
+    "Complex, Complex": function Complex_Complex() {
       throw new TypeError("No ordering relation is defined for complex numbers");
     }
   }, compareUnits, matrixAlgorithmSuite({
@@ -19633,35 +20446,37 @@ var createSmallerEq = /* @__PURE__ */ factory(name148, dependencies148, (_ref) =
     Ss: matAlgo12xSfs
   }));
 });
-var createSmallerEqNumber = /* @__PURE__ */ factory(name148, ["typed", "config"], (_ref2) => {
+var createSmallerEqNumber = /* @__PURE__ */ factory(name152, ["typed", "config"], (_ref2) => {
   var {
     typed: typed2,
     config: config2
   } = _ref2;
-  return typed2(name148, {
-    "number, number": function numberNumber(x, y) {
-      return x <= y || nearlyEqual(x, y, config2.epsilon);
+  return typed2(name152, {
+    "number, number": function number_number(x, y) {
+      return x <= y || nearlyEqual(x, y, config2.relTol, config2.absTol);
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/function/relational/larger.js
-var name149 = "larger";
-var dependencies149 = ["typed", "config", "matrix", "DenseMatrix", "concat"];
-var createLarger = /* @__PURE__ */ factory(name149, dependencies149, (_ref) => {
+var name153 = "larger";
+var dependencies154 = ["typed", "config", "bignumber", "matrix", "DenseMatrix", "concat", "SparseMatrix"];
+var createLarger = /* @__PURE__ */ factory(name153, dependencies154, (_ref) => {
   var {
     typed: typed2,
     config: config2,
+    bignumber,
     matrix,
     DenseMatrix,
-    concat: concat2
+    concat: concat2,
+    SparseMatrix
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed: typed2
   });
   var matAlgo07xSSf = createMatAlgo07xSSf({
     typed: typed2,
-    DenseMatrix
+    SparseMatrix
   });
   var matAlgo12xSfs = createMatAlgo12xSfs({
     typed: typed2,
@@ -19675,16 +20490,24 @@ var createLarger = /* @__PURE__ */ factory(name149, dependencies149, (_ref) => {
   var compareUnits = createCompareUnits({
     typed: typed2
   });
-  return typed2(name149, createLargerNumber({
+  function bignumLarger(x, y) {
+    return x.gt(y) && !nearlyEqual2(x, y, config2.relTol, config2.absTol);
+  }
+  return typed2(name153, createLargerNumber({
     typed: typed2,
     config: config2
   }), {
     "boolean, boolean": (x, y) => x > y,
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
-      return x.gt(y) && !nearlyEqual2(x, y, config2.epsilon);
-    },
+    "BigNumber, BigNumber": bignumLarger,
+    "bigint, bigint": (x, y) => x > y,
     "Fraction, Fraction": (x, y) => x.compare(y) === 1,
-    "Complex, Complex": function ComplexComplex() {
+    "Fraction, BigNumber": function Fraction_BigNumber(x, y) {
+      return bignumLarger(bignumber(x), y);
+    },
+    "BigNumber, Fraction": function BigNumber_Fraction(x, y) {
+      return bignumLarger(x, bignumber(y));
+    },
+    "Complex, Complex": function Complex_Complex() {
       throw new TypeError("No ordering relation is defined for complex numbers");
     }
   }, compareUnits, matrixAlgorithmSuite({
@@ -19693,35 +20516,36 @@ var createLarger = /* @__PURE__ */ factory(name149, dependencies149, (_ref) => {
     Ss: matAlgo12xSfs
   }));
 });
-var createLargerNumber = /* @__PURE__ */ factory(name149, ["typed", "config"], (_ref2) => {
+var createLargerNumber = /* @__PURE__ */ factory(name153, ["typed", "config"], (_ref2) => {
   var {
     typed: typed2,
     config: config2
   } = _ref2;
-  return typed2(name149, {
-    "number, number": function numberNumber(x, y) {
-      return x > y && !nearlyEqual(x, y, config2.epsilon);
+  return typed2(name153, {
+    "number, number": function number_number(x, y) {
+      return x > y && !nearlyEqual(x, y, config2.relTol, config2.absTol);
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/function/relational/largerEq.js
-var name150 = "largerEq";
-var dependencies150 = ["typed", "config", "matrix", "DenseMatrix", "concat"];
-var createLargerEq = /* @__PURE__ */ factory(name150, dependencies150, (_ref) => {
+var name154 = "largerEq";
+var dependencies155 = ["typed", "config", "matrix", "DenseMatrix", "concat", "SparseMatrix"];
+var createLargerEq = /* @__PURE__ */ factory(name154, dependencies155, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     matrix,
     DenseMatrix,
-    concat: concat2
+    concat: concat2,
+    SparseMatrix
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed: typed2
   });
   var matAlgo07xSSf = createMatAlgo07xSSf({
     typed: typed2,
-    DenseMatrix
+    SparseMatrix
   });
   var matAlgo12xSfs = createMatAlgo12xSfs({
     typed: typed2,
@@ -19735,16 +20559,19 @@ var createLargerEq = /* @__PURE__ */ factory(name150, dependencies150, (_ref) =>
   var compareUnits = createCompareUnits({
     typed: typed2
   });
-  return typed2(name150, createLargerEqNumber({
+  return typed2(name154, createLargerEqNumber({
     typed: typed2,
     config: config2
   }), {
     "boolean, boolean": (x, y) => x >= y,
-    "BigNumber, BigNumber": function BigNumberBigNumber(x, y) {
-      return x.gte(y) || nearlyEqual2(x, y, config2.epsilon);
+    "BigNumber, BigNumber": function BigNumber_BigNumber(x, y) {
+      return x.gte(y) || nearlyEqual2(x, y, config2.relTol, config2.absTol);
+    },
+    "bigint, bigint": function bigint_bigint(x, y) {
+      return x >= y;
     },
     "Fraction, Fraction": (x, y) => x.compare(y) !== -1,
-    "Complex, Complex": function ComplexComplex() {
+    "Complex, Complex": function Complex_Complex() {
       throw new TypeError("No ordering relation is defined for complex numbers");
     }
   }, compareUnits, matrixAlgorithmSuite({
@@ -19753,28 +20580,28 @@ var createLargerEq = /* @__PURE__ */ factory(name150, dependencies150, (_ref) =>
     Ss: matAlgo12xSfs
   }));
 });
-var createLargerEqNumber = /* @__PURE__ */ factory(name150, ["typed", "config"], (_ref2) => {
+var createLargerEqNumber = /* @__PURE__ */ factory(name154, ["typed", "config"], (_ref2) => {
   var {
     typed: typed2,
     config: config2
   } = _ref2;
-  return typed2(name150, {
-    "number, number": function numberNumber(x, y) {
-      return x >= y || nearlyEqual(x, y, config2.epsilon);
+  return typed2(name154, {
+    "number, number": function number_number(x, y) {
+      return x >= y || nearlyEqual(x, y, config2.relTol, config2.absTol);
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/function/relational/deepEqual.js
-var name151 = "deepEqual";
-var dependencies151 = ["typed", "equal"];
-var createDeepEqual = /* @__PURE__ */ factory(name151, dependencies151, (_ref) => {
+var name155 = "deepEqual";
+var dependencies156 = ["typed", "equal"];
+var createDeepEqual = /* @__PURE__ */ factory(name155, dependencies156, (_ref) => {
   var {
     typed: typed2,
     equal
   } = _ref;
-  return typed2(name151, {
-    "any, any": function anyAny(x, y) {
+  return typed2(name155, {
+    "any, any": function any_any(x, y) {
       return _deepEqual(x.valueOf(), y.valueOf());
     }
   });
@@ -19805,23 +20632,24 @@ var createDeepEqual = /* @__PURE__ */ factory(name151, dependencies151, (_ref) =
 });
 
 // node_modules/mathjs/lib/esm/function/relational/unequal.js
-var name152 = "unequal";
-var dependencies152 = ["typed", "config", "equalScalar", "matrix", "DenseMatrix", "concat"];
-var createUnequal = /* @__PURE__ */ factory(name152, dependencies152, (_ref) => {
+var name156 = "unequal";
+var dependencies157 = ["typed", "config", "equalScalar", "matrix", "DenseMatrix", "concat", "SparseMatrix"];
+var createUnequal = /* @__PURE__ */ factory(name156, dependencies157, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     equalScalar,
     matrix,
     DenseMatrix,
-    concat: concat2
+    concat: concat2,
+    SparseMatrix
   } = _ref;
   var matAlgo03xDSf = createMatAlgo03xDSf({
     typed: typed2
   });
   var matAlgo07xSSf = createMatAlgo07xSSf({
     typed: typed2,
-    DenseMatrix
+    SparseMatrix
   });
   var matAlgo12xSfs = createMatAlgo12xSfs({
     typed: typed2,
@@ -19832,7 +20660,7 @@ var createUnequal = /* @__PURE__ */ factory(name152, dependencies152, (_ref) => 
     matrix,
     concat: concat2
   });
-  return typed2(name152, createUnequalNumber({
+  return typed2(name156, createUnequalNumber({
     typed: typed2,
     equalScalar
   }), matrixAlgorithmSuite({
@@ -19845,13 +20673,13 @@ var createUnequal = /* @__PURE__ */ factory(name152, dependencies152, (_ref) => 
     return !equalScalar(x, y);
   }
 });
-var createUnequalNumber = factory(name152, ["typed", "equalScalar"], (_ref2) => {
+var createUnequalNumber = factory(name156, ["typed", "equalScalar"], (_ref2) => {
   var {
     typed: typed2,
     equalScalar
   } = _ref2;
-  return typed2(name152, {
-    "any, any": function anyAny(x, y) {
+  return typed2(name156, {
+    "any, any": function any_any(x, y) {
       if (x === null) {
         return y !== null;
       }
@@ -19870,22 +20698,22 @@ var createUnequalNumber = factory(name152, ["typed", "equalScalar"], (_ref2) => 
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/partitionSelect.js
-var name153 = "partitionSelect";
-var dependencies153 = ["typed", "isNumeric", "isNaN", "compare"];
-var createPartitionSelect = /* @__PURE__ */ factory(name153, dependencies153, (_ref) => {
+var name157 = "partitionSelect";
+var dependencies158 = ["typed", "isNumeric", "isNaN", "compare"];
+var createPartitionSelect = /* @__PURE__ */ factory(name157, dependencies158, (_ref) => {
   var {
     typed: typed2,
     isNumeric,
-    isNaN: isNaN2,
+    isNaN: mathIsNaN,
     compare
   } = _ref;
   var asc = compare;
   var desc = (a, b) => -compare(a, b);
-  return typed2(name153, {
-    "Array | Matrix, number": function ArrayMatrixNumber(x, k) {
+  return typed2(name157, {
+    "Array | Matrix, number": function Array__Matrix_number(x, k) {
       return _partitionSelect(x, k, asc);
     },
-    "Array | Matrix, number, string": function ArrayMatrixNumberString(x, k, compare2) {
+    "Array | Matrix, number, string": function Array__Matrix_number_string(x, k, compare2) {
       if (compare2 === "asc") {
         return _partitionSelect(x, k, asc);
       } else if (compare2 === "desc") {
@@ -19897,7 +20725,7 @@ var createPartitionSelect = /* @__PURE__ */ factory(name153, dependencies153, (_
     "Array | Matrix, number, function": _partitionSelect
   });
   function _partitionSelect(x, k, compare2) {
-    if (!isInteger(k) || k < 0) {
+    if (!isInteger2(k) || k < 0) {
       throw new Error("k must be a non-negative integer");
     }
     if (isMatrix(x)) {
@@ -19916,7 +20744,7 @@ var createPartitionSelect = /* @__PURE__ */ factory(name153, dependencies153, (_
       throw new Error("k out of bounds");
     }
     for (var i = 0; i < arr.length; i++) {
-      if (isNumeric(arr[i]) && isNaN2(arr[i])) {
+      if (isNumeric(arr[i]) && mathIsNaN(arr[i])) {
         return arr[i];
       }
     }
@@ -19950,9 +20778,9 @@ var createPartitionSelect = /* @__PURE__ */ factory(name153, dependencies153, (_
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/sort.js
-var name154 = "sort";
-var dependencies154 = ["typed", "matrix", "compare", "compareNatural"];
-var createSort = /* @__PURE__ */ factory(name154, dependencies154, (_ref) => {
+var name158 = "sort";
+var dependencies159 = ["typed", "matrix", "compare", "compareNatural"];
+var createSort = /* @__PURE__ */ factory(name158, dependencies159, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -19961,7 +20789,7 @@ var createSort = /* @__PURE__ */ factory(name154, dependencies154, (_ref) => {
   } = _ref;
   var compareAsc = compare;
   var compareDesc = (a, b) => -compare(a, b);
-  return typed2(name154, {
+  return typed2(name158, {
     Array: function Array2(x) {
       _arrayIsVector(x);
       return x.sort(compareAsc);
@@ -19970,19 +20798,19 @@ var createSort = /* @__PURE__ */ factory(name154, dependencies154, (_ref) => {
       _matrixIsVector(x);
       return matrix(x.toArray().sort(compareAsc), x.storage());
     },
-    "Array, function": function ArrayFunction(x, _comparator2) {
+    "Array, function": function Array_function(x, _comparator2) {
       _arrayIsVector(x);
       return x.sort(_comparator2);
     },
-    "Matrix, function": function MatrixFunction(x, _comparator2) {
+    "Matrix, function": function Matrix_function(x, _comparator2) {
       _matrixIsVector(x);
       return matrix(x.toArray().sort(_comparator2), x.storage());
     },
-    "Array, string": function ArrayString(x, order) {
+    "Array, string": function Array_string(x, order) {
       _arrayIsVector(x);
       return x.sort(_comparator(order));
     },
-    "Matrix, string": function MatrixString(x, order) {
+    "Matrix, string": function Matrix_string(x, order) {
       _matrixIsVector(x);
       return matrix(x.toArray().sort(_comparator(order)), x.storage());
     }
@@ -20011,20 +20839,21 @@ var createSort = /* @__PURE__ */ factory(name154, dependencies154, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/statistics/max.js
-var name155 = "max";
-var dependencies155 = ["typed", "config", "numeric", "larger"];
-var createMax = /* @__PURE__ */ factory(name155, dependencies155, (_ref) => {
+var name159 = "max";
+var dependencies160 = ["typed", "config", "numeric", "larger", "isNaN"];
+var createMax = /* @__PURE__ */ factory(name159, dependencies160, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     numeric: numeric2,
-    larger
+    larger,
+    isNaN: mathIsNaN
   } = _ref;
-  return typed2(name155, {
+  return typed2(name159, {
     // max([a, b, c, d, ...])
     "Array | Matrix": _max,
     // max([a, b, c, d, ...], dim)
-    "Array | Matrix, number | BigNumber": function ArrayMatrixNumberBigNumber(array, dim) {
+    "Array | Matrix, number | BigNumber": function Array__Matrix_number__BigNumber(array, dim) {
       return reduce(array, dim.valueOf(), _largest);
     },
     // max(a, b, c, d, ...)
@@ -20044,10 +20873,10 @@ var createMax = /* @__PURE__ */ factory(name155, dependencies155, (_ref) => {
   }
   function _max(array) {
     var res;
-    deepForEach(array, function(value) {
+    deepForEach2(array, function(value) {
       try {
-        if (isNaN(value) && typeof value === "number") {
-          res = NaN;
+        if (mathIsNaN(value)) {
+          res = value;
         } else if (res === void 0 || larger(value, res)) {
           res = value;
         }
@@ -20059,27 +20888,28 @@ var createMax = /* @__PURE__ */ factory(name155, dependencies155, (_ref) => {
       throw new Error("Cannot calculate max of an empty array");
     }
     if (typeof res === "string") {
-      res = numeric2(res, config2.number);
+      res = numeric2(res, safeNumberType(res, config2));
     }
     return res;
   }
 });
 
 // node_modules/mathjs/lib/esm/function/statistics/min.js
-var name156 = "min";
-var dependencies156 = ["typed", "config", "numeric", "smaller"];
-var createMin = /* @__PURE__ */ factory(name156, dependencies156, (_ref) => {
+var name160 = "min";
+var dependencies161 = ["typed", "config", "numeric", "smaller", "isNaN"];
+var createMin = /* @__PURE__ */ factory(name160, dependencies161, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     numeric: numeric2,
-    smaller
+    smaller,
+    isNaN: mathIsNaN
   } = _ref;
-  return typed2(name156, {
+  return typed2(name160, {
     // min([a, b, c, d, ...])
     "Array | Matrix": _min,
     // min([a, b, c, d, ...], dim)
-    "Array | Matrix, number | BigNumber": function ArrayMatrixNumberBigNumber(array, dim) {
+    "Array | Matrix, number | BigNumber": function Array__Matrix_number__BigNumber(array, dim) {
       return reduce(array, dim.valueOf(), _smallest);
     },
     // min(a, b, c, d, ...)
@@ -20099,10 +20929,10 @@ var createMin = /* @__PURE__ */ factory(name156, dependencies156, (_ref) => {
   }
   function _min(array) {
     var min2;
-    deepForEach(array, function(value) {
+    deepForEach2(array, function(value) {
       try {
-        if (isNaN(value) && typeof value === "number") {
-          min2 = NaN;
+        if (mathIsNaN(value)) {
+          min2 = value;
         } else if (min2 === void 0 || smaller(value, min2)) {
           min2 = value;
         }
@@ -20114,16 +20944,16 @@ var createMin = /* @__PURE__ */ factory(name156, dependencies156, (_ref) => {
       throw new Error("Cannot calculate min of an empty array");
     }
     if (typeof min2 === "string") {
-      min2 = numeric2(min2, config2.number);
+      min2 = numeric2(min2, safeNumberType(min2, config2));
     }
     return min2;
   }
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/ImmutableDenseMatrix.js
-var name157 = "ImmutableDenseMatrix";
-var dependencies157 = ["smaller", "DenseMatrix"];
-var createImmutableDenseMatrixClass = /* @__PURE__ */ factory(name157, dependencies157, (_ref) => {
+var name161 = "ImmutableDenseMatrix";
+var dependencies162 = ["smaller", "DenseMatrix"];
+var createImmutableDenseMatrixClass = /* @__PURE__ */ factory(name161, dependencies162, (_ref) => {
   var {
     smaller,
     DenseMatrix
@@ -20242,14 +21072,14 @@ var createImmutableDenseMatrixClass = /* @__PURE__ */ factory(name157, dependenc
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/MatrixIndex.js
-var name158 = "Index";
-var dependencies158 = ["ImmutableDenseMatrix", "getMatrixDataType"];
-var createIndexClass = /* @__PURE__ */ factory(name158, dependencies158, (_ref) => {
+var name162 = "Index";
+var dependencies163 = ["ImmutableDenseMatrix", "getMatrixDataType"];
+var createIndexClass = /* @__PURE__ */ factory(name162, dependencies163, (_ref) => {
   var {
     ImmutableDenseMatrix,
     getMatrixDataType
   } = _ref;
-  function Index(ranges) {
+  function Index() {
     if (!(this instanceof Index)) {
       throw new SyntaxError("Constructor must be called with the new operator");
     }
@@ -20257,15 +21087,17 @@ var createIndexClass = /* @__PURE__ */ factory(name158, dependencies158, (_ref) 
     this._sourceSize = [];
     this._isScalar = true;
     for (var i = 0, ii = arguments.length; i < ii; i++) {
-      var arg = arguments[i];
+      var arg = i < 0 || arguments.length <= i ? void 0 : arguments[i];
       var argIsArray = isArray(arg);
       var argIsMatrix = isMatrix(arg);
+      var argType = typeof arg;
       var sourceSize = null;
       if (isRange(arg)) {
         this._dimensions.push(arg);
         this._isScalar = false;
       } else if (argIsArray || argIsMatrix) {
         var m = void 0;
+        this._isScalar = false;
         if (getMatrixDataType(arg) === "boolean") {
           if (argIsArray) m = _createImmutableMatrix(_booleansArrayToNumbersForIndex(arg).valueOf());
           if (argIsMatrix) m = _createImmutableMatrix(_booleansArrayToNumbersForIndex(arg._data).valueOf());
@@ -20274,16 +21106,14 @@ var createIndexClass = /* @__PURE__ */ factory(name158, dependencies158, (_ref) 
           m = _createImmutableMatrix(arg.valueOf());
         }
         this._dimensions.push(m);
-        var size = m.size();
-        if (size.length !== 1 || size[0] !== 1 || sourceSize !== null) {
-          this._isScalar = false;
-        }
-      } else if (typeof arg === "number") {
-        this._dimensions.push(_createImmutableMatrix([arg]));
-      } else if (typeof arg === "string") {
+      } else if (argType === "number") {
+        this._dimensions.push(arg);
+      } else if (argType === "bigint") {
+        this._dimensions.push(Number(arg));
+      } else if (argType === "string") {
         this._dimensions.push(arg);
       } else {
-        throw new TypeError("Dimension must be an Array, Matrix, number, string, or Range");
+        throw new TypeError("Dimension must be an Array, Matrix, number, bigint, string, or Range");
       }
       this._sourceSize.push(sourceSize);
     }
@@ -20292,11 +21122,14 @@ var createIndexClass = /* @__PURE__ */ factory(name158, dependencies158, (_ref) 
   Index.prototype.isIndex = true;
   function _createImmutableMatrix(arg) {
     for (var i = 0, l = arg.length; i < l; i++) {
-      if (typeof arg[i] !== "number" || !isInteger(arg[i])) {
+      if (!isNumber(arg[i]) || !isInteger2(arg[i])) {
         throw new TypeError("Index parameters must be positive integer numbers");
       }
     }
-    return new ImmutableDenseMatrix(arg);
+    var matrix = new ImmutableDenseMatrix();
+    matrix._data = arg;
+    matrix._size = [arg.length];
+    return matrix;
   }
   Index.prototype.clone = function() {
     var index = new Index();
@@ -20314,7 +21147,7 @@ var createIndexClass = /* @__PURE__ */ factory(name158, dependencies158, (_ref) 
     var size = [];
     for (var i = 0, ii = this._dimensions.length; i < ii; i++) {
       var d = this._dimensions[i];
-      size[i] = typeof d === "string" ? 1 : d.size()[0];
+      size[i] = isString(d) || isNumber(d) ? 1 : d.size()[0];
     }
     return size;
   };
@@ -20322,7 +21155,7 @@ var createIndexClass = /* @__PURE__ */ factory(name158, dependencies158, (_ref) 
     var values = [];
     for (var i = 0, ii = this._dimensions.length; i < ii; i++) {
       var range = this._dimensions[i];
-      values[i] = typeof range === "string" ? range : range.max();
+      values[i] = isString(range) || isNumber(range) ? range : range.max();
     }
     return values;
   };
@@ -20330,7 +21163,7 @@ var createIndexClass = /* @__PURE__ */ factory(name158, dependencies158, (_ref) 
     var values = [];
     for (var i = 0, ii = this._dimensions.length; i < ii; i++) {
       var range = this._dimensions[i];
-      values[i] = typeof range === "string" ? range : range.min();
+      values[i] = isString(range) || isNumber(range) ? range : range.min();
     }
     return values;
   };
@@ -20340,10 +21173,14 @@ var createIndexClass = /* @__PURE__ */ factory(name158, dependencies158, (_ref) 
     }
   };
   Index.prototype.dimension = function(dim) {
-    return this._dimensions[dim] || null;
+    var _this$_dimensions$dim;
+    if (!isNumber(dim)) {
+      return null;
+    }
+    return (_this$_dimensions$dim = this._dimensions[dim]) !== null && _this$_dimensions$dim !== void 0 ? _this$_dimensions$dim : null;
   };
   Index.prototype.isObjectProperty = function() {
-    return this._dimensions.length === 1 && typeof this._dimensions[0] === "string";
+    return this._dimensions.length === 1 && isString(this._dimensions[0]);
   };
   Index.prototype.getObjectProperty = function() {
     return this.isObjectProperty() ? this._dimensions[0] : null;
@@ -20355,7 +21192,7 @@ var createIndexClass = /* @__PURE__ */ factory(name158, dependencies158, (_ref) 
     var array = [];
     for (var i = 0, ii = this._dimensions.length; i < ii; i++) {
       var dimension = this._dimensions[i];
-      array.push(typeof dimension === "string" ? dimension : dimension.toArray());
+      array.push(isString(dimension) || isNumber(dimension) ? dimension : dimension.toArray());
     }
     return array;
   };
@@ -20364,7 +21201,7 @@ var createIndexClass = /* @__PURE__ */ factory(name158, dependencies158, (_ref) 
     var strings = [];
     for (var i = 0, ii = this._dimensions.length; i < ii; i++) {
       var dimension = this._dimensions[i];
-      if (typeof dimension === "string") {
+      if (isString(dimension)) {
         strings.push(JSON.stringify(dimension));
       } else {
         strings.push(dimension.toString());
@@ -20396,9 +21233,9 @@ function _booleansArrayToNumbersForIndex(booleanArrayIndex) {
 }
 
 // node_modules/mathjs/lib/esm/type/matrix/FibonacciHeap.js
-var name159 = "FibonacciHeap";
-var dependencies159 = ["smaller", "larger"];
-var createFibonacciHeapClass = /* @__PURE__ */ factory(name159, dependencies159, (_ref) => {
+var name163 = "FibonacciHeap";
+var dependencies164 = ["smaller", "larger"];
+var createFibonacciHeapClass = /* @__PURE__ */ factory(name163, dependencies164, (_ref) => {
   var {
     smaller,
     larger
@@ -20603,9 +21440,9 @@ var createFibonacciHeapClass = /* @__PURE__ */ factory(name159, dependencies159,
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/Spa.js
-var name160 = "Spa";
-var dependencies160 = ["addScalar", "equalScalar", "FibonacciHeap"];
-var createSpaClass = /* @__PURE__ */ factory(name160, dependencies160, (_ref) => {
+var name164 = "Spa";
+var dependencies165 = ["addScalar", "equalScalar", "FibonacciHeap"];
+var createSpaClass = /* @__PURE__ */ factory(name164, dependencies165, (_ref) => {
   var {
     addScalar,
     equalScalar,
@@ -20693,6 +21530,89 @@ var createSpaClass = /* @__PURE__ */ factory(name160, dependencies160, (_ref) =>
   isClass: true
 });
 
+// node_modules/mathjs/lib/esm/utils/lruQueue.js
+function lruQueue(limit) {
+  var size = 0;
+  var base = 1;
+  var queue = /* @__PURE__ */ Object.create(null);
+  var map2 = /* @__PURE__ */ Object.create(null);
+  var index = 0;
+  var del = function del2(id) {
+    var oldIndex = map2[id];
+    if (!oldIndex) return;
+    delete queue[oldIndex];
+    delete map2[id];
+    --size;
+    if (base !== oldIndex) return;
+    if (!size) {
+      index = 0;
+      base = 1;
+      return;
+    }
+    while (!Object.prototype.hasOwnProperty.call(queue, ++base)) {
+    }
+  };
+  limit = Math.abs(limit);
+  return {
+    hit: function hit(id) {
+      var oldIndex = map2[id];
+      var nuIndex = ++index;
+      queue[nuIndex] = id;
+      map2[id] = nuIndex;
+      if (!oldIndex) {
+        ++size;
+        if (size <= limit) return void 0;
+        id = queue[base];
+        del(id);
+        return id;
+      }
+      delete queue[oldIndex];
+      if (base !== oldIndex) return void 0;
+      while (!Object.prototype.hasOwnProperty.call(queue, ++base)) {
+      }
+      return void 0;
+    },
+    delete: del,
+    clear: function clear() {
+      size = index = 0;
+      base = 1;
+      queue = /* @__PURE__ */ Object.create(null);
+      map2 = /* @__PURE__ */ Object.create(null);
+    }
+  };
+}
+
+// node_modules/mathjs/lib/esm/utils/function.js
+function memoize(fn) {
+  var {
+    hasher: hasher2,
+    limit
+  } = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+  limit = limit == null ? Number.POSITIVE_INFINITY : limit;
+  hasher2 = hasher2 == null ? JSON.stringify : hasher2;
+  return function memoize2() {
+    if (typeof memoize2.cache !== "object") {
+      memoize2.cache = {
+        values: /* @__PURE__ */ new Map(),
+        lru: lruQueue(limit || Number.POSITIVE_INFINITY)
+      };
+    }
+    var args = [];
+    for (var i = 0; i < arguments.length; i++) {
+      args[i] = arguments[i];
+    }
+    var hash = hasher2(args);
+    if (memoize2.cache.values.has(hash)) {
+      memoize2.cache.lru.hit(hash);
+      return memoize2.cache.values.get(hash);
+    }
+    var newVal = fn.apply(fn, args);
+    memoize2.cache.values.set(hash, newVal);
+    memoize2.cache.values.delete(memoize2.cache.lru.hit(hash));
+    return newVal;
+  };
+}
+
 // node_modules/mathjs/lib/esm/utils/bignumber/constants.js
 var createBigNumberE = memoize(function(BigNumber) {
   return new BigNumber(1).exp();
@@ -20740,9 +21660,9 @@ function _objectSpread2(e2) {
   }
   return e2;
 }
-var name161 = "Unit";
-var dependencies161 = ["?on", "config", "addScalar", "subtractScalar", "multiplyScalar", "divideScalar", "pow", "abs", "fix", "round", "equal", "isNumeric", "format", "number", "Complex", "BigNumber", "Fraction"];
-var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) => {
+var name165 = "Unit";
+var dependencies166 = ["?on", "config", "addScalar", "subtractScalar", "multiplyScalar", "divideScalar", "pow", "abs", "fix", "round", "equal", "isNumeric", "format", "number", "Complex", "BigNumber", "Fraction"];
+var createUnitClass = /* @__PURE__ */ factory(name165, dependencies166, (_ref) => {
   var {
     on,
     config: config2,
@@ -20763,6 +21683,8 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
     Fraction: _Fraction
   } = _ref;
   var toNumber = _number;
+  var fixPrefixDefault = false;
+  var skipAutomaticSimplificationDefault = true;
   function Unit(value, valuelessUnit) {
     if (!(this instanceof Unit)) {
       throw new Error("Constructor must be called with the new operator");
@@ -20770,8 +21692,8 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
     if (!(value === null || value === void 0 || isNumeric(value) || isComplex(value))) {
       throw new TypeError("First parameter in Unit constructor must be number, BigNumber, Fraction, Complex, or undefined");
     }
-    this.fixPrefix = false;
-    this.skipAutomaticSimplification = true;
+    this.fixPrefix = fixPrefixDefault;
+    this.skipAutomaticSimplification = skipAutomaticSimplificationDefault;
     if (valuelessUnit === void 0) {
       this.units = [];
       this.dimensions = BASE_DIMENSIONS.map((x) => 0);
@@ -21098,8 +22020,8 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
     hasher: (args) => args[0],
     limit: 100
   });
-  Unit.isValuelessUnit = function(name314) {
-    return _findUnit(name314) !== null;
+  Unit.isValuelessUnit = function(name323) {
+    return _findUnit(name323) !== null;
   };
   Unit.prototype.hasBase = function(base) {
     if (typeof base === "string") {
@@ -21137,8 +22059,8 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
       res.units.push(inverted);
     }
     if (this.value !== null || other.value !== null) {
-      var valThis = this.value === null ? this._normalize(1) : this.value;
-      var valOther = other.value === null ? other._normalize(1) : other.value;
+      var valThis = this.value === null ? this._normalize(one(other.value)) : this.value;
+      var valOther = other.value === null ? other._normalize(one(this.value)) : other.value;
       res.value = multiplyScalar(valThis, valOther);
     } else {
       res.value = null;
@@ -21164,8 +22086,8 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
       res.units.push(inverted);
     }
     if (this.value !== null || other.value !== null) {
-      var valThis = this.value === null ? this._normalize(1) : this.value;
-      var valOther = other.value === null ? other._normalize(1) : other.value;
+      var valThis = this.value === null ? this._normalize(one(other.value)) : this.value;
+      var valOther = other.value === null ? other._normalize(one(this.value)) : other.value;
       res.value = divideScalar(valThis, valOther);
     } else {
       res.value = null;
@@ -21197,6 +22119,10 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
     } else {
       return unit2;
     }
+  }
+  function one(typeOfValue) {
+    var convert = Unit._getNumberConverter(typeOf(typeOfValue));
+    return convert(1);
   }
   Unit.prototype.abs = function() {
     var ret = this.clone();
@@ -21274,13 +22200,15 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
       mathjs: "Unit",
       value: this._denormalize(this.value),
       unit: this.units.length > 0 ? this.formatUnits() : null,
-      fixPrefix: this.fixPrefix
+      fixPrefix: this.fixPrefix,
+      skipSimp: this.skipAutomaticSimplification
     };
   };
   Unit.fromJSON = function(json) {
-    var _json$unit;
+    var _json$unit, _json$fixPrefix, _json$skipSimp;
     var unit2 = new Unit(json.value, (_json$unit = json.unit) !== null && _json$unit !== void 0 ? _json$unit : void 0);
-    unit2.fixPrefix = json.fixPrefix || false;
+    unit2.fixPrefix = (_json$fixPrefix = json.fixPrefix) !== null && _json$fixPrefix !== void 0 ? _json$fixPrefix : fixPrefixDefault;
+    unit2.skipAutomaticSimplification = (_json$skipSimp = json.skipSimp) !== null && _json$skipSimp !== void 0 ? _json$skipSimp : skipAutomaticSimplificationDefault;
     return unit2;
   };
   Unit.prototype.valueOf = Unit.prototype.toString;
@@ -21406,8 +22334,77 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
     str += strDen;
     return str;
   };
+  Unit.prototype.toBest = function() {
+    var unitList = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : [];
+    var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+    if (unitList && !Array.isArray(unitList)) {
+      throw new Error("Invalid unit type. Expected string or Unit.");
+    }
+    var startPrefixes = this.units[0].unit.prefixes;
+    if (unitList && unitList.length > 0) {
+      var unitObjects = unitList.map((u) => {
+        var unit2 = null;
+        if (typeof u === "string") {
+          unit2 = Unit.parse(u);
+          if (!unit2) {
+            throw new Error("Invalid unit type. Expected compatible string or Unit.");
+          }
+        } else if (!isUnit(u)) {
+          throw new Error("Invalid unit type. Expected compatible string or Unit.");
+        }
+        if (unit2 === null) {
+          unit2 = u.clone();
+        }
+        try {
+          this.to(unit2.formatUnits());
+          return unit2;
+        } catch (e2) {
+          throw new Error("Invalid unit type. Expected compatible string or Unit.");
+        }
+      });
+      var prefixes = unitObjects.map((el) => el.units[0].prefix);
+      this.units[0].unit.prefixes = prefixes.reduce((acc, prefix) => {
+        acc[prefix.name] = prefix;
+        return acc;
+      }, {});
+      this.units[0].prefix = prefixes[0];
+    }
+    var result = formatBest(this, options).simp;
+    this.units[0].unit.prefixes = startPrefixes;
+    result.fixPrefix = true;
+    return result;
+  };
   Unit.prototype.format = function(options) {
-    var simp = this.skipAutomaticSimplification || this.value === null ? this.clone() : this.simplify();
+    var {
+      simp,
+      valueStr,
+      unitStr
+    } = formatBest(this, options);
+    var str = valueStr;
+    if (simp.value && isComplex(simp.value)) {
+      str = "(" + str + ")";
+    }
+    if (unitStr.length > 0 && str.length > 0) {
+      str += " ";
+    }
+    str += unitStr;
+    return str;
+  };
+  function formatBest(unit2) {
+    var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
+    var simp = unit2.skipAutomaticSimplification || unit2.value === null ? unit2.clone() : unit2.simplify();
+    handleVAandVARUnits(simp);
+    applyBestPrefixIfNeeded(simp, options.offset);
+    var value = simp._denormalize(simp.value);
+    var valueStr = simp.value !== null ? format4(value, options || {}) : "";
+    var unitStr = simp.formatUnits();
+    return {
+      simp,
+      valueStr,
+      unitStr
+    };
+  }
+  function handleVAandVARUnits(simp) {
     var isImaginary = false;
     if (typeof simp.value !== "undefined" && simp.value !== null && isComplex(simp.value)) {
       isImaginary = Math.abs(simp.value.re) < 1e-14;
@@ -21423,24 +22420,16 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
         }
       }
     }
+  }
+  function applyBestPrefixIfNeeded(simp, offset) {
     if (simp.units.length === 1 && !simp.fixPrefix) {
       if (Math.abs(simp.units[0].power - Math.round(simp.units[0].power)) < 1e-14) {
-        simp.units[0].prefix = simp._bestPrefix();
+        simp.units[0].prefix = simp._bestPrefix(offset);
       }
     }
-    var value = simp._denormalize(simp.value);
-    var str = simp.value !== null ? format4(value, options || {}) : "";
-    var unitStr = simp.formatUnits();
-    if (simp.value && isComplex(simp.value)) {
-      str = "(" + str + ")";
-    }
-    if (unitStr.length > 0 && str.length > 0) {
-      str += " ";
-    }
-    str += unitStr;
-    return str;
-  };
+  }
   Unit.prototype._bestPrefix = function() {
+    var offset = arguments.length > 0 && arguments[0] !== void 0 ? arguments[0] : 1.2;
     if (this.units.length !== 1) {
       throw new Error("Can only compute the best prefix for single units with integer powers, like kg, s^2, N^-1, and so forth!");
     }
@@ -21454,7 +22443,7 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
       return bestPrefix;
     }
     var power = this.units[0].power;
-    var bestDiff = Math.log(absValue / Math.pow(bestPrefix.value * absUnitValue, power)) / Math.LN10 - 1.2;
+    var bestDiff = Math.log(absValue / Math.pow(bestPrefix.value * absUnitValue, power)) / Math.LN10 - offset;
     if (bestDiff > -2.200001 && bestDiff < 1.800001) return bestPrefix;
     bestDiff = Math.abs(bestDiff);
     var prefixes = this.units[0].unit.prefixes;
@@ -21462,7 +22451,7 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
       if (hasOwnProperty(prefixes, p)) {
         var prefix = prefixes[p];
         if (prefix.scientific) {
-          var diff = Math.abs(Math.log(absValue / Math.pow(prefix.value * absUnitValue, power)) / Math.LN10 - 1.2);
+          var diff = Math.abs(Math.log(absValue / Math.pow(prefix.value * absUnitValue, power)) / Math.LN10 - offset);
           if (diff < bestDiff || diff === bestDiff && prefix.name.length < bestPrefix.name.length) {
             bestPrefix = prefix;
             bestDiff = diff;
@@ -22614,34 +23603,34 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
       name: "minim",
       base: BASE_UNITS.VOLUME,
       prefixes: PREFIXES.NONE,
-      value: 6161152e-14,
+      value: 61611519921875e-21,
       offset: 0
     },
-    // 0.06161152 mL
+    // 1/61440 gallons
     fluiddram: {
       name: "fluiddram",
       base: BASE_UNITS.VOLUME,
       prefixes: PREFIXES.NONE,
-      value: 36966911e-13,
+      value: 36966911953125e-19,
       offset: 0
     },
-    // 3.696691 mL
+    // 1/1024 gallons
     fluidounce: {
       name: "fluidounce",
       base: BASE_UNITS.VOLUME,
       prefixes: PREFIXES.NONE,
-      value: 2957353e-11,
+      value: 295735295625e-16,
       offset: 0
     },
-    // 29.57353 mL
+    // 1/128 gallons
     gill: {
       name: "gill",
       base: BASE_UNITS.VOLUME,
       prefixes: PREFIXES.NONE,
-      value: 1182941e-10,
+      value: 11829411825e-14,
       offset: 0
     },
-    // 118.2941 mL
+    // 1/32 gallons
     cc: {
       name: "cc",
       base: BASE_UNITS.VOLUME,
@@ -22654,132 +23643,58 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
       name: "cup",
       base: BASE_UNITS.VOLUME,
       prefixes: PREFIXES.NONE,
-      value: 2365882e-10,
+      value: 2365882365e-13,
       offset: 0
     },
-    // 236.5882 mL
+    // 1/16 gallons
     pint: {
       name: "pint",
       base: BASE_UNITS.VOLUME,
       prefixes: PREFIXES.NONE,
-      value: 4731765e-10,
+      value: 473176473e-12,
       offset: 0
     },
-    // 473.1765 mL
+    // 1/8 gallons
     quart: {
       name: "quart",
       base: BASE_UNITS.VOLUME,
       prefixes: PREFIXES.NONE,
-      value: 9463529e-10,
+      value: 946352946e-12,
       offset: 0
     },
-    // 946.3529 mL
+    // 1/4 gallons
     gallon: {
       name: "gallon",
       base: BASE_UNITS.VOLUME,
       prefixes: PREFIXES.NONE,
-      value: 3785412e-9,
+      value: 0.003785411784,
       offset: 0
     },
-    // 3.785412 L
+    // 3.785411784 L
     beerbarrel: {
       name: "beerbarrel",
       base: BASE_UNITS.VOLUME,
       prefixes: PREFIXES.NONE,
-      value: 0.1173478,
+      value: 0.117347765304,
       offset: 0
     },
-    // 117.3478 L
+    // 31 gallons
     oilbarrel: {
       name: "oilbarrel",
       base: BASE_UNITS.VOLUME,
       prefixes: PREFIXES.NONE,
-      value: 0.1589873,
+      value: 0.158987294928,
       offset: 0
     },
-    // 158.9873 L
+    // 42 gallons
     hogshead: {
       name: "hogshead",
       base: BASE_UNITS.VOLUME,
       prefixes: PREFIXES.NONE,
-      value: 0.238481,
+      value: 0.238480942392,
       offset: 0
     },
-    // 238.4810 L
-    // {name: 'min', base: BASE_UNITS.VOLUME, prefixes: PREFIXES.NONE, value: 0.00000006161152, offset: 0}, // 0.06161152 mL // min is already in use as minute
-    fldr: {
-      name: "fldr",
-      base: BASE_UNITS.VOLUME,
-      prefixes: PREFIXES.NONE,
-      value: 36966911e-13,
-      offset: 0
-    },
-    // 3.696691 mL
-    floz: {
-      name: "floz",
-      base: BASE_UNITS.VOLUME,
-      prefixes: PREFIXES.NONE,
-      value: 2957353e-11,
-      offset: 0
-    },
-    // 29.57353 mL
-    gi: {
-      name: "gi",
-      base: BASE_UNITS.VOLUME,
-      prefixes: PREFIXES.NONE,
-      value: 1182941e-10,
-      offset: 0
-    },
-    // 118.2941 mL
-    cp: {
-      name: "cp",
-      base: BASE_UNITS.VOLUME,
-      prefixes: PREFIXES.NONE,
-      value: 2365882e-10,
-      offset: 0
-    },
-    // 236.5882 mL
-    pt: {
-      name: "pt",
-      base: BASE_UNITS.VOLUME,
-      prefixes: PREFIXES.NONE,
-      value: 4731765e-10,
-      offset: 0
-    },
-    // 473.1765 mL
-    qt: {
-      name: "qt",
-      base: BASE_UNITS.VOLUME,
-      prefixes: PREFIXES.NONE,
-      value: 9463529e-10,
-      offset: 0
-    },
-    // 946.3529 mL
-    gal: {
-      name: "gal",
-      base: BASE_UNITS.VOLUME,
-      prefixes: PREFIXES.NONE,
-      value: 3785412e-9,
-      offset: 0
-    },
-    // 3.785412 L
-    bbl: {
-      name: "bbl",
-      base: BASE_UNITS.VOLUME,
-      prefixes: PREFIXES.NONE,
-      value: 0.1173478,
-      offset: 0
-    },
-    // 117.3478 L
-    obl: {
-      name: "obl",
-      base: BASE_UNITS.VOLUME,
-      prefixes: PREFIXES.NONE,
-      value: 0.1589873,
-      offset: 0
-    },
-    // 158.9873 L
-    // {name: 'hogshead', base: BASE_UNITS.VOLUME, prefixes: PREFIXES.NONE, value: 0.2384810, offset: 0}, // 238.4810 L // TODO: hh?
+    // 63 gallons
     // Mass
     g: {
       name: "g",
@@ -23422,6 +24337,13 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
       value: 1,
       offset: 0
     },
+    Ah: {
+      name: "Ah",
+      base: BASE_UNITS.ELECTRIC_CHARGE,
+      prefixes: PREFIXES.SHORT,
+      value: 3600,
+      offset: 0
+    },
     // Electric capacitance
     farad: {
       name: "farad",
@@ -23578,14 +24500,23 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
     teaspoons: "teaspoon",
     tablespoons: "tablespoon",
     minims: "minim",
+    fldr: "fluiddram",
     fluiddrams: "fluiddram",
+    floz: "fluidounce",
     fluidounces: "fluidounce",
+    gi: "gill",
     gills: "gill",
+    cp: "cup",
     cups: "cup",
+    pt: "pint",
     pints: "pint",
+    qt: "quart",
     quarts: "quart",
+    gal: "gallon",
     gallons: "gallon",
+    bbl: "beerbarrel",
     beerbarrels: "beerbarrel",
+    obl: "oilbarrel",
     oilbarrels: "oilbarrel",
     hogsheads: "hogshead",
     gtts: "gtt",
@@ -23826,11 +24757,11 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
   };
   UNIT_SYSTEMS.auto = JSON.parse(JSON.stringify(UNIT_SYSTEMS.si));
   var currentUnitSystem = UNIT_SYSTEMS.auto;
-  Unit.setUnitSystem = function(name314) {
-    if (hasOwnProperty(UNIT_SYSTEMS, name314)) {
-      currentUnitSystem = UNIT_SYSTEMS[name314];
+  Unit.setUnitSystem = function(name323) {
+    if (hasOwnProperty(UNIT_SYSTEMS, name323)) {
+      currentUnitSystem = UNIT_SYSTEMS[name323];
     } else {
-      throw new Error("Unit system " + name314 + " does not exist. Choices are: " + Object.keys(UNIT_SYSTEMS).join(", "));
+      throw new Error("Unit system " + name323 + " does not exist. Choices are: " + Object.keys(UNIT_SYSTEMS).join(", "));
     }
   };
   Unit.getUnitSystem = function() {
@@ -23844,7 +24775,7 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
   };
   Unit.typeConverters = {
     BigNumber: function BigNumber(x) {
-      if (x !== null && x !== void 0 && x.isFraction) return new _BigNumber(x.n).div(x.d).times(x.s);
+      if (x !== null && x !== void 0 && x.isFraction) return new _BigNumber(String(x.n)).div(String(x.d)).times(String(x.s));
       return new _BigNumber(x + "");
     },
     Fraction: function Fraction2(x) {
@@ -23893,14 +24824,14 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
   Unit.isValidAlpha = function isValidAlpha(c2) {
     return /^[a-zA-Z]$/.test(c2);
   };
-  function assertUnitNameIsValid(name314) {
-    for (var i = 0; i < name314.length; i++) {
-      c = name314.charAt(i);
+  function assertUnitNameIsValid(name323) {
+    for (var i = 0; i < name323.length; i++) {
+      c = name323.charAt(i);
       if (i === 0 && !Unit.isValidAlpha(c)) {
-        throw new Error('Invalid unit name (must begin with alpha character): "' + name314 + '"');
+        throw new Error('Invalid unit name (must begin with alpha character): "' + name323 + '"');
       }
       if (i > 0 && !(Unit.isValidAlpha(c) || isDigit(c))) {
-        throw new Error('Invalid unit name (only alphanumeric characters are allowed): "' + name314 + '"');
+        throw new Error('Invalid unit name (only alphanumeric characters are allowed): "' + name323 + '"');
       }
     }
   }
@@ -23928,17 +24859,17 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
     }
     return lastUnit;
   };
-  Unit.createUnitSingle = function(name314, obj) {
+  Unit.createUnitSingle = function(name323, obj) {
     if (typeof obj === "undefined" || obj === null) {
       obj = {};
     }
-    if (typeof name314 !== "string") {
+    if (typeof name323 !== "string") {
       throw new TypeError("createUnitSingle expects first parameter to be of type 'string'");
     }
-    if (hasOwnProperty(UNITS, name314)) {
-      throw new Error('Cannot create unit "' + name314 + '": a unit with that name already exists');
+    if (hasOwnProperty(UNITS, name323)) {
+      throw new Error('Cannot create unit "' + name323 + '": a unit with that name already exists');
     }
-    assertUnitNameIsValid(name314);
+    assertUnitNameIsValid(name323);
     var defUnit = null;
     var aliases = [];
     var offset = 0;
@@ -23960,7 +24891,7 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
         aliases = obj.aliases.valueOf();
       }
     } else {
-      throw new TypeError('Cannot create unit "' + name314 + '" from "' + obj.toString() + '": expecting "string" or "Unit" or "Object"');
+      throw new TypeError('Cannot create unit "' + name323 + '" from "' + obj.toString() + '": expecting "string" or "Unit" or "Object"');
     }
     if (aliases) {
       for (var i = 0; i < aliases.length; i++) {
@@ -23975,7 +24906,7 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
           allowNoUnits: true
         });
       } catch (ex) {
-        ex.message = 'Could not create unit "' + name314 + '" from "' + definition + '": ' + ex.message;
+        ex.message = 'Could not create unit "' + name323 + '" from "' + definition + '": ' + ex.message;
         throw ex;
       }
     } else if (definition && definition.type === "Unit") {
@@ -23990,9 +24921,9 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
     }
     var newUnit = {};
     if (!defUnit) {
-      baseName = baseName || name314 + "_STUFF";
+      baseName = baseName || name323 + "_STUFF";
       if (BASE_DIMENSIONS.indexOf(baseName) >= 0) {
-        throw new Error('Cannot create new base unit "' + name314 + '": a base unit with that name already exists (and cannot be overridden)');
+        throw new Error('Cannot create new base unit "' + name323 + '": a base unit with that name already exists (and cannot be overridden)');
       }
       BASE_DIMENSIONS.push(baseName);
       for (var b in BASE_UNITS) {
@@ -24010,7 +24941,7 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
       newBaseUnit.key = baseName;
       BASE_UNITS[baseName] = newBaseUnit;
       newUnit = {
-        name: name314,
+        name: name323,
         value: 1,
         dimensions: BASE_UNITS[baseName].dimensions.slice(0),
         prefixes,
@@ -24023,7 +24954,7 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
       };
     } else {
       newUnit = {
-        name: name314,
+        name: name323,
         value: defUnit.value,
         dimensions: defUnit.dimensions.slice(0),
         prefixes,
@@ -24047,7 +24978,7 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
         }
       }
       if (!anyMatch) {
-        baseName = baseName || name314 + "_STUFF";
+        baseName = baseName || name323 + "_STUFF";
         var _newBaseUnit = {
           dimensions: defUnit.dimensions.slice(0)
         };
@@ -24060,7 +24991,7 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
         newUnit.base = BASE_UNITS[baseName];
       }
     }
-    Unit.UNITS[name314] = newUnit;
+    Unit.UNITS[name323] = newUnit;
     for (var _i8 = 0; _i8 < aliases.length; _i8++) {
       var aliasName = aliases[_i8];
       var _alias = {};
@@ -24073,10 +25004,10 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
       Unit.UNITS[aliasName] = _alias;
     }
     delete _findUnit.cache;
-    return new Unit(null, name314);
+    return new Unit(null, name323);
   };
-  Unit.deleteUnit = function(name314) {
-    delete Unit.UNITS[name314];
+  Unit.deleteUnit = function(name323) {
+    delete Unit.UNITS[name323];
     delete _findUnit.cache;
   };
   Unit.PREFIXES = PREFIXES;
@@ -24090,14 +25021,14 @@ var createUnitClass = /* @__PURE__ */ factory(name161, dependencies161, (_ref) =
 });
 
 // node_modules/mathjs/lib/esm/type/unit/function/unit.js
-var name162 = "unit";
-var dependencies162 = ["typed", "Unit"];
-var createUnitFunction = /* @__PURE__ */ factory(name162, dependencies162, (_ref) => {
+var name166 = "unit";
+var dependencies167 = ["typed", "Unit"];
+var createUnitFunction = /* @__PURE__ */ factory(name166, dependencies167, (_ref) => {
   var {
     typed: typed2,
     Unit
   } = _ref;
-  return typed2(name162, {
+  return typed2(name166, {
     Unit: function Unit2(x) {
       return x.clone();
     },
@@ -24109,51 +25040,51 @@ var createUnitFunction = /* @__PURE__ */ factory(name162, dependencies162, (_ref
         allowNoUnits: true
       });
     },
-    "number | BigNumber | Fraction | Complex, string | Unit": function numberBigNumberFractionComplexStringUnit(value, unit) {
+    "number | BigNumber | Fraction | Complex, string | Unit": function number__BigNumber__Fraction__Complex_string__Unit(value, unit) {
       return new Unit(value, unit);
     },
-    "number | BigNumber | Fraction": function numberBigNumberFraction(value) {
+    "number | BigNumber | Fraction": function number__BigNumber__Fraction(value) {
       return new Unit(value);
     },
-    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap(x, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
   });
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/function/sparse.js
-var name163 = "sparse";
-var dependencies163 = ["typed", "SparseMatrix"];
-var createSparse = /* @__PURE__ */ factory(name163, dependencies163, (_ref) => {
+var name167 = "sparse";
+var dependencies168 = ["typed", "SparseMatrix"];
+var createSparse = /* @__PURE__ */ factory(name167, dependencies168, (_ref) => {
   var {
     typed: typed2,
     SparseMatrix
   } = _ref;
-  return typed2(name163, {
+  return typed2(name167, {
     "": function _() {
       return new SparseMatrix([]);
     },
     string: function string(datatype) {
       return new SparseMatrix([], datatype);
     },
-    "Array | Matrix": function ArrayMatrix(data) {
+    "Array | Matrix": function Array__Matrix(data) {
       return new SparseMatrix(data);
     },
-    "Array | Matrix, string": function ArrayMatrixString(data, datatype) {
+    "Array | Matrix, string": function Array__Matrix_string(data, datatype) {
       return new SparseMatrix(data, datatype);
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/type/unit/function/createUnit.js
-var name164 = "createUnit";
-var dependencies164 = ["typed", "Unit"];
-var createCreateUnit = /* @__PURE__ */ factory(name164, dependencies164, (_ref) => {
+var name168 = "createUnit";
+var dependencies169 = ["typed", "Unit"];
+var createCreateUnit = /* @__PURE__ */ factory(name168, dependencies169, (_ref) => {
   var {
     typed: typed2,
     Unit
   } = _ref;
-  return typed2(name164, {
+  return typed2(name168, {
     // General function signature. First parameter is an object where each property is the definition of a new unit. The object keys are the unit names and the values are the definitions. The values can be objects, strings, or Units. If a property is an empty object or an empty string, a new base unit is created. The second parameter is the options.
-    "Object, Object": function ObjectObject(obj, options) {
+    "Object, Object": function Object_Object(obj, options) {
       return Unit.createUnit(obj, options);
     },
     // Same as above but without the options.
@@ -24161,36 +25092,36 @@ var createCreateUnit = /* @__PURE__ */ factory(name164, dependencies164, (_ref) 
       return Unit.createUnit(obj, {});
     },
     // Shortcut method for creating one unit.
-    "string, Unit | string | Object, Object": function stringUnitStringObjectObject(name314, def, options) {
+    "string, Unit | string | Object, Object": function string_Unit__string__Object_Object(name323, def, options) {
       var obj = {};
-      obj[name314] = def;
+      obj[name323] = def;
       return Unit.createUnit(obj, options);
     },
     // Same as above but without the options.
-    "string, Unit | string | Object": function stringUnitStringObject(name314, def) {
+    "string, Unit | string | Object": function string_Unit__string__Object(name323, def) {
       var obj = {};
-      obj[name314] = def;
+      obj[name323] = def;
       return Unit.createUnit(obj, {});
     },
     // Without a definition, creates a base unit.
-    string: function string(name314) {
+    string: function string(name323) {
       var obj = {};
-      obj[name314] = {};
+      obj[name323] = {};
       return Unit.createUnit(obj, {});
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/acos.js
-var name165 = "acos";
-var dependencies165 = ["typed", "config", "Complex"];
-var createAcos = /* @__PURE__ */ factory(name165, dependencies165, (_ref) => {
+var name169 = "acos";
+var dependencies170 = ["typed", "config", "Complex"];
+var createAcos = /* @__PURE__ */ factory(name169, dependencies170, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     Complex: Complex2
   } = _ref;
-  return typed2(name165, {
+  return typed2(name169, {
     number: function number(x) {
       if (x >= -1 && x <= 1 || config2.predictable) {
         return Math.acos(x);
@@ -24208,15 +25139,15 @@ var createAcos = /* @__PURE__ */ factory(name165, dependencies165, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/acosh.js
-var name166 = "acosh";
-var dependencies166 = ["typed", "config", "Complex"];
-var createAcosh = /* @__PURE__ */ factory(name166, dependencies166, (_ref) => {
+var name170 = "acosh";
+var dependencies171 = ["typed", "config", "Complex"];
+var createAcosh = /* @__PURE__ */ factory(name170, dependencies171, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     Complex: Complex2
   } = _ref;
-  return typed2(name166, {
+  return typed2(name170, {
     number: function number(x) {
       if (x >= 1 || config2.predictable) {
         return acoshNumber(x);
@@ -24236,14 +25167,14 @@ var createAcosh = /* @__PURE__ */ factory(name166, dependencies166, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/acot.js
-var name167 = "acot";
-var dependencies167 = ["typed", "BigNumber"];
-var createAcot = /* @__PURE__ */ factory(name167, dependencies167, (_ref) => {
+var name171 = "acot";
+var dependencies172 = ["typed", "BigNumber"];
+var createAcot = /* @__PURE__ */ factory(name171, dependencies172, (_ref) => {
   var {
     typed: typed2,
     BigNumber: _BigNumber
   } = _ref;
-  return typed2(name167, {
+  return typed2(name171, {
     number: acotNumber,
     Complex: function Complex2(x) {
       return x.acot();
@@ -24255,16 +25186,16 @@ var createAcot = /* @__PURE__ */ factory(name167, dependencies167, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/acoth.js
-var name168 = "acoth";
-var dependencies168 = ["typed", "config", "Complex", "BigNumber"];
-var createAcoth = /* @__PURE__ */ factory(name168, dependencies168, (_ref) => {
+var name172 = "acoth";
+var dependencies173 = ["typed", "config", "Complex", "BigNumber"];
+var createAcoth = /* @__PURE__ */ factory(name172, dependencies173, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     Complex: Complex2,
     BigNumber: _BigNumber
   } = _ref;
-  return typed2(name168, {
+  return typed2(name172, {
     number: function number(x) {
       if (x >= 1 || x <= -1 || config2.predictable) {
         return acothNumber(x);
@@ -24281,16 +25212,16 @@ var createAcoth = /* @__PURE__ */ factory(name168, dependencies168, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/acsc.js
-var name169 = "acsc";
-var dependencies169 = ["typed", "config", "Complex", "BigNumber"];
-var createAcsc = /* @__PURE__ */ factory(name169, dependencies169, (_ref) => {
+var name173 = "acsc";
+var dependencies174 = ["typed", "config", "Complex", "BigNumber"];
+var createAcsc = /* @__PURE__ */ factory(name173, dependencies174, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     Complex: Complex2,
     BigNumber: _BigNumber
   } = _ref;
-  return typed2(name169, {
+  return typed2(name173, {
     number: function number(x) {
       if (x <= -1 || x >= 1 || config2.predictable) {
         return acscNumber(x);
@@ -24307,14 +25238,14 @@ var createAcsc = /* @__PURE__ */ factory(name169, dependencies169, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/acsch.js
-var name170 = "acsch";
-var dependencies170 = ["typed", "BigNumber"];
-var createAcsch = /* @__PURE__ */ factory(name170, dependencies170, (_ref) => {
+var name174 = "acsch";
+var dependencies175 = ["typed", "BigNumber"];
+var createAcsch = /* @__PURE__ */ factory(name174, dependencies175, (_ref) => {
   var {
     typed: typed2,
     BigNumber: _BigNumber
   } = _ref;
-  return typed2(name170, {
+  return typed2(name174, {
     number: acschNumber,
     Complex: function Complex2(x) {
       return x.acsch();
@@ -24326,16 +25257,16 @@ var createAcsch = /* @__PURE__ */ factory(name170, dependencies170, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/asec.js
-var name171 = "asec";
-var dependencies171 = ["typed", "config", "Complex", "BigNumber"];
-var createAsec = /* @__PURE__ */ factory(name171, dependencies171, (_ref) => {
+var name175 = "asec";
+var dependencies176 = ["typed", "config", "Complex", "BigNumber"];
+var createAsec = /* @__PURE__ */ factory(name175, dependencies176, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     Complex: Complex2,
     BigNumber: _BigNumber
   } = _ref;
-  return typed2(name171, {
+  return typed2(name175, {
     number: function number(x) {
       if (x <= -1 || x >= 1 || config2.predictable) {
         return asecNumber(x);
@@ -24352,16 +25283,16 @@ var createAsec = /* @__PURE__ */ factory(name171, dependencies171, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/asech.js
-var name172 = "asech";
-var dependencies172 = ["typed", "config", "Complex", "BigNumber"];
-var createAsech = /* @__PURE__ */ factory(name172, dependencies172, (_ref) => {
+var name176 = "asech";
+var dependencies177 = ["typed", "config", "Complex", "BigNumber"];
+var createAsech = /* @__PURE__ */ factory(name176, dependencies177, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     Complex: Complex2,
     BigNumber: _BigNumber
   } = _ref;
-  return typed2(name172, {
+  return typed2(name176, {
     number: function number(x) {
       if (x <= 1 && x >= -1 || config2.predictable) {
         var xInv = 1 / x;
@@ -24383,15 +25314,15 @@ var createAsech = /* @__PURE__ */ factory(name172, dependencies172, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/asin.js
-var name173 = "asin";
-var dependencies173 = ["typed", "config", "Complex"];
-var createAsin = /* @__PURE__ */ factory(name173, dependencies173, (_ref) => {
+var name177 = "asin";
+var dependencies178 = ["typed", "config", "Complex"];
+var createAsin = /* @__PURE__ */ factory(name177, dependencies178, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     Complex: Complex2
   } = _ref;
-  return typed2(name173, {
+  return typed2(name177, {
     number: function number(x) {
       if (x >= -1 && x <= 1 || config2.predictable) {
         return Math.asin(x);
@@ -24409,9 +25340,9 @@ var createAsin = /* @__PURE__ */ factory(name173, dependencies173, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/asinh.js
-var name174 = "asinh";
-var dependencies174 = ["typed"];
-var createAsinh = /* @__PURE__ */ factory(name174, dependencies174, (_ref) => {
+var name178 = "asinh";
+var dependencies179 = ["typed"];
+var createAsinh = /* @__PURE__ */ factory(name178, dependencies179, (_ref) => {
   var {
     typed: typed2
   } = _ref;
@@ -24427,9 +25358,9 @@ var createAsinh = /* @__PURE__ */ factory(name174, dependencies174, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/atan.js
-var name175 = "atan";
-var dependencies175 = ["typed"];
-var createAtan = /* @__PURE__ */ factory(name175, dependencies175, (_ref) => {
+var name179 = "atan";
+var dependencies180 = ["typed"];
+var createAtan = /* @__PURE__ */ factory(name179, dependencies180, (_ref) => {
   var {
     typed: typed2
   } = _ref;
@@ -24447,9 +25378,9 @@ var createAtan = /* @__PURE__ */ factory(name175, dependencies175, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/atan2.js
-var name176 = "atan2";
-var dependencies176 = ["typed", "matrix", "equalScalar", "BigNumber", "DenseMatrix", "concat"];
-var createAtan2 = /* @__PURE__ */ factory(name176, dependencies176, (_ref) => {
+var name180 = "atan2";
+var dependencies181 = ["typed", "matrix", "equalScalar", "BigNumber", "DenseMatrix", "concat"];
+var createAtan2 = /* @__PURE__ */ factory(name180, dependencies181, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -24482,7 +25413,7 @@ var createAtan2 = /* @__PURE__ */ factory(name176, dependencies176, (_ref) => {
     matrix,
     concat: concat2
   });
-  return typed2(name176, {
+  return typed2(name180, {
     "number, number": Math.atan2,
     // Complex numbers doesn't seem to have a reasonable implementation of
     // atan2(). Even Matlab removed the support, after they only calculated
@@ -24500,15 +25431,15 @@ var createAtan2 = /* @__PURE__ */ factory(name176, dependencies176, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/atanh.js
-var name177 = "atanh";
-var dependencies177 = ["typed", "config", "Complex"];
-var createAtanh = /* @__PURE__ */ factory(name177, dependencies177, (_ref) => {
+var name181 = "atanh";
+var dependencies182 = ["typed", "config", "Complex"];
+var createAtanh = /* @__PURE__ */ factory(name181, dependencies182, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     Complex: Complex2
   } = _ref;
-  return typed2(name177, {
+  return typed2(name181, {
     number: function number(x) {
       if (x <= 1 && x >= -1 || config2.predictable) {
         return atanhNumber(x);
@@ -24540,104 +25471,38 @@ var createTrigUnit = /* @__PURE__ */ factory("trigUnit", ["typed"], (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/cos.js
-var name178 = "cos";
-var dependencies178 = ["typed"];
-var createCos = /* @__PURE__ */ factory(name178, dependencies178, (_ref) => {
+var name182 = "cos";
+var dependencies183 = ["typed"];
+var createCos = /* @__PURE__ */ factory(name182, dependencies183, (_ref) => {
   var {
     typed: typed2
   } = _ref;
   var trigUnit = createTrigUnit({
     typed: typed2
   });
-  return typed2(name178, {
+  return typed2(name182, {
     number: Math.cos,
     "Complex | BigNumber": (x) => x.cos()
   }, trigUnit);
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/cosh.js
-var name179 = "cosh";
-var dependencies179 = ["typed"];
-var createCosh = /* @__PURE__ */ factory(name179, dependencies179, (_ref) => {
+var name183 = "cosh";
+var dependencies184 = ["typed"];
+var createCosh = /* @__PURE__ */ factory(name183, dependencies184, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name179, {
+  return typed2(name183, {
     number: cosh,
     "Complex | BigNumber": (x) => x.cosh()
   });
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/cot.js
-var name180 = "cot";
-var dependencies180 = ["typed", "BigNumber"];
-var createCot = /* @__PURE__ */ factory(name180, dependencies180, (_ref) => {
-  var {
-    typed: typed2,
-    BigNumber: _BigNumber
-  } = _ref;
-  var trigUnit = createTrigUnit({
-    typed: typed2
-  });
-  return typed2(name180, {
-    number: cotNumber,
-    Complex: (x) => x.cot(),
-    BigNumber: (x) => new _BigNumber(1).div(x.tan())
-  }, trigUnit);
-});
-
-// node_modules/mathjs/lib/esm/function/trigonometry/coth.js
-var name181 = "coth";
-var dependencies181 = ["typed", "BigNumber"];
-var createCoth = /* @__PURE__ */ factory(name181, dependencies181, (_ref) => {
-  var {
-    typed: typed2,
-    BigNumber: _BigNumber
-  } = _ref;
-  return typed2(name181, {
-    number: cothNumber,
-    Complex: (x) => x.coth(),
-    BigNumber: (x) => new _BigNumber(1).div(x.tanh())
-  });
-});
-
-// node_modules/mathjs/lib/esm/function/trigonometry/csc.js
-var name182 = "csc";
-var dependencies182 = ["typed", "BigNumber"];
-var createCsc = /* @__PURE__ */ factory(name182, dependencies182, (_ref) => {
-  var {
-    typed: typed2,
-    BigNumber: _BigNumber
-  } = _ref;
-  var trigUnit = createTrigUnit({
-    typed: typed2
-  });
-  return typed2(name182, {
-    number: cscNumber,
-    Complex: (x) => x.csc(),
-    BigNumber: (x) => new _BigNumber(1).div(x.sin())
-  }, trigUnit);
-});
-
-// node_modules/mathjs/lib/esm/function/trigonometry/csch.js
-var name183 = "csch";
-var dependencies183 = ["typed", "BigNumber"];
-var createCsch = /* @__PURE__ */ factory(name183, dependencies183, (_ref) => {
-  var {
-    typed: typed2,
-    BigNumber: _BigNumber
-  } = _ref;
-  return typed2(name183, {
-    number: cschNumber,
-    Complex: (x) => x.csch(),
-    BigNumber: (x) => new _BigNumber(1).div(x.sinh())
-  });
-});
-
-// node_modules/mathjs/lib/esm/function/trigonometry/sec.js
-var name184 = "sec";
-var dependencies184 = ["typed", "BigNumber"];
-var createSec = /* @__PURE__ */ factory(name184, dependencies184, (_ref) => {
+var name184 = "cot";
+var dependencies185 = ["typed", "BigNumber"];
+var createCot = /* @__PURE__ */ factory(name184, dependencies185, (_ref) => {
   var {
     typed: typed2,
     BigNumber: _BigNumber
@@ -24646,6 +25511,72 @@ var createSec = /* @__PURE__ */ factory(name184, dependencies184, (_ref) => {
     typed: typed2
   });
   return typed2(name184, {
+    number: cotNumber,
+    Complex: (x) => x.cot(),
+    BigNumber: (x) => new _BigNumber(1).div(x.tan())
+  }, trigUnit);
+});
+
+// node_modules/mathjs/lib/esm/function/trigonometry/coth.js
+var name185 = "coth";
+var dependencies186 = ["typed", "BigNumber"];
+var createCoth = /* @__PURE__ */ factory(name185, dependencies186, (_ref) => {
+  var {
+    typed: typed2,
+    BigNumber: _BigNumber
+  } = _ref;
+  return typed2(name185, {
+    number: cothNumber,
+    Complex: (x) => x.coth(),
+    BigNumber: (x) => new _BigNumber(1).div(x.tanh())
+  });
+});
+
+// node_modules/mathjs/lib/esm/function/trigonometry/csc.js
+var name186 = "csc";
+var dependencies187 = ["typed", "BigNumber"];
+var createCsc = /* @__PURE__ */ factory(name186, dependencies187, (_ref) => {
+  var {
+    typed: typed2,
+    BigNumber: _BigNumber
+  } = _ref;
+  var trigUnit = createTrigUnit({
+    typed: typed2
+  });
+  return typed2(name186, {
+    number: cscNumber,
+    Complex: (x) => x.csc(),
+    BigNumber: (x) => new _BigNumber(1).div(x.sin())
+  }, trigUnit);
+});
+
+// node_modules/mathjs/lib/esm/function/trigonometry/csch.js
+var name187 = "csch";
+var dependencies188 = ["typed", "BigNumber"];
+var createCsch = /* @__PURE__ */ factory(name187, dependencies188, (_ref) => {
+  var {
+    typed: typed2,
+    BigNumber: _BigNumber
+  } = _ref;
+  return typed2(name187, {
+    number: cschNumber,
+    Complex: (x) => x.csch(),
+    BigNumber: (x) => new _BigNumber(1).div(x.sinh())
+  });
+});
+
+// node_modules/mathjs/lib/esm/function/trigonometry/sec.js
+var name188 = "sec";
+var dependencies189 = ["typed", "BigNumber"];
+var createSec = /* @__PURE__ */ factory(name188, dependencies189, (_ref) => {
+  var {
+    typed: typed2,
+    BigNumber: _BigNumber
+  } = _ref;
+  var trigUnit = createTrigUnit({
+    typed: typed2
+  });
+  return typed2(name188, {
     number: secNumber,
     Complex: (x) => x.sec(),
     BigNumber: (x) => new _BigNumber(1).div(x.cos())
@@ -24653,14 +25584,14 @@ var createSec = /* @__PURE__ */ factory(name184, dependencies184, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/sech.js
-var name185 = "sech";
-var dependencies185 = ["typed", "BigNumber"];
-var createSech = /* @__PURE__ */ factory(name185, dependencies185, (_ref) => {
+var name189 = "sech";
+var dependencies190 = ["typed", "BigNumber"];
+var createSech = /* @__PURE__ */ factory(name189, dependencies190, (_ref) => {
   var {
     typed: typed2,
     BigNumber: _BigNumber
   } = _ref;
-  return typed2(name185, {
+  return typed2(name189, {
     number: sechNumber,
     Complex: (x) => x.sech(),
     BigNumber: (x) => new _BigNumber(1).div(x.cosh())
@@ -24668,54 +25599,54 @@ var createSech = /* @__PURE__ */ factory(name185, dependencies185, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/sin.js
-var name186 = "sin";
-var dependencies186 = ["typed"];
-var createSin = /* @__PURE__ */ factory(name186, dependencies186, (_ref) => {
+var name190 = "sin";
+var dependencies191 = ["typed"];
+var createSin = /* @__PURE__ */ factory(name190, dependencies191, (_ref) => {
   var {
     typed: typed2
   } = _ref;
   var trigUnit = createTrigUnit({
     typed: typed2
   });
-  return typed2(name186, {
+  return typed2(name190, {
     number: Math.sin,
     "Complex | BigNumber": (x) => x.sin()
   }, trigUnit);
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/sinh.js
-var name187 = "sinh";
-var dependencies187 = ["typed"];
-var createSinh = /* @__PURE__ */ factory(name187, dependencies187, (_ref) => {
+var name191 = "sinh";
+var dependencies192 = ["typed"];
+var createSinh = /* @__PURE__ */ factory(name191, dependencies192, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name187, {
+  return typed2(name191, {
     number: sinhNumber,
     "Complex | BigNumber": (x) => x.sinh()
   });
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/tan.js
-var name188 = "tan";
-var dependencies188 = ["typed"];
-var createTan = /* @__PURE__ */ factory(name188, dependencies188, (_ref) => {
+var name192 = "tan";
+var dependencies193 = ["typed"];
+var createTan = /* @__PURE__ */ factory(name192, dependencies193, (_ref) => {
   var {
     typed: typed2
   } = _ref;
   var trigUnit = createTrigUnit({
     typed: typed2
   });
-  return typed2(name188, {
+  return typed2(name192, {
     number: Math.tan,
     "Complex | BigNumber": (x) => x.tan()
   }, trigUnit);
 });
 
 // node_modules/mathjs/lib/esm/function/trigonometry/tanh.js
-var name189 = "tanh";
-var dependencies189 = ["typed"];
-var createTanh = /* @__PURE__ */ factory(name189, dependencies189, (_ref) => {
+var name193 = "tanh";
+var dependencies194 = ["typed"];
+var createTanh = /* @__PURE__ */ factory(name193, dependencies194, (_ref) => {
   var {
     typed: typed2
   } = _ref;
@@ -24726,9 +25657,9 @@ var createTanh = /* @__PURE__ */ factory(name189, dependencies189, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/set/setCartesian.js
-var name190 = "setCartesian";
-var dependencies190 = ["typed", "size", "subset", "compareNatural", "Index", "DenseMatrix"];
-var createSetCartesian = /* @__PURE__ */ factory(name190, dependencies190, (_ref) => {
+var name194 = "setCartesian";
+var dependencies195 = ["typed", "size", "subset", "compareNatural", "Index", "DenseMatrix"];
+var createSetCartesian = /* @__PURE__ */ factory(name194, dependencies195, (_ref) => {
   var {
     typed: typed2,
     size,
@@ -24737,8 +25668,8 @@ var createSetCartesian = /* @__PURE__ */ factory(name190, dependencies190, (_ref
     Index,
     DenseMatrix
   } = _ref;
-  return typed2(name190, {
-    "Array | Matrix, Array | Matrix": function ArrayMatrixArrayMatrix(a1, a2) {
+  return typed2(name194, {
+    "Array | Matrix, Array | Matrix": function Array__Matrix_Array__Matrix(a1, a2) {
       var result = [];
       if (subset(size(a1), new Index(0)) !== 0 && subset(size(a2), new Index(0)) !== 0) {
         var b1 = flatten(Array.isArray(a1) ? a1 : a1.toArray()).sort(compareNatural);
@@ -24759,9 +25690,9 @@ var createSetCartesian = /* @__PURE__ */ factory(name190, dependencies190, (_ref
 });
 
 // node_modules/mathjs/lib/esm/function/set/setDifference.js
-var name191 = "setDifference";
-var dependencies191 = ["typed", "size", "subset", "compareNatural", "Index", "DenseMatrix"];
-var createSetDifference = /* @__PURE__ */ factory(name191, dependencies191, (_ref) => {
+var name195 = "setDifference";
+var dependencies196 = ["typed", "size", "subset", "compareNatural", "Index", "DenseMatrix"];
+var createSetDifference = /* @__PURE__ */ factory(name195, dependencies196, (_ref) => {
   var {
     typed: typed2,
     size,
@@ -24770,8 +25701,8 @@ var createSetDifference = /* @__PURE__ */ factory(name191, dependencies191, (_re
     Index,
     DenseMatrix
   } = _ref;
-  return typed2(name191, {
-    "Array | Matrix, Array | Matrix": function ArrayMatrixArrayMatrix(a1, a2) {
+  return typed2(name195, {
+    "Array | Matrix, Array | Matrix": function Array__Matrix_Array__Matrix(a1, a2) {
       var result;
       if (subset(size(a1), new Index(0)) === 0) {
         result = [];
@@ -24804,9 +25735,9 @@ var createSetDifference = /* @__PURE__ */ factory(name191, dependencies191, (_re
 });
 
 // node_modules/mathjs/lib/esm/function/set/setDistinct.js
-var name192 = "setDistinct";
-var dependencies192 = ["typed", "size", "subset", "compareNatural", "Index", "DenseMatrix"];
-var createSetDistinct = /* @__PURE__ */ factory(name192, dependencies192, (_ref) => {
+var name196 = "setDistinct";
+var dependencies197 = ["typed", "size", "subset", "compareNatural", "Index", "DenseMatrix"];
+var createSetDistinct = /* @__PURE__ */ factory(name196, dependencies197, (_ref) => {
   var {
     typed: typed2,
     size,
@@ -24815,8 +25746,8 @@ var createSetDistinct = /* @__PURE__ */ factory(name192, dependencies192, (_ref)
     Index,
     DenseMatrix
   } = _ref;
-  return typed2(name192, {
-    "Array | Matrix": function ArrayMatrix(a) {
+  return typed2(name196, {
+    "Array | Matrix": function Array__Matrix(a) {
       var result;
       if (subset(size(a), new Index(0)) === 0) {
         result = [];
@@ -24839,9 +25770,9 @@ var createSetDistinct = /* @__PURE__ */ factory(name192, dependencies192, (_ref)
 });
 
 // node_modules/mathjs/lib/esm/function/set/setIntersect.js
-var name193 = "setIntersect";
-var dependencies193 = ["typed", "size", "subset", "compareNatural", "Index", "DenseMatrix"];
-var createSetIntersect = /* @__PURE__ */ factory(name193, dependencies193, (_ref) => {
+var name197 = "setIntersect";
+var dependencies198 = ["typed", "size", "subset", "compareNatural", "Index", "DenseMatrix"];
+var createSetIntersect = /* @__PURE__ */ factory(name197, dependencies198, (_ref) => {
   var {
     typed: typed2,
     size,
@@ -24850,8 +25781,8 @@ var createSetIntersect = /* @__PURE__ */ factory(name193, dependencies193, (_ref
     Index,
     DenseMatrix
   } = _ref;
-  return typed2(name193, {
-    "Array | Matrix, Array | Matrix": function ArrayMatrixArrayMatrix(a1, a2) {
+  return typed2(name197, {
+    "Array | Matrix, Array | Matrix": function Array__Matrix_Array__Matrix(a1, a2) {
       var result;
       if (subset(size(a1), new Index(0)) === 0 || subset(size(a2), new Index(0)) === 0) {
         result = [];
@@ -24877,9 +25808,9 @@ var createSetIntersect = /* @__PURE__ */ factory(name193, dependencies193, (_ref
 });
 
 // node_modules/mathjs/lib/esm/function/set/setIsSubset.js
-var name194 = "setIsSubset";
-var dependencies194 = ["typed", "size", "subset", "compareNatural", "Index"];
-var createSetIsSubset = /* @__PURE__ */ factory(name194, dependencies194, (_ref) => {
+var name198 = "setIsSubset";
+var dependencies199 = ["typed", "size", "subset", "compareNatural", "Index"];
+var createSetIsSubset = /* @__PURE__ */ factory(name198, dependencies199, (_ref) => {
   var {
     typed: typed2,
     size,
@@ -24887,8 +25818,8 @@ var createSetIsSubset = /* @__PURE__ */ factory(name194, dependencies194, (_ref)
     compareNatural,
     Index
   } = _ref;
-  return typed2(name194, {
-    "Array | Matrix, Array | Matrix": function ArrayMatrixArrayMatrix(a1, a2) {
+  return typed2(name198, {
+    "Array | Matrix, Array | Matrix": function Array__Matrix_Array__Matrix(a1, a2) {
       if (subset(size(a1), new Index(0)) === 0) {
         return true;
       } else if (subset(size(a2), new Index(0)) === 0) {
@@ -24915,9 +25846,9 @@ var createSetIsSubset = /* @__PURE__ */ factory(name194, dependencies194, (_ref)
 });
 
 // node_modules/mathjs/lib/esm/function/set/setMultiplicity.js
-var name195 = "setMultiplicity";
-var dependencies195 = ["typed", "size", "subset", "compareNatural", "Index"];
-var createSetMultiplicity = /* @__PURE__ */ factory(name195, dependencies195, (_ref) => {
+var name199 = "setMultiplicity";
+var dependencies200 = ["typed", "size", "subset", "compareNatural", "Index"];
+var createSetMultiplicity = /* @__PURE__ */ factory(name199, dependencies200, (_ref) => {
   var {
     typed: typed2,
     size,
@@ -24925,8 +25856,8 @@ var createSetMultiplicity = /* @__PURE__ */ factory(name195, dependencies195, (_
     compareNatural,
     Index
   } = _ref;
-  return typed2(name195, {
-    "number | BigNumber | Fraction | Complex, Array | Matrix": function numberBigNumberFractionComplexArrayMatrix(e2, a) {
+  return typed2(name199, {
+    "number | BigNumber | Fraction | Complex, Array | Matrix": function number__BigNumber__Fraction__Complex_Array__Matrix(e2, a) {
       if (subset(size(a), new Index(0)) === 0) {
         return 0;
       }
@@ -24943,9 +25874,9 @@ var createSetMultiplicity = /* @__PURE__ */ factory(name195, dependencies195, (_
 });
 
 // node_modules/mathjs/lib/esm/function/set/setPowerset.js
-var name196 = "setPowerset";
-var dependencies196 = ["typed", "size", "subset", "compareNatural", "Index"];
-var createSetPowerset = /* @__PURE__ */ factory(name196, dependencies196, (_ref) => {
+var name200 = "setPowerset";
+var dependencies201 = ["typed", "size", "subset", "compareNatural", "Index"];
+var createSetPowerset = /* @__PURE__ */ factory(name200, dependencies201, (_ref) => {
   var {
     typed: typed2,
     size,
@@ -24953,8 +25884,8 @@ var createSetPowerset = /* @__PURE__ */ factory(name196, dependencies196, (_ref)
     compareNatural,
     Index
   } = _ref;
-  return typed2(name196, {
-    "Array | Matrix": function ArrayMatrix(a) {
+  return typed2(name200, {
+    "Array | Matrix": function Array__Matrix(a) {
       if (subset(size(a), new Index(0)) === 0) {
         return [];
       }
@@ -24993,18 +25924,18 @@ var createSetPowerset = /* @__PURE__ */ factory(name196, dependencies196, (_ref)
 });
 
 // node_modules/mathjs/lib/esm/function/set/setSize.js
-var name197 = "setSize";
-var dependencies197 = ["typed", "compareNatural"];
-var createSetSize = /* @__PURE__ */ factory(name197, dependencies197, (_ref) => {
+var name201 = "setSize";
+var dependencies202 = ["typed", "compareNatural"];
+var createSetSize = /* @__PURE__ */ factory(name201, dependencies202, (_ref) => {
   var {
     typed: typed2,
     compareNatural
   } = _ref;
-  return typed2(name197, {
-    "Array | Matrix": function ArrayMatrix(a) {
+  return typed2(name201, {
+    "Array | Matrix": function Array__Matrix(a) {
       return Array.isArray(a) ? flatten(a).length : flatten(a.toArray()).length;
     },
-    "Array | Matrix, boolean": function ArrayMatrixBoolean(a, unique) {
+    "Array | Matrix, boolean": function Array__Matrix_boolean(a, unique) {
       if (unique === false || a.length === 0) {
         return Array.isArray(a) ? flatten(a).length : flatten(a.toArray()).length;
       } else {
@@ -25022,9 +25953,9 @@ var createSetSize = /* @__PURE__ */ factory(name197, dependencies197, (_ref) => 
 });
 
 // node_modules/mathjs/lib/esm/function/set/setSymDifference.js
-var name198 = "setSymDifference";
-var dependencies198 = ["typed", "size", "concat", "subset", "setDifference", "Index"];
-var createSetSymDifference = /* @__PURE__ */ factory(name198, dependencies198, (_ref) => {
+var name202 = "setSymDifference";
+var dependencies203 = ["typed", "size", "concat", "subset", "setDifference", "Index"];
+var createSetSymDifference = /* @__PURE__ */ factory(name202, dependencies203, (_ref) => {
   var {
     typed: typed2,
     size,
@@ -25033,8 +25964,8 @@ var createSetSymDifference = /* @__PURE__ */ factory(name198, dependencies198, (
     setDifference,
     Index
   } = _ref;
-  return typed2(name198, {
-    "Array | Matrix, Array | Matrix": function ArrayMatrixArrayMatrix(a1, a2) {
+  return typed2(name202, {
+    "Array | Matrix, Array | Matrix": function Array__Matrix_Array__Matrix(a1, a2) {
       if (subset(size(a1), new Index(0)) === 0) {
         return flatten(a2);
       } else if (subset(size(a2), new Index(0)) === 0) {
@@ -25048,9 +25979,9 @@ var createSetSymDifference = /* @__PURE__ */ factory(name198, dependencies198, (
 });
 
 // node_modules/mathjs/lib/esm/function/set/setUnion.js
-var name199 = "setUnion";
-var dependencies199 = ["typed", "size", "concat", "subset", "setIntersect", "setSymDifference", "Index"];
-var createSetUnion = /* @__PURE__ */ factory(name199, dependencies199, (_ref) => {
+var name203 = "setUnion";
+var dependencies204 = ["typed", "size", "concat", "subset", "setIntersect", "setSymDifference", "Index"];
+var createSetUnion = /* @__PURE__ */ factory(name203, dependencies204, (_ref) => {
   var {
     typed: typed2,
     size,
@@ -25060,8 +25991,8 @@ var createSetUnion = /* @__PURE__ */ factory(name199, dependencies199, (_ref) =>
     setSymDifference,
     Index
   } = _ref;
-  return typed2(name199, {
-    "Array | Matrix, Array | Matrix": function ArrayMatrixArrayMatrix(a1, a2) {
+  return typed2(name203, {
+    "Array | Matrix, Array | Matrix": function Array__Matrix_Array__Matrix(a1, a2) {
       if (subset(size(a1), new Index(0)) === 0) {
         return flatten(a2);
       } else if (subset(size(a2), new Index(0)) === 0) {
@@ -25075,9 +26006,9 @@ var createSetUnion = /* @__PURE__ */ factory(name199, dependencies199, (_ref) =>
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/add.js
-var name200 = "add";
-var dependencies200 = ["typed", "matrix", "addScalar", "equalScalar", "DenseMatrix", "SparseMatrix", "concat"];
-var createAdd = /* @__PURE__ */ factory(name200, dependencies200, (_ref) => {
+var name204 = "add";
+var dependencies205 = ["typed", "matrix", "addScalar", "equalScalar", "DenseMatrix", "SparseMatrix", "concat"];
+var createAdd = /* @__PURE__ */ factory(name204, dependencies205, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -25103,7 +26034,7 @@ var createAdd = /* @__PURE__ */ factory(name200, dependencies200, (_ref) => {
     matrix,
     concat: concat2
   });
-  return typed2(name200, {
+  return typed2(name204, {
     "any, any": addScalar,
     "any, any, ...any": typed2.referToSelf((self2) => (x, y, rest) => {
       var result = self2(x, y);
@@ -25121,9 +26052,9 @@ var createAdd = /* @__PURE__ */ factory(name200, dependencies200, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/hypot.js
-var name201 = "hypot";
-var dependencies201 = ["typed", "abs", "addScalar", "divideScalar", "multiplyScalar", "sqrt", "smaller", "isPositive"];
-var createHypot = /* @__PURE__ */ factory(name201, dependencies201, (_ref) => {
+var name205 = "hypot";
+var dependencies206 = ["typed", "abs", "addScalar", "divideScalar", "multiplyScalar", "sqrt", "smaller", "isPositive"];
+var createHypot = /* @__PURE__ */ factory(name205, dependencies206, (_ref) => {
   var {
     typed: typed2,
     abs: abs2,
@@ -25134,10 +26065,10 @@ var createHypot = /* @__PURE__ */ factory(name201, dependencies201, (_ref) => {
     smaller,
     isPositive
   } = _ref;
-  return typed2(name201, {
+  return typed2(name205, {
     "... number | BigNumber": _hypot,
     Array: _hypot,
-    Matrix: (M) => _hypot(flatten(M.toArray()))
+    Matrix: (M) => _hypot(flatten(M.toArray(), true))
   });
   function _hypot(args) {
     var result = 0;
@@ -25160,9 +26091,9 @@ var createHypot = /* @__PURE__ */ factory(name201, dependencies201, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/norm.js
-var name202 = "norm";
-var dependencies202 = ["typed", "abs", "add", "pow", "conj", "sqrt", "multiply", "equalScalar", "larger", "smaller", "matrix", "ctranspose", "eigs"];
-var createNorm = /* @__PURE__ */ factory(name202, dependencies202, (_ref) => {
+var name206 = "norm";
+var dependencies207 = ["typed", "abs", "add", "pow", "conj", "sqrt", "multiply", "equalScalar", "larger", "smaller", "matrix", "ctranspose", "eigs"];
+var createNorm = /* @__PURE__ */ factory(name206, dependencies207, (_ref) => {
   var {
     typed: typed2,
     abs: abs2,
@@ -25178,7 +26109,7 @@ var createNorm = /* @__PURE__ */ factory(name202, dependencies202, (_ref) => {
     ctranspose,
     eigs
   } = _ref;
-  return typed2(name202, {
+  return typed2(name206, {
     number: Math.abs,
     Complex: function Complex2(x) {
       return x.abs();
@@ -25195,10 +26126,10 @@ var createNorm = /* @__PURE__ */ factory(name202, dependencies202, (_ref) => {
     Matrix: function Matrix(x) {
       return _norm(x, 2);
     },
-    "Array, number | BigNumber | string": function ArrayNumberBigNumberString(x, p) {
+    "Array, number | BigNumber | string": function Array_number__BigNumber__string(x, p) {
       return _norm(matrix(x), p);
     },
-    "Matrix, number | BigNumber | string": function MatrixNumberBigNumberString(x, p) {
+    "Matrix, number | BigNumber | string": function Matrix_number__BigNumber__string(x, p) {
       return _norm(x, p);
     }
   });
@@ -25319,9 +26250,9 @@ var createNorm = /* @__PURE__ */ factory(name202, dependencies202, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/dot.js
-var name203 = "dot";
-var dependencies203 = ["typed", "addScalar", "multiplyScalar", "conj", "size"];
-var createDot = /* @__PURE__ */ factory(name203, dependencies203, (_ref) => {
+var name207 = "dot";
+var dependencies208 = ["typed", "addScalar", "multiplyScalar", "conj", "size"];
+var createDot = /* @__PURE__ */ factory(name207, dependencies208, (_ref) => {
   var {
     typed: typed2,
     addScalar,
@@ -25329,13 +26260,13 @@ var createDot = /* @__PURE__ */ factory(name203, dependencies203, (_ref) => {
     conj,
     size
   } = _ref;
-  return typed2(name203, {
+  return typed2(name207, {
     "Array | DenseMatrix, Array | DenseMatrix": _denseDot,
     "SparseMatrix, SparseMatrix": _sparseDot
   });
   function _validateDim(x, y) {
-    var xSize = _size(x);
-    var ySize = _size(y);
+    var xSize = size(x);
+    var ySize = size(y);
     var xLen, yLen;
     if (xSize.length === 1) {
       xLen = xSize[0];
@@ -25361,8 +26292,8 @@ var createDot = /* @__PURE__ */ factory(name203, dependencies203, (_ref) => {
     var adt = isMatrix(a) ? a._datatype || a.getDataType() : void 0;
     var bdata = isMatrix(b) ? b._data : b;
     var bdt = isMatrix(b) ? b._datatype || b.getDataType() : void 0;
-    var aIsColumn = _size(a).length === 2;
-    var bIsColumn = _size(b).length === 2;
+    var aIsColumn = size(a).length === 2;
+    var bIsColumn = size(b).length === 2;
     var add2 = addScalar;
     var mul2 = multiplyScalar;
     if (adt && bdt && adt === bdt && typeof adt === "string" && adt !== "mixed") {
@@ -25429,15 +26360,12 @@ var createDot = /* @__PURE__ */ factory(name203, dependencies203, (_ref) => {
     }
     return c;
   }
-  function _size(x) {
-    return isMatrix(x) ? x.size() : size(x);
-  }
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/trace.js
-var name204 = "trace";
-var dependencies204 = ["typed", "matrix", "add"];
-var createTrace = /* @__PURE__ */ factory(name204, dependencies204, (_ref) => {
+var name208 = "trace";
+var dependencies209 = ["typed", "matrix", "add"];
+var createTrace = /* @__PURE__ */ factory(name208, dependencies209, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -25509,15 +26437,15 @@ var createTrace = /* @__PURE__ */ factory(name204, dependencies204, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/type/matrix/function/index.js
-var name205 = "index";
-var dependencies205 = ["typed", "Index"];
-var createIndex = /* @__PURE__ */ factory(name205, dependencies205, (_ref) => {
+var name209 = "index";
+var dependencies210 = ["typed", "Index"];
+var createIndex = /* @__PURE__ */ factory(name209, dependencies210, (_ref) => {
   var {
     typed: typed2,
     Index
   } = _ref;
-  return typed2(name205, {
-    "...number | string | BigNumber | Range | Array | Matrix": function numberStringBigNumberRangeArrayMatrix(args) {
+  return typed2(name209, {
+    "...number | string | BigNumber | Range | Array | Matrix": function number__string__BigNumber__Range__Array__Matrix(args) {
       var ranges = args.map(function(arg) {
         if (isBigNumber(arg)) {
           return arg.toNumber();
@@ -25540,9 +26468,9 @@ var createIndex = /* @__PURE__ */ factory(name205, dependencies205, (_ref) => {
 var keywords = /* @__PURE__ */ new Set(["end"]);
 
 // node_modules/mathjs/lib/esm/expression/node/Node.js
-var name206 = "Node";
-var dependencies206 = ["mathWithTransform"];
-var createNode = /* @__PURE__ */ factory(name206, dependencies206, (_ref) => {
+var name210 = "Node";
+var dependencies211 = ["mathWithTransform"];
+var createNode = /* @__PURE__ */ factory(name210, dependencies211, (_ref) => {
   var {
     mathWithTransform
   } = _ref;
@@ -25906,9 +26834,9 @@ function accessFactory(_ref) {
 }
 
 // node_modules/mathjs/lib/esm/expression/node/AccessorNode.js
-var name207 = "AccessorNode";
-var dependencies207 = ["subset", "Node"];
-var createAccessorNode = /* @__PURE__ */ factory(name207, dependencies207, (_ref) => {
+var name211 = "AccessorNode";
+var dependencies212 = ["subset", "Node"];
+var createAccessorNode = /* @__PURE__ */ factory(name211, dependencies212, (_ref) => {
   var {
     subset,
     Node
@@ -25928,8 +26856,13 @@ var createAccessorNode = /* @__PURE__ */ factory(name207, dependencies207, (_ref
      * @param {Node} object                 The object from which to retrieve
      *                                      a property or subset.
      * @param {IndexNode} index             IndexNode containing ranges
+     * @param {boolean} [optionalChaining=false]
+     *     Optional property, if the accessor was written as optional-chaining
+     *     using `a?.b`, or `a?.["b"] with bracket notation.
+     *     Forces evaluate to undefined if the given object is undefined or null.
      */
     constructor(object, index) {
+      var optionalChaining = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : false;
       super();
       if (!isNode(object)) {
         throw new TypeError('Node expected for parameter "object"');
@@ -25939,6 +26872,7 @@ var createAccessorNode = /* @__PURE__ */ factory(name207, dependencies207, (_ref
       }
       this.object = object;
       this.index = index;
+      this.optionalChaining = optionalChaining;
     }
     // readonly property name
     get name() {
@@ -25949,7 +26883,7 @@ var createAccessorNode = /* @__PURE__ */ factory(name207, dependencies207, (_ref
       }
     }
     get type() {
-      return name207;
+      return name211;
     }
     get isAccessorNode() {
       return true;
@@ -25970,14 +26904,33 @@ var createAccessorNode = /* @__PURE__ */ factory(name207, dependencies207, (_ref
     _compile(math2, argNames) {
       var evalObject = this.object._compile(math2, argNames);
       var evalIndex = this.index._compile(math2, argNames);
+      var optionalChaining = this.optionalChaining;
+      var prevOptionalChaining = isAccessorNode(this.object) && this.object.optionalChaining;
       if (this.index.isObjectProperty()) {
         var prop = this.index.getObjectProperty();
         return function evalAccessorNode(scope, args, context) {
-          return getSafeProperty(evalObject(scope, args, context), prop);
+          var ctx = context || {};
+          var object = evalObject(scope, args, ctx);
+          if (optionalChaining && object == null) {
+            ctx.optionalShortCircuit = true;
+            return void 0;
+          }
+          if (prevOptionalChaining && ctx !== null && ctx !== void 0 && ctx.optionalShortCircuit) {
+            return void 0;
+          }
+          return getSafeProperty(object, prop);
         };
       } else {
         return function evalAccessorNode(scope, args, context) {
-          var object = evalObject(scope, args, context);
+          var ctx = context || {};
+          var object = evalObject(scope, args, ctx);
+          if (optionalChaining && object == null) {
+            ctx.optionalShortCircuit = true;
+            return void 0;
+          }
+          if (prevOptionalChaining && ctx !== null && ctx !== void 0 && ctx.optionalShortCircuit) {
+            return void 0;
+          }
           var index = evalIndex(scope, args, object);
           return access(object, index);
         };
@@ -25998,14 +26951,14 @@ var createAccessorNode = /* @__PURE__ */ factory(name207, dependencies207, (_ref
      * @returns {AccessorNode} Returns a transformed copy of the node
      */
     map(callback) {
-      return new AccessorNode(this._ifNode(callback(this.object, "object", this)), this._ifNode(callback(this.index, "index", this)));
+      return new AccessorNode(this._ifNode(callback(this.object, "object", this)), this._ifNode(callback(this.index, "index", this)), this.optionalChaining);
     }
     /**
      * Create a clone of this node, a shallow copy
      * @return {AccessorNode}
      */
     clone() {
-      return new AccessorNode(this.object, this.index);
+      return new AccessorNode(this.object, this.index, this.optionalChaining);
     }
     /**
      * Get string representation
@@ -26017,7 +26970,8 @@ var createAccessorNode = /* @__PURE__ */ factory(name207, dependencies207, (_ref
       if (needParenthesis(this.object)) {
         object = "(" + object + ")";
       }
-      return object + this.index.toString(options);
+      var optionalChaining = this.optionalChaining ? this.index.dotNotation ? "?" : "?." : "";
+      return object + optionalChaining + this.index.toString(options);
     }
     /**
      * Get HTML representation
@@ -26049,9 +27003,10 @@ var createAccessorNode = /* @__PURE__ */ factory(name207, dependencies207, (_ref
      */
     toJSON() {
       return {
-        mathjs: name207,
+        mathjs: name211,
         object: this.object,
-        index: this.index
+        index: this.index,
+        optionalChaining: this.optionalChaining
       };
     }
     /**
@@ -26063,10 +27018,10 @@ var createAccessorNode = /* @__PURE__ */ factory(name207, dependencies207, (_ref
      * @returns {AccessorNode}
      */
     static fromJSON(json) {
-      return new AccessorNode(json.object, json.index);
+      return new AccessorNode(json.object, json.index, json.optionalChaining);
     }
   }
-  _defineProperty(AccessorNode, "name", name207);
+  _defineProperty(AccessorNode, "name", name211);
   return AccessorNode;
 }, {
   isClass: true,
@@ -26074,9 +27029,9 @@ var createAccessorNode = /* @__PURE__ */ factory(name207, dependencies207, (_ref
 });
 
 // node_modules/mathjs/lib/esm/expression/node/ArrayNode.js
-var name208 = "ArrayNode";
-var dependencies208 = ["Node"];
-var createArrayNode = /* @__PURE__ */ factory(name208, dependencies208, (_ref) => {
+var name212 = "ArrayNode";
+var dependencies213 = ["Node"];
+var createArrayNode = /* @__PURE__ */ factory(name212, dependencies213, (_ref) => {
   var {
     Node
   } = _ref;
@@ -26095,7 +27050,7 @@ var createArrayNode = /* @__PURE__ */ factory(name208, dependencies208, (_ref) =
       }
     }
     get type() {
-      return name208;
+      return name212;
     }
     get isArrayNode() {
       return true;
@@ -26181,7 +27136,7 @@ var createArrayNode = /* @__PURE__ */ factory(name208, dependencies208, (_ref) =
      */
     toJSON() {
       return {
-        mathjs: name208,
+        mathjs: name212,
         items: this.items
       };
     }
@@ -26229,7 +27184,7 @@ var createArrayNode = /* @__PURE__ */ factory(name208, dependencies208, (_ref) =
       return itemsToTex(this.items, false);
     }
   }
-  _defineProperty(ArrayNode, "name", name208);
+  _defineProperty(ArrayNode, "name", name212);
   return ArrayNode;
 }, {
   isClass: true,
@@ -26242,7 +27197,7 @@ function assignFactory(_ref) {
     subset,
     matrix
   } = _ref;
-  return function assign(object, index, value) {
+  return function assign2(object, index, value) {
     try {
       if (Array.isArray(object)) {
         var result = matrix(object).subset(index, value).valueOf();
@@ -26474,6 +27429,13 @@ var properties = [{
     associativeWith: []
   }
 }, {
+  // nullish coalescing
+  "OperatorNode:nullish": {
+    op: "??",
+    associativity: "left",
+    associativeWith: []
+  }
+}, {
   // factorial
   "OperatorNode:factorial": {
     op: "!",
@@ -26566,14 +27528,14 @@ function getOperator(fn) {
 }
 
 // node_modules/mathjs/lib/esm/expression/node/AssignmentNode.js
-var name209 = "AssignmentNode";
-var dependencies209 = [
+var name213 = "AssignmentNode";
+var dependencies214 = [
   "subset",
   "?matrix",
   // FIXME: should not be needed at all, should be handled by subset
   "Node"
 ];
-var createAssignmentNode = /* @__PURE__ */ factory(name209, dependencies209, (_ref) => {
+var createAssignmentNode = /* @__PURE__ */ factory(name213, dependencies214, (_ref) => {
   var {
     subset,
     matrix,
@@ -26582,7 +27544,7 @@ var createAssignmentNode = /* @__PURE__ */ factory(name209, dependencies209, (_r
   var access = accessFactory({
     subset
   });
-  var assign = assignFactory({
+  var assign2 = assignFactory({
     subset,
     matrix
   });
@@ -26654,7 +27616,7 @@ var createAssignmentNode = /* @__PURE__ */ factory(name209, dependencies209, (_r
       }
     }
     get type() {
-      return name209;
+      return name213;
     }
     get isAssignmentNode() {
       return true;
@@ -26676,14 +27638,14 @@ var createAssignmentNode = /* @__PURE__ */ factory(name209, dependencies209, (_r
       var evalObject = this.object._compile(math2, argNames);
       var evalIndex = this.index ? this.index._compile(math2, argNames) : null;
       var evalValue = this.value._compile(math2, argNames);
-      var name314 = this.object.name;
+      var name323 = this.object.name;
       if (!this.index) {
         if (!isSymbolNode(this.object)) {
           throw new TypeError("SymbolNode expected as object");
         }
         return function evalAssignmentNode(scope, args, context) {
           var value = evalValue(scope, args, context);
-          scope.set(name314, value);
+          scope.set(name323, value);
           return value;
         };
       } else if (this.index.isObjectProperty()) {
@@ -26699,7 +27661,7 @@ var createAssignmentNode = /* @__PURE__ */ factory(name209, dependencies209, (_r
           var childObject = evalObject(scope, args, context);
           var value = evalValue(scope, args, context);
           var index = evalIndex(scope, args, childObject);
-          scope.set(name314, assign(childObject, index, value));
+          scope.set(name323, assign2(childObject, index, value));
           return value;
         };
       } else {
@@ -26711,7 +27673,7 @@ var createAssignmentNode = /* @__PURE__ */ factory(name209, dependencies209, (_r
             var childObject = getSafeProperty(parent, parentProp);
             var index = evalIndex(scope, args, childObject);
             var value = evalValue(scope, args, context);
-            setSafeProperty(parent, parentProp, assign(childObject, index, value));
+            setSafeProperty(parent, parentProp, assign2(childObject, index, value));
             return value;
           };
         } else {
@@ -26722,7 +27684,7 @@ var createAssignmentNode = /* @__PURE__ */ factory(name209, dependencies209, (_r
             var childObject = access(parent, parentIndex);
             var index = evalIndex(scope, args, childObject);
             var value = evalValue(scope, args, context);
-            assign(parent, parentIndex, assign(childObject, index, value));
+            assign2(parent, parentIndex, assign2(childObject, index, value));
             return value;
           };
         }
@@ -26778,7 +27740,7 @@ var createAssignmentNode = /* @__PURE__ */ factory(name209, dependencies209, (_r
      */
     toJSON() {
       return {
-        mathjs: name209,
+        mathjs: name213,
         object: this.object,
         index: this.index,
         value: this.value
@@ -26824,7 +27786,7 @@ var createAssignmentNode = /* @__PURE__ */ factory(name209, dependencies209, (_r
       return object + index + "=" + value;
     }
   }
-  _defineProperty(AssignmentNode, "name", name209);
+  _defineProperty(AssignmentNode, "name", name213);
   return AssignmentNode;
 }, {
   isClass: true,
@@ -26832,9 +27794,9 @@ var createAssignmentNode = /* @__PURE__ */ factory(name209, dependencies209, (_r
 });
 
 // node_modules/mathjs/lib/esm/expression/node/BlockNode.js
-var name210 = "BlockNode";
-var dependencies210 = ["ResultSet", "Node"];
-var createBlockNode = /* @__PURE__ */ factory(name210, dependencies210, (_ref) => {
+var name214 = "BlockNode";
+var dependencies215 = ["ResultSet", "Node"];
+var createBlockNode = /* @__PURE__ */ factory(name214, dependencies215, (_ref) => {
   var {
     ResultSet,
     Node
@@ -26867,7 +27829,7 @@ var createBlockNode = /* @__PURE__ */ factory(name210, dependencies210, (_ref) =
       });
     }
     get type() {
-      return name210;
+      return name214;
     }
     get isBlockNode() {
       return true;
@@ -26960,7 +27922,7 @@ var createBlockNode = /* @__PURE__ */ factory(name210, dependencies210, (_ref) =
      */
     toJSON() {
       return {
-        mathjs: name210,
+        mathjs: name214,
         blocks: this.blocks
       };
     }
@@ -26997,7 +27959,7 @@ var createBlockNode = /* @__PURE__ */ factory(name210, dependencies210, (_ref) =
       }).join("\\;\\;\n");
     }
   }
-  _defineProperty(BlockNode, "name", name210);
+  _defineProperty(BlockNode, "name", name214);
   return BlockNode;
 }, {
   isClass: true,
@@ -27005,9 +27967,9 @@ var createBlockNode = /* @__PURE__ */ factory(name210, dependencies210, (_ref) =
 });
 
 // node_modules/mathjs/lib/esm/expression/node/ConditionalNode.js
-var name211 = "ConditionalNode";
-var dependencies211 = ["Node"];
-var createConditionalNode = /* @__PURE__ */ factory(name211, dependencies211, (_ref) => {
+var name215 = "ConditionalNode";
+var dependencies216 = ["Node"];
+var createConditionalNode = /* @__PURE__ */ factory(name215, dependencies216, (_ref) => {
   var {
     Node
   } = _ref;
@@ -27058,7 +28020,7 @@ var createConditionalNode = /* @__PURE__ */ factory(name211, dependencies211, (_
       this.falseExpr = falseExpr;
     }
     get type() {
-      return name211;
+      return name215;
     }
     get isConditionalNode() {
       return true;
@@ -27140,7 +28102,7 @@ var createConditionalNode = /* @__PURE__ */ factory(name211, dependencies211, (_
      */
     toJSON() {
       return {
-        mathjs: name211,
+        mathjs: name215,
         condition: this.condition,
         trueExpr: this.trueExpr,
         falseExpr: this.falseExpr
@@ -27196,7 +28158,7 @@ var createConditionalNode = /* @__PURE__ */ factory(name211, dependencies211, (_
       return "\\begin{cases} {" + this.trueExpr.toTex(options) + "}, &\\quad{\\text{if }\\;" + this.condition.toTex(options) + "}\\\\{" + this.falseExpr.toTex(options) + "}, &\\quad{\\text{otherwise}}\\end{cases}";
     }
   }
-  _defineProperty(ConditionalNode, "name", name211);
+  _defineProperty(ConditionalNode, "name", name215);
   return ConditionalNode;
 }, {
   isClass: true,
@@ -27354,6 +28316,9 @@ var latexFunctions = {
   floor: {
     1: "\\left\\lfloor${args[0]}\\right\\rfloor"
   },
+  fraction: {
+    2: "\\frac{${args[0]}}{${args[1]}}"
+  },
   gcd: "\\gcd\\left(${args}\\right)",
   hypot: "\\hypot\\left(${args}\\right)",
   log: {
@@ -27383,7 +28348,7 @@ var latexFunctions = {
     2: "\\sqrt[${args[1]}]{${args[0]}}"
   },
   nthRoots: {
-    2: "\\{y : $y^{args[1]} = {${args[0]}}\\}"
+    2: "\\{y : y^${args[1]} = {${args[0]}}\\}"
   },
   pow: {
     2: "\\left(${args[0]}\\right)".concat(latexOperators.pow, "{${args[1]}}")
@@ -27641,6 +28606,10 @@ var latexFunctions = {
     0: "0",
     1: "\\left(${args[0]}\\right)"
   },
+  bigint: {
+    0: "0",
+    1: "\\left(${args[0]}\\right)"
+  },
   complex: {
     0: "0",
     1: "\\left(${args[0]}\\right)",
@@ -27669,26 +28638,27 @@ function escapeLatex(string) {
     preserveFormatting: true
   });
 }
-function toSymbol(name314, isUnit2) {
+function toSymbol(name323, isUnit2) {
   isUnit2 = typeof isUnit2 === "undefined" ? false : isUnit2;
   if (isUnit2) {
-    if (hasOwnProperty(latexUnits, name314)) {
-      return latexUnits[name314];
+    if (hasOwnProperty(latexUnits, name323)) {
+      return latexUnits[name323];
     }
-    return "\\mathrm{" + escapeLatex(name314) + "}";
+    return "\\mathrm{" + escapeLatex(name323) + "}";
   }
-  if (hasOwnProperty(latexSymbols, name314)) {
-    return latexSymbols[name314];
+  if (hasOwnProperty(latexSymbols, name323)) {
+    return latexSymbols[name323];
   }
-  return escapeLatex(name314);
+  return escapeLatex(name323);
 }
 
 // node_modules/mathjs/lib/esm/expression/node/ConstantNode.js
-var name212 = "ConstantNode";
-var dependencies212 = ["Node"];
-var createConstantNode = /* @__PURE__ */ factory(name212, dependencies212, (_ref) => {
+var name216 = "ConstantNode";
+var dependencies217 = ["Node", "isBounded"];
+var createConstantNode = /* @__PURE__ */ factory(name216, dependencies217, (_ref) => {
   var {
-    Node
+    Node,
+    isBounded
   } = _ref;
   class ConstantNode extends Node {
     /**
@@ -27699,7 +28669,7 @@ var createConstantNode = /* @__PURE__ */ factory(name212, dependencies212, (_ref
      *     new ConstantNode(2.3)
      *     new ConstantNode('hello')
      *
-     * @param {*} value    Value can be any type (number, BigNumber, string, ...)
+     * @param {*} value    Value can be any type (number, BigNumber, bigint, string, ...)
      * @constructor ConstantNode
      * @extends {Node}
      */
@@ -27708,7 +28678,7 @@ var createConstantNode = /* @__PURE__ */ factory(name212, dependencies212, (_ref
       this.value = value;
     }
     get type() {
-      return name212;
+      return name216;
     }
     get isConstantNode() {
       return true;
@@ -27771,6 +28741,7 @@ var createConstantNode = /* @__PURE__ */ factory(name212, dependencies212, (_ref
       var value = this._toString(options);
       switch (typeOf(this.value)) {
         case "number":
+        case "bigint":
         case "BigNumber":
         case "Fraction":
           return '<span class="math-number">' + value + "</span>";
@@ -27792,7 +28763,7 @@ var createConstantNode = /* @__PURE__ */ factory(name212, dependencies212, (_ref
      */
     toJSON() {
       return {
-        mathjs: name212,
+        mathjs: name216,
         value: this.value
       };
     }
@@ -27819,8 +28790,7 @@ var createConstantNode = /* @__PURE__ */ factory(name212, dependencies212, (_ref
           return "\\mathtt{" + escapeLatex(value) + "}";
         case "number":
         case "BigNumber": {
-          var finite = type === "BigNumber" ? this.value.isFinite() : isFinite(this.value);
-          if (!finite) {
+          if (!isBounded(this.value)) {
             return this.value.valueOf() < 0 ? "-\\infty" : "\\infty";
           }
           var index = value.toLowerCase().indexOf("e");
@@ -27829,6 +28799,9 @@ var createConstantNode = /* @__PURE__ */ factory(name212, dependencies212, (_ref
           }
           return value;
         }
+        case "bigint": {
+          return value.toString();
+        }
         case "Fraction":
           return this.value.toLatex();
         default:
@@ -27836,7 +28809,7 @@ var createConstantNode = /* @__PURE__ */ factory(name212, dependencies212, (_ref
       }
     }
   }
-  _defineProperty(ConstantNode, "name", name212);
+  _defineProperty(ConstantNode, "name", name216);
   return ConstantNode;
 }, {
   isClass: true,
@@ -27844,9 +28817,9 @@ var createConstantNode = /* @__PURE__ */ factory(name212, dependencies212, (_ref
 });
 
 // node_modules/mathjs/lib/esm/expression/node/FunctionAssignmentNode.js
-var name213 = "FunctionAssignmentNode";
-var dependencies213 = ["typed", "Node"];
-var createFunctionAssignmentNode = /* @__PURE__ */ factory(name213, dependencies213, (_ref) => {
+var name217 = "FunctionAssignmentNode";
+var dependencies218 = ["typed", "Node"];
+var createFunctionAssignmentNode = /* @__PURE__ */ factory(name217, dependencies218, (_ref) => {
   var {
     typed: typed2,
     Node
@@ -27869,9 +28842,9 @@ var createFunctionAssignmentNode = /* @__PURE__ */ factory(name213, dependencies
      *                                and type of the parameter
      * @param {Node} expr             The function expression
      */
-    constructor(name314, params, expr) {
+    constructor(name323, params, expr) {
       super();
-      if (typeof name314 !== "string") {
+      if (typeof name323 !== "string") {
         throw new TypeError('String expected for parameter "name"');
       }
       if (!Array.isArray(params)) {
@@ -27880,8 +28853,8 @@ var createFunctionAssignmentNode = /* @__PURE__ */ factory(name213, dependencies
       if (!isNode(expr)) {
         throw new TypeError('Node expected for parameter "expr"');
       }
-      if (keywords.has(name314)) {
-        throw new Error('Illegal function name, "' + name314 + '" is a reserved keyword');
+      if (keywords.has(name323)) {
+        throw new Error('Illegal function name, "' + name323 + '" is a reserved keyword');
       }
       var paramNames = /* @__PURE__ */ new Set();
       for (var param of params) {
@@ -27892,7 +28865,7 @@ var createFunctionAssignmentNode = /* @__PURE__ */ factory(name213, dependencies
           paramNames.add(_name);
         }
       }
-      this.name = name314;
+      this.name = name323;
       this.params = params.map(function(param2) {
         return param2 && param2.name || param2;
       });
@@ -27902,7 +28875,7 @@ var createFunctionAssignmentNode = /* @__PURE__ */ factory(name213, dependencies
       this.expr = expr;
     }
     get type() {
-      return name213;
+      return name217;
     }
     get isFunctionAssignmentNode() {
       return true;
@@ -27925,11 +28898,12 @@ var createFunctionAssignmentNode = /* @__PURE__ */ factory(name213, dependencies
       forEach(this.params, function(param) {
         childArgNames[param] = true;
       });
-      var evalExpr = this.expr._compile(math2, childArgNames);
-      var name314 = this.name;
+      var expr = this.expr;
+      var evalExpr = expr._compile(math2, childArgNames);
+      var name323 = this.name;
       var params = this.params;
       var signature = join(this.types, ",");
-      var syntax = name314 + "(" + join(this.params, ", ") + ")";
+      var syntax = name323 + "(" + join(this.params, ", ") + ")";
       return function evalFunctionAssignmentNode(scope, args, context) {
         var signatures = {};
         signatures[signature] = function() {
@@ -27939,9 +28913,10 @@ var createFunctionAssignmentNode = /* @__PURE__ */ factory(name213, dependencies
           }
           return evalExpr(scope, childArgs, context);
         };
-        var fn = typed2(name314, signatures);
+        var fn = typed2(name323, signatures);
         fn.syntax = syntax;
-        scope.set(name314, fn);
+        fn.expr = expr.toString();
+        scope.set(name323, fn);
         return fn;
       };
     }
@@ -27990,7 +28965,7 @@ var createFunctionAssignmentNode = /* @__PURE__ */ factory(name213, dependencies
     toJSON() {
       var types = this.types;
       return {
-        mathjs: name213,
+        mathjs: name217,
         name: this.name,
         params: this.params.map(function(param, index) {
           return {
@@ -28046,7 +29021,7 @@ var createFunctionAssignmentNode = /* @__PURE__ */ factory(name213, dependencies
       return "\\mathrm{" + this.name + "}\\left(" + this.params.map(toSymbol).join(",") + "\\right)=" + expr;
     }
   }
-  _defineProperty(FunctionAssignmentNode, "name", name213);
+  _defineProperty(FunctionAssignmentNode, "name", name217);
   return FunctionAssignmentNode;
 }, {
   isClass: true,
@@ -28054,9 +29029,9 @@ var createFunctionAssignmentNode = /* @__PURE__ */ factory(name213, dependencies
 });
 
 // node_modules/mathjs/lib/esm/expression/node/IndexNode.js
-var name214 = "IndexNode";
-var dependencies214 = ["Node", "size"];
-var createIndexNode = /* @__PURE__ */ factory(name214, dependencies214, (_ref) => {
+var name218 = "IndexNode";
+var dependencies219 = ["Node", "size"];
+var createIndexNode = /* @__PURE__ */ factory(name218, dependencies219, (_ref) => {
   var {
     Node,
     size
@@ -28088,7 +29063,7 @@ var createIndexNode = /* @__PURE__ */ factory(name214, dependencies214, (_ref) =
       }
     }
     get type() {
-      return name214;
+      return name218;
     }
     get isIndexNode() {
       return true;
@@ -28117,7 +29092,7 @@ var createIndexNode = /* @__PURE__ */ factory(name214, dependencies214, (_ref) =
             if (!isMatrix(context) && !isArray(context) && !isString(context)) {
               throw new TypeError('Cannot resolve "end": context must be a Matrix, Array, or string but is ' + typeOf(context));
             }
-            var s = size(context).valueOf();
+            var s = size(context);
             var childArgs = Object.create(args);
             childArgs.end = s[i];
             return _evalDimension(scope, childArgs, context);
@@ -28192,7 +29167,7 @@ var createIndexNode = /* @__PURE__ */ factory(name214, dependencies214, (_ref) =
      */
     toJSON() {
       return {
-        mathjs: name214,
+        mathjs: name218,
         dimensions: this.dimensions,
         dotNotation: this.dotNotation
       };
@@ -28236,7 +29211,7 @@ var createIndexNode = /* @__PURE__ */ factory(name214, dependencies214, (_ref) =
       return this.dotNotation ? "." + this.getObjectProperty() : "_{" + dimensions.join(",") + "}";
     }
   }
-  _defineProperty(IndexNode, "name", name214);
+  _defineProperty(IndexNode, "name", name218);
   return IndexNode;
 }, {
   isClass: true,
@@ -28244,9 +29219,9 @@ var createIndexNode = /* @__PURE__ */ factory(name214, dependencies214, (_ref) =
 });
 
 // node_modules/mathjs/lib/esm/expression/node/ObjectNode.js
-var name215 = "ObjectNode";
-var dependencies215 = ["Node"];
-var createObjectNode = /* @__PURE__ */ factory(name215, dependencies215, (_ref) => {
+var name219 = "ObjectNode";
+var dependencies220 = ["Node"];
+var createObjectNode = /* @__PURE__ */ factory(name219, dependencies220, (_ref) => {
   var {
     Node
   } = _ref;
@@ -28269,7 +29244,7 @@ var createObjectNode = /* @__PURE__ */ factory(name215, dependencies215, (_ref) 
       }
     }
     get type() {
-      return name215;
+      return name219;
     }
     get isObjectNode() {
       return true;
@@ -28367,7 +29342,7 @@ var createObjectNode = /* @__PURE__ */ factory(name215, dependencies215, (_ref) 
      */
     toJSON() {
       return {
-        mathjs: name215,
+        mathjs: name219,
         properties: this.properties
       };
     }
@@ -28412,7 +29387,7 @@ var createObjectNode = /* @__PURE__ */ factory(name215, dependencies215, (_ref) 
       return tex;
     }
   }
-  _defineProperty(ObjectNode, "name", name215);
+  _defineProperty(ObjectNode, "name", name219);
   return ObjectNode;
 }, {
   isClass: true,
@@ -28425,9 +29400,9 @@ function createSubScope(parentScope, args) {
 }
 
 // node_modules/mathjs/lib/esm/expression/node/OperatorNode.js
-var name216 = "OperatorNode";
-var dependencies216 = ["Node"];
-var createOperatorNode = /* @__PURE__ */ factory(name216, dependencies216, (_ref) => {
+var name220 = "OperatorNode";
+var dependencies221 = ["Node"];
+var createOperatorNode = /* @__PURE__ */ factory(name220, dependencies221, (_ref) => {
   var {
     Node
   } = _ref;
@@ -28613,7 +29588,7 @@ var createOperatorNode = /* @__PURE__ */ factory(name216, dependencies216, (_ref
       this.args = args || [];
     }
     get type() {
-      return name216;
+      return name220;
     }
     get isOperatorNode() {
       return true;
@@ -28772,7 +29747,7 @@ var createOperatorNode = /* @__PURE__ */ factory(name216, dependencies216, (_ref
      */
     toJSON() {
       return {
-        mathjs: name216,
+        mathjs: name220,
         op: this.op,
         fn: this.fn,
         args: this.args,
@@ -28934,7 +29909,7 @@ var createOperatorNode = /* @__PURE__ */ factory(name216, dependencies216, (_ref
       return this.type + ":" + this.fn;
     }
   }
-  _defineProperty(OperatorNode, "name", name216);
+  _defineProperty(OperatorNode, "name", name220);
   return OperatorNode;
 }, {
   isClass: true,
@@ -28942,9 +29917,9 @@ var createOperatorNode = /* @__PURE__ */ factory(name216, dependencies216, (_ref
 });
 
 // node_modules/mathjs/lib/esm/expression/node/ParenthesisNode.js
-var name217 = "ParenthesisNode";
-var dependencies217 = ["Node"];
-var createParenthesisNode = /* @__PURE__ */ factory(name217, dependencies217, (_ref) => {
+var name221 = "ParenthesisNode";
+var dependencies222 = ["Node"];
+var createParenthesisNode = /* @__PURE__ */ factory(name221, dependencies222, (_ref) => {
   var {
     Node
   } = _ref;
@@ -28964,7 +29939,7 @@ var createParenthesisNode = /* @__PURE__ */ factory(name217, dependencies217, (_
       this.content = content;
     }
     get type() {
-      return name217;
+      return name221;
     }
     get isParenthesisNode() {
       return true;
@@ -29035,7 +30010,7 @@ var createParenthesisNode = /* @__PURE__ */ factory(name217, dependencies217, (_
      */
     toJSON() {
       return {
-        mathjs: name217,
+        mathjs: name221,
         content: this.content
       };
     }
@@ -29074,7 +30049,7 @@ var createParenthesisNode = /* @__PURE__ */ factory(name217, dependencies217, (_
       return this.content.toTex(options);
     }
   }
-  _defineProperty(ParenthesisNode, "name", name217);
+  _defineProperty(ParenthesisNode, "name", name221);
   return ParenthesisNode;
 }, {
   isClass: true,
@@ -29082,9 +30057,9 @@ var createParenthesisNode = /* @__PURE__ */ factory(name217, dependencies217, (_
 });
 
 // node_modules/mathjs/lib/esm/expression/node/RangeNode.js
-var name218 = "RangeNode";
-var dependencies218 = ["Node"];
-var createRangeNode = /* @__PURE__ */ factory(name218, dependencies218, (_ref) => {
+var name222 = "RangeNode";
+var dependencies223 = ["Node"];
+var createRangeNode = /* @__PURE__ */ factory(name222, dependencies223, (_ref) => {
   var {
     Node
   } = _ref;
@@ -29121,7 +30096,7 @@ var createRangeNode = /* @__PURE__ */ factory(name218, dependencies218, (_ref) =
       this.step = step || null;
     }
     get type() {
-      return name218;
+      return name222;
     }
     get isRangeNode() {
       return true;
@@ -29226,7 +30201,7 @@ var createRangeNode = /* @__PURE__ */ factory(name218, dependencies218, (_ref) =
      */
     toJSON() {
       return {
-        mathjs: name218,
+        mathjs: name222,
         start: this.start,
         end: this.end,
         step: this.step
@@ -29298,7 +30273,7 @@ var createRangeNode = /* @__PURE__ */ factory(name218, dependencies218, (_ref) =
       return str;
     }
   }
-  _defineProperty(RangeNode, "name", name218);
+  _defineProperty(RangeNode, "name", name222);
   return RangeNode;
 }, {
   isClass: true,
@@ -29306,9 +30281,9 @@ var createRangeNode = /* @__PURE__ */ factory(name218, dependencies218, (_ref) =
 });
 
 // node_modules/mathjs/lib/esm/expression/node/RelationalNode.js
-var name219 = "RelationalNode";
-var dependencies219 = ["Node"];
-var createRelationalNode = /* @__PURE__ */ factory(name219, dependencies219, (_ref) => {
+var name223 = "RelationalNode";
+var dependencies224 = ["Node"];
+var createRelationalNode = /* @__PURE__ */ factory(name223, dependencies224, (_ref) => {
   var {
     Node
   } = _ref;
@@ -29347,7 +30322,7 @@ var createRelationalNode = /* @__PURE__ */ factory(name219, dependencies219, (_r
       this.params = params;
     }
     get type() {
-      return name219;
+      return name223;
     }
     get isRelationalNode() {
       return true;
@@ -29430,7 +30405,7 @@ var createRelationalNode = /* @__PURE__ */ factory(name219, dependencies219, (_r
      */
     toJSON() {
       return {
-        mathjs: name219,
+        mathjs: name223,
         conditionals: this.conditionals,
         params: this.params
       };
@@ -29483,7 +30458,7 @@ var createRelationalNode = /* @__PURE__ */ factory(name219, dependencies219, (_r
       return ret;
     }
   }
-  _defineProperty(RelationalNode, "name", name219);
+  _defineProperty(RelationalNode, "name", name223);
   return RelationalNode;
 }, {
   isClass: true,
@@ -29491,16 +30466,16 @@ var createRelationalNode = /* @__PURE__ */ factory(name219, dependencies219, (_r
 });
 
 // node_modules/mathjs/lib/esm/expression/node/SymbolNode.js
-var name220 = "SymbolNode";
-var dependencies220 = ["math", "?Unit", "Node"];
-var createSymbolNode = /* @__PURE__ */ factory(name220, dependencies220, (_ref) => {
+var name224 = "SymbolNode";
+var dependencies225 = ["math", "?Unit", "Node"];
+var createSymbolNode = /* @__PURE__ */ factory(name224, dependencies225, (_ref) => {
   var {
     math: math2,
     Unit,
     Node
   } = _ref;
-  function isValuelessUnit(name314) {
-    return Unit ? Unit.isValuelessUnit(name314) : false;
+  function isValuelessUnit(name323) {
+    return Unit ? Unit.isValuelessUnit(name323) : false;
   }
   class SymbolNode extends Node {
     /**
@@ -29510,12 +30485,12 @@ var createSymbolNode = /* @__PURE__ */ factory(name220, dependencies220, (_ref) 
      * @param {string} name
      * @extends {Node}
      */
-    constructor(name314) {
+    constructor(name323) {
       super();
-      if (typeof name314 !== "string") {
+      if (typeof name323 !== "string") {
         throw new TypeError('String expected for parameter "name"');
       }
-      this.name = name314;
+      this.name = name323;
     }
     get type() {
       return "SymbolNode";
@@ -29537,19 +30512,19 @@ var createSymbolNode = /* @__PURE__ */ factory(name220, dependencies220, (_ref) 
      *                        evalNode(scope: Object, args: Object, context: *)
      */
     _compile(math3, argNames) {
-      var name314 = this.name;
-      if (argNames[name314] === true) {
+      var name323 = this.name;
+      if (argNames[name323] === true) {
         return function(scope, args, context) {
-          return getSafeProperty(args, name314);
+          return getSafeProperty(args, name323);
         };
-      } else if (name314 in math3) {
+      } else if (name323 in math3) {
         return function(scope, args, context) {
-          return scope.has(name314) ? scope.get(name314) : getSafeProperty(math3, name314);
+          return scope.has(name323) ? scope.get(name323) : getSafeProperty(math3, name323);
         };
       } else {
-        var isUnit2 = isValuelessUnit(name314);
+        var isUnit2 = isValuelessUnit(name323);
         return function(scope, args, context) {
-          return scope.has(name314) ? scope.get(name314) : isUnit2 ? new Unit(null, name314) : SymbolNode.onUndefinedSymbol(name314);
+          return scope.has(name323) ? scope.get(name323) : isUnit2 ? new Unit(null, name323) : SymbolNode.onUndefinedSymbol(name323);
         };
       }
     }
@@ -29572,8 +30547,8 @@ var createSymbolNode = /* @__PURE__ */ factory(name220, dependencies220, (_ref) 
      * Throws an error 'Undefined symbol {name}'
      * @param {string} name
      */
-    static onUndefinedSymbol(name314) {
-      throw new Error("Undefined symbol " + name314);
+    static onUndefinedSymbol(name323) {
+      throw new Error("Undefined symbol " + name323);
     }
     /**
      * Create a clone of this node, a shallow copy
@@ -29598,21 +30573,21 @@ var createSymbolNode = /* @__PURE__ */ factory(name220, dependencies220, (_ref) 
      * @override
      */
     _toHTML(options) {
-      var name314 = escape(this.name);
-      if (name314 === "true" || name314 === "false") {
-        return '<span class="math-symbol math-boolean">' + name314 + "</span>";
-      } else if (name314 === "i") {
-        return '<span class="math-symbol math-imaginary-symbol">' + name314 + "</span>";
-      } else if (name314 === "Infinity") {
-        return '<span class="math-symbol math-infinity-symbol">' + name314 + "</span>";
-      } else if (name314 === "NaN") {
-        return '<span class="math-symbol math-nan-symbol">' + name314 + "</span>";
-      } else if (name314 === "null") {
-        return '<span class="math-symbol math-null-symbol">' + name314 + "</span>";
-      } else if (name314 === "undefined") {
-        return '<span class="math-symbol math-undefined-symbol">' + name314 + "</span>";
+      var name323 = escape(this.name);
+      if (name323 === "true" || name323 === "false") {
+        return '<span class="math-symbol math-boolean">' + name323 + "</span>";
+      } else if (name323 === "i") {
+        return '<span class="math-symbol math-imaginary-symbol">' + name323 + "</span>";
+      } else if (name323 === "Infinity") {
+        return '<span class="math-symbol math-infinity-symbol">' + name323 + "</span>";
+      } else if (name323 === "NaN") {
+        return '<span class="math-symbol math-nan-symbol">' + name323 + "</span>";
+      } else if (name323 === "null") {
+        return '<span class="math-symbol math-null-symbol">' + name323 + "</span>";
+      } else if (name323 === "undefined") {
+        return '<span class="math-symbol math-undefined-symbol">' + name323 + "</span>";
       }
-      return '<span class="math-symbol">' + name314 + "</span>";
+      return '<span class="math-symbol">' + name323 + "</span>";
     }
     /**
      * Get a JSON representation of the node
@@ -29659,9 +30634,9 @@ var createSymbolNode = /* @__PURE__ */ factory(name220, dependencies220, (_ref) 
 });
 
 // node_modules/mathjs/lib/esm/expression/node/FunctionNode.js
-var name221 = "FunctionNode";
-var dependencies221 = ["math", "Node", "SymbolNode"];
-var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref) => {
+var name225 = "FunctionNode";
+var dependencies226 = ["math", "Node", "SymbolNode"];
+var createFunctionNode = /* @__PURE__ */ factory(name225, dependencies226, (_ref) => {
   var _FunctionNode;
   var {
     math: math2,
@@ -29729,10 +30704,10 @@ var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref
      * invoke a list with arguments on a node
      * @param {./Node | string} fn
      *     Item resolving to a function on which to invoke
-     *     the arguments, typically a SymboNode or AccessorNode
+     *     the arguments, typically a SymbolNode or AccessorNode
      * @param {./Node[]} args
      */
-    constructor(fn, args) {
+    constructor(fn, args, optional) {
       super();
       if (typeof fn === "string") {
         fn = new SymbolNode(fn);
@@ -29741,15 +30716,20 @@ var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref
       if (!Array.isArray(args) || !args.every(isNode)) {
         throw new TypeError('Array containing Nodes expected for parameter "args"');
       }
+      var optionalType = typeof optional;
+      if (!(optionalType === "undefined" || optionalType === "boolean")) {
+        throw new TypeError("optional flag, if specified, must be boolean");
+      }
       this.fn = fn;
       this.args = args || [];
+      this.optional = !!optional;
     }
     // readonly property name
     get name() {
       return this.fn.name || "";
     }
     get type() {
-      return name221;
+      return name225;
     }
     get isFunctionNode() {
       return true;
@@ -29769,6 +30749,7 @@ var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref
      */
     _compile(math3, argNames) {
       var evalArgs = this.args.map((arg) => arg._compile(math3, argNames));
+      var fromOptionalChaining = this.optional || isAccessorNode(this.fn) && this.fn.optionalChaining;
       if (isSymbolNode(this.fn)) {
         var _name = this.fn.name;
         if (!argNames[_name]) {
@@ -29780,10 +30761,9 @@ var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref
               value = scope.get(_name);
             } else if (_name in math3) {
               value = getSafeProperty(math3, _name);
-            } else {
-              return FunctionNode.onUndefinedFunction(_name);
-            }
-            if (typeof value === "function") {
+            } else if (fromOptionalChaining) value = void 0;
+            else return FunctionNode.onUndefinedFunction(_name);
+            if (typeof value === "function" || fromOptionalChaining && value === void 0) {
               return value;
             }
             throw new TypeError("'".concat(_name, "' is not a function; its value is:\n  ").concat(strin(value)));
@@ -29792,24 +30772,32 @@ var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref
             var rawArgs = this.args;
             return function evalFunctionNode(scope, args, context) {
               var fn2 = resolveFn(scope);
-              return fn2(rawArgs, math3, createSubScope(scope, args));
+              if (fn2.rawArgs === true) {
+                return fn2(rawArgs, math3, createSubScope(scope, args));
+              } else {
+                var values = evalArgs.map((evalArg) => evalArg(scope, args, context));
+                return fn2(...values);
+              }
             };
           } else {
             switch (evalArgs.length) {
               case 0:
                 return function evalFunctionNode(scope, args, context) {
                   var fn2 = resolveFn(scope);
+                  if (fromOptionalChaining && fn2 === void 0) return void 0;
                   return fn2();
                 };
               case 1:
                 return function evalFunctionNode(scope, args, context) {
                   var fn2 = resolveFn(scope);
+                  if (fromOptionalChaining && fn2 === void 0) return void 0;
                   var evalArg0 = evalArgs[0];
                   return fn2(evalArg0(scope, args, context));
                 };
               case 2:
                 return function evalFunctionNode(scope, args, context) {
                   var fn2 = resolveFn(scope);
+                  if (fromOptionalChaining && fn2 === void 0) return void 0;
                   var evalArg0 = evalArgs[0];
                   var evalArg1 = evalArgs[1];
                   return fn2(evalArg0(scope, args, context), evalArg1(scope, args, context));
@@ -29817,6 +30805,7 @@ var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref
               default:
                 return function evalFunctionNode(scope, args, context) {
                   var fn2 = resolveFn(scope);
+                  if (fromOptionalChaining && fn2 === void 0) return void 0;
                   var values = evalArgs.map((evalArg) => evalArg(scope, args, context));
                   return fn2(...values);
                 };
@@ -29826,6 +30815,7 @@ var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref
           var _rawArgs = this.args;
           return function evalFunctionNode(scope, args, context) {
             var fn2 = getSafeProperty(args, _name);
+            if (fromOptionalChaining && fn2 === void 0) return void 0;
             if (typeof fn2 !== "function") {
               throw new TypeError("Argument '".concat(_name, "' was not a function; received: ").concat(strin(fn2)));
             }
@@ -29843,6 +30833,9 @@ var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref
         var _rawArgs2 = this.args;
         return function evalFunctionNode(scope, args, context) {
           var object = evalObject(scope, args, context);
+          if (fromOptionalChaining && (object == null || object[prop] === void 0)) {
+            return void 0;
+          }
           var fn2 = getSafeMethod(object, prop);
           if (fn2 !== null && fn2 !== void 0 && fn2.rawArgs) {
             return fn2(_rawArgs2, math3, createSubScope(scope, args));
@@ -29857,6 +30850,7 @@ var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref
         var _rawArgs3 = this.args;
         return function evalFunctionNode(scope, args, context) {
           var fn2 = evalFn(scope, args, context);
+          if (fromOptionalChaining && fn2 === void 0) return void 0;
           if (typeof fn2 !== "function") {
             throw new TypeError("Expression '".concat(fnExpr, "' did not evaluate to a function; value is:") + "\n  ".concat(strin(fn2)));
           }
@@ -29918,9 +30912,9 @@ var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref
      */
     toString(options) {
       var customString;
-      var name314 = this.fn.toString(options);
-      if (options && typeof options.handler === "object" && hasOwnProperty(options.handler, name314)) {
-        customString = options.handler[name314](this, options);
+      var name323 = this.fn.toString(options);
+      if (options && typeof options.handler === "object" && hasOwnProperty(options.handler, name323)) {
+        customString = options.handler[name323](this, options);
       }
       if (typeof customString !== "undefined") {
         return customString;
@@ -29945,7 +30939,7 @@ var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref
      */
     toJSON() {
       return {
-        mathjs: name221,
+        mathjs: name225,
         fn: this.fn,
         args: this.args
       };
@@ -30037,9 +31031,9 @@ var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref
     }
   }
   _FunctionNode = FunctionNode;
-  _defineProperty(FunctionNode, "name", name221);
-  _defineProperty(FunctionNode, "onUndefinedFunction", function(name314) {
-    throw new Error("Undefined function " + name314);
+  _defineProperty(FunctionNode, "name", name225);
+  _defineProperty(FunctionNode, "onUndefinedFunction", function(name323) {
+    throw new Error("Undefined function " + name323);
   });
   _defineProperty(FunctionNode, "fromJSON", function(json) {
     return new _FunctionNode(json.fn, json.args);
@@ -30051,9 +31045,9 @@ var createFunctionNode = /* @__PURE__ */ factory(name221, dependencies221, (_ref
 });
 
 // node_modules/mathjs/lib/esm/expression/parse.js
-var name222 = "parse";
-var dependencies222 = ["typed", "numeric", "config", "AccessorNode", "ArrayNode", "AssignmentNode", "BlockNode", "ConditionalNode", "ConstantNode", "FunctionAssignmentNode", "FunctionNode", "IndexNode", "ObjectNode", "OperatorNode", "ParenthesisNode", "RangeNode", "RelationalNode", "SymbolNode"];
-var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
+var name226 = "parse";
+var dependencies227 = ["typed", "numeric", "config", "AccessorNode", "ArrayNode", "AssignmentNode", "BlockNode", "ConditionalNode", "ConstantNode", "FunctionAssignmentNode", "FunctionNode", "IndexNode", "ObjectNode", "OperatorNode", "ParenthesisNode", "RangeNode", "RelationalNode", "SymbolNode"];
+var createParse = /* @__PURE__ */ factory(name226, dependencies227, (_ref) => {
   var {
     typed: typed2,
     numeric: numeric2,
@@ -30074,14 +31068,14 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     RelationalNode,
     SymbolNode
   } = _ref;
-  var parse2 = typed2(name222, {
+  var parse3 = typed2(name226, {
     string: function string(expression) {
       return parseStart(expression, {});
     },
-    "Array | Matrix": function ArrayMatrix(expressions) {
+    "Array | Matrix": function Array__Matrix(expressions) {
       return parseMultiple(expressions, {});
     },
-    "string, Object": function stringObject(expression, options) {
+    "string, Object": function string_Object(expression, options) {
       var extraNodes = options.nodes !== void 0 ? options.nodes : {};
       return parseStart(expression, extraNodes);
     },
@@ -30090,7 +31084,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
   function parseMultiple(expressions) {
     var options = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
     var extraNodes = options.nodes !== void 0 ? options.nodes : {};
-    return deepMap(expressions, function(elem) {
+    return deepMap2(expressions, function(elem) {
       if (typeof elem !== "string") throw new TypeError("String expected");
       return parseStart(elem, extraNodes);
     });
@@ -30130,6 +31124,8 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     "=": true,
     ":": true,
     "?": true,
+    "?.": true,
+    "??": true,
     "==": true,
     "!=": true,
     "<": true,
@@ -30214,7 +31210,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
           next(state);
         }
       }
-      if (parse2.isWhitespace(currentCharacter(state), state.nestingLevel)) {
+      if (parse3.isWhitespace(currentCharacter(state), state.nestingLevel)) {
         next(state);
       } else {
         break;
@@ -30241,7 +31237,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
       next(state);
       return;
     }
-    if (c2.length === 2 && DELIMITERS[c2]) {
+    if (c2.length === 2 && DELIMITERS[c2] && (c2 !== "?." || !parse3.isDigit(state.expression.charAt(state.index + 2)))) {
       state.tokenType = TOKENTYPE.DELIMITER;
       state.token = c2;
       next(state);
@@ -30254,7 +31250,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
       next(state);
       return;
     }
-    if (parse2.isDigitDot(c1)) {
+    if (parse3.isDigitDot(c1)) {
       state.tokenType = TOKENTYPE.NUMBER;
       var _c = currentString(state, 2);
       if (_c === "0b" || _c === "0o" || _c === "0x") {
@@ -30262,21 +31258,21 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
         next(state);
         state.token += currentCharacter(state);
         next(state);
-        while (parse2.isHexDigit(currentCharacter(state))) {
+        while (parse3.isAlpha(currentCharacter(state), prevCharacter(state), nextCharacter(state)) || parse3.isDigit(currentCharacter(state))) {
           state.token += currentCharacter(state);
           next(state);
         }
         if (currentCharacter(state) === ".") {
           state.token += ".";
           next(state);
-          while (parse2.isHexDigit(currentCharacter(state))) {
+          while (parse3.isAlpha(currentCharacter(state), prevCharacter(state), nextCharacter(state)) || parse3.isDigit(currentCharacter(state))) {
             state.token += currentCharacter(state);
             next(state);
           }
         } else if (currentCharacter(state) === "i") {
           state.token += "i";
           next(state);
-          while (parse2.isDigit(currentCharacter(state))) {
+          while (parse3.isDigit(currentCharacter(state))) {
             state.token += currentCharacter(state);
             next(state);
           }
@@ -30286,51 +31282,51 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
       if (currentCharacter(state) === ".") {
         state.token += currentCharacter(state);
         next(state);
-        if (!parse2.isDigit(currentCharacter(state))) {
+        if (!parse3.isDigit(currentCharacter(state))) {
           state.tokenType = TOKENTYPE.DELIMITER;
           return;
         }
       } else {
-        while (parse2.isDigit(currentCharacter(state))) {
+        while (parse3.isDigit(currentCharacter(state))) {
           state.token += currentCharacter(state);
           next(state);
         }
-        if (parse2.isDecimalMark(currentCharacter(state), nextCharacter(state))) {
+        if (parse3.isDecimalMark(currentCharacter(state), nextCharacter(state))) {
           state.token += currentCharacter(state);
           next(state);
         }
       }
-      while (parse2.isDigit(currentCharacter(state))) {
+      while (parse3.isDigit(currentCharacter(state))) {
         state.token += currentCharacter(state);
         next(state);
       }
       if (currentCharacter(state) === "E" || currentCharacter(state) === "e") {
-        if (parse2.isDigit(nextCharacter(state)) || nextCharacter(state) === "-" || nextCharacter(state) === "+") {
+        if (parse3.isDigit(nextCharacter(state)) || nextCharacter(state) === "-" || nextCharacter(state) === "+") {
           state.token += currentCharacter(state);
           next(state);
           if (currentCharacter(state) === "+" || currentCharacter(state) === "-") {
             state.token += currentCharacter(state);
             next(state);
           }
-          if (!parse2.isDigit(currentCharacter(state))) {
+          if (!parse3.isDigit(currentCharacter(state))) {
             throw createSyntaxError(state, 'Digit expected, got "' + currentCharacter(state) + '"');
           }
-          while (parse2.isDigit(currentCharacter(state))) {
+          while (parse3.isDigit(currentCharacter(state))) {
             state.token += currentCharacter(state);
             next(state);
           }
-          if (parse2.isDecimalMark(currentCharacter(state), nextCharacter(state))) {
+          if (parse3.isDecimalMark(currentCharacter(state), nextCharacter(state))) {
             throw createSyntaxError(state, 'Digit expected, got "' + currentCharacter(state) + '"');
           }
-        } else if (nextCharacter(state) === ".") {
+        } else if (parse3.isDecimalMark(nextCharacter(state), state.expression.charAt(state.index + 2))) {
           next(state);
           throw createSyntaxError(state, 'Digit expected, got "' + currentCharacter(state) + '"');
         }
       }
       return;
     }
-    if (parse2.isAlpha(currentCharacter(state), prevCharacter(state), nextCharacter(state))) {
-      while (parse2.isAlpha(currentCharacter(state), prevCharacter(state), nextCharacter(state)) || parse2.isDigit(currentCharacter(state))) {
+    if (parse3.isAlpha(currentCharacter(state), prevCharacter(state), nextCharacter(state))) {
+      while (parse3.isAlpha(currentCharacter(state), prevCharacter(state), nextCharacter(state)) || parse3.isDigit(currentCharacter(state))) {
         state.token += currentCharacter(state);
         next(state);
       }
@@ -30359,29 +31355,26 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
   function closeParams(state) {
     state.nestingLevel--;
   }
-  parse2.isAlpha = function isAlpha(c, cPrev, cNext) {
-    return parse2.isValidLatinOrGreek(c) || parse2.isValidMathSymbol(c, cNext) || parse2.isValidMathSymbol(cPrev, c);
+  parse3.isAlpha = function isAlpha(c, cPrev, cNext) {
+    return parse3.isValidLatinOrGreek(c) || parse3.isValidMathSymbol(c, cNext) || parse3.isValidMathSymbol(cPrev, c);
   };
-  parse2.isValidLatinOrGreek = function isValidLatinOrGreek(c) {
+  parse3.isValidLatinOrGreek = function isValidLatinOrGreek(c) {
     return /^[a-zA-Z_$\u00C0-\u02AF\u0370-\u03FF\u2100-\u214F]$/.test(c);
   };
-  parse2.isValidMathSymbol = function isValidMathSymbol(high, low) {
+  parse3.isValidMathSymbol = function isValidMathSymbol(high, low) {
     return /^[\uD835]$/.test(high) && /^[\uDC00-\uDFFF]$/.test(low) && /^[^\uDC55\uDC9D\uDCA0\uDCA1\uDCA3\uDCA4\uDCA7\uDCA8\uDCAD\uDCBA\uDCBC\uDCC4\uDD06\uDD0B\uDD0C\uDD15\uDD1D\uDD3A\uDD3F\uDD45\uDD47-\uDD49\uDD51\uDEA6\uDEA7\uDFCC\uDFCD]$/.test(low);
   };
-  parse2.isWhitespace = function isWhitespace(c, nestingLevel) {
-    return c === " " || c === "	" || c === "\n" && nestingLevel > 0;
+  parse3.isWhitespace = function isWhitespace(c, nestingLevel) {
+    return c === " " || c === "	" || c === "\xA0" || c === "\n" && nestingLevel > 0;
   };
-  parse2.isDecimalMark = function isDecimalMark(c, cNext) {
+  parse3.isDecimalMark = function isDecimalMark(c, cNext) {
     return c === "." && cNext !== "/" && cNext !== "*" && cNext !== "^";
   };
-  parse2.isDigitDot = function isDigitDot(c) {
+  parse3.isDigitDot = function isDigitDot(c) {
     return c >= "0" && c <= "9" || c === ".";
   };
-  parse2.isDigit = function isDigit(c) {
+  parse3.isDigit = function isDigit(c) {
     return c >= "0" && c <= "9";
-  };
-  parse2.isHexDigit = function isHexDigit(c) {
-    return c >= "0" && c <= "9" || c >= "a" && c <= "f" || c >= "A" && c <= "F";
   };
   function parseStart(expression, extraNodes) {
     var state = initialState();
@@ -30444,22 +31437,25 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     }
   }
   function parseAssignment(state) {
-    var name314, args, value, valid;
+    var name323, args, value, valid;
     var node = parseConditional(state);
     if (state.token === "=") {
       if (isSymbolNode(node)) {
-        name314 = node.name;
+        name323 = node.name;
         getTokenSkipNewline(state);
         value = parseAssignment(state);
-        return new AssignmentNode(new SymbolNode(name314), value);
+        return new AssignmentNode(new SymbolNode(name323), value);
       } else if (isAccessorNode(node)) {
+        if (node.optionalChaining) {
+          throw createSyntaxError(state, "Cannot assign to optional chain");
+        }
         getTokenSkipNewline(state);
         value = parseAssignment(state);
         return new AssignmentNode(node.object, node.index, value);
       } else if (isFunctionNode(node) && isSymbolNode(node.fn)) {
         valid = true;
         args = [];
-        name314 = node.name;
+        name323 = node.name;
         node.args.forEach(function(arg, index) {
           if (isSymbolNode(arg)) {
             args[index] = arg.name;
@@ -30470,7 +31466,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
         if (valid) {
           getTokenSkipNewline(state);
           value = parseAssignment(state);
-          return new FunctionAssignmentNode(name314, args, value);
+          return new FunctionAssignmentNode(name323, args, value);
         }
       }
       throw createSyntaxError(state, "Invalid left hand side of assignment operator =");
@@ -30571,7 +31567,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     }
   }
   function parseShift(state) {
-    var node, name314, fn, params;
+    var node, name323, fn, params;
     node = parseConversion(state);
     var operators = {
       "<<": "leftShift",
@@ -30579,16 +31575,16 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
       ">>>": "rightLogShift"
     };
     while (hasOwnProperty(operators, state.token)) {
-      name314 = state.token;
-      fn = operators[name314];
+      name323 = state.token;
+      fn = operators[name323];
       getTokenSkipNewline(state);
       params = [node, parseConversion(state)];
-      node = new OperatorNode(name314, fn, params);
+      node = new OperatorNode(name323, fn, params);
     }
     return node;
   }
   function parseConversion(state) {
-    var node, name314, fn, params;
+    var node, name323, fn, params;
     node = parseRange(state);
     var operators = {
       to: "to",
@@ -30596,14 +31592,14 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
       // alias of 'to'
     };
     while (hasOwnProperty(operators, state.token)) {
-      name314 = state.token;
-      fn = operators[name314];
+      name323 = state.token;
+      fn = operators[name323];
       getTokenSkipNewline(state);
-      if (name314 === "in" && state.token === "") {
+      if (name323 === "in" && "])},;".includes(state.token)) {
         node = new OperatorNode("*", "multiply", [node, new SymbolNode("in")], true);
       } else {
         params = [node, parseRange(state)];
-        node = new OperatorNode(name314, fn, params);
+        node = new OperatorNode(name323, fn, params);
       }
     }
     return node;
@@ -30612,7 +31608,11 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     var node;
     var params = [];
     if (state.token === ":") {
-      node = new ConstantNode(1);
+      if (state.conditionalLevel === state.nestingLevel) {
+        throw createSyntaxError(state, "The true-expression of a conditional operator may not be empty");
+      } else {
+        node = new ConstantNode(1);
+      }
     } else {
       node = parseAddSubtract(state);
     }
@@ -30635,43 +31635,45 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     return node;
   }
   function parseAddSubtract(state) {
-    var node, name314, fn, params;
-    node = parseMultiplyDivide(state);
+    var node, name323, fn, params;
+    node = parseMultiplyDivideModulus(state);
     var operators = {
       "+": "add",
       "-": "subtract"
     };
     while (hasOwnProperty(operators, state.token)) {
-      name314 = state.token;
-      fn = operators[name314];
+      name323 = state.token;
+      fn = operators[name323];
       getTokenSkipNewline(state);
-      var rightNode = parseMultiplyDivide(state);
+      var rightNode = parseMultiplyDivideModulus(state);
       if (rightNode.isPercentage) {
         params = [node, new OperatorNode("*", "multiply", [node, rightNode])];
       } else {
         params = [node, rightNode];
       }
-      node = new OperatorNode(name314, fn, params);
+      node = new OperatorNode(name323, fn, params);
     }
     return node;
   }
-  function parseMultiplyDivide(state) {
-    var node, last, name314, fn;
+  function parseMultiplyDivideModulus(state) {
+    var node, last, name323, fn;
     node = parseImplicitMultiplication(state);
     last = node;
     var operators = {
       "*": "multiply",
       ".*": "dotMultiply",
       "/": "divide",
-      "./": "dotDivide"
+      "./": "dotDivide",
+      "%": "mod",
+      mod: "mod"
     };
     while (true) {
       if (hasOwnProperty(operators, state.token)) {
-        name314 = state.token;
-        fn = operators[name314];
+        name323 = state.token;
+        fn = operators[name323];
         getTokenSkipNewline(state);
         last = parseImplicitMultiplication(state);
-        node = new OperatorNode(name314, fn, [node, last]);
+        node = new OperatorNode(name323, fn, [node, last]);
       } else {
         break;
       }
@@ -30683,7 +31685,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     node = parseRule2(state);
     last = node;
     while (true) {
-      if (state.tokenType === TOKENTYPE.SYMBOL || state.token === "in" && isConstantNode(node) || state.tokenType === TOKENTYPE.NUMBER && !isConstantNode(last) && (!isOperatorNode(last) || last.op === "!") || state.token === "(") {
+      if (state.tokenType === TOKENTYPE.SYMBOL || state.token === "in" && isConstantNode(node) || state.token === "in" && isOperatorNode(node) && node.fn === "unaryMinus" && isConstantNode(node.args[0]) || state.tokenType === TOKENTYPE.NUMBER && !isConstantNode(last) && (!isOperatorNode(last) || last.op === "!") || state.token === "(") {
         last = parseRule2(state);
         node = new OperatorNode(
           "*",
@@ -30699,7 +31701,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     return node;
   }
   function parseRule2(state) {
-    var node = parseModulusPercentage(state);
+    var node = parseUnaryPercentage(state);
     var last = node;
     var tokenStates = [];
     while (true) {
@@ -30709,10 +31711,10 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
         if (state.tokenType === TOKENTYPE.NUMBER) {
           tokenStates.push(_extends({}, state));
           getTokenSkipNewline(state);
-          if (state.tokenType === TOKENTYPE.SYMBOL || state.token === "(") {
+          if (state.tokenType === TOKENTYPE.SYMBOL || state.token === "(" || state.token === "in") {
             _extends(state, tokenStates.pop());
             tokenStates.pop();
-            last = parseModulusPercentage(state);
+            last = parseUnaryPercentage(state);
             node = new OperatorNode("/", "divide", [node, last]);
           } else {
             tokenStates.pop();
@@ -30729,28 +31731,22 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     }
     return node;
   }
-  function parseModulusPercentage(state) {
-    var node, name314, fn, params;
-    node = parseUnary(state);
-    var operators = {
-      "%": "mod",
-      mod: "mod"
-    };
-    while (hasOwnProperty(operators, state.token)) {
-      name314 = state.token;
-      fn = operators[name314];
+  function parseUnaryPercentage(state) {
+    var node = parseUnary(state);
+    if (state.token === "%") {
+      var previousState = _extends({}, state);
       getTokenSkipNewline(state);
-      if (name314 === "%" && state.tokenType === TOKENTYPE.DELIMITER && state.token !== "(") {
+      try {
+        parseUnary(state);
+        _extends(state, previousState);
+      } catch (_unused) {
         node = new OperatorNode("/", "divide", [node, new ConstantNode(100)], false, true);
-      } else {
-        params = [node, parseUnary(state)];
-        node = new OperatorNode(name314, fn, params);
       }
     }
     return node;
   }
   function parseUnary(state) {
-    var name314, params, fn;
+    var name323, params, fn;
     var operators = {
       "-": "unaryMinus",
       "+": "unaryPlus",
@@ -30759,38 +31755,46 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     };
     if (hasOwnProperty(operators, state.token)) {
       fn = operators[state.token];
-      name314 = state.token;
+      name323 = state.token;
       getTokenSkipNewline(state);
       params = [parseUnary(state)];
-      return new OperatorNode(name314, fn, params);
+      return new OperatorNode(name323, fn, params);
     }
     return parsePow(state);
   }
   function parsePow(state) {
-    var node, name314, fn, params;
-    node = parseLeftHandOperators(state);
+    var node, name323, fn, params;
+    node = parseNullishCoalescing(state);
     if (state.token === "^" || state.token === ".^") {
-      name314 = state.token;
-      fn = name314 === "^" ? "pow" : "dotPow";
+      name323 = state.token;
+      fn = name323 === "^" ? "pow" : "dotPow";
       getTokenSkipNewline(state);
       params = [node, parseUnary(state)];
-      node = new OperatorNode(name314, fn, params);
+      node = new OperatorNode(name323, fn, params);
+    }
+    return node;
+  }
+  function parseNullishCoalescing(state) {
+    var node = parseLeftHandOperators(state);
+    while (state.token === "??") {
+      getTokenSkipNewline(state);
+      node = new OperatorNode("??", "nullish", [node, parseLeftHandOperators(state)]);
     }
     return node;
   }
   function parseLeftHandOperators(state) {
-    var node, name314, fn, params;
+    var node, name323, fn, params;
     node = parseCustomNodes(state);
     var operators = {
       "!": "factorial",
       "'": "ctranspose"
     };
     while (hasOwnProperty(operators, state.token)) {
-      name314 = state.token;
-      fn = operators[name314];
+      name323 = state.token;
+      fn = operators[name323];
       getToken(state);
       params = [node];
-      node = new OperatorNode(name314, fn, params);
+      node = new OperatorNode(name323, fn, params);
       node = parseAccessors(state, node);
     }
     return node;
@@ -30822,16 +31826,16 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     return parseSymbol(state);
   }
   function parseSymbol(state) {
-    var node, name314;
+    var node, name323;
     if (state.tokenType === TOKENTYPE.SYMBOL || state.tokenType === TOKENTYPE.DELIMITER && state.token in NAMED_DELIMITERS) {
-      name314 = state.token;
+      name323 = state.token;
       getToken(state);
-      if (hasOwnProperty(CONSTANTS, name314)) {
-        node = new ConstantNode(CONSTANTS[name314]);
-      } else if (NUMERIC_CONSTANTS.includes(name314)) {
-        node = new ConstantNode(numeric2(name314, "number"));
+      if (hasOwnProperty(CONSTANTS, name323)) {
+        node = new ConstantNode(CONSTANTS[name323]);
+      } else if (NUMERIC_CONSTANTS.includes(name323)) {
+        node = new ConstantNode(numeric2(name323, "number"));
       } else {
-        node = new SymbolNode(name314);
+        node = new SymbolNode(name323);
       }
       node = parseAccessors(state, node);
       return node;
@@ -30840,10 +31844,19 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
   }
   function parseAccessors(state, node, types) {
     var params;
-    while ((state.token === "(" || state.token === "[" || state.token === ".") && (!types || types.includes(state.token))) {
+    while (true) {
+      var optional = false;
+      if (state.token === "?.") {
+        optional = true;
+        getToken(state);
+      }
+      var hasNextAccessor = (state.token === "(" || state.token === "[" || state.token === ".") && (!types || types.includes(state.token));
+      if (!(optional || hasNextAccessor)) {
+        break;
+      }
       params = [];
       if (state.token === "(") {
-        if (isSymbolNode(node) || isAccessorNode(node)) {
+        if (optional || isSymbolNode(node) || isAccessorNode(node)) {
           openParams(state);
           getToken(state);
           if (state.token !== ")") {
@@ -30858,7 +31871,7 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
           }
           closeParams(state);
           getToken(state);
-          node = new FunctionNode(node, params);
+          node = new FunctionNode(node, params, optional);
         } else {
           return node;
         }
@@ -30877,17 +31890,19 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
         }
         closeParams(state);
         getToken(state);
-        node = new AccessorNode(node, new IndexNode(params));
+        node = new AccessorNode(node, new IndexNode(params), optional);
       } else {
-        getToken(state);
+        if (!optional) getToken(state);
         var isPropertyName = state.tokenType === TOKENTYPE.SYMBOL || state.tokenType === TOKENTYPE.DELIMITER && state.token in NAMED_DELIMITERS;
         if (!isPropertyName) {
-          throw createSyntaxError(state, "Property name expected after dot");
+          var message = "Property name expected after ";
+          message += optional ? "optional chain" : "dot";
+          throw createSyntaxError(state, message);
         }
         params.push(new ConstantNode(state.token));
         getToken(state);
         var dotNotation = true;
-        node = new AccessorNode(node, new IndexNode(params, dotNotation));
+        node = new AccessorNode(node, new IndexNode(params, dotNotation), optional);
       }
     }
     return node;
@@ -31032,7 +32047,9 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
     if (state.tokenType === TOKENTYPE.NUMBER) {
       numberStr = state.token;
       getToken(state);
-      return new ConstantNode(numeric2(numberStr, config2.number));
+      var numericType = safeNumberType(numberStr, config2);
+      var value = numeric2(numberStr, numericType);
+      return new ConstantNode(value);
     }
     return parseParentheses(state);
   }
@@ -31078,67 +32095,68 @@ var createParse = /* @__PURE__ */ factory(name222, dependencies222, (_ref) => {
   typed2.addConversion({
     from: "string",
     to: "Node",
-    convert: parse2
+    convert: parse3
   });
-  return parse2;
+  return parse3;
 });
 
 // node_modules/mathjs/lib/esm/expression/function/compile.js
-var name223 = "compile";
-var dependencies223 = ["typed", "parse"];
-var createCompile = /* @__PURE__ */ factory(name223, dependencies223, (_ref) => {
+var name227 = "compile";
+var dependencies228 = ["typed", "parse"];
+var createCompile = /* @__PURE__ */ factory(name227, dependencies228, (_ref) => {
   var {
     typed: typed2,
-    parse: parse2
+    parse: parse3
   } = _ref;
-  return typed2(name223, {
+  return typed2(name227, {
     string: function string(expr) {
-      return parse2(expr).compile();
+      return parse3(expr).compile();
     },
-    "Array | Matrix": function ArrayMatrix(expr) {
-      return deepMap(expr, function(entry) {
-        return parse2(entry).compile();
+    "Array | Matrix": function Array__Matrix(expr) {
+      return deepMap2(expr, function(entry) {
+        return parse3(entry).compile();
       });
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/expression/function/evaluate.js
-var name224 = "evaluate";
-var dependencies224 = ["typed", "parse"];
-var createEvaluate = /* @__PURE__ */ factory(name224, dependencies224, (_ref) => {
+var name228 = "evaluate";
+var dependencies229 = ["typed", "parse"];
+var createEvaluate = /* @__PURE__ */ factory(name228, dependencies229, (_ref) => {
   var {
     typed: typed2,
-    parse: parse2
+    parse: parse3
   } = _ref;
-  return typed2(name224, {
+  return typed2(name228, {
     string: function string(expr) {
       var scope = createEmptyMap();
-      return parse2(expr).compile().evaluate(scope);
+      return parse3(expr).compile().evaluate(scope);
     },
-    "string, Map | Object": function stringMapObject(expr, scope) {
-      return parse2(expr).compile().evaluate(scope);
+    "string, Map | Object": function string_Map__Object(expr, scope) {
+      return parse3(expr).compile().evaluate(scope);
     },
-    "Array | Matrix": function ArrayMatrix(expr) {
+    "Array | Matrix": function Array__Matrix(expr) {
       var scope = createEmptyMap();
-      return deepMap(expr, function(entry) {
-        return parse2(entry).compile().evaluate(scope);
+      return deepMap2(expr, function(entry) {
+        return parse3(entry).compile().evaluate(scope);
       });
     },
-    "Array | Matrix, Map | Object": function ArrayMatrixMapObject(expr, scope) {
-      return deepMap(expr, function(entry) {
-        return parse2(entry).compile().evaluate(scope);
+    "Array | Matrix, Map | Object": function Array__Matrix_Map__Object(expr, scope) {
+      return deepMap2(expr, function(entry) {
+        return parse3(entry).compile().evaluate(scope);
       });
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/expression/Parser.js
-var name225 = "Parser";
-var dependencies225 = ["evaluate"];
-var createParserClass = /* @__PURE__ */ factory(name225, dependencies225, (_ref) => {
+var name229 = "Parser";
+var dependencies230 = ["evaluate", "parse"];
+var createParserClass = /* @__PURE__ */ factory(name229, dependencies230, (_ref) => {
   var {
-    evaluate
+    evaluate,
+    parse: parse3
   } = _ref;
   function Parser() {
     if (!(this instanceof Parser)) {
@@ -31154,9 +32172,9 @@ var createParserClass = /* @__PURE__ */ factory(name225, dependencies225, (_ref)
   Parser.prototype.evaluate = function(expr) {
     return evaluate(expr, this.scope);
   };
-  Parser.prototype.get = function(name314) {
-    if (this.scope.has(name314)) {
-      return this.scope.get(name314);
+  Parser.prototype.get = function(name323) {
+    if (this.scope.has(name323)) {
+      return this.scope.get(name323);
     }
   };
   Parser.prototype.getAll = function() {
@@ -31165,30 +32183,81 @@ var createParserClass = /* @__PURE__ */ factory(name225, dependencies225, (_ref)
   Parser.prototype.getAllAsMap = function() {
     return this.scope;
   };
-  Parser.prototype.set = function(name314, value) {
-    this.scope.set(name314, value);
+  function isValidVariableName(name323) {
+    if (name323.length === 0) {
+      return false;
+    }
+    for (var i = 0; i < name323.length; i++) {
+      var cPrev = name323.charAt(i - 1);
+      var c = name323.charAt(i);
+      var cNext = name323.charAt(i + 1);
+      var valid = parse3.isAlpha(c, cPrev, cNext) || i > 0 && parse3.isDigit(c);
+      if (!valid) {
+        return false;
+      }
+    }
+    return true;
+  }
+  Parser.prototype.set = function(name323, value) {
+    if (!isValidVariableName(name323)) {
+      throw new Error("Invalid variable name: '".concat(name323, "'. Variable names must follow the specified rules."));
+    }
+    this.scope.set(name323, value);
     return value;
   };
-  Parser.prototype.remove = function(name314) {
-    this.scope.delete(name314);
+  Parser.prototype.remove = function(name323) {
+    this.scope.delete(name323);
   };
   Parser.prototype.clear = function() {
     this.scope.clear();
+  };
+  Parser.prototype.toJSON = function() {
+    var json = {
+      mathjs: "Parser",
+      variables: {},
+      functions: {}
+    };
+    for (var [_name2, value] of this.scope) {
+      if (isFunction(value)) {
+        if (!isExpressionFunction(value)) {
+          throw new Error("Cannot serialize external function ".concat(_name2));
+        }
+        json.functions[_name2] = "".concat(value.syntax, " = ").concat(value.expr);
+      } else {
+        json.variables[_name2] = value;
+      }
+    }
+    return json;
+  };
+  Parser.fromJSON = function(json) {
+    var parser = new Parser();
+    Object.entries(json.variables).forEach((_ref2) => {
+      var [name323, value] = _ref2;
+      return parser.set(name323, value);
+    });
+    Object.entries(json.functions).forEach((_ref3) => {
+      var [_name, fn] = _ref3;
+      return parser.evaluate(fn);
+    });
+    return parser;
   };
   return Parser;
 }, {
   isClass: true
 });
+function isExpressionFunction(value) {
+  return typeof value === "function" && typeof value.syntax === "string" && typeof value.expr === "string";
+}
 
 // node_modules/mathjs/lib/esm/expression/function/parser.js
-var name226 = "parser";
-var dependencies226 = ["typed", "Parser"];
-var createParser = /* @__PURE__ */ factory(name226, dependencies226, (_ref) => {
+var name230 = "parser";
+var dependencies231 = ["typed", "Parser"];
+var createParser = /* @__PURE__ */ factory(name230, dependencies231, (_ref) => {
   var {
     typed: typed2,
     Parser
   } = _ref;
-  return typed2(name226, {
+  return typed2(name230, {
     "": function _() {
       return new Parser();
     }
@@ -31196,9 +32265,9 @@ var createParser = /* @__PURE__ */ factory(name226, dependencies226, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/decomposition/lup.js
-var name227 = "lup";
-var dependencies227 = ["typed", "matrix", "abs", "addScalar", "divideScalar", "multiplyScalar", "subtractScalar", "larger", "equalScalar", "unaryMinus", "DenseMatrix", "SparseMatrix", "Spa"];
-var createLup = /* @__PURE__ */ factory(name227, dependencies227, (_ref) => {
+var name231 = "lup";
+var dependencies232 = ["typed", "matrix", "abs", "addScalar", "divideScalar", "multiplyScalar", "subtractScalar", "larger", "equalScalar", "unaryMinus", "DenseMatrix", "SparseMatrix", "Spa"];
+var createLup = /* @__PURE__ */ factory(name231, dependencies232, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -31214,7 +32283,7 @@ var createLup = /* @__PURE__ */ factory(name227, dependencies227, (_ref) => {
     SparseMatrix,
     Spa
   } = _ref;
-  return typed2(name227, {
+  return typed2(name231, {
     DenseMatrix: function DenseMatrix2(m) {
       return _denseLUP(m);
     },
@@ -31446,9 +32515,9 @@ var createLup = /* @__PURE__ */ factory(name227, dependencies227, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/decomposition/qr.js
-var name228 = "qr";
-var dependencies228 = ["typed", "matrix", "zeros", "identity", "isZero", "equal", "sign", "sqrt", "conj", "unaryMinus", "addScalar", "divideScalar", "multiplyScalar", "subtractScalar", "complex"];
-var createQr = /* @__PURE__ */ factory(name228, dependencies228, (_ref) => {
+var name232 = "qr";
+var dependencies233 = ["typed", "matrix", "zeros", "identity", "isZero", "equal", "sign", "sqrt", "conj", "unaryMinus", "addScalar", "divideScalar", "multiplyScalar", "subtractScalar", "complex"];
+var createQr = /* @__PURE__ */ factory(name232, dependencies233, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -31466,7 +32535,7 @@ var createQr = /* @__PURE__ */ factory(name228, dependencies228, (_ref) => {
     subtractScalar,
     complex
   } = _ref;
-  return _extends(typed2(name228, {
+  return _extends(typed2(name232, {
     DenseMatrix: function DenseMatrix(m) {
       return _denseQR(m);
     },
@@ -31719,9 +32788,9 @@ function csFlip(i) {
 }
 
 // node_modules/mathjs/lib/esm/function/algebra/sparse/csAmd.js
-var name229 = "csAmd";
-var dependencies229 = ["add", "multiply", "transpose"];
-var createCsAmd = /* @__PURE__ */ factory(name229, dependencies229, (_ref) => {
+var name233 = "csAmd";
+var dependencies234 = ["add", "multiply", "transpose"];
+var createCsAmd = /* @__PURE__ */ factory(name233, dependencies234, (_ref) => {
   var {
     add: add2,
     multiply,
@@ -31742,7 +32811,7 @@ var createCsAmd = /* @__PURE__ */ factory(name229, dependencies229, (_ref) => {
     var cindex = cm._index;
     var cptr = cm._ptr;
     var cnz = cptr[n];
-    var P4 = [];
+    var P5 = [];
     var W = [];
     var len = 0;
     var nv = n + 1;
@@ -31752,7 +32821,7 @@ var createCsAmd = /* @__PURE__ */ factory(name229, dependencies229, (_ref) => {
     var degree = 5 * (n + 1);
     var w = 6 * (n + 1);
     var hhead = 7 * (n + 1);
-    var last = P4;
+    var last = P5;
     var mark = _initializeQuotientGraph(n, cptr, W, len, head, last, next, hhead, nv, w, elen, degree);
     var nel = _initializeDegreeLists(n, cptr, W, degree, elen, w, dense, nv, head, last, next);
     var mindeg = 0;
@@ -31969,11 +33038,11 @@ var createCsAmd = /* @__PURE__ */ factory(name229, dependencies229, (_ref) => {
     }
     for (k = 0, i = 0; i <= n; i++) {
       if (cptr[i] === -1) {
-        k = csTdfs(i, k, W, head, next, P4, w);
+        k = csTdfs(i, k, W, head, next, P5, w);
       }
     }
-    P4.splice(P4.length - 1, 1);
-    return P4;
+    P5.splice(P5.length - 1, 1);
+    return P5;
   };
   function _createTargetMatrix(order, a, m, n, dense) {
     var at = transpose(a);
@@ -32092,9 +33161,9 @@ function csLeaf(i, j, w, first, maxfirst, prevleaf, ancestor) {
 }
 
 // node_modules/mathjs/lib/esm/function/algebra/sparse/csCounts.js
-var name230 = "csCounts";
-var dependencies230 = ["transpose"];
-var createCsCounts = /* @__PURE__ */ factory(name230, dependencies230, (_ref) => {
+var name234 = "csCounts";
+var dependencies235 = ["transpose"];
+var createCsCounts = /* @__PURE__ */ factory(name234, dependencies235, (_ref) => {
   var {
     transpose
   } = _ref;
@@ -32174,9 +33243,9 @@ var createCsCounts = /* @__PURE__ */ factory(name230, dependencies230, (_ref) =>
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/sparse/csSqr.js
-var name231 = "csSqr";
-var dependencies231 = ["add", "multiply", "transpose"];
-var createCsSqr = /* @__PURE__ */ factory(name231, dependencies231, (_ref) => {
+var name235 = "csSqr";
+var dependencies236 = ["add", "multiply", "transpose"];
+var createCsSqr = /* @__PURE__ */ factory(name235, dependencies236, (_ref) => {
   var {
     add: add2,
     multiply,
@@ -32362,9 +33431,9 @@ function csReach(g, b, k, xi, pinv) {
 }
 
 // node_modules/mathjs/lib/esm/function/algebra/sparse/csSpsolve.js
-var name232 = "csSpsolve";
-var dependencies232 = ["divideScalar", "multiply", "subtract"];
-var createCsSpsolve = /* @__PURE__ */ factory(name232, dependencies232, (_ref) => {
+var name236 = "csSpsolve";
+var dependencies237 = ["divideScalar", "multiply", "subtract"];
+var createCsSpsolve = /* @__PURE__ */ factory(name236, dependencies237, (_ref) => {
   var {
     divideScalar,
     multiply,
@@ -32408,9 +33477,9 @@ var createCsSpsolve = /* @__PURE__ */ factory(name232, dependencies232, (_ref) =
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/sparse/csLu.js
-var name233 = "csLu";
-var dependencies233 = ["abs", "divideScalar", "multiply", "subtract", "larger", "largerEq", "SparseMatrix"];
-var createCsLu = /* @__PURE__ */ factory(name233, dependencies233, (_ref) => {
+var name237 = "csLu";
+var dependencies238 = ["abs", "divideScalar", "multiply", "subtract", "larger", "largerEq", "SparseMatrix"];
+var createCsLu = /* @__PURE__ */ factory(name237, dependencies238, (_ref) => {
   var {
     abs: abs2,
     divideScalar,
@@ -32527,9 +33596,9 @@ var createCsLu = /* @__PURE__ */ factory(name233, dependencies233, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/decomposition/slu.js
-var name234 = "slu";
-var dependencies234 = ["typed", "abs", "add", "multiply", "transpose", "divideScalar", "subtract", "larger", "largerEq", "SparseMatrix"];
-var createSlu = /* @__PURE__ */ factory(name234, dependencies234, (_ref) => {
+var name238 = "slu";
+var dependencies239 = ["typed", "abs", "add", "multiply", "transpose", "divideScalar", "subtract", "larger", "largerEq", "SparseMatrix"];
+var createSlu = /* @__PURE__ */ factory(name238, dependencies239, (_ref) => {
   var {
     typed: typed2,
     abs: abs2,
@@ -32556,9 +33625,9 @@ var createSlu = /* @__PURE__ */ factory(name234, dependencies234, (_ref) => {
     largerEq,
     SparseMatrix
   });
-  return typed2(name234, {
-    "SparseMatrix, number, number": function SparseMatrixNumberNumber(a, order, threshold) {
-      if (!isInteger(order) || order < 0 || order > 3) {
+  return typed2(name238, {
+    "SparseMatrix, number, number": function SparseMatrix_number_number(a, order, threshold) {
+      if (!isInteger2(order) || order < 0 || order > 3) {
         throw new Error("Symbolic Ordering and Analysis order must be an integer number in the interval [0, 3]");
       }
       if (threshold < 0 || threshold > 1) {
@@ -32597,9 +33666,9 @@ function csIpvec(p, b) {
 }
 
 // node_modules/mathjs/lib/esm/function/algebra/solver/lusolve.js
-var name235 = "lusolve";
-var dependencies235 = ["typed", "matrix", "lup", "slu", "usolve", "lsolve", "DenseMatrix"];
-var createLusolve = /* @__PURE__ */ factory(name235, dependencies235, (_ref) => {
+var name239 = "lusolve";
+var dependencies240 = ["typed", "matrix", "lup", "slu", "usolve", "lsolve", "DenseMatrix"];
+var createLusolve = /* @__PURE__ */ factory(name239, dependencies240, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -32612,26 +33681,26 @@ var createLusolve = /* @__PURE__ */ factory(name235, dependencies235, (_ref) => 
   var solveValidation = createSolveValidation({
     DenseMatrix
   });
-  return typed2(name235, {
-    "Array, Array | Matrix": function ArrayArrayMatrix(a, b) {
+  return typed2(name239, {
+    "Array, Array | Matrix": function Array_Array__Matrix(a, b) {
       a = matrix(a);
       var d = lup(a);
       var x = _lusolve(d.L, d.U, d.p, null, b);
       return x.valueOf();
     },
-    "DenseMatrix, Array | Matrix": function DenseMatrixArrayMatrix(a, b) {
+    "DenseMatrix, Array | Matrix": function DenseMatrix_Array__Matrix(a, b) {
       var d = lup(a);
       return _lusolve(d.L, d.U, d.p, null, b);
     },
-    "SparseMatrix, Array | Matrix": function SparseMatrixArrayMatrix(a, b) {
+    "SparseMatrix, Array | Matrix": function SparseMatrix_Array__Matrix(a, b) {
       var d = lup(a);
       return _lusolve(d.L, d.U, d.p, null, b);
     },
-    "SparseMatrix, Array | Matrix, number, number": function SparseMatrixArrayMatrixNumberNumber(a, b, order, threshold) {
+    "SparseMatrix, Array | Matrix, number, number": function SparseMatrix_Array__Matrix_number_number(a, b, order, threshold) {
       var d = slu(a, order, threshold);
       return _lusolve(d.L, d.U, d.p, d.q, b);
     },
-    "Object, Array | Matrix": function ObjectArrayMatrix(d, b) {
+    "Object, Array | Matrix": function Object_Array__Matrix(d, b) {
       return _lusolve(d.L, d.U, d.p, d.q, b);
     }
   });
@@ -32661,9 +33730,9 @@ var createLusolve = /* @__PURE__ */ factory(name235, dependencies235, (_ref) => 
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/polynomialRoot.js
-var name236 = "polynomialRoot";
-var dependencies236 = ["typed", "isZero", "equalScalar", "add", "subtract", "multiply", "divide", "sqrt", "unaryMinus", "cbrt", "typeOf", "im", "re"];
-var createPolynomialRoot = /* @__PURE__ */ factory(name236, dependencies236, (_ref) => {
+var name240 = "polynomialRoot";
+var dependencies241 = ["typed", "isZero", "equalScalar", "add", "subtract", "multiply", "divide", "sqrt", "unaryMinus", "cbrt", "typeOf", "im", "re"];
+var createPolynomialRoot = /* @__PURE__ */ factory(name240, dependencies241, (_ref) => {
   var {
     typed: typed2,
     isZero,
@@ -32679,7 +33748,7 @@ var createPolynomialRoot = /* @__PURE__ */ factory(name236, dependencies236, (_r
     im,
     re
   } = _ref;
-  return typed2(name236, {
+  return typed2(name240, {
     "number|Complex, ...number|Complex": (constant, restCoeffs) => {
       var coeffs = [constant, ...restCoeffs];
       while (coeffs.length > 0 && isZero(coeffs[coeffs.length - 1])) {
@@ -32745,9 +33814,9 @@ var createPolynomialRoot = /* @__PURE__ */ factory(name236, dependencies236, (_r
 });
 
 // node_modules/mathjs/lib/esm/expression/Help.js
-var name237 = "Help";
-var dependencies237 = ["evaluate"];
-var createHelpClass = /* @__PURE__ */ factory(name237, dependencies237, (_ref) => {
+var name241 = "Help";
+var dependencies242 = ["evaluate"];
+var createHelpClass = /* @__PURE__ */ factory(name241, dependencies242, (_ref) => {
   var {
     evaluate
   } = _ref;
@@ -32836,9 +33905,9 @@ var createHelpClass = /* @__PURE__ */ factory(name237, dependencies237, (_ref) =
 });
 
 // node_modules/mathjs/lib/esm/type/chain/Chain.js
-var name238 = "Chain";
-var dependencies238 = ["?on", "math", "typed"];
-var createChainClass = /* @__PURE__ */ factory(name238, dependencies238, (_ref) => {
+var name242 = "Chain";
+var dependencies243 = ["?on", "math", "typed"];
+var createChainClass = /* @__PURE__ */ factory(name242, dependencies243, (_ref) => {
   var {
     on,
     math: math2,
@@ -32874,13 +33943,13 @@ var createChainClass = /* @__PURE__ */ factory(name238, dependencies238, (_ref) 
   Chain.fromJSON = function(json) {
     return new Chain(json.value);
   };
-  function createProxy(name314, fn) {
+  function createProxy(name323, fn) {
     if (typeof fn === "function") {
-      Chain.prototype[name314] = chainify(fn);
+      Chain.prototype[name323] = chainify(fn);
     }
   }
-  function createLazyProxy(name314, resolver) {
-    lazy(Chain.prototype, name314, function outerResolver() {
+  function createLazyProxy(name323, resolver) {
+    lazy(Chain.prototype, name323, function outerResolver() {
       var fn = resolver();
       if (typeof fn === "function") {
         return chainify(fn);
@@ -32933,9 +34002,9 @@ var createChainClass = /* @__PURE__ */ factory(name238, dependencies238, (_ref) 
   };
   Chain.createProxy(math2);
   if (on) {
-    on("import", function(name314, resolver, path) {
+    on("import", function(name323, resolver, path) {
       if (!path) {
-        createLazyProxy(name314, resolver);
+        createLazyProxy(name323, resolver);
       }
     });
   }
@@ -33121,7 +34190,17 @@ var bignumberDocs = {
   syntax: ["bignumber(x)"],
   description: "Create a big number from a number or string.",
   examples: ["0.1 + 0.2", "bignumber(0.1) + bignumber(0.2)", 'bignumber("7.2")', 'bignumber("7.2e500")', "bignumber([0.1, 0.2, 0.3])"],
-  seealso: ["boolean", "complex", "fraction", "index", "matrix", "string", "unit"]
+  seealso: ["boolean", "bigint", "complex", "fraction", "index", "matrix", "string", "unit"]
+};
+
+// node_modules/mathjs/lib/esm/expression/embeddedDocs/construction/bigint.js
+var bigintDocs = {
+  name: "bigint",
+  category: "Construction",
+  syntax: ["bigint(x)"],
+  description: "Create a bigint, an integer with an arbitrary number of digits, from a number or string.",
+  examples: ["123123123123123123 # a large number will lose digits", 'bigint("123123123123123123")', 'bignumber(["1", "3", "5"])'],
+  seealso: ["boolean", "bignumber", "number", "complex", "fraction", "index", "matrix", "string", "unit"]
 };
 
 // node_modules/mathjs/lib/esm/expression/embeddedDocs/construction/boolean.js
@@ -33171,7 +34250,7 @@ var indexDocs = {
   syntax: ["[start]", "[start:end]", "[start:step:end]", "[start1, start 2, ...]", "[start1:end1, start2:end2, ...]", "[start1:step1:end1, start2:step2:end2, ...]"],
   description: "Create an index to get or replace a subset of a matrix",
   examples: ["A = [1, 2, 3; 4, 5, 6]", "A[1, :]", "A[1, 2] = 50", "A[1:2, 1:2] = 1", "B = [1, 2, 3]", "B[B>1 and B<3]"],
-  seealso: ["bignumber", "boolean", "complex", "matrix,", "number", "range", "string", "unit"]
+  seealso: ["bignumber", "boolean", "complex", "matrix", "number", "range", "string", "unit"]
 };
 
 // node_modules/mathjs/lib/esm/expression/embeddedDocs/construction/matrix.js
@@ -33191,7 +34270,7 @@ var numberDocs = {
   syntax: ["x", "number(x)", "number(unit, valuelessUnit)"],
   description: "Create a number or convert a string or boolean into a number.",
   examples: ["2", "2e3", "4.05", "number(2)", 'number("7.2")', "number(true)", "number([true, false, true, true])", 'number(unit("52cm"), "m")'],
-  seealso: ["bignumber", "boolean", "complex", "fraction", "index", "matrix", "string", "unit"]
+  seealso: ["bignumber", "bigint", "boolean", "complex", "fraction", "index", "matrix", "string", "unit"]
 };
 
 // node_modules/mathjs/lib/esm/expression/embeddedDocs/construction/sparse.js
@@ -33469,9 +34548,9 @@ var cbrtDocs = {
 var ceilDocs = {
   name: "ceil",
   category: "Arithmetic",
-  syntax: ["ceil(x)"],
+  syntax: ["ceil(x)", "ceil(x, n)", "ceil(unit, valuelessUnit)", "ceil(unit, n, valuelessUnit)"],
   description: "Round a value towards plus infinity. If x is complex, both real and imaginary part are rounded towards plus infinity.",
-  examples: ["ceil(3.2)", "ceil(3.8)", "ceil(-4.2)"],
+  examples: ["ceil(3.2)", "ceil(3.8)", "ceil(-4.2)", "ceil(3.241cm, cm)", "ceil(3.241cm, 2, cm)"],
   seealso: ["floor", "fix", "round"]
 };
 
@@ -33559,9 +34638,9 @@ var expm1Docs = {
 var fixDocs = {
   name: "fix",
   category: "Arithmetic",
-  syntax: ["fix(x)"],
+  syntax: ["fix(x)", "fix(x, n)", "fix(unit, valuelessUnit)", "fix(unit, n, valuelessUnit)"],
   description: "Round a value towards zero. If x is complex, both real and imaginary part are rounded towards zero.",
-  examples: ["fix(3.2)", "fix(3.8)", "fix(-4.2)", "fix(-4.8)"],
+  examples: ["fix(3.2)", "fix(3.8)", "fix(-4.2)", "fix(-4.8)", "fix(3.241cm, cm)", "fix(3.241cm, 2, cm)"],
   seealso: ["ceil", "floor", "round"]
 };
 
@@ -33569,9 +34648,9 @@ var fixDocs = {
 var floorDocs = {
   name: "floor",
   category: "Arithmetic",
-  syntax: ["floor(x)"],
+  syntax: ["floor(x)", "floor(x, n)", "floor(unit, valuelessUnit)", "floor(unit, n, valuelessUnit)"],
   description: "Round a value towards minus infinity.If x is complex, both real and imaginary part are rounded towards minus infinity.",
-  examples: ["floor(3.2)", "floor(3.8)", "floor(-4.2)"],
+  examples: ["floor(3.2)", "floor(3.8)", "floor(-4.2)", "floor(3.241cm, cm)", "floor(3.241cm, 2, cm)"],
   seealso: ["ceil", "fix", "round"]
 };
 
@@ -33590,7 +34669,7 @@ var hypotDocs = {
   name: "hypot",
   category: "Arithmetic",
   syntax: ["hypot(a, b, c, ...)", "hypot([a, b, c, ...])"],
-  description: "Calculate the hypotenusa of a list with values. ",
+  description: "Calculate the hypotenuse of a list with values.",
   examples: ["hypot(3, 4)", "sqrt(3^2 + 4^2)", "hypot(-2)", "hypot([3, 4, 5])"],
   seealso: ["abs", "norm"]
 };
@@ -33729,7 +34808,7 @@ var signDocs = {
   name: "sign",
   category: "Arithmetic",
   syntax: ["sign(x)"],
-  description: "Compute the sign of a value. The sign of a value x is 1 when x>1, -1 when x<0, and 0 when x=0.",
+  description: "Compute the sign of a value. The sign of a value x is 1 when x>0, -1 when x<0, and 0 when x=0.",
   examples: ["sign(3.5)", "sign(-4.2)", "sign(0)"],
   seealso: ["abs"]
 };
@@ -33832,6 +34911,26 @@ var xgcdDocs = {
   description: "Calculate the extended greatest common divisor for two values. The result is an array [d, x, y] with 3 entries, where d is the greatest common divisor, and d = x * a + y * b.",
   examples: ["xgcd(8, 12)", "gcd(8, 12)", "xgcd(36163, 21199)"],
   seealso: ["gcd", "lcm"]
+};
+
+// node_modules/mathjs/lib/esm/expression/embeddedDocs/function/fraction/num.js
+var numDocs = {
+  name: "num",
+  category: "Fraction",
+  syntax: ["num(x)"],
+  description: "Get the numerator of a fraction.",
+  examples: ["num(fraction(2, 3))", "num(fraction(5, 8))"],
+  seealso: ["den", "fraction"]
+};
+
+// node_modules/mathjs/lib/esm/expression/embeddedDocs/function/fraction/den.js
+var denDocs = {
+  name: "den",
+  category: "Fraction",
+  syntax: ["den(x)"],
+  description: "Get the denominator of a fraction.",
+  examples: ["den(fraction(2, 3))", "den(fraction(5, 8))"],
+  seealso: ["num", "fraction"]
 };
 
 // node_modules/mathjs/lib/esm/expression/embeddedDocs/function/bitwise/bitAnd.js
@@ -33939,9 +35038,9 @@ var stirlingS2Docs = {
   name: "stirlingS2",
   category: "Combinatorics",
   syntax: ["stirlingS2(n, k)"],
-  description: "he Stirling numbers of the second kind, counts the number of ways to partition a set of n labelled objects into k nonempty unlabelled subsets. `stirlingS2` only takes integer arguments. The following condition must be enforced: k <= n. If n = k or k = 1, then s(n,k) = 1.",
+  description: "The Stirling numbers of the second kind, counts the number of ways to partition a set of n labelled objects into k nonempty unlabelled subsets. `stirlingS2` only takes integer arguments. The following condition must be enforced: k <= n. If n = k or k = 1, then s(n,k) = 1.",
   examples: ["stirlingS2(5, 3)"],
-  seealso: ["bellNumbers"]
+  seealso: ["bellNumbers", "bernoulli"]
 };
 
 // node_modules/mathjs/lib/esm/expression/embeddedDocs/function/complex/arg.js
@@ -33991,7 +35090,37 @@ var evaluateDocs = {
   syntax: ["evaluate(expression)", "evaluate(expression, scope)", "evaluate([expr1, expr2, expr3, ...])", "evaluate([expr1, expr2, expr3, ...], scope)"],
   description: "Evaluate an expression or an array with expressions.",
   examples: ['evaluate("2 + 3")', 'evaluate("sqrt(16)")', 'evaluate("2 inch to cm")', 'evaluate("sin(x * pi)", { "x": 1/2 })', 'evaluate(["width=2", "height=4","width*height"])'],
-  seealso: []
+  seealso: ["parser", "parse", "compile"]
+};
+
+// node_modules/mathjs/lib/esm/expression/embeddedDocs/function/expression/parser.js
+var parserDocs = {
+  name: "parser",
+  category: "Expression",
+  syntax: ["parser()"],
+  description: "Create a parser object that keeps a context of variables and their values, allowing the evaluation of expressions in that context.",
+  examples: ["myParser = parser()", 'myParser.evaluate("sqrt(3^2 + 4^2)")', 'myParser.set("x", 3)', 'myParser.evaluate("y = x + 3")', 'myParser.evaluate(["y = x + 3", "y = y + 1"])', 'myParser.get("y")'],
+  seealso: ["evaluate", "parse", "compile"]
+};
+
+// node_modules/mathjs/lib/esm/expression/embeddedDocs/function/expression/parse.js
+var parseDocs = {
+  name: "parse",
+  category: "Expression",
+  syntax: ["parse(expr)", "parse(expr, options)", "parse([expr1, expr2, expr3, ...])", "parse([expr1, expr2, expr3, ...], options)"],
+  description: "Parse an expression. Returns a node tree, which can be evaluated by invoking node.evaluate() or transformed into a functional object via node.compile().",
+  examples: ['node1 = parse("sqrt(3^2 + 4^2)")', "node1.evaluate()", "code1 = node1.compile()", "code1.evaluate()", "scope = {a: 3, b: 4}", 'node2 = parse("a * b")', "node2.evaluate(scope)", "code2 = node2.compile()", "code2.evaluate(scope)"],
+  seealso: ["parser", "evaluate", "compile"]
+};
+
+// node_modules/mathjs/lib/esm/expression/embeddedDocs/function/expression/compile.js
+var compileDocs = {
+  name: "compile",
+  category: "Expression",
+  syntax: ["compile(expr) ", "compile([expr1, expr2, expr3, ...])"],
+  description: "Parse and compile an expression. Returns a an object with a function evaluate([scope]) to evaluate the compiled expression.",
+  examples: ['code1 = compile("sqrt(3^2 + 4^2)")', "code1.evaluate() ", 'code2 = compile("a * b")', "code2.evaluate({a: 3, b: 4})"],
+  seealso: ["parser", "parse", "evaluate"]
 };
 
 // node_modules/mathjs/lib/esm/expression/embeddedDocs/function/expression/help.js
@@ -34044,6 +35173,16 @@ var notDocs = {
   seealso: ["and", "or", "xor"]
 };
 
+// node_modules/mathjs/lib/esm/expression/embeddedDocs/function/logical/nullish.js
+var nullishDocs = {
+  name: "nullish",
+  category: "Logical",
+  syntax: ["x ?? y", "nullish(x, y)"],
+  description: "Nullish coalescing operator. Returns the right-hand operand when the left-hand operand is null or undefined, and otherwise returns the left-hand operand.",
+  examples: ["null ?? 42", "undefined ?? 42", "0 ?? 42", "false ?? 42", "null ?? undefined ?? 42"],
+  seealso: ["and", "or", "not"]
+};
+
 // node_modules/mathjs/lib/esm/expression/embeddedDocs/function/logical/or.js
 var orDocs = {
   name: "or",
@@ -34062,6 +35201,22 @@ var xorDocs = {
   description: "Logical exclusive or, xor. Test whether one and only one value is defined with a nonzero/nonempty value.",
   examples: ["true xor false", "false xor false", "true xor true", "0 xor 4"],
   seealso: ["not", "and", "or"]
+};
+
+// node_modules/mathjs/lib/esm/expression/embeddedDocs/function/matrix/mapSlices.js
+var mapSlicesDocs = {
+  name: "mapSlices",
+  category: "Matrix",
+  syntax: ["mapSlices(A, dim, callback)"],
+  description: "Generate a matrix one dimension less than A by applying callback to each slice of A along dimension dim.",
+  examples: [
+    "A = [[1, 2], [3, 4]]",
+    "mapSlices(A, 1, sum)",
+    // returns [4, 6]
+    "mapSlices(A, 2, prod)"
+    // returns [2, 12]
+  ],
+  seealso: ["map", "forEach"]
 };
 
 // node_modules/mathjs/lib/esm/expression/embeddedDocs/function/matrix/column.js
@@ -34139,7 +35294,7 @@ var diffDocs = {
   name: "diff",
   category: "Matrix",
   syntax: ["diff(arr)", "diff(arr, dim)"],
-  description: ["Create a new matrix or array with the difference of the passed matrix or array.", "Dim parameter is optional and used to indicant the dimension of the array/matrix to apply the difference", "If no dimension parameter is passed it is assumed as dimension 0", "Dimension is zero-based in javascript and one-based in the parser", "Arrays must be 'rectangular' meaning arrays like [1, 2]", "If something is passed as a matrix it will be returned as a matrix but other than that all matrices are converted to arrays"],
+  description: ["Create a new matrix or array with the difference of the passed matrix or array.", "Dim parameter is optional and used to indicate the dimension of the array/matrix to apply the difference", "If no dimension parameter is passed it is assumed as dimension 0", "Dimension is zero-based in javascript and one-based in the parser", "Arrays must be 'rectangular' meaning arrays like [1, 2]", "If something is passed as a matrix it will be returned as a matrix but other than that all matrices are converted to arrays"],
   examples: ["A = [1, 2, 4, 7, 0]", "diff(A)", "diff(A, 1)", "B = [[1, 2], [3, 4]]", "diff(B)", "diff(B, 1)", "diff(B, 2)", "diff(B, bignumber(2))", "diff([[1, 2], matrix([3, 4])], 2)"],
   seealso: ["subtract", "partitionSelect"]
 };
@@ -34239,7 +35394,7 @@ var kronDocs = {
   name: "kron",
   category: "Matrix",
   syntax: ["kron(x, y)"],
-  description: "Calculates the kronecker product of 2 matrices or vectors.",
+  description: "Calculates the Kronecker product of 2 matrices or vectors.",
   examples: ["kron([[1, 0], [0, 1]], [[1, 2], [3, 4]])", "kron([1,1], [2,3,4])"],
   seealso: ["multiply", "dot", "cross"]
 };
@@ -34248,9 +35403,9 @@ var kronDocs = {
 var mapDocs = {
   name: "map",
   category: "Matrix",
-  syntax: ["map(x, callback)"],
-  description: "Create a new matrix or array with the results of the callback function executed on each entry of the matrix/array.",
-  examples: ["map([1, 2, 3], square)"],
+  syntax: ["map(x, callback)", "map(x, y, ..., callback)"],
+  description: "Create a new matrix or array with the results of the callback function executed on each entry of the matrix/array or the matrices/arrays.",
+  examples: ["map([1, 2, 3], square)", "map([1, 2], [3, 4], f(a,b) = a + b)"],
   seealso: ["filter", "forEach"]
 };
 
@@ -34439,7 +35594,7 @@ var fftDocs = {
   name: "fft",
   category: "Matrix",
   syntax: ["fft(x)"],
-  description: "Calculate N-dimensional fourier transform",
+  description: "Calculate N-dimensional Fourier transform",
   examples: ["fft([[1, 0], [1, 0]])"],
   seealso: ["ifft"]
 };
@@ -34449,9 +35604,19 @@ var ifftDocs = {
   name: "ifft",
   category: "Matrix",
   syntax: ["ifft(x)"],
-  description: "Calculate N-dimensional inverse fourier transform",
+  description: "Calculate N-dimensional inverse Fourier transform",
   examples: ["ifft([[2, 2], [0, 0]])"],
   seealso: ["fft"]
+};
+
+// node_modules/mathjs/lib/esm/expression/embeddedDocs/function/probability/bernoulli.js
+var bernoulliDocs = {
+  name: "bernoulli",
+  category: "Probability",
+  syntax: ["bernoulli(n)"],
+  description: "The nth Bernoulli number",
+  examples: ["bernoulli(4)", "bernoulli(fraction(12))"],
+  seealso: ["combinations", "gamma", "stirlingS2"]
 };
 
 // node_modules/mathjs/lib/esm/expression/embeddedDocs/function/probability/combinations.js
@@ -34629,7 +35794,7 @@ var largerDocs = {
   name: "larger",
   category: "Relational",
   syntax: ["x > y", "larger(x, y)"],
-  description: "Check if value x is larger than y. Returns true if x is larger than y, and false if not.",
+  description: "Check if value x is larger than y. Returns true if x is larger than y, and false if not. Comparing a value with NaN returns false.",
   examples: ["2 > 3", "5 > 2*2", "a = 3.3", "b = 6-2.8", "(a > b)", "(b < a)", "5 cm > 2 inch"],
   seealso: ["equal", "unequal", "smaller", "smallerEq", "largerEq", "compare"]
 };
@@ -34649,7 +35814,7 @@ var smallerDocs = {
   name: "smaller",
   category: "Relational",
   syntax: ["x < y", "smaller(x, y)"],
-  description: "Check if value x is smaller than value y. Returns true if x is smaller than y, and false if not.",
+  description: "Check if value x is smaller than value y. Returns true if x is smaller than y, and false if not. Comparing a value with NaN returns false.",
   examples: ["2 < 3", "5 < 2*2", "a = 3.3", "b = 6-2.8", "(a < b)", "5 cm < 2 inch"],
   seealso: ["equal", "unequal", "larger", "smallerEq", "largerEq", "compare"]
 };
@@ -34809,7 +35974,7 @@ var zetaDocs = {
   name: "zeta",
   category: "Special",
   syntax: ["zeta(s)"],
-  description: "Compute the Riemann Zeta Function using an infinite series and Riemanns Functional Equation for the entire complex plane",
+  description: "Compute the Riemann Zeta Function using an infinite series and Riemann's Functional Equation for the entire complex plane",
   examples: ["zeta(0.2)", "zeta(-0.5)", "zeta(4)"],
   seealso: []
 };
@@ -34829,7 +35994,7 @@ var maxDocs = {
   name: "max",
   category: "Statistics",
   syntax: ["max(a, b, c, ...)", "max(A)", "max(A, dimension)"],
-  description: "Compute the maximum value of a list of values.",
+  description: "Compute the maximum value of a list of values. If any NaN values are found, the function yields the last NaN in the input.",
   examples: ["max(2, 3, 4, 1)", "max([2, 3, 4, 1])", "max([2, 5; 4, 3])", "max([2, 5; 4, 3], 1)", "max([2, 5; 4, 3], 2)", "max(2.7, 7.1, -4.5, 2.0, 4.1)", "min(2.7, 7.1, -4.5, 2.0, 4.1)"],
   seealso: ["mean", "median", "min", "prod", "std", "sum", "variance"]
 };
@@ -34859,7 +36024,7 @@ var minDocs = {
   name: "min",
   category: "Statistics",
   syntax: ["min(a, b, c, ...)", "min(A)", "min(A, dimension)"],
-  description: "Compute the minimum value of a list of values.",
+  description: "Compute the minimum value of a list of values. If any NaN values are found, the function yields the last NaN in the input.",
   examples: ["min(2, 3, 4, 1)", "min([2, 3, 4, 1])", "min([2, 5; 4, 3])", "min([2, 5; 4, 3], 1)", "min([2, 5; 4, 3], 2)", "min(2.7, 7.1, -4.5, 2.0, 4.1)", "max(2.7, 7.1, -4.5, 2.0, 4.1)"],
   seealso: ["max", "mean", "median", "prod", "std", "sum", "variance"]
 };
@@ -34889,7 +36054,7 @@ var quantileSeqDocs = {
   name: "quantileSeq",
   category: "Statistics",
   syntax: ["quantileSeq(A, prob[, sorted])", "quantileSeq(A, [prob1, prob2, ...][, sorted])", "quantileSeq(A, N[, sorted])"],
-  description: "Compute the prob order quantile of a matrix or a list with values. The sequence is sorted and the middle value is returned. Supported types of sequence values are: Number, BigNumber, Unit Supported types of probablity are: Number, BigNumber. \n\nIn case of a (multi dimensional) array or matrix, the prob order quantile of all elements will be calculated.",
+  description: "Compute the prob order quantile of a matrix or a list with values. The sequence is sorted and the middle value is returned. Supported types of sequence values are: Number, BigNumber, Unit Supported types of probability are: Number, BigNumber. \n\nIn case of a (multi dimensional) array or matrix, the prob order quantile of all elements will be calculated.",
   examples: ["quantileSeq([3, -1, 5, 7], 0.5)", "quantileSeq([3, -1, 5, 7], [1/3, 2/3])", "quantileSeq([3, -1, 5, 7], 2)", "quantileSeq([-1, 3, 5, 7], 0.5, true)"],
   seealso: ["mean", "median", "min", "max", "prod", "std", "sum", "variance"]
 };
@@ -34921,7 +36086,7 @@ var sumDocs = {
   syntax: ["sum(a, b, c, ...)", "sum(A)", "sum(A, dimension)"],
   description: "Compute the sum of all values.",
   examples: ["sum(2, 3, 4, 1)", "sum([2, 3, 4, 1])", "sum([2, 5; 4, 3])"],
-  seealso: ["max", "mean", "median", "min", "prod", "std", "sum", "variance"]
+  seealso: ["max", "mean", "median", "min", "prod", "std", "variance"]
 };
 
 // node_modules/mathjs/lib/esm/expression/embeddedDocs/function/statistics/variance.js
@@ -34979,7 +36144,7 @@ var acothDocs = {
   name: "acoth",
   category: "Trigonometry",
   syntax: ["acoth(x)"],
-  description: "Calculate the hyperbolic arccotangent of a value, defined as `acoth(x) = (ln((x+1)/x) + ln(x/(x-1))) / 2`.",
+  description: "Calculate the inverse hyperbolic tangent of a value, defined as `acoth(x) = (ln((x+1)/x) + ln(x/(x-1))) / 2`.",
   examples: ["acoth(2)", "acoth(0.5)"],
   seealso: ["acsch", "asech"]
 };
@@ -34999,7 +36164,7 @@ var acschDocs = {
   name: "acsch",
   category: "Trigonometry",
   syntax: ["acsch(x)"],
-  description: "Calculate the hyperbolic arccosecant of a value, defined as `acsch(x) = ln(1/x + sqrt(1/x^2 + 1))`.",
+  description: "Calculate the inverse hyperbolic cosecant of a value, defined as `acsch(x) = ln(1/x + sqrt(1/x^2 + 1))`.",
   examples: ["acsch(0.5)"],
   seealso: ["asech", "acoth"]
 };
@@ -35204,6 +36369,16 @@ var toDocs = {
   seealso: []
 };
 
+// node_modules/mathjs/lib/esm/expression/embeddedDocs/function/units/toBest.js
+var toBestDocs = {
+  name: "toBest",
+  category: "Units",
+  syntax: ["toBest(x)", "toBest(x, unitList)", "toBest(x, unitList, options)"],
+  description: "Converts to the most appropriate display unit.",
+  examples: ['toBest(unit(5000, "m"))', 'toBest(unit(3500000, "W"))', 'toBest(unit(0.000000123, "A"))', 'toBest(unit(10, "m"), "cm")', 'toBest(unit(10, "m"), "mm,km", {offset: 1.5})'],
+  seealso: []
+};
+
 // node_modules/mathjs/lib/esm/expression/embeddedDocs/function/utils/bin.js
 var binDocs = {
   name: "bin",
@@ -35219,7 +36394,7 @@ var cloneDocs = {
   name: "clone",
   category: "Utils",
   syntax: ["clone(x)"],
-  description: "Clone a variable. Creates a copy of primitive variables,and a deep copy of matrices",
+  description: "Clone a variable. Creates a copy of primitive variables, and a deep copy of matrices",
   examples: ["clone(3.5)", "clone(2 - 4i)", "clone(45 deg)", "clone([1, 2; 3, 4])", 'clone("hello world")'],
   seealso: []
 };
@@ -35271,7 +36446,27 @@ var isNaNDocs = {
   syntax: ["isNaN(x)"],
   description: "Test whether a value is NaN (not a number)",
   examples: ["isNaN(2)", "isNaN(0 / 0)", "isNaN(NaN)", "isNaN(Infinity)"],
-  seealso: ["isNegative", "isNumeric", "isPositive", "isZero"]
+  seealso: ["isNegative", "isNumeric", "isPositive", "isZero", "isFinite", "isBounded"]
+};
+
+// node_modules/mathjs/lib/esm/expression/embeddedDocs/function/utils/isBounded.js
+var isBoundedDocs = {
+  name: "isBounded",
+  category: "Utils",
+  syntax: ["isBounded(x)"],
+  description: "Test whether a value or its entries are bounded.",
+  examples: ["isBounded(Infinity)", "isBounded(bigint(3))", "isBounded([3, -Infinity, -3])"],
+  seealso: ["isFinite", "isNumeric", "isNaN", "isNegative", "isPositive"]
+};
+
+// node_modules/mathjs/lib/esm/expression/embeddedDocs/function/utils/isFinite.js
+var isFiniteDocs = {
+  name: "isFinite",
+  category: "Utils",
+  syntax: ["isFinite(x)"],
+  description: "Test whether a value is finite, elementwise on collections.",
+  examples: ["isFinite(Infinity)", "isFinite(bigint(3))", "isFinite([3, -Infinity, -3])"],
+  seealso: ["isBounded", "isNumeric", "isNaN", "isNegative", "isPositive"]
 };
 
 // node_modules/mathjs/lib/esm/expression/embeddedDocs/function/utils/isNegative.js
@@ -35291,7 +36486,7 @@ var isNumericDocs = {
   syntax: ["isNumeric(x)"],
   description: "Test whether a value is a numeric value. Returns true when the input is a number, BigNumber, Fraction, or boolean.",
   examples: ["isNumeric(2)", 'isNumeric("2")', 'hasNumericValue("2")', "isNumeric(0)", "isNumeric(bignumber(500))", "isNumeric(fraction(0.125))", "isNumeric(2 + 3i)", 'isNumeric([2.3, "foo", false])'],
-  seealso: ["isInteger", "isZero", "isNegative", "isPositive", "isNaN", "hasNumericValue"]
+  seealso: ["isInteger", "isZero", "isNegative", "isPositive", "isNaN", "hasNumericValue", "isFinite", "isBounded"]
 };
 
 // node_modules/mathjs/lib/esm/expression/embeddedDocs/function/utils/isPositive.js
@@ -35329,9 +36524,9 @@ var numericDocs = {
   name: "numeric",
   category: "Utils",
   syntax: ["numeric(x)"],
-  description: "Convert a numeric input to a specific numeric type: number, BigNumber, or Fraction.",
-  examples: ['numeric("4")', 'numeric("4", "number")', 'numeric("4", "BigNumber")', 'numeric("4", "Fraction")', 'numeric(4, "Fraction")', 'numeric(fraction(2, 5), "number")'],
-  seealso: ["number", "fraction", "bignumber", "string", "format"]
+  description: "Convert a numeric input to a specific numeric type: number, BigNumber, bigint, or Fraction.",
+  examples: ['numeric("4")', 'numeric("4", "number")', 'numeric("4", "bigint")', 'numeric("4", "BigNumber")', 'numeric("4", "Fraction")', 'numeric(4, "Fraction")', 'numeric(fraction(2, 5), "number")'],
+  seealso: ["number", "bigint", "fraction", "bignumber", "string", "format"]
 };
 
 // node_modules/mathjs/lib/esm/expression/embeddedDocs/function/utils/oct.js
@@ -35378,6 +36573,7 @@ var solveODEDocs = {
 var embeddedDocs = {
   // construction functions
   bignumber: bignumberDocs,
+  bigint: bigintDocs,
   boolean: booleanDocs,
   complex: complexDocs,
   createUnit: createUnitDocs,
@@ -35440,15 +36636,19 @@ var embeddedDocs = {
     examples: ["vacuumImpedance"]
   },
   coulomb: {
+    description: "Coulomb's constant. Deprecated in favor of coulombConstant",
+    examples: ["coulombConstant"]
+  },
+  coulombConstant: {
     description: "Coulomb's constant",
-    examples: ["coulomb"]
+    examples: ["coulombConstant"]
   },
   elementaryCharge: {
     description: "Elementary charge",
     examples: ["elementaryCharge"]
   },
   bohrMagneton: {
-    description: "Borh magneton",
+    description: "Bohr magneton",
     examples: ["bohrMagneton"]
   },
   conductanceQuantum: {
@@ -35473,7 +36673,7 @@ var embeddedDocs = {
     examples: ["klitzing"]
   },
   bohrRadius: {
-    description: "Borh radius",
+    description: "Bohr radius",
     examples: ["bohrRadius"]
   },
   classicalElectronRadius: {
@@ -35669,6 +36869,8 @@ var embeddedDocs = {
   unaryPlus: unaryPlusDocs,
   xgcd: xgcdDocs,
   invmod: invmodDocs,
+  num: numDocs,
+  den: denDocs,
   // functions - bitwise
   bitAnd: bitAndDocs,
   bitNot: bitNotDocs,
@@ -35694,15 +36896,20 @@ var embeddedDocs = {
   // functions - expression
   evaluate: evaluateDocs,
   help: helpDocs,
+  parse: parseDocs,
+  parser: parserDocs,
+  compile: compileDocs,
   // functions - geometry
   distance: distanceDocs,
   intersect: intersectDocs,
   // functions - logical
   and: andDocs,
   not: notDocs,
+  nullish: nullishDocs,
   or: orDocs,
   xor: xorDocs,
   // functions - matrix
+  mapSlices: mapSlicesDocs,
   concat: concatDocs,
   count: countDocs,
   cross: crossDocs,
@@ -35748,6 +36955,7 @@ var embeddedDocs = {
   // functions - numeric
   solveODE: solveODEDocs,
   // functions - probability
+  bernoulli: bernoulliDocs,
   combinations: combinationsDocs,
   combinationsWithRep: combinationsWithRepDocs,
   // distribution: distributionDocs,
@@ -35831,6 +37039,7 @@ var embeddedDocs = {
   tanh: tanhDocs,
   // functions - units
   to: toDocs,
+  toBest: toBestDocs,
   // functions - utils
   clone: cloneDocs,
   format: formatDocs,
@@ -35838,6 +37047,8 @@ var embeddedDocs = {
   oct: octDocs,
   hex: hexDocs,
   isNaN: isNaNDocs,
+  isBounded: isBoundedDocs,
+  isFinite: isFiniteDocs,
   isInteger: isIntegerDocs,
   isNegative: isNegativeDocs,
   isNumeric: isNumericDocs,
@@ -35851,15 +37062,15 @@ var embeddedDocs = {
 };
 
 // node_modules/mathjs/lib/esm/expression/function/help.js
-var name239 = "help";
-var dependencies239 = ["typed", "mathWithTransform", "Help"];
-var createHelp = /* @__PURE__ */ factory(name239, dependencies239, (_ref) => {
+var name243 = "help";
+var dependencies244 = ["typed", "mathWithTransform", "Help"];
+var createHelp = /* @__PURE__ */ factory(name243, dependencies244, (_ref) => {
   var {
     typed: typed2,
     mathWithTransform,
     Help
   } = _ref;
-  return typed2(name239, {
+  return typed2(name243, {
     any: function any(search) {
       var prop;
       var searchName = search;
@@ -35882,14 +37093,14 @@ var createHelp = /* @__PURE__ */ factory(name239, dependencies239, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/type/chain/function/chain.js
-var name240 = "chain";
-var dependencies240 = ["typed", "Chain"];
-var createChain = /* @__PURE__ */ factory(name240, dependencies240, (_ref) => {
+var name244 = "chain";
+var dependencies245 = ["typed", "Chain"];
+var createChain = /* @__PURE__ */ factory(name244, dependencies245, (_ref) => {
   var {
     typed: typed2,
     Chain
   } = _ref;
-  return typed2(name240, {
+  return typed2(name244, {
     "": function _() {
       return new Chain();
     },
@@ -35900,9 +37111,9 @@ var createChain = /* @__PURE__ */ factory(name240, dependencies240, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/det.js
-var name241 = "det";
-var dependencies241 = ["typed", "matrix", "subtractScalar", "multiply", "divideScalar", "isZero", "unaryMinus"];
-var createDet = /* @__PURE__ */ factory(name241, dependencies241, (_ref) => {
+var name245 = "det";
+var dependencies246 = ["typed", "matrix", "subtractScalar", "multiply", "divideScalar", "isZero", "unaryMinus"];
+var createDet = /* @__PURE__ */ factory(name245, dependencies246, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -35912,7 +37123,7 @@ var createDet = /* @__PURE__ */ factory(name241, dependencies241, (_ref) => {
     isZero,
     unaryMinus
   } = _ref;
-  return typed2(name241, {
+  return typed2(name245, {
     any: function any(x) {
       return clone(x);
     },
@@ -35994,9 +37205,9 @@ var createDet = /* @__PURE__ */ factory(name241, dependencies241, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/inv.js
-var name242 = "inv";
-var dependencies242 = ["typed", "matrix", "divideScalar", "addScalar", "multiply", "unaryMinus", "det", "identity", "abs"];
-var createInv = /* @__PURE__ */ factory(name242, dependencies242, (_ref) => {
+var name246 = "inv";
+var dependencies247 = ["typed", "matrix", "divideScalar", "addScalar", "multiply", "unaryMinus", "det", "identity", "abs"];
+var createInv = /* @__PURE__ */ factory(name246, dependencies247, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -36008,8 +37219,8 @@ var createInv = /* @__PURE__ */ factory(name242, dependencies242, (_ref) => {
     identity,
     abs: abs2
   } = _ref;
-  return typed2(name242, {
-    "Array | Matrix": function ArrayMatrix(x) {
+  return typed2(name246, {
+    "Array | Matrix": function Array__Matrix(x) {
       var size = isMatrix(x) ? x.size() : arraySize(x);
       switch (size.length) {
         case 1:
@@ -36118,9 +37329,9 @@ var createInv = /* @__PURE__ */ factory(name242, dependencies242, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/pinv.js
-var name243 = "pinv";
-var dependencies243 = ["typed", "matrix", "inv", "deepEqual", "equal", "dotDivide", "dot", "ctranspose", "divideScalar", "multiply", "add", "Complex"];
-var createPinv = /* @__PURE__ */ factory(name243, dependencies243, (_ref) => {
+var name247 = "pinv";
+var dependencies248 = ["typed", "matrix", "inv", "deepEqual", "equal", "dotDivide", "dot", "ctranspose", "divideScalar", "multiply", "add", "Complex"];
+var createPinv = /* @__PURE__ */ factory(name247, dependencies248, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -36135,8 +37346,8 @@ var createPinv = /* @__PURE__ */ factory(name243, dependencies243, (_ref) => {
     add: add2,
     Complex: Complex2
   } = _ref;
-  return typed2(name243, {
-    "Array | Matrix": function ArrayMatrix(x) {
+  return typed2(name247, {
+    "Array | Matrix": function Array__Matrix(x) {
       var size = isMatrix(x) ? x.size() : arraySize(x);
       switch (size.length) {
         case 1:
@@ -36663,7 +37874,7 @@ function createRealSymmetric(_ref) {
     add: add2
   } = _ref;
   function main(arr, N) {
-    var prec = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : config2.epsilon;
+    var prec = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : config2.relTol;
     var type = arguments.length > 3 ? arguments[3] : void 0;
     var computeVectors = arguments.length > 4 ? arguments[4] : void 0;
     if (type === "number") {
@@ -36730,7 +37941,7 @@ function createRealSymmetric(_ref) {
   }
   function getTheta(aii, ajj, aij) {
     var denom = ajj - aii;
-    if (Math.abs(denom) <= config2.epsilon) {
+    if (Math.abs(denom) <= config2.relTol) {
       return Math.PI / 4;
     } else {
       return 0.5 * Math.atan(2 * aij / (ajj - aii));
@@ -36738,7 +37949,7 @@ function createRealSymmetric(_ref) {
   }
   function getThetaBig(aii, ajj, aij) {
     var denom = subtract(ajj, aii);
-    if (abs2(denom) <= config2.epsilon) {
+    if (abs2(denom) <= config2.relTol) {
       return bignumber(-1).acos().div(4);
     } else {
       return multiplyScalar(0.5, atan3(multiply(2, aij, inv(denom))));
@@ -36904,9 +38115,9 @@ function createRealSymmetric(_ref) {
 }
 
 // node_modules/mathjs/lib/esm/function/matrix/eigs.js
-var name244 = "eigs";
-var dependencies244 = ["config", "typed", "matrix", "addScalar", "equal", "subtract", "abs", "atan", "cos", "sin", "multiplyScalar", "divideScalar", "inv", "bignumber", "multiply", "add", "larger", "column", "flatten", "number", "complex", "sqrt", "diag", "size", "reshape", "qr", "usolve", "usolveAll", "im", "re", "smaller", "matrixFromColumns", "dot"];
-var createEigs = /* @__PURE__ */ factory(name244, dependencies244, (_ref) => {
+var name248 = "eigs";
+var dependencies249 = ["config", "typed", "matrix", "addScalar", "equal", "subtract", "abs", "atan", "cos", "sin", "multiplyScalar", "divideScalar", "inv", "bignumber", "multiply", "add", "larger", "column", "flatten", "number", "complex", "sqrt", "diag", "size", "reshape", "qr", "usolve", "usolveAll", "im", "re", "smaller", "matrixFromColumns", "dot"];
+var createEigs = /* @__PURE__ */ factory(name248, dependencies249, (_ref) => {
   var {
     config: config2,
     typed: typed2,
@@ -36995,7 +38206,7 @@ var createEigs = /* @__PURE__ */ factory(name244, dependencies244, (_ref) => {
     Array: function Array2(x) {
       return doEigs(matrix(x));
     },
-    "Array, number|BigNumber": function ArrayNumberBigNumber(x, prec) {
+    "Array, number|BigNumber": function Array_numberBigNumber(x, prec) {
       return doEigs(matrix(x), {
         precision: prec
       });
@@ -37008,13 +38219,13 @@ var createEigs = /* @__PURE__ */ factory(name244, dependencies244, (_ref) => {
         matricize: true
       });
     },
-    "Matrix, number|BigNumber": function MatrixNumberBigNumber(mat, prec) {
+    "Matrix, number|BigNumber": function Matrix_numberBigNumber(mat, prec) {
       return doEigs(mat, {
         precision: prec,
         matricize: true
       });
     },
-    "Matrix, Object": function MatrixObject(mat, opts) {
+    "Matrix, Object": function Matrix_Object(mat, opts) {
       var useOpts = {
         matricize: true
       };
@@ -37026,7 +38237,7 @@ var createEigs = /* @__PURE__ */ factory(name244, dependencies244, (_ref) => {
     var _opts$precision;
     var opts = arguments.length > 1 && arguments[1] !== void 0 ? arguments[1] : {};
     var computeVectors = "eigenvectors" in opts ? opts.eigenvectors : true;
-    var prec = (_opts$precision = opts.precision) !== null && _opts$precision !== void 0 ? _opts$precision : config2.epsilon;
+    var prec = (_opts$precision = opts.precision) !== null && _opts$precision !== void 0 ? _opts$precision : config2.relTol;
     var result = computeValuesAndVectors(mat, prec, computeVectors);
     if (opts.matricize) {
       result.values = matrix(result.values);
@@ -37154,9 +38365,9 @@ var createEigs = /* @__PURE__ */ factory(name244, dependencies244, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/expm.js
-var name245 = "expm";
-var dependencies245 = ["typed", "abs", "add", "identity", "inv", "multiply"];
-var createExpm = /* @__PURE__ */ factory(name245, dependencies245, (_ref) => {
+var name249 = "expm";
+var dependencies250 = ["typed", "abs", "add", "identity", "inv", "multiply"];
+var createExpm = /* @__PURE__ */ factory(name249, dependencies250, (_ref) => {
   var {
     typed: typed2,
     abs: abs2,
@@ -37165,7 +38376,7 @@ var createExpm = /* @__PURE__ */ factory(name245, dependencies245, (_ref) => {
     inv,
     multiply
   } = _ref;
-  return typed2(name245, {
+  return typed2(name249, {
     Matrix: function Matrix(A) {
       var size = A.size();
       if (size.length !== 2 || size[0] !== size[1]) {
@@ -37241,9 +38452,9 @@ var createExpm = /* @__PURE__ */ factory(name245, dependencies245, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/matrix/sqrtm.js
-var name246 = "sqrtm";
-var dependencies246 = ["typed", "abs", "add", "multiply", "map", "sqrt", "subtract", "inv", "size", "max", "identity"];
-var createSqrtm = /* @__PURE__ */ factory(name246, dependencies246, (_ref) => {
+var name250 = "sqrtm";
+var dependencies251 = ["typed", "abs", "add", "multiply", "map", "sqrt", "subtract", "inv", "size", "max", "identity"];
+var createSqrtm = /* @__PURE__ */ factory(name250, dependencies251, (_ref) => {
   var {
     typed: typed2,
     abs: abs2,
@@ -37275,8 +38486,8 @@ var createSqrtm = /* @__PURE__ */ factory(name246, dependencies246, (_ref) => {
     } while (error > _tolerance);
     return Y;
   }
-  return typed2(name246, {
-    "Array | Matrix": function ArrayMatrix(A) {
+  return typed2(name250, {
+    "Array | Matrix": function Array__Matrix(A) {
       var size2 = isMatrix(A) ? A.size() : arraySize(A);
       switch (size2.length) {
         case 1:
@@ -37302,9 +38513,9 @@ var createSqrtm = /* @__PURE__ */ factory(name246, dependencies246, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/sylvester.js
-var name247 = "sylvester";
-var dependencies247 = ["typed", "schur", "matrixFromColumns", "matrix", "multiply", "range", "concat", "transpose", "index", "subset", "add", "subtract", "identity", "lusolve", "abs"];
-var createSylvester = /* @__PURE__ */ factory(name247, dependencies247, (_ref) => {
+var name251 = "sylvester";
+var dependencies252 = ["typed", "schur", "matrixFromColumns", "matrix", "multiply", "range", "concat", "transpose", "index", "subset", "add", "subtract", "identity", "lusolve", "abs"];
+var createSylvester = /* @__PURE__ */ factory(name251, dependencies252, (_ref) => {
   var {
     typed: typed2,
     schur,
@@ -37320,29 +38531,30 @@ var createSylvester = /* @__PURE__ */ factory(name247, dependencies247, (_ref) =
     subtract,
     identity,
     lusolve,
-    abs: abs2
+    abs: abs2,
+    config: config2
   } = _ref;
-  return typed2(name247, {
+  return typed2(name251, {
     "Matrix, Matrix, Matrix": _sylvester,
-    "Array, Matrix, Matrix": function ArrayMatrixMatrix(A, B, C) {
+    "Array, Matrix, Matrix": function Array_Matrix_Matrix(A, B, C) {
       return _sylvester(matrix(A), B, C);
     },
-    "Array, Array, Matrix": function ArrayArrayMatrix(A, B, C) {
+    "Array, Array, Matrix": function Array_Array_Matrix(A, B, C) {
       return _sylvester(matrix(A), matrix(B), C);
     },
-    "Array, Matrix, Array": function ArrayMatrixArray(A, B, C) {
+    "Array, Matrix, Array": function Array_Matrix_Array(A, B, C) {
       return _sylvester(matrix(A), B, matrix(C));
     },
-    "Matrix, Array, Matrix": function MatrixArrayMatrix(A, B, C) {
+    "Matrix, Array, Matrix": function Matrix_Array_Matrix(A, B, C) {
       return _sylvester(A, matrix(B), C);
     },
-    "Matrix, Array, Array": function MatrixArrayArray(A, B, C) {
+    "Matrix, Array, Array": function Matrix_Array_Array(A, B, C) {
       return _sylvester(A, matrix(B), matrix(C));
     },
-    "Matrix, Matrix, Array": function MatrixMatrixArray(A, B, C) {
+    "Matrix, Matrix, Array": function Matrix_Matrix_Array(A, B, C) {
       return _sylvester(A, B, matrix(C));
     },
-    "Array, Array, Array": function ArrayArrayArray(A, B, C) {
+    "Array, Array, Array": function Array_Array_Array(A, B, C) {
       return _sylvester(matrix(A), matrix(B), matrix(C)).toArray();
     }
   });
@@ -37362,7 +38574,7 @@ var createSylvester = /* @__PURE__ */ factory(name247, dependencies247, (_ref) =
     var vc = (a, b) => concat2(a, b, 0);
     for (var k = 0; k < n; k++) {
       if (k < n - 1 && abs2(subset(G, index(k + 1, k))) > 1e-5) {
-        var RHS = vc(subset(D, index(all2, k)), subset(D, index(all2, k + 1)));
+        var RHS = vc(subset(D, index(all2, [k])), subset(D, index(all2, [k + 1])));
         for (var j = 0; j < k; j++) {
           RHS = add2(RHS, vc(multiply(y[j], subset(G, index(j, k))), multiply(y[j], subset(G, index(j, k + 1)))));
         }
@@ -37372,11 +38584,11 @@ var createSylvester = /* @__PURE__ */ factory(name247, dependencies247, (_ref) =
         var gmm = multiply(identity(m), multiply(-1, subset(G, index(k + 1, k + 1))));
         var LHS = vc(hc(add2(F, gkk), gmk), hc(gkm, add2(F, gmm)));
         var yAux = lusolve(LHS, RHS);
-        y[k] = yAux.subset(index(range(0, m), 0));
-        y[k + 1] = yAux.subset(index(range(m, 2 * m), 0));
+        y[k] = yAux.subset(index(range(0, m), [0]));
+        y[k + 1] = yAux.subset(index(range(m, 2 * m), [0]));
         k++;
       } else {
-        var _RHS = subset(D, index(all2, k));
+        var _RHS = subset(D, index(all2, [k]));
         for (var _j = 0; _j < k; _j++) {
           _RHS = add2(_RHS, multiply(y[_j], subset(G, index(_j, k))));
         }
@@ -37392,9 +38604,9 @@ var createSylvester = /* @__PURE__ */ factory(name247, dependencies247, (_ref) =
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/decomposition/schur.js
-var name248 = "schur";
-var dependencies248 = ["typed", "matrix", "identity", "multiply", "qr", "norm", "subtract"];
-var createSchur = /* @__PURE__ */ factory(name248, dependencies248, (_ref) => {
+var name252 = "schur";
+var dependencies253 = ["typed", "matrix", "identity", "multiply", "qr", "norm", "subtract"];
+var createSchur = /* @__PURE__ */ factory(name252, dependencies253, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -37404,7 +38616,7 @@ var createSchur = /* @__PURE__ */ factory(name248, dependencies248, (_ref) => {
     norm,
     subtract
   } = _ref;
-  return typed2(name248, {
+  return typed2(name252, {
     Array: function Array2(X) {
       var r = _schur(matrix(X));
       return {
@@ -37441,9 +38653,9 @@ var createSchur = /* @__PURE__ */ factory(name248, dependencies248, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/lyap.js
-var name249 = "lyap";
-var dependencies249 = ["typed", "matrix", "sylvester", "multiply", "transpose"];
-var createLyap = /* @__PURE__ */ factory(name249, dependencies249, (_ref) => {
+var name253 = "lyap";
+var dependencies254 = ["typed", "matrix", "sylvester", "multiply", "transpose"];
+var createLyap = /* @__PURE__ */ factory(name253, dependencies254, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -37451,26 +38663,26 @@ var createLyap = /* @__PURE__ */ factory(name249, dependencies249, (_ref) => {
     multiply,
     transpose
   } = _ref;
-  return typed2(name249, {
-    "Matrix, Matrix": function MatrixMatrix(A, Q2) {
+  return typed2(name253, {
+    "Matrix, Matrix": function Matrix_Matrix(A, Q2) {
       return sylvester(A, transpose(A), multiply(-1, Q2));
     },
-    "Array, Matrix": function ArrayMatrix(A, Q2) {
+    "Array, Matrix": function Array_Matrix(A, Q2) {
       return sylvester(matrix(A), transpose(matrix(A)), multiply(-1, Q2));
     },
-    "Matrix, Array": function MatrixArray(A, Q2) {
+    "Matrix, Array": function Matrix_Array(A, Q2) {
       return sylvester(A, transpose(matrix(A)), matrix(multiply(-1, Q2)));
     },
-    "Array, Array": function ArrayArray(A, Q2) {
+    "Array, Array": function Array_Array(A, Q2) {
       return sylvester(matrix(A), transpose(matrix(A)), matrix(multiply(-1, Q2))).toArray();
     }
   });
 });
 
 // node_modules/mathjs/lib/esm/function/arithmetic/divide.js
-var name250 = "divide";
-var dependencies250 = ["typed", "matrix", "multiply", "equalScalar", "divideScalar", "inv"];
-var createDivide = /* @__PURE__ */ factory(name250, dependencies250, (_ref) => {
+var name254 = "divide";
+var dependencies255 = ["typed", "matrix", "multiply", "equalScalar", "divideScalar", "inv"];
+var createDivide = /* @__PURE__ */ factory(name254, dependencies255, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -37488,28 +38700,28 @@ var createDivide = /* @__PURE__ */ factory(name250, dependencies250, (_ref) => {
   });
   return typed2("divide", extend({
     // we extend the signatures of divideScalar with signatures dealing with matrices
-    "Array | Matrix, Array | Matrix": function ArrayMatrixArrayMatrix(x, y) {
+    "Array | Matrix, Array | Matrix": function Array__Matrix_Array__Matrix(x, y) {
       return multiply(x, inv(y));
     },
-    "DenseMatrix, any": function DenseMatrixAny(x, y) {
+    "DenseMatrix, any": function DenseMatrix_any(x, y) {
       return matAlgo14xDs(x, y, divideScalar, false);
     },
-    "SparseMatrix, any": function SparseMatrixAny(x, y) {
+    "SparseMatrix, any": function SparseMatrix_any(x, y) {
       return matAlgo11xS0s(x, y, divideScalar, false);
     },
-    "Array, any": function ArrayAny(x, y) {
+    "Array, any": function Array_any(x, y) {
       return matAlgo14xDs(matrix(x), y, divideScalar, false).valueOf();
     },
-    "any, Array | Matrix": function anyArrayMatrix(x, y) {
+    "any, Array | Matrix": function any_Array__Matrix(x, y) {
       return multiply(x, inv(y));
     }
   }, divideScalar.signatures));
 });
 
 // node_modules/mathjs/lib/esm/function/geometry/distance.js
-var name251 = "distance";
-var dependencies251 = ["typed", "addScalar", "subtractScalar", "divideScalar", "multiplyScalar", "deepEqual", "sqrt", "abs"];
-var createDistance = /* @__PURE__ */ factory(name251, dependencies251, (_ref) => {
+var name255 = "distance";
+var dependencies256 = ["typed", "addScalar", "subtractScalar", "divideScalar", "multiplyScalar", "deepEqual", "sqrt", "abs"];
+var createDistance = /* @__PURE__ */ factory(name255, dependencies256, (_ref) => {
   var {
     typed: typed2,
     addScalar,
@@ -37520,8 +38732,8 @@ var createDistance = /* @__PURE__ */ factory(name251, dependencies251, (_ref) =>
     sqrt: sqrt2,
     abs: abs2
   } = _ref;
-  return typed2(name251, {
-    "Array, Array, Array": function ArrayArrayArray(x, y, z) {
+  return typed2(name255, {
+    "Array, Array, Array": function Array_Array_Array(x, y, z) {
       if (x.length === 2 && y.length === 2 && z.length === 2) {
         if (!_2d(x)) {
           throw new TypeError("Array with 2 numbers or BigNumbers expected for first argument");
@@ -37543,7 +38755,7 @@ var createDistance = /* @__PURE__ */ factory(name251, dependencies251, (_ref) =>
         throw new TypeError("Invalid Arguments: Try again");
       }
     },
-    "Object, Object, Object": function ObjectObjectObject(x, y, z) {
+    "Object, Object, Object": function Object_Object_Object(x, y, z) {
       if (Object.keys(x).length === 2 && Object.keys(y).length === 2 && Object.keys(z).length === 2) {
         if (!_2d(x)) {
           throw new TypeError("Values of pointX and pointY should be numbers or BigNumbers");
@@ -37569,7 +38781,7 @@ var createDistance = /* @__PURE__ */ factory(name251, dependencies251, (_ref) =>
         throw new TypeError("Invalid Arguments: Try again");
       }
     },
-    "Array, Array": function ArrayArray(x, y) {
+    "Array, Array": function Array_Array(x, y) {
       if (x.length === 2 && y.length === 3) {
         if (!_2d(x)) {
           throw new TypeError("Array with 2 numbers or BigNumbers expected for first argument");
@@ -37598,7 +38810,7 @@ var createDistance = /* @__PURE__ */ factory(name251, dependencies251, (_ref) =>
         throw new TypeError("Invalid Arguments: Try again");
       }
     },
-    "Object, Object": function ObjectObject(x, y) {
+    "Object, Object": function Object_Object(x, y) {
       if (Object.keys(x).length === 2 && Object.keys(y).length === 3) {
         if (!_2d(x)) {
           throw new TypeError("Values of pointX and pointY should be numbers or BigNumbers");
@@ -37749,9 +38961,9 @@ var createDistance = /* @__PURE__ */ factory(name251, dependencies251, (_ref) =>
 });
 
 // node_modules/mathjs/lib/esm/function/geometry/intersect.js
-var name252 = "intersect";
-var dependencies252 = ["typed", "config", "abs", "add", "addScalar", "matrix", "multiply", "multiplyScalar", "divideScalar", "subtract", "smaller", "equalScalar", "flatten", "isZero", "isNumeric"];
-var createIntersect = /* @__PURE__ */ factory(name252, dependencies252, (_ref) => {
+var name256 = "intersect";
+var dependencies257 = ["typed", "config", "abs", "add", "addScalar", "matrix", "multiply", "multiplyScalar", "divideScalar", "subtract", "smaller", "equalScalar", "flatten", "isZero", "isNumeric"];
+var createIntersect = /* @__PURE__ */ factory(name256, dependencies257, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -37772,11 +38984,11 @@ var createIntersect = /* @__PURE__ */ factory(name252, dependencies252, (_ref) =
   return typed2("intersect", {
     "Array, Array, Array": _AAA,
     "Array, Array, Array, Array": _AAAA,
-    "Matrix, Matrix, Matrix": function MatrixMatrixMatrix(x, y, plane) {
+    "Matrix, Matrix, Matrix": function Matrix_Matrix_Matrix(x, y, plane) {
       var arr = _AAA(x.valueOf(), y.valueOf(), plane.valueOf());
       return arr === null ? null : matrix(arr);
     },
-    "Matrix, Matrix, Matrix, Matrix": function MatrixMatrixMatrixMatrix(w, x, y, z) {
+    "Matrix, Matrix, Matrix, Matrix": function Matrix_Matrix_Matrix_Matrix(w, x, y, z) {
       var arr = _AAAA(w.valueOf(), x.valueOf(), y.valueOf(), z.valueOf());
       return arr === null ? null : matrix(arr);
     }
@@ -37856,7 +39068,7 @@ var createIntersect = /* @__PURE__ */ factory(name252, dependencies252, (_ref) =
     var d2 = subtract(o2, p2b);
     var det = subtract(multiplyScalar(d1[0], d2[1]), multiplyScalar(d2[0], d1[1]));
     if (isZero(det)) return null;
-    if (smaller(abs2(det), config2.epsilon)) {
+    if (smaller(abs2(det), config2.relTol)) {
       return null;
     }
     var d20o11 = multiplyScalar(d2[0], o1[1]);
@@ -37913,16 +39125,16 @@ var createIntersect = /* @__PURE__ */ factory(name252, dependencies252, (_ref) =
 });
 
 // node_modules/mathjs/lib/esm/function/statistics/sum.js
-var name253 = "sum";
-var dependencies253 = ["typed", "config", "add", "numeric"];
-var createSum = /* @__PURE__ */ factory(name253, dependencies253, (_ref) => {
+var name257 = "sum";
+var dependencies258 = ["typed", "config", "add", "numeric"];
+var createSum = /* @__PURE__ */ factory(name257, dependencies258, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     add: add2,
     numeric: numeric2
   } = _ref;
-  return typed2(name253, {
+  return typed2(name257, {
     // sum([a, b, c, d, ...])
     "Array | Matrix": _sum,
     // sum([a, b, c, d, ...], dim)
@@ -37937,7 +39149,7 @@ var createSum = /* @__PURE__ */ factory(name253, dependencies253, (_ref) => {
   });
   function _sum(array) {
     var sum2;
-    deepForEach(array, function(value) {
+    deepForEach2(array, function(value) {
       try {
         sum2 = sum2 === void 0 ? value : add2(sum2, value);
       } catch (err) {
@@ -37948,7 +39160,7 @@ var createSum = /* @__PURE__ */ factory(name253, dependencies253, (_ref) => {
       sum2 = numeric2(0, config2.number);
     }
     if (typeof sum2 === "string") {
-      sum2 = numeric2(sum2, config2.number);
+      sum2 = numeric2(sum2, safeNumberType(sum2, config2));
     }
     return sum2;
   }
@@ -37963,24 +39175,24 @@ var createSum = /* @__PURE__ */ factory(name253, dependencies253, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/statistics/cumsum.js
-var name254 = "cumsum";
-var dependencies254 = ["typed", "add", "unaryPlus"];
-var createCumSum = /* @__PURE__ */ factory(name254, dependencies254, (_ref) => {
+var name258 = "cumsum";
+var dependencies259 = ["typed", "add", "unaryPlus"];
+var createCumSum = /* @__PURE__ */ factory(name258, dependencies259, (_ref) => {
   var {
     typed: typed2,
     add: add2,
     unaryPlus
   } = _ref;
-  return typed2(name254, {
+  return typed2(name258, {
     // sum([a, b, c, d, ...])
     Array: _cumsum,
     Matrix: function Matrix(matrix) {
-      return matrix.create(_cumsum(matrix.valueOf()));
+      return matrix.create(_cumsum(matrix.valueOf(), matrix.datatype()));
     },
     // sum([a, b, c, d, ...], dim)
     "Array, number | BigNumber": _ncumSumDim,
-    "Matrix, number | BigNumber": function MatrixNumberBigNumber(matrix, dim) {
-      return matrix.create(_ncumSumDim(matrix.valueOf(), dim));
+    "Matrix, number | BigNumber": function Matrix_number__BigNumber(matrix, dim) {
+      return matrix.create(_ncumSumDim(matrix.valueOf(), dim), matrix.datatype());
     },
     // cumsum(a, b, c, d, ...)
     "...": function _(args) {
@@ -37994,7 +39206,7 @@ var createCumSum = /* @__PURE__ */ factory(name254, dependencies254, (_ref) => {
     try {
       return _cumsummap(array);
     } catch (err) {
-      throw improveErrorMessage(err, name254);
+      throw improveErrorMessage(err, name258);
     }
   }
   function _cumsummap(array) {
@@ -38015,7 +39227,7 @@ var createCumSum = /* @__PURE__ */ factory(name254, dependencies254, (_ref) => {
     try {
       return _cumsumDimensional(array, dim);
     } catch (err) {
-      throw improveErrorMessage(err, name254);
+      throw improveErrorMessage(err, name258);
     }
   }
   function _cumsumDimensional(mat, dim) {
@@ -38043,15 +39255,15 @@ var createCumSum = /* @__PURE__ */ factory(name254, dependencies254, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/statistics/mean.js
-var name255 = "mean";
-var dependencies255 = ["typed", "add", "divide"];
-var createMean = /* @__PURE__ */ factory(name255, dependencies255, (_ref) => {
+var name259 = "mean";
+var dependencies260 = ["typed", "add", "divide"];
+var createMean = /* @__PURE__ */ factory(name259, dependencies260, (_ref) => {
   var {
     typed: typed2,
     add: add2,
     divide: divide2
   } = _ref;
-  return typed2(name255, {
+  return typed2(name259, {
     // mean([a, b, c, d, ...])
     "Array | Matrix": _mean,
     // mean([a, b, c, d, ...], dim)
@@ -38076,7 +39288,7 @@ var createMean = /* @__PURE__ */ factory(name255, dependencies255, (_ref) => {
   function _mean(array) {
     var sum2;
     var num = 0;
-    deepForEach(array, function(value) {
+    deepForEach2(array, function(value) {
       try {
         sum2 = sum2 === void 0 ? value : add2(sum2, value);
         num++;
@@ -38092,9 +39304,9 @@ var createMean = /* @__PURE__ */ factory(name255, dependencies255, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/statistics/median.js
-var name256 = "median";
-var dependencies256 = ["typed", "add", "divide", "compare", "partitionSelect"];
-var createMedian = /* @__PURE__ */ factory(name256, dependencies256, (_ref) => {
+var name260 = "median";
+var dependencies261 = ["typed", "add", "divide", "compare", "partitionSelect"];
+var createMedian = /* @__PURE__ */ factory(name260, dependencies261, (_ref) => {
   var {
     typed: typed2,
     add: add2,
@@ -38128,20 +39340,20 @@ var createMedian = /* @__PURE__ */ factory(name256, dependencies256, (_ref) => {
     }
   }
   var middle = typed2({
-    "number | BigNumber | Complex | Unit": function numberBigNumberComplexUnit(value) {
+    "number | BigNumber | Complex | Unit": function number__BigNumber__Complex__Unit(value) {
       return value;
     }
   });
   var middle2 = typed2({
-    "number | BigNumber | Complex | Unit, number | BigNumber | Complex | Unit": function numberBigNumberComplexUnitNumberBigNumberComplexUnit(left, right) {
+    "number | BigNumber | Complex | Unit, number | BigNumber | Complex | Unit": function number__BigNumber__Complex__Unit_number__BigNumber__Complex__Unit(left, right) {
       return divide2(add2(left, right), 2);
     }
   });
-  return typed2(name256, {
+  return typed2(name260, {
     // median([a, b, c, d, ...])
     "Array | Matrix": _median,
     // median([a, b, c, d, ...], dim)
-    "Array | Matrix, number | BigNumber": function ArrayMatrixNumberBigNumber(array, dim) {
+    "Array | Matrix, number | BigNumber": function Array__Matrix_number__BigNumber(array, dim) {
       throw new Error("median(A, dim) is not yet supported");
     },
     // median(a, b, c, d, ...)
@@ -38155,9 +39367,9 @@ var createMedian = /* @__PURE__ */ factory(name256, dependencies256, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/statistics/mad.js
-var name257 = "mad";
-var dependencies257 = ["typed", "abs", "map", "median", "subtract"];
-var createMad = /* @__PURE__ */ factory(name257, dependencies257, (_ref) => {
+var name261 = "mad";
+var dependencies262 = ["typed", "abs", "map", "median", "subtract"];
+var createMad = /* @__PURE__ */ factory(name261, dependencies262, (_ref) => {
   var {
     typed: typed2,
     abs: abs2,
@@ -38165,7 +39377,7 @@ var createMad = /* @__PURE__ */ factory(name257, dependencies257, (_ref) => {
     median,
     subtract
   } = _ref;
-  return typed2(name257, {
+  return typed2(name261, {
     // mad([a, b, c, d, ...])
     "Array | Matrix": _mad,
     // mad(a, b, c, d, ...)
@@ -38195,27 +39407,27 @@ var createMad = /* @__PURE__ */ factory(name257, dependencies257, (_ref) => {
 
 // node_modules/mathjs/lib/esm/function/statistics/variance.js
 var DEFAULT_NORMALIZATION = "unbiased";
-var name258 = "variance";
-var dependencies258 = ["typed", "add", "subtract", "multiply", "divide", "apply", "isNaN"];
-var createVariance = /* @__PURE__ */ factory(name258, dependencies258, (_ref) => {
+var name262 = "variance";
+var dependencies263 = ["typed", "add", "subtract", "multiply", "divide", "mapSlices", "isNaN"];
+var createVariance = /* @__PURE__ */ factory(name262, dependencies263, (_ref) => {
   var {
     typed: typed2,
     add: add2,
     subtract,
     multiply,
     divide: divide2,
-    apply,
-    isNaN: isNaN2
+    mapSlices,
+    isNaN: mathIsNaN
   } = _ref;
-  return typed2(name258, {
+  return typed2(name262, {
     // variance([a, b, c, d, ...])
-    "Array | Matrix": function ArrayMatrix(array) {
+    "Array | Matrix": function Array__Matrix(array) {
       return _var(array, DEFAULT_NORMALIZATION);
     },
     // variance([a, b, c, d, ...], normalization)
     "Array | Matrix, string": _var,
     // variance([a, b, c, c, ...], dim)
-    "Array | Matrix, number | BigNumber": function ArrayMatrixNumberBigNumber(array, dim) {
+    "Array | Matrix, number | BigNumber": function Array__Matrix_number__BigNumber(array, dim) {
       return _varDim(array, dim, DEFAULT_NORMALIZATION);
     },
     // variance([a, b, c, c, ...], dim, normalization)
@@ -38231,7 +39443,7 @@ var createVariance = /* @__PURE__ */ factory(name258, dependencies258, (_ref) =>
     if (array.length === 0) {
       throw new SyntaxError("Function variance requires one or more parameters (0 provided)");
     }
-    deepForEach(array, function(value) {
+    deepForEach2(array, function(value) {
       try {
         sum2 = sum2 === void 0 ? value : add2(sum2, value);
         num++;
@@ -38242,11 +39454,11 @@ var createVariance = /* @__PURE__ */ factory(name258, dependencies258, (_ref) =>
     if (num === 0) throw new Error("Cannot calculate variance of an empty array");
     var mean = divide2(sum2, num);
     sum2 = void 0;
-    deepForEach(array, function(value) {
+    deepForEach2(array, function(value) {
       var diff = subtract(value, mean);
       sum2 = sum2 === void 0 ? multiply(diff, diff) : add2(sum2, multiply(diff, diff));
     });
-    if (isNaN2(sum2)) {
+    if (mathIsNaN(sum2)) {
       return sum2;
     }
     switch (normalization) {
@@ -38267,7 +39479,7 @@ var createVariance = /* @__PURE__ */ factory(name258, dependencies258, (_ref) =>
       if (array.length === 0) {
         throw new SyntaxError("Function variance requires one or more parameters (0 provided)");
       }
-      return apply(array, dim, (x) => _var(x, normalization));
+      return mapSlices(array, dim, (x) => _var(x, normalization));
     } catch (err) {
       throw improveErrorMessage(err, "variance");
     }
@@ -38275,9 +39487,9 @@ var createVariance = /* @__PURE__ */ factory(name258, dependencies258, (_ref) =>
 });
 
 // node_modules/mathjs/lib/esm/function/statistics/quantileSeq.js
-var name259 = "quantileSeq";
-var dependencies259 = ["typed", "?bignumber", "add", "subtract", "divide", "multiply", "partitionSelect", "compare", "isInteger", "smaller", "smallerEq", "larger"];
-var createQuantileSeq = /* @__PURE__ */ factory(name259, dependencies259, (_ref) => {
+var name263 = "quantileSeq";
+var dependencies264 = ["typed", "?bignumber", "add", "subtract", "divide", "multiply", "partitionSelect", "compare", "isInteger", "smaller", "smallerEq", "larger", "mapSlices"];
+var createQuantileSeq = /* @__PURE__ */ factory(name263, dependencies264, (_ref) => {
   var {
     typed: typed2,
     bignumber,
@@ -38287,16 +39499,13 @@ var createQuantileSeq = /* @__PURE__ */ factory(name259, dependencies259, (_ref)
     multiply,
     partitionSelect,
     compare,
-    isInteger: isInteger2,
+    isInteger: isInteger3,
     smaller,
     smallerEq,
-    larger
+    larger,
+    mapSlices
   } = _ref;
-  var apply = createApply({
-    typed: typed2,
-    isInteger: isInteger2
-  });
-  return typed2(name259, {
+  return typed2(name263, {
     "Array | Matrix, number | BigNumber": (data, p) => _quantileSeqProbNumber(data, p, false),
     "Array | Matrix, number | BigNumber, number": (data, prob, dim) => _quantileSeqDim(data, prob, false, dim, _quantileSeqProbNumber),
     "Array | Matrix, number | BigNumber, boolean": _quantileSeqProbNumber,
@@ -38307,7 +39516,7 @@ var createQuantileSeq = /* @__PURE__ */ factory(name259, dependencies259, (_ref)
     "Array | Matrix, Array | Matrix, boolean, number": (data, prob, sorted, dim) => _quantileSeqDim(data, prob, sorted, dim, _quantileSeqProbCollection)
   });
   function _quantileSeqDim(data, prob, sorted, dim, fn) {
-    return apply(data, dim, (x) => fn(x, prob, sorted));
+    return mapSlices(data, dim, (x) => fn(x, prob, sorted));
   }
   function _quantileSeqProbNumber(data, probOrN, sorted) {
     var probArr;
@@ -38319,7 +39528,7 @@ var createQuantileSeq = /* @__PURE__ */ factory(name259, dependencies259, (_ref)
       return isNumber(probOrN) ? _quantileSeq(dataArr, probOrN, sorted) : bignumber(_quantileSeq(dataArr, probOrN, sorted));
     }
     if (larger(probOrN, 1)) {
-      if (!isInteger2(probOrN)) {
+      if (!isInteger3(probOrN)) {
         throw new Error("N must be a positive integer");
       }
       if (larger(probOrN, 4294967295)) {
@@ -38352,7 +39561,7 @@ var createQuantileSeq = /* @__PURE__ */ factory(name259, dependencies259, (_ref)
     var index = isNumber(prob) ? prob * (len - 1) : prob.times(len - 1);
     var integerPart = isNumber(prob) ? Math.floor(index) : index.floor().toNumber();
     var fracPart = isNumber(prob) ? index % 1 : index.minus(integerPart);
-    if (isInteger2(index)) {
+    if (isInteger3(index)) {
       return sorted ? flat[index] : partitionSelect(flat, isNumber(prob) ? index : index.valueOf());
     }
     var left;
@@ -38374,16 +39583,16 @@ var createQuantileSeq = /* @__PURE__ */ factory(name259, dependencies259, (_ref)
 });
 
 // node_modules/mathjs/lib/esm/function/statistics/std.js
-var name260 = "std";
-var dependencies260 = ["typed", "map", "sqrt", "variance"];
-var createStd = /* @__PURE__ */ factory(name260, dependencies260, (_ref) => {
+var name264 = "std";
+var dependencies265 = ["typed", "map", "sqrt", "variance"];
+var createStd = /* @__PURE__ */ factory(name264, dependencies265, (_ref) => {
   var {
     typed: typed2,
     map: map2,
     sqrt: sqrt2,
     variance
   } = _ref;
-  return typed2(name260, {
+  return typed2(name264, {
     // std([a, b, c, d, ...])
     "Array | Matrix": _std,
     // std([a, b, c, d, ...], normalization)
@@ -38419,9 +39628,9 @@ var createStd = /* @__PURE__ */ factory(name260, dependencies260, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/statistics/corr.js
-var name261 = "corr";
-var dependencies261 = ["typed", "matrix", "mean", "sqrt", "sum", "add", "subtract", "multiply", "pow", "divide"];
-var createCorr = /* @__PURE__ */ factory(name261, dependencies261, (_ref) => {
+var name265 = "corr";
+var dependencies266 = ["typed", "matrix", "mean", "sqrt", "sum", "add", "subtract", "multiply", "pow", "divide"];
+var createCorr = /* @__PURE__ */ factory(name265, dependencies266, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -38433,11 +39642,11 @@ var createCorr = /* @__PURE__ */ factory(name261, dependencies261, (_ref) => {
     pow: pow2,
     divide: divide2
   } = _ref;
-  return typed2(name261, {
-    "Array, Array": function ArrayArray(A, B) {
+  return typed2(name265, {
+    "Array, Array": function Array_Array(A, B) {
       return _corr(A, B);
     },
-    "Matrix, Matrix": function MatrixMatrix(A, B) {
+    "Matrix, Matrix": function Matrix_Matrix(A, B) {
       var res = _corr(A.toArray(), B.toArray());
       return Array.isArray(res) ? matrix(res) : res;
     }
@@ -38475,16 +39684,73 @@ var createCorr = /* @__PURE__ */ factory(name261, dependencies261, (_ref) => {
   }
 });
 
+// node_modules/mathjs/lib/esm/function/probability/bernoulli.js
+var name266 = "bernoulli";
+var dependencies267 = ["typed", "config", "isInteger", "number", "?BigNumber", "?Fraction"];
+var createBernoulli = /* @__PURE__ */ factory(name266, dependencies267, (_ref) => {
+  var {
+    typed: typed2,
+    config: config2,
+    number,
+    BigNumber: _BigNumber,
+    Fraction: Fraction2
+  } = _ref;
+  var numberCache = [void 0];
+  var fractionCache = [void 0];
+  var bigCache = [void 0];
+  var cachedPrecision = 50;
+  return typed2(name266, {
+    number: (index) => _bernoulli(index, (n) => n, numberCache, (a, b) => a + b, (a, b) => a * b, (a, b) => a / b),
+    "bigint | Fraction": (index) => _bernoulli(number(index), (n) => new Fraction2(n), fractionCache, (a, b) => a.add(b), (a, b) => a.mul(b), (a, b) => a.div(b)),
+    BigNumber: (index) => {
+      if (config2.precision !== cachedPrecision) {
+        bigCache = [void 0];
+        cachedPrecision = config2.precision;
+      }
+      return _bernoulli(number(index), (n) => new _BigNumber(n), bigCache, (a, b) => a.add(b), (a, b) => a.mul(b), (a, b) => a.div(b));
+    }
+  });
+});
+function _bernoulli(index, promote, A, plus, times, divide2) {
+  if (index < 0 || !isInteger2(index)) {
+    throw new RangeError("Bernoulli index must be nonnegative integer");
+  }
+  if (index === 0) return promote(1);
+  if (index === 1) return divide2(promote(-1), promote(2));
+  if (index % 2 === 1) return promote(0);
+  var one = promote(1);
+  if (A.length === 1) {
+    A.push([divide2(one, promote(-3)), divide2(one, promote(-2)), divide2(one, promote(6))]);
+  }
+  var half = index / 2;
+  var zero = promote(0);
+  var two = promote(2);
+  while (A.length <= half) {
+    var i = A.length;
+    var lim = Math.floor((i + 1) / 2);
+    var a = zero;
+    for (var m = 1; m < lim; ++m) {
+      a = plus(a, times(A[m][0], A[i - m][0]));
+    }
+    a = times(a, two);
+    if (i % 2 === 0) a = plus(a, times(A[lim][0], A[lim][0]));
+    a = divide2(a, promote(-(2 * i + 1)));
+    var prefactor = divide2(times(A[i - 1][1], promote(-i * (2 * i - 1))), two);
+    A.push([a, prefactor, times(prefactor, a)]);
+  }
+  return A[half][2];
+}
+
 // node_modules/mathjs/lib/esm/function/probability/combinations.js
-var name262 = "combinations";
-var dependencies262 = ["typed"];
-var createCombinations = /* @__PURE__ */ factory(name262, dependencies262, (_ref) => {
+var name267 = "combinations";
+var dependencies268 = ["typed"];
+var createCombinations = /* @__PURE__ */ factory(name267, dependencies268, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name262, {
+  return typed2(name267, {
     "number, number": combinationsNumber,
-    "BigNumber, BigNumber": function BigNumberBigNumber(n, k) {
+    "BigNumber, BigNumber": function BigNumber_BigNumber(n, k) {
       var BigNumber = n.constructor;
       var result, i;
       var nMinusk = n.minus(k);
@@ -38515,18 +39781,18 @@ function isPositiveInteger(n) {
 }
 
 // node_modules/mathjs/lib/esm/function/probability/combinationsWithRep.js
-var name263 = "combinationsWithRep";
-var dependencies263 = ["typed"];
-var createCombinationsWithRep = /* @__PURE__ */ factory(name263, dependencies263, (_ref) => {
+var name268 = "combinationsWithRep";
+var dependencies269 = ["typed"];
+var createCombinationsWithRep = /* @__PURE__ */ factory(name268, dependencies269, (_ref) => {
   var {
     typed: typed2
   } = _ref;
-  return typed2(name263, {
-    "number, number": function numberNumber(n, k) {
-      if (!isInteger(n) || n < 0) {
+  return typed2(name268, {
+    "number, number": function number_number(n, k) {
+      if (!isInteger2(n) || n < 0) {
         throw new TypeError("Positive integer value expected in function combinationsWithRep");
       }
-      if (!isInteger(k) || k < 0) {
+      if (!isInteger2(k) || k < 0) {
         throw new TypeError("Positive integer value expected in function combinationsWithRep");
       }
       if (n < 1) {
@@ -38539,7 +39805,7 @@ var createCombinationsWithRep = /* @__PURE__ */ factory(name263, dependencies263
       var prodrange = product2(k + 1, n + k - 1);
       return prodrange / product2(1, n - 1);
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(n, k) {
+    "BigNumber, BigNumber": function BigNumber_BigNumber(n, k) {
       var BigNumber = n.constructor;
       var result, i;
       var one = new BigNumber(1);
@@ -38569,9 +39835,9 @@ function isPositiveInteger2(n) {
 }
 
 // node_modules/mathjs/lib/esm/function/probability/gamma.js
-var name264 = "gamma";
-var dependencies264 = ["typed", "config", "multiplyScalar", "pow", "BigNumber", "Complex"];
-var createGamma = /* @__PURE__ */ factory(name264, dependencies264, (_ref) => {
+var name269 = "gamma";
+var dependencies270 = ["typed", "config", "multiplyScalar", "pow", "BigNumber", "Complex"];
+var createGamma = /* @__PURE__ */ factory(name269, dependencies270, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -38601,7 +39867,7 @@ var createGamma = /* @__PURE__ */ factory(name264, dependencies264, (_ref) => {
     var expt = t.neg().exp();
     return x.mul(twoPiSqrt).mul(tpow).mul(expt);
   }
-  return typed2(name264, {
+  return typed2(name269, {
     number: gammaNumber,
     Complex: gammaComplex,
     BigNumber: function BigNumber(n) {
@@ -38638,9 +39904,9 @@ var createGamma = /* @__PURE__ */ factory(name264, dependencies264, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/probability/lgamma.js
-var name265 = "lgamma";
-var dependencies265 = ["Complex", "typed"];
-var createLgamma = /* @__PURE__ */ factory(name265, dependencies265, (_ref) => {
+var name270 = "lgamma";
+var dependencies271 = ["Complex", "typed"];
+var createLgamma = /* @__PURE__ */ factory(name270, dependencies271, (_ref) => {
   var {
     Complex: Complex2,
     typed: typed2
@@ -38648,7 +39914,7 @@ var createLgamma = /* @__PURE__ */ factory(name265, dependencies265, (_ref) => {
   var SMALL_RE = 7;
   var SMALL_IM = 7;
   var coeffs = [-0.029550653594771242, 0.00641025641025641, -0.0019175269175269176, 8417508417508417e-19, -5952380952380953e-19, 7936507936507937e-19, -0.002777777777777778, 0.08333333333333333];
-  return typed2(name265, {
+  return typed2(name270, {
     number: lgammaNumber,
     Complex: lgammaComplex,
     BigNumber: function BigNumber() {
@@ -38709,14 +39975,14 @@ var createLgamma = /* @__PURE__ */ factory(name265, dependencies265, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/probability/factorial.js
-var name266 = "factorial";
-var dependencies266 = ["typed", "gamma"];
-var createFactorial = /* @__PURE__ */ factory(name266, dependencies266, (_ref) => {
+var name271 = "factorial";
+var dependencies272 = ["typed", "gamma"];
+var createFactorial = /* @__PURE__ */ factory(name271, dependencies272, (_ref) => {
   var {
     typed: typed2,
     gamma
   } = _ref;
-  return typed2(name266, {
+  return typed2(name271, {
     number: function number(n) {
       if (n < 0) {
         throw new Error("Value must be non-negative");
@@ -38729,14 +39995,14 @@ var createFactorial = /* @__PURE__ */ factory(name266, dependencies266, (_ref) =
       }
       return gamma(n.plus(1));
     },
-    "Array | Matrix": typed2.referToSelf((self2) => (n) => deepMap(n, self2))
+    "Array | Matrix": typed2.referToSelf((self2) => (n) => deepMap2(n, self2))
   });
 });
 
 // node_modules/mathjs/lib/esm/function/probability/kldivergence.js
-var name267 = "kldivergence";
-var dependencies267 = ["typed", "matrix", "divide", "sum", "multiply", "map", "dotDivide", "log", "isNumeric"];
-var createKldivergence = /* @__PURE__ */ factory(name267, dependencies267, (_ref) => {
+var name272 = "kldivergence";
+var dependencies273 = ["typed", "matrix", "divide", "sum", "multiply", "map", "dotDivide", "log", "isNumeric"];
+var createKldivergence = /* @__PURE__ */ factory(name272, dependencies273, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -38748,17 +40014,17 @@ var createKldivergence = /* @__PURE__ */ factory(name267, dependencies267, (_ref
     log: log3,
     isNumeric
   } = _ref;
-  return typed2(name267, {
-    "Array, Array": function ArrayArray(q, p) {
+  return typed2(name272, {
+    "Array, Array": function Array_Array(q, p) {
       return _kldiv(matrix(q), matrix(p));
     },
-    "Matrix, Array": function MatrixArray(q, p) {
+    "Matrix, Array": function Matrix_Array(q, p) {
       return _kldiv(q, matrix(p));
     },
-    "Array, Matrix": function ArrayMatrix(q, p) {
+    "Array, Matrix": function Array_Matrix(q, p) {
       return _kldiv(matrix(q), p);
     },
-    "Matrix, Matrix": function MatrixMatrix(q, p) {
+    "Matrix, Matrix": function Matrix_Matrix(q, p) {
       return _kldiv(q, p);
     }
   });
@@ -38794,24 +40060,24 @@ var createKldivergence = /* @__PURE__ */ factory(name267, dependencies267, (_ref
 });
 
 // node_modules/mathjs/lib/esm/function/probability/multinomial.js
-var name268 = "multinomial";
-var dependencies268 = ["typed", "add", "divide", "multiply", "factorial", "isInteger", "isPositive"];
-var createMultinomial = /* @__PURE__ */ factory(name268, dependencies268, (_ref) => {
+var name273 = "multinomial";
+var dependencies274 = ["typed", "add", "divide", "multiply", "factorial", "isInteger", "isPositive"];
+var createMultinomial = /* @__PURE__ */ factory(name273, dependencies274, (_ref) => {
   var {
     typed: typed2,
     add: add2,
     divide: divide2,
     multiply,
     factorial,
-    isInteger: isInteger2,
+    isInteger: isInteger3,
     isPositive
   } = _ref;
-  return typed2(name268, {
-    "Array | Matrix": function ArrayMatrix(a) {
+  return typed2(name273, {
+    "Array | Matrix": function Array__Matrix(a) {
       var sum2 = 0;
       var denom = 1;
-      deepForEach(a, function(ai) {
-        if (!isInteger2(ai) || !isPositive(ai)) {
+      deepForEach2(a, function(ai) {
+        if (!isInteger3(ai) || !isPositive(ai)) {
           throw new TypeError("Positive integer value expected in function multinomial");
         }
         sum2 = add2(sum2, ai);
@@ -38823,20 +40089,20 @@ var createMultinomial = /* @__PURE__ */ factory(name268, dependencies268, (_ref)
 });
 
 // node_modules/mathjs/lib/esm/function/probability/permutations.js
-var name269 = "permutations";
-var dependencies269 = ["typed", "factorial"];
-var createPermutations = /* @__PURE__ */ factory(name269, dependencies269, (_ref) => {
+var name274 = "permutations";
+var dependencies275 = ["typed", "factorial"];
+var createPermutations = /* @__PURE__ */ factory(name274, dependencies275, (_ref) => {
   var {
     typed: typed2,
     factorial
   } = _ref;
-  return typed2(name269, {
+  return typed2(name274, {
     "number | BigNumber": factorial,
-    "number, number": function numberNumber(n, k) {
-      if (!isInteger(n) || n < 0) {
+    "number, number": function number_number(n, k) {
+      if (!isInteger2(n) || n < 0) {
         throw new TypeError("Positive integer value expected in function permutations");
       }
-      if (!isInteger(k) || k < 0) {
+      if (!isInteger2(k) || k < 0) {
         throw new TypeError("Positive integer value expected in function permutations");
       }
       if (k > n) {
@@ -38844,7 +40110,7 @@ var createPermutations = /* @__PURE__ */ factory(name269, dependencies269, (_ref
       }
       return product2(n - k + 1, n);
     },
-    "BigNumber, BigNumber": function BigNumberBigNumber(n, k) {
+    "BigNumber, BigNumber": function BigNumber_BigNumber(n, k) {
       var result, i;
       if (!isPositiveInteger3(n) || !isPositiveInteger3(k)) {
         throw new TypeError("Positive integer value expected in function permutations");
@@ -38882,9 +40148,9 @@ function createRng(randomSeed) {
 }
 
 // node_modules/mathjs/lib/esm/function/probability/pickRandom.js
-var name270 = "pickRandom";
-var dependencies270 = ["typed", "config", "?on"];
-var createPickRandom = /* @__PURE__ */ factory(name270, dependencies270, (_ref) => {
+var name275 = "pickRandom";
+var dependencies276 = ["typed", "config", "?on"];
+var createPickRandom = /* @__PURE__ */ factory(name275, dependencies276, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -38898,30 +40164,30 @@ var createPickRandom = /* @__PURE__ */ factory(name270, dependencies270, (_ref) 
       }
     });
   }
-  return typed2(name270, {
-    "Array | Matrix": function ArrayMatrix(possibles) {
+  return typed2(name275, {
+    "Array | Matrix": function Array__Matrix(possibles) {
       return _pickRandom(possibles, {});
     },
-    "Array | Matrix, Object": function ArrayMatrixObject(possibles, options) {
+    "Array | Matrix, Object": function Array__Matrix_Object(possibles, options) {
       return _pickRandom(possibles, options);
     },
-    "Array | Matrix, number": function ArrayMatrixNumber(possibles, number) {
+    "Array | Matrix, number": function Array__Matrix_number(possibles, number) {
       return _pickRandom(possibles, {
         number
       });
     },
-    "Array | Matrix, Array | Matrix": function ArrayMatrixArrayMatrix(possibles, weights) {
+    "Array | Matrix, Array | Matrix": function Array__Matrix_Array__Matrix(possibles, weights) {
       return _pickRandom(possibles, {
         weights
       });
     },
-    "Array | Matrix, Array | Matrix, number": function ArrayMatrixArrayMatrixNumber(possibles, weights, number) {
+    "Array | Matrix, Array | Matrix, number": function Array__Matrix_Array__Matrix_number(possibles, weights, number) {
       return _pickRandom(possibles, {
         number,
         weights
       });
     },
-    "Array | Matrix, number, Array | Matrix": function ArrayMatrixNumberArrayMatrix(possibles, number, weights) {
+    "Array | Matrix, number, Array | Matrix": function Array__Matrix_number_Array__Matrix(possibles, number, weights) {
       return _pickRandom(possibles, {
         number,
         weights
@@ -38998,9 +40264,9 @@ function randomMatrix(size, random2) {
 }
 
 // node_modules/mathjs/lib/esm/function/probability/random.js
-var name271 = "random";
-var dependencies271 = ["typed", "config", "?on"];
-var createRandom = /* @__PURE__ */ factory(name271, dependencies271, (_ref) => {
+var name276 = "random";
+var dependencies277 = ["typed", "config", "?on"];
+var createRandom = /* @__PURE__ */ factory(name276, dependencies277, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -39014,7 +40280,7 @@ var createRandom = /* @__PURE__ */ factory(name271, dependencies271, (_ref) => {
       }
     });
   }
-  return typed2(name271, {
+  return typed2(name276, {
     "": () => _random(0, 1),
     number: (max2) => _random(0, max2),
     "number, number": (min2, max2) => _random(min2, max2),
@@ -39024,7 +40290,7 @@ var createRandom = /* @__PURE__ */ factory(name271, dependencies271, (_ref) => {
   });
   function _randomMatrix(size, min2, max2) {
     var res = randomMatrix(size.valueOf(), () => _random(min2, max2));
-    return isMatrix(size) ? size.create(res) : res;
+    return isMatrix(size) ? size.create(res, "number") : res;
   }
   function _random(min2, max2) {
     return min2 + rng() * (max2 - min2);
@@ -39032,12 +40298,13 @@ var createRandom = /* @__PURE__ */ factory(name271, dependencies271, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/probability/randomInt.js
-var name272 = "randomInt";
-var dependencies272 = ["typed", "config", "?on"];
-var createRandomInt = /* @__PURE__ */ factory(name272, dependencies272, (_ref) => {
+var name277 = "randomInt";
+var dependencies278 = ["typed", "config", "log2", "?on"];
+var createRandomInt = /* @__PURE__ */ factory(name277, dependencies278, (_ref) => {
   var {
     typed: typed2,
     config: config2,
+    log2: log24,
     on
   } = _ref;
   var rng = createRng(config2.randomSeed);
@@ -39048,27 +40315,45 @@ var createRandomInt = /* @__PURE__ */ factory(name272, dependencies272, (_ref) =
       }
     });
   }
-  return typed2(name272, {
-    "": () => _randomInt(0, 1),
+  return typed2(name277, {
+    "": () => _randomInt(0, 2),
     number: (max2) => _randomInt(0, max2),
     "number, number": (min2, max2) => _randomInt(min2, max2),
+    bigint: (max2) => _randomBigint(/* @__PURE__ */ BigInt("0"), max2),
+    "bigint, bigint": _randomBigint,
     "Array | Matrix": (size) => _randomIntMatrix(size, 0, 1),
     "Array | Matrix, number": (size, max2) => _randomIntMatrix(size, 0, max2),
     "Array | Matrix, number, number": (size, min2, max2) => _randomIntMatrix(size, min2, max2)
   });
   function _randomIntMatrix(size, min2, max2) {
     var res = randomMatrix(size.valueOf(), () => _randomInt(min2, max2));
-    return isMatrix(size) ? size.create(res) : res;
+    return isMatrix(size) ? size.create(res, "number") : res;
   }
   function _randomInt(min2, max2) {
     return Math.floor(min2 + rng() * (max2 - min2));
   }
+  function _randomBigint(min2, max2) {
+    var simpleCutoff = /* @__PURE__ */ BigInt("2") ** /* @__PURE__ */ BigInt("30");
+    var width = max2 - min2;
+    if (width <= simpleCutoff) {
+      return min2 + BigInt(_randomInt(0, Number(width)));
+    }
+    var bits = log24(width);
+    var picked = width;
+    while (picked >= width) {
+      picked = /* @__PURE__ */ BigInt("0");
+      for (var i = 0; i < bits; ++i) {
+        picked = /* @__PURE__ */ BigInt("2") * picked + (rng() < 0.5 ? /* @__PURE__ */ BigInt("0") : /* @__PURE__ */ BigInt("1"));
+      }
+    }
+    return min2 + picked;
+  }
 });
 
 // node_modules/mathjs/lib/esm/function/combinatorics/stirlingS2.js
-var name273 = "stirlingS2";
-var dependencies273 = ["typed", "addScalar", "subtractScalar", "multiplyScalar", "divideScalar", "pow", "factorial", "combinations", "isNegative", "isInteger", "number", "?bignumber", "larger"];
-var createStirlingS2 = /* @__PURE__ */ factory(name273, dependencies273, (_ref) => {
+var name278 = "stirlingS2";
+var dependencies279 = ["typed", "addScalar", "subtractScalar", "multiplyScalar", "divideScalar", "pow", "factorial", "combinations", "isNegative", "isInteger", "number", "?bignumber", "larger"];
+var createStirlingS2 = /* @__PURE__ */ factory(name278, dependencies279, (_ref) => {
   var {
     typed: typed2,
     addScalar,
@@ -39079,16 +40364,16 @@ var createStirlingS2 = /* @__PURE__ */ factory(name273, dependencies273, (_ref) 
     factorial,
     combinations,
     isNegative,
-    isInteger: isInteger2,
+    isInteger: isInteger3,
     number,
     bignumber,
     larger
   } = _ref;
   var smallCache = [];
   var bigCache = [];
-  return typed2(name273, {
-    "number | BigNumber, number | BigNumber": function numberBigNumberNumberBigNumber(n, k) {
-      if (!isInteger2(n) || isNegative(n) || !isInteger2(k) || isNegative(k)) {
+  return typed2(name278, {
+    "number | BigNumber, number | BigNumber": function number__BigNumber_number__BigNumber(n, k) {
+      if (!isInteger3(n) || isNegative(n) || !isInteger3(k) || isNegative(k)) {
         throw new TypeError("Non-negative integer value expected in function stirlingS2");
       } else if (larger(k, n)) {
         throw new TypeError("k must be less than or equal to n in function stirlingS2");
@@ -39122,19 +40407,19 @@ var createStirlingS2 = /* @__PURE__ */ factory(name273, dependencies273, (_ref) 
 });
 
 // node_modules/mathjs/lib/esm/function/combinatorics/bellNumbers.js
-var name274 = "bellNumbers";
-var dependencies274 = ["typed", "addScalar", "isNegative", "isInteger", "stirlingS2"];
-var createBellNumbers = /* @__PURE__ */ factory(name274, dependencies274, (_ref) => {
+var name279 = "bellNumbers";
+var dependencies280 = ["typed", "addScalar", "isNegative", "isInteger", "stirlingS2"];
+var createBellNumbers = /* @__PURE__ */ factory(name279, dependencies280, (_ref) => {
   var {
     typed: typed2,
     addScalar,
     isNegative,
-    isInteger: isInteger2,
+    isInteger: isInteger3,
     stirlingS2
   } = _ref;
-  return typed2(name274, {
-    "number | BigNumber": function numberBigNumber(n) {
-      if (!isInteger2(n) || isNegative(n)) {
+  return typed2(name279, {
+    "number | BigNumber": function number__BigNumber(n) {
+      if (!isInteger3(n) || isNegative(n)) {
         throw new TypeError("Non-negative integer value expected in function bellNumbers");
       }
       var result = 0;
@@ -39147,9 +40432,9 @@ var createBellNumbers = /* @__PURE__ */ factory(name274, dependencies274, (_ref)
 });
 
 // node_modules/mathjs/lib/esm/function/combinatorics/catalan.js
-var name275 = "catalan";
-var dependencies275 = ["typed", "addScalar", "divideScalar", "multiplyScalar", "combinations", "isNegative", "isInteger"];
-var createCatalan = /* @__PURE__ */ factory(name275, dependencies275, (_ref) => {
+var name280 = "catalan";
+var dependencies281 = ["typed", "addScalar", "divideScalar", "multiplyScalar", "combinations", "isNegative", "isInteger"];
+var createCatalan = /* @__PURE__ */ factory(name280, dependencies281, (_ref) => {
   var {
     typed: typed2,
     addScalar,
@@ -39157,11 +40442,11 @@ var createCatalan = /* @__PURE__ */ factory(name275, dependencies275, (_ref) => 
     multiplyScalar,
     combinations,
     isNegative,
-    isInteger: isInteger2
+    isInteger: isInteger3
   } = _ref;
-  return typed2(name275, {
-    "number | BigNumber": function numberBigNumber(n) {
-      if (!isInteger2(n) || isNegative(n)) {
+  return typed2(name280, {
+    "number | BigNumber": function number__BigNumber(n) {
+      if (!isInteger3(n) || isNegative(n)) {
         throw new TypeError("Non-negative integer value expected in function catalan");
       }
       return divideScalar(combinations(multiplyScalar(n, 2), n), addScalar(n, 1));
@@ -39170,21 +40455,21 @@ var createCatalan = /* @__PURE__ */ factory(name275, dependencies275, (_ref) => 
 });
 
 // node_modules/mathjs/lib/esm/function/combinatorics/composition.js
-var name276 = "composition";
-var dependencies276 = ["typed", "addScalar", "combinations", "isNegative", "isPositive", "isInteger", "larger"];
-var createComposition = /* @__PURE__ */ factory(name276, dependencies276, (_ref) => {
+var name281 = "composition";
+var dependencies282 = ["typed", "addScalar", "combinations", "isNegative", "isPositive", "isInteger", "larger"];
+var createComposition = /* @__PURE__ */ factory(name281, dependencies282, (_ref) => {
   var {
     typed: typed2,
     addScalar,
     combinations,
     isPositive,
     isNegative,
-    isInteger: isInteger2,
+    isInteger: isInteger3,
     larger
   } = _ref;
-  return typed2(name276, {
-    "number | BigNumber, number | BigNumber": function numberBigNumberNumberBigNumber(n, k) {
-      if (!isInteger2(n) || !isPositive(n) || !isInteger2(k) || !isPositive(k)) {
+  return typed2(name281, {
+    "number | BigNumber, number | BigNumber": function number__BigNumber_number__BigNumber(n, k) {
+      if (!isInteger3(n) || !isPositive(n) || !isInteger3(k) || !isPositive(k)) {
         throw new TypeError("Positive integer value expected in function composition");
       } else if (larger(k, n)) {
         throw new TypeError("k must be less than or equal to n in function composition");
@@ -39195,11 +40480,11 @@ var createComposition = /* @__PURE__ */ factory(name276, dependencies276, (_ref)
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/leafCount.js
-var name277 = "leafCount";
-var dependencies277 = ["parse", "typed"];
-var createLeafCount = /* @__PURE__ */ factory(name277, dependencies277, (_ref) => {
+var name282 = "leafCount";
+var dependencies283 = ["parse", "typed"];
+var createLeafCount = /* @__PURE__ */ factory(name282, dependencies283, (_ref) => {
   var {
-    parse: parse2,
+    parse: parse3,
     typed: typed2
   } = _ref;
   function countLeaves(node) {
@@ -39209,7 +40494,7 @@ var createLeafCount = /* @__PURE__ */ factory(name277, dependencies277, (_ref) =
     });
     return count || 1;
   }
-  return typed2(name277, {
+  return typed2(name282, {
     Node: function Node(expr) {
       return countLeaves(expr);
     }
@@ -39255,9 +40540,9 @@ function _objectSpread3(e2) {
   }
   return e2;
 }
-var name278 = "simplifyUtil";
-var dependencies278 = ["FunctionNode", "OperatorNode", "SymbolNode"];
-var createUtil = /* @__PURE__ */ factory(name278, dependencies278, (_ref) => {
+var name283 = "simplifyUtil";
+var dependencies284 = ["FunctionNode", "OperatorNode", "SymbolNode"];
+var createUtil = /* @__PURE__ */ factory(name283, dependencies284, (_ref) => {
   var {
     FunctionNode,
     OperatorNode,
@@ -39338,23 +40623,23 @@ var createUtil = /* @__PURE__ */ factory(name278, dependencies278, (_ref) => {
   };
   function hasProperty(nodeOrName, property) {
     var context = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : defaultContext;
-    var name314 = defaultName;
+    var name323 = defaultName;
     if (typeof nodeOrName === "string") {
-      name314 = nodeOrName;
+      name323 = nodeOrName;
     } else if (isOperatorNode(nodeOrName)) {
-      name314 = nodeOrName.fn.toString();
+      name323 = nodeOrName.fn.toString();
     } else if (isFunctionNode(nodeOrName)) {
-      name314 = nodeOrName.name;
+      name323 = nodeOrName.name;
     } else if (isParenthesisNode(nodeOrName)) {
-      name314 = "paren";
+      name323 = "paren";
     }
-    if (hasOwnProperty(context, name314)) {
-      var properties2 = context[name314];
+    if (hasOwnProperty(context, name323)) {
+      var properties2 = context[name323];
       if (hasOwnProperty(properties2, property)) {
         return properties2[property];
       }
-      if (hasOwnProperty(defaultContext, name314)) {
-        return defaultContext[name314][property];
+      if (hasOwnProperty(defaultContext, name323)) {
+        return defaultContext[name323][property];
       }
     }
     if (hasOwnProperty(context, defaultName)) {
@@ -39364,8 +40649,8 @@ var createUtil = /* @__PURE__ */ factory(name278, dependencies278, (_ref) => {
       }
       return defaultContext[defaultName][property];
     }
-    if (hasOwnProperty(defaultContext, name314)) {
-      var _properties2 = defaultContext[name314];
+    if (hasOwnProperty(defaultContext, name323)) {
+      var _properties2 = defaultContext[name323];
       if (hasOwnProperty(_properties2, property)) {
         return _properties2[property];
       }
@@ -39403,11 +40688,11 @@ var createUtil = /* @__PURE__ */ factory(name278, dependencies278, (_ref) => {
   function allChildren(node, context) {
     var op;
     var children = [];
-    var findChildren = function findChildren2(node2) {
+    var _findChildren = function findChildren(node2) {
       for (var i = 0; i < node2.args.length; i++) {
         var child = node2.args[i];
         if (isOperatorNode(child) && op === child.op) {
-          findChildren2(child);
+          _findChildren(child);
         } else {
           children.push(child);
         }
@@ -39415,7 +40700,7 @@ var createUtil = /* @__PURE__ */ factory(name278, dependencies278, (_ref) => {
     };
     if (isAssociative(node, context)) {
       op = node.op;
-      findChildren(node);
+      _findChildren(node);
       return children;
     } else {
       return node.args;
@@ -39488,27 +40773,16 @@ var createUtil = /* @__PURE__ */ factory(name278, dependencies278, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/simplify.js
-var name279 = "simplify";
-var dependencies279 = ["config", "typed", "parse", "add", "subtract", "multiply", "divide", "pow", "isZero", "equal", "resolve", "simplifyConstant", "simplifyCore", "?fraction", "?bignumber", "mathWithTransform", "matrix", "AccessorNode", "ArrayNode", "ConstantNode", "FunctionNode", "IndexNode", "ObjectNode", "OperatorNode", "ParenthesisNode", "SymbolNode"];
-var createSimplify = /* @__PURE__ */ factory(name279, dependencies279, (_ref) => {
+var name284 = "simplify";
+var dependencies285 = ["typed", "parse", "equal", "resolve", "simplifyConstant", "simplifyCore", "AccessorNode", "ArrayNode", "ConstantNode", "FunctionNode", "IndexNode", "ObjectNode", "OperatorNode", "ParenthesisNode", "SymbolNode", "replacer"];
+var createSimplify = /* @__PURE__ */ factory(name284, dependencies285, (_ref) => {
   var {
-    config: config2,
     typed: typed2,
-    parse: parse2,
-    add: add2,
-    subtract,
-    multiply,
-    divide: divide2,
-    pow: pow2,
-    isZero,
+    parse: parse3,
     equal,
     resolve,
     simplifyConstant,
     simplifyCore,
-    fraction,
-    bignumber,
-    mathWithTransform,
-    matrix,
     AccessorNode,
     ArrayNode,
     ConstantNode,
@@ -39517,7 +40791,8 @@ var createSimplify = /* @__PURE__ */ factory(name279, dependencies279, (_ref) =>
     ObjectNode,
     OperatorNode,
     ParenthesisNode,
-    SymbolNode
+    SymbolNode,
+    replacer
   } = _ref;
   var {
     hasProperty,
@@ -39558,7 +40833,7 @@ var createSimplify = /* @__PURE__ */ factory(name279, dependencies279, (_ref) =>
   simplify.realContext = realContext;
   simplify.positiveContext = positiveContext;
   function removeParens(node) {
-    return node.transform(function(node2, path, parent) {
+    return node.transform(function(node2) {
       return isParenthesisNode(node2) ? removeParens(node2.content) : node2;
     });
   }
@@ -40017,15 +41292,15 @@ var createSimplify = /* @__PURE__ */ factory(name279, dependencies279, (_ref) =>
       newRule.l = ruleObject.l;
       newRule.r = ruleObject.r;
     }
-    newRule.l = removeParens(parse2(newRule.l));
-    newRule.r = removeParens(parse2(newRule.r));
+    newRule.l = removeParens(parse3(newRule.l));
+    newRule.r = removeParens(parse3(newRule.r));
     for (var prop of ["imposeContext", "repeat", "assuming"]) {
       if (prop in ruleObject) {
         newRule[prop] = ruleObject[prop];
       }
     }
     if (ruleObject.evaluate) {
-      newRule.evaluate = parse2(ruleObject.evaluate);
+      newRule.evaluate = parse3(ruleObject.evaluate);
     }
     if (isAssociative(newRule.l, context)) {
       var nonCommutative = !isCommutative(newRule.l, context);
@@ -40307,7 +41582,7 @@ var createSimplify = /* @__PURE__ */ factory(name279, dependencies279, (_ref) =>
     var uniqueSets = [];
     var unique = {};
     for (var i = 0; i < sets.length; i++) {
-      var s = JSON.stringify(sets[i]);
+      var s = JSON.stringify(sets[i], replacer);
       if (!unique[s]) {
         unique[s] = true;
         uniqueSets.push(sets[i]);
@@ -40483,14 +41758,15 @@ var createSimplify = /* @__PURE__ */ factory(name279, dependencies279, (_ref) =>
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/simplifyConstant.js
-var name280 = "simplifyConstant";
-var dependencies280 = ["typed", "config", "mathWithTransform", "matrix", "?fraction", "?bignumber", "AccessorNode", "ArrayNode", "ConstantNode", "FunctionNode", "IndexNode", "ObjectNode", "OperatorNode", "SymbolNode"];
-var createSimplifyConstant = /* @__PURE__ */ factory(name280, dependencies280, (_ref) => {
+var name285 = "simplifyConstant";
+var dependencies286 = ["typed", "config", "mathWithTransform", "matrix", "isBounded", "?fraction", "?bignumber", "AccessorNode", "ArrayNode", "ConstantNode", "FunctionNode", "IndexNode", "ObjectNode", "OperatorNode", "SymbolNode"];
+var createSimplifyConstant = /* @__PURE__ */ factory(name285, dependencies286, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     mathWithTransform,
     matrix,
+    isBounded,
     fraction,
     bignumber,
     AccessorNode,
@@ -40514,7 +41790,7 @@ var createSimplifyConstant = /* @__PURE__ */ factory(name280, dependencies280, (
   });
   var simplifyConstant = typed2("simplifyConstant", {
     Node: (node) => _ensureNode(foldFraction(node, {})),
-    "Node, Object": function NodeObject(expr, options) {
+    "Node, Object": function Node_Object(expr, options) {
       return _ensureNode(foldFraction(expr, options));
     }
   });
@@ -40552,6 +41828,12 @@ var createSimplifyConstant = /* @__PURE__ */ factory(name280, dependencies280, (
       }
       return new ConstantNode(n);
     },
+    bigint: function bigint(n) {
+      if (n < /* @__PURE__ */ BigInt("0")) {
+        return unaryMinusNode(new ConstantNode(-n));
+      }
+      return new ConstantNode(n);
+    },
     Complex: function Complex2(s) {
       throw new Error("Cannot convert Complex number to Node");
     },
@@ -40570,7 +41852,7 @@ var createSimplifyConstant = /* @__PURE__ */ factory(name280, dependencies280, (
   }
   function _exactFraction(n, options) {
     var exactFractions = options && options.exactFractions !== false;
-    if (exactFractions && isFinite(n) && fraction) {
+    if (exactFractions && isBounded(n) && fraction) {
       var f = fraction(n);
       var fractionsLimit = options && typeof options.fractionsLimit === "number" ? options.fractionsLimit : Infinity;
       if (f.valueOf() === n && f.n < fractionsLimit && f.d < fractionsLimit) {
@@ -40580,13 +41862,16 @@ var createSimplifyConstant = /* @__PURE__ */ factory(name280, dependencies280, (
     return n;
   }
   var _toNumber = typed2({
-    "string, Object": function stringObject(s, options) {
-      if (config2.number === "BigNumber") {
+    "string, Object": function string_Object(s, options) {
+      var numericType = safeNumberType(s, config2);
+      if (numericType === "BigNumber") {
         if (bignumber === void 0) {
           noBignumber();
         }
         return bignumber(s);
-      } else if (config2.number === "Fraction") {
+      } else if (numericType === "bigint") {
+        return BigInt(s);
+      } else if (numericType === "Fraction") {
         if (fraction === void 0) {
           noFraction();
         }
@@ -40596,27 +41881,30 @@ var createSimplifyConstant = /* @__PURE__ */ factory(name280, dependencies280, (
         return _exactFraction(n, options);
       }
     },
-    "Fraction, Object": function FractionObject(s, options) {
+    "Fraction, Object": function Fraction_Object(s, options) {
       return s;
     },
     // we don't need options here
-    "BigNumber, Object": function BigNumberObject(s, options) {
+    "BigNumber, Object": function BigNumber_Object(s, options) {
       return s;
     },
     // we don't need options here
-    "number, Object": function numberObject(s, options) {
+    "number, Object": function number_Object(s, options) {
       return _exactFraction(s, options);
     },
-    "Complex, Object": function ComplexObject(s, options) {
+    "bigint, Object": function bigint_Object(s, options) {
+      return s;
+    },
+    "Complex, Object": function Complex_Object(s, options) {
       if (s.im !== 0) {
         return s;
       }
       return _exactFraction(s.re, options);
     },
-    "Matrix, Object": function MatrixObject(s, options) {
+    "Matrix, Object": function Matrix_Object(s, options) {
       return matrix(_exactFraction(s.valueOf()));
     },
-    "Array, Object": function ArrayObject(s, options) {
+    "Array, Object": function Array_Object(s, options) {
       return s.map(_exactFraction);
     }
   });
@@ -40624,17 +41912,10 @@ var createSimplifyConstant = /* @__PURE__ */ factory(name280, dependencies280, (
     return new OperatorNode("-", "unaryMinus", [n]);
   }
   function _fractionToNode(f) {
-    var n;
-    var vn = f.s * f.n;
-    if (vn < 0) {
-      n = new OperatorNode("-", "unaryMinus", [new ConstantNode(-vn)]);
-    } else {
-      n = new ConstantNode(vn);
-    }
-    if (f.d === 1) {
-      return n;
-    }
-    return new OperatorNode("/", "divide", [n, new ConstantNode(f.d)]);
+    var fromBigInt = (value) => config2.number === "BigNumber" && bignumber ? bignumber(value) : Number(value);
+    var numeratorValue = f.s * f.n;
+    var numeratorNode = numeratorValue < /* @__PURE__ */ BigInt("0") ? new OperatorNode("-", "unaryMinus", [new ConstantNode(-fromBigInt(numeratorValue))]) : new ConstantNode(fromBigInt(numeratorValue));
+    return f.d === /* @__PURE__ */ BigInt("1") ? numeratorNode : new OperatorNode("/", "divide", [numeratorNode, new ConstantNode(fromBigInt(f.d))]);
   }
   function _foldAccessor(obj, index, options) {
     if (!isIndexNode(index)) {
@@ -40729,6 +42010,8 @@ var createSimplifyConstant = /* @__PURE__ */ factory(name280, dependencies280, (
       case "ConstantNode":
         switch (typeof node.value) {
           case "number":
+            return _toNumber(node.value, options);
+          case "bigint":
             return _toNumber(node.value, options);
           case "string":
             return node.value;
@@ -40844,12 +42127,12 @@ var createSimplifyConstant = /* @__PURE__ */ factory(name280, dependencies280, (
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/simplifyCore.js
-var name281 = "simplifyCore";
-var dependencies281 = ["typed", "parse", "equal", "isZero", "add", "subtract", "multiply", "divide", "pow", "AccessorNode", "ArrayNode", "ConstantNode", "FunctionNode", "IndexNode", "ObjectNode", "OperatorNode", "ParenthesisNode", "SymbolNode"];
-var createSimplifyCore = /* @__PURE__ */ factory(name281, dependencies281, (_ref) => {
+var name286 = "simplifyCore";
+var dependencies287 = ["typed", "parse", "equal", "isZero", "add", "subtract", "multiply", "divide", "pow", "AccessorNode", "ArrayNode", "ConstantNode", "FunctionNode", "IndexNode", "ObjectNode", "OperatorNode", "ParenthesisNode", "SymbolNode"];
+var createSimplifyCore = /* @__PURE__ */ factory(name286, dependencies287, (_ref) => {
   var {
     typed: typed2,
-    parse: parse2,
+    parse: parse3,
     equal,
     isZero,
     add: add2,
@@ -41068,19 +42351,19 @@ var createSimplifyCore = /* @__PURE__ */ factory(name281, dependencies281, (_ref
     }
     return node;
   }
-  return typed2(name281, {
+  return typed2(name286, {
     Node: _simplifyCore,
     "Node,Object": _simplifyCore
   });
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/resolve.js
-var name282 = "resolve";
-var dependencies282 = ["typed", "parse", "ConstantNode", "FunctionNode", "OperatorNode", "ParenthesisNode"];
-var createResolve = /* @__PURE__ */ factory(name282, dependencies282, (_ref) => {
+var name287 = "resolve";
+var dependencies288 = ["typed", "parse", "ConstantNode", "FunctionNode", "OperatorNode", "ParenthesisNode"];
+var createResolve = /* @__PURE__ */ factory(name287, dependencies288, (_ref) => {
   var {
     typed: typed2,
-    parse: parse2,
+    parse: parse3,
     ConstantNode,
     FunctionNode,
     OperatorNode,
@@ -41102,7 +42385,7 @@ var createResolve = /* @__PURE__ */ factory(name282, dependencies282, (_ref) => 
         nextWithin.add(node.name);
         return _resolve(value, scope, nextWithin);
       } else if (typeof value === "number") {
-        return parse2(String(value));
+        return parse3(String(value));
       } else if (value !== void 0) {
         return new ConstantNode(value);
       } else {
@@ -41139,11 +42422,11 @@ var createResolve = /* @__PURE__ */ factory(name282, dependencies282, (_ref) => 
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/symbolicEqual.js
-var name283 = "symbolicEqual";
-var dependencies283 = ["parse", "simplify", "typed", "OperatorNode"];
-var createSymbolicEqual = /* @__PURE__ */ factory(name283, dependencies283, (_ref) => {
+var name288 = "symbolicEqual";
+var dependencies289 = ["parse", "simplify", "typed", "OperatorNode"];
+var createSymbolicEqual = /* @__PURE__ */ factory(name288, dependencies289, (_ref) => {
   var {
-    parse: parse2,
+    parse: parse3,
     simplify,
     typed: typed2,
     OperatorNode
@@ -41154,20 +42437,20 @@ var createSymbolicEqual = /* @__PURE__ */ factory(name283, dependencies283, (_re
     var simplified = simplify(diff, {}, options);
     return isConstantNode(simplified) && !simplified.value;
   }
-  return typed2(name283, {
+  return typed2(name288, {
     "Node, Node": _symbolicEqual,
     "Node, Node, Object": _symbolicEqual
   });
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/derivative.js
-var name284 = "derivative";
-var dependencies284 = ["typed", "config", "parse", "simplify", "equal", "isZero", "numeric", "ConstantNode", "FunctionNode", "OperatorNode", "ParenthesisNode", "SymbolNode"];
-var createDerivative = /* @__PURE__ */ factory(name284, dependencies284, (_ref) => {
+var name289 = "derivative";
+var dependencies290 = ["typed", "config", "parse", "simplify", "equal", "isZero", "numeric", "ConstantNode", "FunctionNode", "OperatorNode", "ParenthesisNode", "SymbolNode"];
+var createDerivative = /* @__PURE__ */ factory(name289, dependencies290, (_ref) => {
   var {
     typed: typed2,
     config: config2,
-    parse: parse2,
+    parse: parse3,
     simplify,
     equal,
     isZero,
@@ -41182,59 +42465,66 @@ var createDerivative = /* @__PURE__ */ factory(name284, dependencies284, (_ref) 
     var options = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : {
       simplify: true
     };
-    var constNodes = {};
-    constTag(constNodes, expr, variable.name);
-    var res = _derivative(expr, constNodes);
+    var cache = /* @__PURE__ */ new Map();
+    var variableName = variable.name;
+    function isConstCached(node) {
+      var cached = cache.get(node);
+      if (cached !== void 0) {
+        return cached;
+      }
+      var res2 = _isConst(isConstCached, node, variableName);
+      cache.set(node, res2);
+      return res2;
+    }
+    var res = _derivative(expr, isConstCached);
     return options.simplify ? simplify(res) : res;
   }
-  typed2.addConversion({
-    from: "identifier",
-    to: "SymbolNode",
-    convert: parse2
-  });
-  var derivative = typed2(name284, {
+  function parseIdentifier(string) {
+    var symbol = parse3(string);
+    if (!symbol.isSymbolNode) {
+      throw new TypeError("Invalid variable. " + "Cannot parse ".concat(JSON.stringify(string), " into a variable in function derivative"));
+    }
+    return symbol;
+  }
+  var derivative = typed2(name289, {
     "Node, SymbolNode": plainDerivative,
-    "Node, SymbolNode, Object": plainDerivative
+    "Node, SymbolNode, Object": plainDerivative,
+    "Node, string": (node, symbol) => plainDerivative(node, parseIdentifier(symbol)),
+    "Node, string, Object": (node, symbol, options) => plainDerivative(node, parseIdentifier(symbol), options)
     /* TODO: implement and test syntax with order of derivatives -> implement as an option {order: number}
     'Node, SymbolNode, ConstantNode': function (expr, variable, {order}) {
       let res = expr
       for (let i = 0; i < order; i++) {
-        let constNodes = {}
-        constTag(constNodes, expr, variable.name)
-        res = _derivative(res, constNodes)
+        <create caching isConst>
+        res = _derivative(res, isConst)
       }
       return res
     }
     */
-  });
-  typed2.removeConversion({
-    from: "identifier",
-    to: "SymbolNode",
-    convert: parse2
   });
   derivative._simplify = true;
   derivative.toTex = function(deriv) {
     return _derivTex.apply(null, deriv.args);
   };
   var _derivTex = typed2("_derivTex", {
-    "Node, SymbolNode": function NodeSymbolNode(expr, x) {
+    "Node, SymbolNode": function Node_SymbolNode(expr, x) {
       if (isConstantNode(expr) && typeOf(expr.value) === "string") {
-        return _derivTex(parse2(expr.value).toString(), x.toString(), 1);
+        return _derivTex(parse3(expr.value).toString(), x.toString(), 1);
       } else {
         return _derivTex(expr.toTex(), x.toString(), 1);
       }
     },
-    "Node, ConstantNode": function NodeConstantNode(expr, x) {
+    "Node, ConstantNode": function Node_ConstantNode(expr, x) {
       if (typeOf(x.value) === "string") {
-        return _derivTex(expr, parse2(x.value));
+        return _derivTex(expr, parse3(x.value));
       } else {
         throw new Error("The second parameter to 'derivative' is a non-string constant");
       }
     },
-    "Node, SymbolNode, ConstantNode": function NodeSymbolNodeConstantNode(expr, x, order) {
+    "Node, SymbolNode, ConstantNode": function Node_SymbolNode_ConstantNode(expr, x, order) {
       return _derivTex(expr.toString(), x.name, order.value);
     },
-    "string, string, number": function stringStringNumber(expr, x, order) {
+    "string, string, number": function string_string_number(expr, x, order) {
       var d;
       if (order === 1) {
         d = "{d\\over d" + x + "}";
@@ -41244,63 +42534,47 @@ var createDerivative = /* @__PURE__ */ factory(name284, dependencies284, (_ref) 
       return d + "\\left[".concat(expr, "\\right]");
     }
   });
-  var constTag = typed2("constTag", {
-    "Object, ConstantNode, string": function ObjectConstantNodeString(constNodes, node) {
-      constNodes[node] = true;
+  var _isConst = typed2("_isConst", {
+    "function, ConstantNode, string": function function_ConstantNode_string() {
       return true;
     },
-    "Object, SymbolNode, string": function ObjectSymbolNodeString(constNodes, node, varName) {
-      if (node.name !== varName) {
-        constNodes[node] = true;
-        return true;
-      }
-      return false;
+    "function, SymbolNode, string": function function_SymbolNode_string(isConst, node, varName) {
+      return node.name !== varName;
     },
-    "Object, ParenthesisNode, string": function ObjectParenthesisNodeString(constNodes, node, varName) {
-      return constTag(constNodes, node.content, varName);
+    "function, ParenthesisNode, string": function function_ParenthesisNode_string(isConst, node, varName) {
+      return isConst(node.content, varName);
     },
-    "Object, FunctionAssignmentNode, string": function ObjectFunctionAssignmentNodeString(constNodes, node, varName) {
+    "function, FunctionAssignmentNode, string": function function_FunctionAssignmentNode_string(isConst, node, varName) {
       if (!node.params.includes(varName)) {
-        constNodes[node] = true;
         return true;
       }
-      return constTag(constNodes, node.expr, varName);
+      return isConst(node.expr, varName);
     },
-    "Object, FunctionNode | OperatorNode, string": function ObjectFunctionNodeOperatorNodeString(constNodes, node, varName) {
-      if (node.args.length > 0) {
-        var isConst = constTag(constNodes, node.args[0], varName);
-        for (var i = 1; i < node.args.length; ++i) {
-          isConst = constTag(constNodes, node.args[i], varName) && isConst;
-        }
-        if (isConst) {
-          constNodes[node] = true;
-          return true;
-        }
-      }
-      return false;
+    "function, FunctionNode | OperatorNode, string": function function_FunctionNode__OperatorNode_string(isConst, node, varName) {
+      return node.args.every((arg) => isConst(arg, varName));
     }
   });
   var _derivative = typed2("_derivative", {
-    "ConstantNode, Object": function ConstantNodeObject(node) {
+    "ConstantNode, function": function ConstantNode_function() {
       return createConstantNode2(0);
     },
-    "SymbolNode, Object": function SymbolNodeObject(node, constNodes) {
-      if (constNodes[node] !== void 0) {
+    "SymbolNode, function": function SymbolNode_function(node, isConst) {
+      if (isConst(node)) {
         return createConstantNode2(0);
       }
       return createConstantNode2(1);
     },
-    "ParenthesisNode, Object": function ParenthesisNodeObject(node, constNodes) {
-      return new ParenthesisNode(_derivative(node.content, constNodes));
+    "ParenthesisNode, function": function ParenthesisNode_function(node, isConst) {
+      return new ParenthesisNode(_derivative(node.content, isConst));
     },
-    "FunctionAssignmentNode, Object": function FunctionAssignmentNodeObject(node, constNodes) {
-      if (constNodes[node] !== void 0) {
+    "FunctionAssignmentNode, function": function FunctionAssignmentNode_function(node, isConst) {
+      if (isConst(node)) {
         return createConstantNode2(0);
       }
-      return _derivative(node.expr, constNodes);
+      return _derivative(node.expr, isConst);
     },
-    "FunctionNode, Object": function FunctionNodeObject(node, constNodes) {
-      if (constNodes[node] !== void 0) {
+    "FunctionNode, function": function FunctionNode_function(node, isConst) {
+      if (isConst(node)) {
         return createConstantNode2(0);
       }
       var arg0 = node.args[0];
@@ -41320,8 +42594,7 @@ var createDerivative = /* @__PURE__ */ factory(name284, dependencies284, (_ref) 
             funcDerivative = new OperatorNode("*", "multiply", [createConstantNode2(2), new FunctionNode("sqrt", [arg0])]);
           } else if (node.args.length === 2) {
             arg1 = new OperatorNode("/", "divide", [createConstantNode2(1), node.args[1]]);
-            constNodes[arg1] = constNodes[node.args[1]];
-            return _derivative(new OperatorNode("^", "pow", [arg0, arg1]), constNodes);
+            return _derivative(new OperatorNode("^", "pow", [arg0, arg1]), isConst);
           }
           break;
         case "log10":
@@ -41331,17 +42604,16 @@ var createDerivative = /* @__PURE__ */ factory(name284, dependencies284, (_ref) 
           if (!arg1 && node.args.length === 1) {
             funcDerivative = arg0.clone();
             div2 = true;
-          } else if (node.args.length === 1 && arg1 || node.args.length === 2 && constNodes[node.args[1]] !== void 0) {
+          } else if (node.args.length === 1 && arg1 || node.args.length === 2 && isConst(node.args[1])) {
             funcDerivative = new OperatorNode("*", "multiply", [arg0.clone(), new FunctionNode("log", [arg1 || node.args[1]])]);
             div2 = true;
           } else if (node.args.length === 2) {
-            return _derivative(new OperatorNode("/", "divide", [new FunctionNode("log", [arg0]), new FunctionNode("log", [node.args[1]])]), constNodes);
+            return _derivative(new OperatorNode("/", "divide", [new FunctionNode("log", [arg0]), new FunctionNode("log", [node.args[1]])]), isConst);
           }
           break;
         case "pow":
           if (node.args.length === 2) {
-            constNodes[arg1] = constNodes[node.args[1]];
-            return _derivative(new OperatorNode("^", "pow", [arg0, node.args[1]]), constNodes);
+            return _derivative(new OperatorNode("^", "pow", [arg0, node.args[1]]), isConst);
           }
           break;
         case "exp":
@@ -41458,94 +42730,94 @@ var createDerivative = /* @__PURE__ */ factory(name284, dependencies284, (_ref) 
         op = "*";
         func = "multiply";
       }
-      var chainDerivative = _derivative(arg0, constNodes);
+      var chainDerivative = _derivative(arg0, isConst);
       if (negative) {
         chainDerivative = new OperatorNode("-", "unaryMinus", [chainDerivative]);
       }
       return new OperatorNode(op, func, [chainDerivative, funcDerivative]);
     },
-    "OperatorNode, Object": function OperatorNodeObject(node, constNodes) {
-      if (constNodes[node] !== void 0) {
+    "OperatorNode, function": function OperatorNode_function(node, isConst) {
+      if (isConst(node)) {
         return createConstantNode2(0);
       }
       if (node.op === "+") {
         return new OperatorNode(node.op, node.fn, node.args.map(function(arg) {
-          return _derivative(arg, constNodes);
+          return _derivative(arg, isConst);
         }));
       }
       if (node.op === "-") {
         if (node.isUnary()) {
-          return new OperatorNode(node.op, node.fn, [_derivative(node.args[0], constNodes)]);
+          return new OperatorNode(node.op, node.fn, [_derivative(node.args[0], isConst)]);
         }
         if (node.isBinary()) {
-          return new OperatorNode(node.op, node.fn, [_derivative(node.args[0], constNodes), _derivative(node.args[1], constNodes)]);
+          return new OperatorNode(node.op, node.fn, [_derivative(node.args[0], isConst), _derivative(node.args[1], isConst)]);
         }
       }
       if (node.op === "*") {
         var constantTerms = node.args.filter(function(arg) {
-          return constNodes[arg] !== void 0;
+          return isConst(arg);
         });
         if (constantTerms.length > 0) {
           var nonConstantTerms = node.args.filter(function(arg) {
-            return constNodes[arg] === void 0;
+            return !isConst(arg);
           });
           var nonConstantNode = nonConstantTerms.length === 1 ? nonConstantTerms[0] : new OperatorNode("*", "multiply", nonConstantTerms);
-          var newArgs = constantTerms.concat(_derivative(nonConstantNode, constNodes));
+          var newArgs = constantTerms.concat(_derivative(nonConstantNode, isConst));
           return new OperatorNode("*", "multiply", newArgs);
         }
         return new OperatorNode("+", "add", node.args.map(function(argOuter) {
           return new OperatorNode("*", "multiply", node.args.map(function(argInner) {
-            return argInner === argOuter ? _derivative(argInner, constNodes) : argInner.clone();
+            return argInner === argOuter ? _derivative(argInner, isConst) : argInner.clone();
           }));
         }));
       }
       if (node.op === "/" && node.isBinary()) {
         var arg0 = node.args[0];
         var arg1 = node.args[1];
-        if (constNodes[arg1] !== void 0) {
-          return new OperatorNode("/", "divide", [_derivative(arg0, constNodes), arg1]);
+        if (isConst(arg1)) {
+          return new OperatorNode("/", "divide", [_derivative(arg0, isConst), arg1]);
         }
-        if (constNodes[arg0] !== void 0) {
-          return new OperatorNode("*", "multiply", [new OperatorNode("-", "unaryMinus", [arg0]), new OperatorNode("/", "divide", [_derivative(arg1, constNodes), new OperatorNode("^", "pow", [arg1.clone(), createConstantNode2(2)])])]);
+        if (isConst(arg0)) {
+          return new OperatorNode("*", "multiply", [new OperatorNode("-", "unaryMinus", [arg0]), new OperatorNode("/", "divide", [_derivative(arg1, isConst), new OperatorNode("^", "pow", [arg1.clone(), createConstantNode2(2)])])]);
         }
-        return new OperatorNode("/", "divide", [new OperatorNode("-", "subtract", [new OperatorNode("*", "multiply", [_derivative(arg0, constNodes), arg1.clone()]), new OperatorNode("*", "multiply", [arg0.clone(), _derivative(arg1, constNodes)])]), new OperatorNode("^", "pow", [arg1.clone(), createConstantNode2(2)])]);
+        return new OperatorNode("/", "divide", [new OperatorNode("-", "subtract", [new OperatorNode("*", "multiply", [_derivative(arg0, isConst), arg1.clone()]), new OperatorNode("*", "multiply", [arg0.clone(), _derivative(arg1, isConst)])]), new OperatorNode("^", "pow", [arg1.clone(), createConstantNode2(2)])]);
       }
       if (node.op === "^" && node.isBinary()) {
         var _arg = node.args[0];
         var _arg2 = node.args[1];
-        if (constNodes[_arg] !== void 0) {
+        if (isConst(_arg)) {
           if (isConstantNode(_arg) && (isZero(_arg.value) || equal(_arg.value, 1))) {
             return createConstantNode2(0);
           }
-          return new OperatorNode("*", "multiply", [node, new OperatorNode("*", "multiply", [new FunctionNode("log", [_arg.clone()]), _derivative(_arg2.clone(), constNodes)])]);
+          return new OperatorNode("*", "multiply", [node, new OperatorNode("*", "multiply", [new FunctionNode("log", [_arg.clone()]), _derivative(_arg2.clone(), isConst)])]);
         }
-        if (constNodes[_arg2] !== void 0) {
+        if (isConst(_arg2)) {
           if (isConstantNode(_arg2)) {
             if (isZero(_arg2.value)) {
               return createConstantNode2(0);
             }
             if (equal(_arg2.value, 1)) {
-              return _derivative(_arg, constNodes);
+              return _derivative(_arg, isConst);
             }
           }
           var powMinusOne = new OperatorNode("^", "pow", [_arg.clone(), new OperatorNode("-", "subtract", [_arg2, createConstantNode2(1)])]);
-          return new OperatorNode("*", "multiply", [_arg2.clone(), new OperatorNode("*", "multiply", [_derivative(_arg, constNodes), powMinusOne])]);
+          return new OperatorNode("*", "multiply", [_arg2.clone(), new OperatorNode("*", "multiply", [_derivative(_arg, isConst), powMinusOne])]);
         }
-        return new OperatorNode("*", "multiply", [new OperatorNode("^", "pow", [_arg.clone(), _arg2.clone()]), new OperatorNode("+", "add", [new OperatorNode("*", "multiply", [_derivative(_arg, constNodes), new OperatorNode("/", "divide", [_arg2.clone(), _arg.clone()])]), new OperatorNode("*", "multiply", [_derivative(_arg2, constNodes), new FunctionNode("log", [_arg.clone()])])])]);
+        return new OperatorNode("*", "multiply", [new OperatorNode("^", "pow", [_arg.clone(), _arg2.clone()]), new OperatorNode("+", "add", [new OperatorNode("*", "multiply", [_derivative(_arg, isConst), new OperatorNode("/", "divide", [_arg2.clone(), _arg.clone()])]), new OperatorNode("*", "multiply", [_derivative(_arg2, isConst), new FunctionNode("log", [_arg.clone()])])])]);
       }
       throw new Error('Cannot process operator "' + node.op + '" in derivative: the operator is not supported, undefined, or the number of arguments passed to it are not supported');
     }
   });
   function createConstantNode2(value, valueType) {
-    return new ConstantNode(numeric2(value, valueType || config2.number));
+    return new ConstantNode(numeric2(value, valueType || safeNumberType(String(value), config2)));
   }
   return derivative;
 });
 
 // node_modules/mathjs/lib/esm/function/algebra/rationalize.js
-var name285 = "rationalize";
-var dependencies285 = ["config", "typed", "equal", "isZero", "add", "subtract", "multiply", "divide", "pow", "parse", "simplifyConstant", "simplifyCore", "simplify", "?bignumber", "?fraction", "mathWithTransform", "matrix", "AccessorNode", "ArrayNode", "ConstantNode", "FunctionNode", "IndexNode", "ObjectNode", "OperatorNode", "SymbolNode", "ParenthesisNode"];
-var createRationalize = /* @__PURE__ */ factory(name285, dependencies285, (_ref) => {
+var name290 = "rationalize";
+var dependencies291 = ["config", "typed", "equal", "isZero", "add", "subtract", "multiply", "divide", "pow", "parse", "simplifyConstant", "simplifyCore", "simplify", "?bignumber", "?fraction", "mathWithTransform", "matrix", "AccessorNode", "ArrayNode", "ConstantNode", "FunctionNode", "IndexNode", "ObjectNode", "OperatorNode", "SymbolNode", "ParenthesisNode"];
+var createRationalize = /* @__PURE__ */ factory(name290, dependencies291, (_ref) => {
   var {
     config: config2,
     typed: typed2,
@@ -41556,7 +42828,7 @@ var createRationalize = /* @__PURE__ */ factory(name285, dependencies285, (_ref)
     multiply,
     divide: divide2,
     pow: pow2,
-    parse: parse2,
+    parse: parse3,
     simplifyConstant,
     simplifyCore,
     simplify,
@@ -41637,7 +42909,7 @@ var createRationalize = /* @__PURE__ */ factory(name285, dependencies285, (_ref)
     retRationalize.expression = expr;
     return retRationalize;
   }
-  return typed2(name285, {
+  return typed2(name290, {
     Node: _rationalize,
     "Node, boolean": (expr, detailed) => _rationalize(expr, {}, detailed),
     "Node, Object": _rationalize,
@@ -41661,7 +42933,7 @@ var createRationalize = /* @__PURE__ */ factory(name285, dependencies285, (_ref)
         throw new Error("There is an unsolved function call");
       } else if (tp === "OperatorNode") {
         if (node2.op === "^") {
-          if (node2.args[1].type !== "ConstantNode" || !isInteger(parseFloat(node2.args[1].value))) {
+          if (node2.args[1].type !== "ConstantNode" || !isInteger2(parseFloat(node2.args[1].value))) {
             throw new Error("There is a non-integer exponent");
           } else {
             recPoly(node2.args[0]);
@@ -41982,7 +43254,7 @@ var createRationalize = /* @__PURE__ */ factory(name285, dependencies285, (_ref)
       if (node.op === "^") {
         if ((node.args[0].type === "ParenthesisNode" || node.args[0].type === "OperatorNode") && node.args[1].type === "ConstantNode") {
           val = parseFloat(node.args[1].value);
-          does = val >= 2 && isInteger(val);
+          does = val >= 2 && isInteger2(val);
         }
       }
       if (does) {
@@ -42118,7 +43390,7 @@ var createRationalize = /* @__PURE__ */ factory(name285, dependencies285, (_ref)
         }
         if (noPai.op === "^") {
           if (o2.noFil !== 1) throw new Error("Constant cannot be powered");
-          if (!isInteger(valor) || valor <= 0) {
+          if (!isInteger2(valor) || valor <= 0) {
             throw new Error("Non-integer exponent is not allowed");
           }
           for (var _i2 = maxExpo + 1; _i2 < valor; _i2++) coefficients[_i2] = 0;
@@ -42139,9 +43411,9 @@ var createRationalize = /* @__PURE__ */ factory(name285, dependencies285, (_ref)
 });
 
 // node_modules/mathjs/lib/esm/function/signal/zpk2tf.js
-var name286 = "zpk2tf";
-var dependencies286 = ["typed", "add", "multiply", "Complex", "number"];
-var createZpk2tf = /* @__PURE__ */ factory(name286, dependencies286, (_ref) => {
+var name291 = "zpk2tf";
+var dependencies292 = ["typed", "add", "multiply", "Complex", "number"];
+var createZpk2tf = /* @__PURE__ */ factory(name291, dependencies292, (_ref) => {
   var {
     typed: typed2,
     add: add2,
@@ -42149,7 +43421,7 @@ var createZpk2tf = /* @__PURE__ */ factory(name286, dependencies286, (_ref) => {
     Complex: Complex2,
     number
   } = _ref;
-  return typed2(name286, {
+  return typed2(name291, {
     "Array,Array,number": function ArrayArrayNumber(z, p, k) {
       return _zpk2tf(z, p, k);
     },
@@ -42202,9 +43474,9 @@ var createZpk2tf = /* @__PURE__ */ factory(name286, dependencies286, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/function/signal/freqz.js
-var name287 = "freqz";
-var dependencies287 = ["typed", "add", "multiply", "Complex", "divide", "matrix"];
-var createFreqz = /* @__PURE__ */ factory(name287, dependencies287, (_ref) => {
+var name292 = "freqz";
+var dependencies293 = ["typed", "add", "multiply", "Complex", "divide", "matrix"];
+var createFreqz = /* @__PURE__ */ factory(name292, dependencies293, (_ref) => {
   var {
     typed: typed2,
     add: add2,
@@ -42213,22 +43485,22 @@ var createFreqz = /* @__PURE__ */ factory(name287, dependencies287, (_ref) => {
     divide: divide2,
     matrix
   } = _ref;
-  return typed2(name287, {
-    "Array, Array": function ArrayArray(b, a) {
+  return typed2(name292, {
+    "Array, Array": function Array_Array(b, a) {
       var w = createBins(512);
       return _freqz(b, a, w);
     },
-    "Array, Array, Array": function ArrayArrayArray(b, a, w) {
+    "Array, Array, Array": function Array_Array_Array(b, a, w) {
       return _freqz(b, a, w);
     },
-    "Array, Array, number": function ArrayArrayNumber(b, a, w) {
+    "Array, Array, number": function Array_Array_number(b, a, w) {
       if (w < 0) {
         throw new Error("w must be a positive number");
       }
       var w2 = createBins(w);
       return _freqz(b, a, w2);
     },
-    "Matrix, Matrix": function MatrixMatrix(b, a) {
+    "Matrix, Matrix": function Matrix_Matrix(b, a) {
       var _w = createBins(512);
       var {
         w,
@@ -42239,7 +43511,7 @@ var createFreqz = /* @__PURE__ */ factory(name287, dependencies287, (_ref) => {
         h: matrix(h)
       };
     },
-    "Matrix, Matrix, Matrix": function MatrixMatrixMatrix(b, a, w) {
+    "Matrix, Matrix, Matrix": function Matrix_Matrix_Matrix(b, a, w) {
       var {
         h
       } = _freqz(b.valueOf(), a.valueOf(), w.valueOf());
@@ -42248,7 +43520,7 @@ var createFreqz = /* @__PURE__ */ factory(name287, dependencies287, (_ref) => {
         w: matrix(w)
       };
     },
-    "Matrix, Matrix, number": function MatrixMatrixNumber(b, a, w) {
+    "Matrix, Matrix, number": function Matrix_Matrix_number(b, a, w) {
       if (w < 0) {
         throw new Error("w must be a positive number");
       }
@@ -42296,9 +43568,9 @@ var createFreqz = /* @__PURE__ */ factory(name287, dependencies287, (_ref) => {
 });
 
 // node_modules/mathjs/lib/esm/json/reviver.js
-var name288 = "reviver";
-var dependencies288 = ["classes"];
-var createReviver = /* @__PURE__ */ factory(name288, dependencies288, (_ref) => {
+var name293 = "reviver";
+var dependencies294 = ["classes"];
+var createReviver = /* @__PURE__ */ factory(name293, dependencies294, (_ref) => {
   var {
     classes
   } = _ref;
@@ -42312,13 +43584,19 @@ var createReviver = /* @__PURE__ */ factory(name288, dependencies288, (_ref) => 
 });
 
 // node_modules/mathjs/lib/esm/json/replacer.js
-var name289 = "replacer";
-var dependencies289 = [];
-var createReplacer = /* @__PURE__ */ factory(name289, dependencies289, () => {
+var name294 = "replacer";
+var dependencies295 = [];
+var createReplacer = /* @__PURE__ */ factory(name294, dependencies295, () => {
   return function replacer(key, value) {
-    if (typeof value === "number" && (!isFinite(value) || isNaN(value))) {
+    if (typeof value === "number" && (!Number.isFinite(value) || isNaN(value))) {
       return {
         mathjs: "number",
+        value: String(value)
+      };
+    }
+    if (typeof value === "bigint") {
+      return {
+        mathjs: "bigint",
         value: String(value)
       };
     }
@@ -42327,7 +43605,7 @@ var createReplacer = /* @__PURE__ */ factory(name289, dependencies289, () => {
 });
 
 // node_modules/mathjs/lib/esm/version.js
-var version = "12.4.3";
+var version = "15.2.0";
 
 // node_modules/mathjs/lib/esm/constants.js
 var createTrue = /* @__PURE__ */ factory("true", [], () => true);
@@ -42396,53 +43674,53 @@ var createLOG2E = /* @__PURE__ */ recreateFactory("LOG2E", ["config", "?BigNumbe
   } = _ref9;
   return config2.number === "BigNumber" ? new BigNumber(1).div(new BigNumber(2).ln()) : Math.LOG2E;
 });
-var createLOG10E = /* @__PURE__ */ recreateFactory("LOG10E", ["config", "?BigNumber"], (_ref10) => {
+var createLOG10E = /* @__PURE__ */ recreateFactory("LOG10E", ["config", "?BigNumber"], (_ref0) => {
   var {
     config: config2,
     BigNumber
-  } = _ref10;
+  } = _ref0;
   return config2.number === "BigNumber" ? new BigNumber(1).div(new BigNumber(10).ln()) : Math.LOG10E;
 });
 var createSQRT1_2 = /* @__PURE__ */ recreateFactory(
   // eslint-disable-line camelcase
   "SQRT1_2",
   ["config", "?BigNumber"],
-  (_ref11) => {
+  (_ref1) => {
     var {
       config: config2,
       BigNumber
-    } = _ref11;
+    } = _ref1;
     return config2.number === "BigNumber" ? new BigNumber("0.5").sqrt() : Math.SQRT1_2;
   }
 );
-var createSQRT2 = /* @__PURE__ */ recreateFactory("SQRT2", ["config", "?BigNumber"], (_ref12) => {
+var createSQRT2 = /* @__PURE__ */ recreateFactory("SQRT2", ["config", "?BigNumber"], (_ref10) => {
   var {
     config: config2,
     BigNumber
-  } = _ref12;
+  } = _ref10;
   return config2.number === "BigNumber" ? new BigNumber(2).sqrt() : Math.SQRT2;
 });
-var createI = /* @__PURE__ */ recreateFactory("i", ["Complex"], (_ref13) => {
+var createI = /* @__PURE__ */ recreateFactory("i", ["Complex"], (_ref11) => {
   var {
     Complex: Complex2
-  } = _ref13;
+  } = _ref11;
   return Complex2.I;
 });
-var createUppercasePi = /* @__PURE__ */ factory("PI", ["pi"], (_ref14) => {
+var createUppercasePi = /* @__PURE__ */ factory("PI", ["pi"], (_ref12) => {
   var {
     pi: pi2
-  } = _ref14;
+  } = _ref12;
   return pi2;
 });
-var createUppercaseE = /* @__PURE__ */ factory("E", ["e"], (_ref15) => {
+var createUppercaseE = /* @__PURE__ */ factory("E", ["e"], (_ref13) => {
   var {
     e: e2
-  } = _ref15;
+  } = _ref13;
   return e2;
 });
 var createVersion = /* @__PURE__ */ factory("version", [], () => version);
-function recreateFactory(name314, dependencies314, create2) {
-  return factory(name314, dependencies314, create2, {
+function recreateFactory(name323, dependencies324, create2) {
+  return factory(name323, dependencies324, create2, {
     recreateOnConfigChange: true
   });
 }
@@ -42456,6 +43734,7 @@ var createMagneticConstant = /* @__PURE__ */ unitFactory("magneticConstant", "1.
 var createElectricConstant = /* @__PURE__ */ unitFactory("electricConstant", "8.8541878128e-12", "F m^-1");
 var createVacuumImpedance = /* @__PURE__ */ unitFactory("vacuumImpedance", "376.730313667", "ohm");
 var createCoulomb = /* @__PURE__ */ unitFactory("coulomb", "8.987551792261171e9", "N m^2 C^-2");
+var createCoulombConstant = /* @__PURE__ */ unitFactory("coulombConstant", "8.987551792261171e9", "N m^2 C^-2");
 var createElementaryCharge = /* @__PURE__ */ unitFactory("elementaryCharge", "1.602176634e-19", "C");
 var createBohrMagneton = /* @__PURE__ */ unitFactory("bohrMagneton", "9.2740100783e-24", "J T^-1");
 var createConductanceQuantum = /* @__PURE__ */ unitFactory("conductanceQuantum", "7.748091729863649e-5", "S");
@@ -42498,9 +43777,9 @@ var createPlanckMass = /* @__PURE__ */ unitFactory("planckMass", "2.176435e-8", 
 var createPlanckTime = /* @__PURE__ */ unitFactory("planckTime", "5.391245e-44", "s");
 var createPlanckCharge = /* @__PURE__ */ unitFactory("planckCharge", "1.87554603778e-18", "C");
 var createPlanckTemperature = /* @__PURE__ */ unitFactory("planckTemperature", "1.416785e+32", "K");
-function unitFactory(name314, valueStr, unitStr) {
-  var dependencies314 = ["config", "Unit", "BigNumber"];
-  return factory(name314, dependencies314, (_ref) => {
+function unitFactory(name323, valueStr, unitStr) {
+  var dependencies324 = ["config", "Unit", "BigNumber"];
+  return factory(name323, dependencies324, (_ref) => {
     var {
       config: config2,
       Unit,
@@ -42512,9 +43791,9 @@ function unitFactory(name314, valueStr, unitStr) {
     return unit;
   });
 }
-function numberFactory(name314, value) {
-  var dependencies314 = ["config", "BigNumber"];
-  return factory(name314, dependencies314, (_ref2) => {
+function numberFactory(name323, value) {
+  var dependencies324 = ["config", "BigNumber"];
+  return factory(name323, dependencies324, (_ref2) => {
     var {
       config: config2,
       BigNumber
@@ -42523,19 +43802,40 @@ function numberFactory(name314, value) {
   });
 }
 
-// node_modules/mathjs/lib/esm/expression/transform/apply.transform.js
-var name290 = "apply";
-var dependencies290 = ["typed", "isInteger"];
-var createApplyTransform = /* @__PURE__ */ factory(name290, dependencies290, (_ref) => {
+// node_modules/mathjs/lib/esm/expression/transform/mapSlices.transform.js
+function ownKeys4(e2, r) {
+  var t = Object.keys(e2);
+  if (Object.getOwnPropertySymbols) {
+    var o = Object.getOwnPropertySymbols(e2);
+    r && (o = o.filter(function(r2) {
+      return Object.getOwnPropertyDescriptor(e2, r2).enumerable;
+    })), t.push.apply(t, o);
+  }
+  return t;
+}
+function _objectSpread4(e2) {
+  for (var r = 1; r < arguments.length; r++) {
+    var t = null != arguments[r] ? arguments[r] : {};
+    r % 2 ? ownKeys4(Object(t), true).forEach(function(r2) {
+      _defineProperty(e2, r2, t[r2]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e2, Object.getOwnPropertyDescriptors(t)) : ownKeys4(Object(t)).forEach(function(r2) {
+      Object.defineProperty(e2, r2, Object.getOwnPropertyDescriptor(t, r2));
+    });
+  }
+  return e2;
+}
+var name295 = "mapSlices";
+var dependencies296 = ["typed", "isInteger"];
+var createMapSlicesTransform = /* @__PURE__ */ factory(name295, dependencies296, (_ref) => {
   var {
     typed: typed2,
-    isInteger: isInteger2
+    isInteger: isInteger3
   } = _ref;
-  var apply = createApply({
+  var mapSlices = createMapSlices({
     typed: typed2,
-    isInteger: isInteger2
+    isInteger: isInteger3
   });
-  return typed2("apply", {
+  return typed2("mapSlices", {
     "...any": function any(args) {
       var dim = args[1];
       if (isNumber(dim)) {
@@ -42544,20 +43844,20 @@ var createApplyTransform = /* @__PURE__ */ factory(name290, dependencies290, (_r
         args[1] = dim.minus(1);
       }
       try {
-        return apply.apply(null, args);
+        return mapSlices.apply(null, args);
       } catch (err) {
         throw errorTransform(err);
       }
     }
   });
-}, {
+}, _objectSpread4({
   isTransformFunction: true
-});
+}, createMapSlices.meta));
 
 // node_modules/mathjs/lib/esm/expression/transform/column.transform.js
-var name291 = "column";
-var dependencies291 = ["typed", "Index", "matrix", "range"];
-var createColumnTransform = /* @__PURE__ */ factory(name291, dependencies291, (_ref) => {
+var name296 = "column";
+var dependencies297 = ["typed", "Index", "matrix", "range"];
+var createColumnTransform = /* @__PURE__ */ factory(name296, dependencies297, (_ref) => {
   var {
     typed: typed2,
     Index,
@@ -42596,103 +43896,169 @@ function compileInlineExpression(expression, math2, scope) {
   if (!symbol) {
     throw new Error('No undefined variable found in inline expression "' + expression + '"');
   }
-  var name314 = symbol.name;
+  var name323 = symbol.name;
   var argsScope = /* @__PURE__ */ new Map();
-  var subScope = new PartitionedMap(scope, argsScope, /* @__PURE__ */ new Set([name314]));
+  var subScope = new PartitionedMap(scope, argsScope, /* @__PURE__ */ new Set([name323]));
   var eq = expression.compile();
   return function inlineExpression(x) {
-    argsScope.set(name314, x);
+    argsScope.set(name323, x);
     return eq.evaluate(subScope);
   };
 }
 
+// node_modules/mathjs/lib/esm/expression/transform/utils/transformCallback.js
+var name297 = "transformCallback";
+var dependencies298 = ["typed"];
+var createTransformCallback = /* @__PURE__ */ factory(name297, dependencies298, (_ref) => {
+  var {
+    typed: typed2
+  } = _ref;
+  return function(callback, numberOfArrays) {
+    if (typed2.isTypedFunction(callback)) {
+      return _transformTypedCallbackFunction(callback, numberOfArrays);
+    } else {
+      return _transformCallbackFunction(callback, callback.length, numberOfArrays);
+    }
+  };
+  function _transformTypedCallbackFunction(typedFunction3, numberOfArrays) {
+    var signatures = Object.fromEntries(Object.entries(typedFunction3.signatures).map((_ref2) => {
+      var [signature, callbackFunction] = _ref2;
+      var numberOfCallbackInputs = signature.split(",").length;
+      if (typed2.isTypedFunction(callbackFunction)) {
+        return [signature, _transformTypedCallbackFunction(callbackFunction, numberOfArrays)];
+      } else {
+        return [signature, _transformCallbackFunction(callbackFunction, numberOfCallbackInputs, numberOfArrays)];
+      }
+    }));
+    if (typeof typedFunction3.name === "string") {
+      return typed2(typedFunction3.name, signatures);
+    } else {
+      return typed2(signatures);
+    }
+  }
+});
+function _transformCallbackFunction(callbackFunction, numberOfCallbackInputs, numberOfArrays) {
+  if (numberOfCallbackInputs === numberOfArrays) {
+    return callbackFunction;
+  } else if (numberOfCallbackInputs === numberOfArrays + 1) {
+    return function() {
+      for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+        args[_key] = arguments[_key];
+      }
+      var vals = args.slice(0, numberOfArrays);
+      var idx = _transformDims(args[numberOfArrays]);
+      return callbackFunction(...vals, idx);
+    };
+  } else if (numberOfCallbackInputs > numberOfArrays + 1) {
+    return function() {
+      for (var _len2 = arguments.length, args = new Array(_len2), _key2 = 0; _key2 < _len2; _key2++) {
+        args[_key2] = arguments[_key2];
+      }
+      var vals = args.slice(0, numberOfArrays);
+      var idx = _transformDims(args[numberOfArrays]);
+      var rest = args.slice(numberOfArrays + 1);
+      return callbackFunction(...vals, idx, ...rest);
+    };
+  } else {
+    return callbackFunction;
+  }
+}
+function _transformDims(dims) {
+  return dims.map((dim) => dim + 1);
+}
+
 // node_modules/mathjs/lib/esm/expression/transform/filter.transform.js
-var name292 = "filter";
-var dependencies292 = ["typed"];
-var createFilterTransform = /* @__PURE__ */ factory(name292, dependencies292, (_ref) => {
+var name298 = "filter";
+var dependencies299 = ["typed"];
+var createFilterTransform = /* @__PURE__ */ factory(name298, dependencies299, (_ref) => {
   var {
     typed: typed2
   } = _ref;
   function filterTransform(args, math2, scope) {
-    var x, callback;
-    if (args[0]) {
-      x = args[0].compile().evaluate(scope);
+    var filter2 = createFilter({
+      typed: typed2
+    });
+    var transformCallback = createTransformCallback({
+      typed: typed2
+    });
+    if (args.length === 0) {
+      return filter2();
     }
-    if (args[1]) {
-      if (isSymbolNode(args[1]) || isFunctionAssignmentNode(args[1])) {
-        callback = args[1].compile().evaluate(scope);
+    var x = args[0];
+    if (args.length === 1) {
+      return filter2(x);
+    }
+    var N = args.length - 1;
+    var callback = args[N];
+    if (x) {
+      x = _compileAndEvaluate(x, scope);
+    }
+    if (callback) {
+      if (isSymbolNode(callback) || isFunctionAssignmentNode(callback)) {
+        callback = _compileAndEvaluate(callback, scope);
       } else {
-        callback = compileInlineExpression(args[1], math2, scope);
+        callback = compileInlineExpression(callback, math2, scope);
       }
     }
-    return filter2(x, callback);
+    return filter2(x, transformCallback(callback, N));
   }
   filterTransform.rawArgs = true;
-  var filter2 = typed2("filter", {
-    "Array, function": _filter,
-    "Matrix, function": function MatrixFunction(x, test) {
-      return x.create(_filter(x.toArray(), test));
-    },
-    "Array, RegExp": filterRegExp,
-    "Matrix, RegExp": function MatrixRegExp(x, test) {
-      return x.create(filterRegExp(x.toArray(), test));
-    }
-  });
+  function _compileAndEvaluate(arg, scope) {
+    return arg.compile().evaluate(scope);
+  }
   return filterTransform;
 }, {
   isTransformFunction: true
 });
-function _filter(x, callback) {
-  return filter(x, function(value, index, array) {
-    return applyCallback(callback, value, [index + 1], array, "filter");
-  });
-}
 
 // node_modules/mathjs/lib/esm/expression/transform/forEach.transform.js
-var name293 = "forEach";
-var dependencies293 = ["typed"];
-var createForEachTransform = /* @__PURE__ */ factory(name293, dependencies293, (_ref) => {
+var name299 = "forEach";
+var dependencies300 = ["typed"];
+var createForEachTransform = /* @__PURE__ */ factory(name299, dependencies300, (_ref) => {
   var {
     typed: typed2
   } = _ref;
+  var forEach2 = createForEach({
+    typed: typed2
+  });
+  var transformCallback = createTransformCallback({
+    typed: typed2
+  });
   function forEachTransform(args, math2, scope) {
-    var x, callback;
-    if (args[0]) {
-      x = args[0].compile().evaluate(scope);
+    if (args.length === 0) {
+      return forEach2();
     }
-    if (args[1]) {
-      if (isSymbolNode(args[1]) || isFunctionAssignmentNode(args[1])) {
-        callback = args[1].compile().evaluate(scope);
+    var x = args[0];
+    if (args.length === 1) {
+      return forEach2(x);
+    }
+    var N = args.length - 1;
+    var callback = args[N];
+    if (x) {
+      x = _compileAndEvaluate(x, scope);
+    }
+    if (callback) {
+      if (isSymbolNode(callback) || isFunctionAssignmentNode(callback)) {
+        callback = _compileAndEvaluate(callback, scope);
       } else {
-        callback = compileInlineExpression(args[1], math2, scope);
+        callback = compileInlineExpression(callback, math2, scope);
       }
     }
-    return _forEach2(x, callback);
+    return forEach2(x, transformCallback(callback, N));
   }
   forEachTransform.rawArgs = true;
-  var _forEach2 = typed2("forEach", {
-    "Array | Matrix, function": function ArrayMatrixFunction(array, callback) {
-      var recurse = function recurse2(value, index) {
-        if (Array.isArray(value)) {
-          forEach(value, function(child, i) {
-            recurse2(child, index.concat(i + 1));
-          });
-        } else {
-          return applyCallback(callback, value, index, array, "forEach");
-        }
-      };
-      recurse(array.valueOf(), []);
-    }
-  });
+  function _compileAndEvaluate(arg, scope) {
+    return arg.compile().evaluate(scope);
+  }
   return forEachTransform;
 }, {
   isTransformFunction: true
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/index.transform.js
-var name294 = "index";
-var dependencies294 = ["Index", "getMatrixDataType"];
-var createIndexTransform = /* @__PURE__ */ factory(name294, dependencies294, (_ref) => {
+var name300 = "index";
+var dependencies301 = ["Index", "getMatrixDataType"];
+var createIndexTransform = /* @__PURE__ */ factory(name300, dependencies301, (_ref) => {
   var {
     Index,
     getMatrixDataType
@@ -42714,13 +44080,13 @@ var createIndexTransform = /* @__PURE__ */ factory(name294, dependencies294, (_r
             return v - 1;
           });
         }
-      } else if (isNumber(arg)) {
+      } else if (isNumber(arg) || isBigInt(arg)) {
         arg--;
       } else if (isBigNumber(arg)) {
         arg = arg.toNumber() - 1;
       } else if (typeof arg === "string") {
       } else {
-        throw new TypeError("Dimension must be an Array, Matrix, number, string, or Range");
+        throw new TypeError("Dimension must be an Array, Matrix, number, bigint, string, or Range");
       }
       args[i] = arg;
     }
@@ -42733,50 +44099,59 @@ var createIndexTransform = /* @__PURE__ */ factory(name294, dependencies294, (_r
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/map.transform.js
-var name295 = "map";
-var dependencies295 = ["typed"];
-var createMapTransform = /* @__PURE__ */ factory(name295, dependencies295, (_ref) => {
+var name301 = "map";
+var dependencies302 = ["typed"];
+var createMapTransform = /* @__PURE__ */ factory(name301, dependencies302, (_ref) => {
   var {
     typed: typed2
   } = _ref;
+  var map2 = createMap2({
+    typed: typed2
+  });
+  var transformCallback = createTransformCallback({
+    typed: typed2
+  });
   function mapTransform(args, math2, scope) {
-    var x, callback;
-    if (args[0]) {
-      x = args[0].compile().evaluate(scope);
+    if (args.length === 0) {
+      return map2();
     }
-    if (args[1]) {
-      if (isSymbolNode(args[1]) || isFunctionAssignmentNode(args[1])) {
-        callback = args[1].compile().evaluate(scope);
+    if (args.length === 1) {
+      return map2(args[0]);
+    }
+    var N = args.length - 1;
+    var X = args.slice(0, N);
+    var callback = args[N];
+    X = X.map((arg) => _compileAndEvaluate(arg, scope));
+    if (callback) {
+      if (isSymbolNode(callback) || isFunctionAssignmentNode(callback)) {
+        callback = _compileAndEvaluate(callback, scope);
       } else {
-        callback = compileInlineExpression(args[1], math2, scope);
+        callback = compileInlineExpression(callback, math2, scope);
       }
     }
-    return map2(x, callback);
+    return map2(...X, transformCallback(callback, N));
+    function _compileAndEvaluate(arg, scope2) {
+      return arg.compile().evaluate(scope2);
+    }
   }
   mapTransform.rawArgs = true;
-  var map2 = typed2("map", {
-    "Array, function": function ArrayFunction(x, callback) {
-      return _map2(x, callback, x);
-    },
-    "Matrix, function": function MatrixFunction(x, callback) {
-      return x.create(_map2(x.valueOf(), callback, x));
-    }
-  });
   return mapTransform;
 }, {
   isTransformFunction: true
 });
-function _map2(array, callback, orig) {
-  function recurse(value, index) {
-    if (Array.isArray(value)) {
-      return map(value, function(child, i) {
-        return recurse(child, index.concat(i + 1));
-      });
-    } else {
-      return applyCallback(callback, value, index, orig, "map");
-    }
+
+// node_modules/mathjs/lib/esm/expression/transform/utils/dimToZeroBase.js
+function dimToZeroBase(dim) {
+  if (isNumber(dim)) {
+    return dim - 1;
+  } else if (isBigNumber(dim)) {
+    return dim.minus(1);
+  } else {
+    return dim;
   }
-  return recurse(array, []);
+}
+function isNumberOrBigNumber(n) {
+  return isNumber(n) || isBigNumber(n);
 }
 
 // node_modules/mathjs/lib/esm/expression/transform/utils/lastDimToZeroBase.js
@@ -42784,30 +44159,30 @@ function lastDimToZeroBase(args) {
   if (args.length === 2 && isCollection(args[0])) {
     args = args.slice();
     var dim = args[1];
-    if (isNumber(dim)) {
-      args[1] = dim - 1;
-    } else if (isBigNumber(dim)) {
-      args[1] = dim.minus(1);
+    if (isNumberOrBigNumber(dim)) {
+      args[1] = dimToZeroBase(dim);
     }
   }
   return args;
 }
 
 // node_modules/mathjs/lib/esm/expression/transform/max.transform.js
-var name296 = "max";
-var dependencies296 = ["typed", "config", "numeric", "larger"];
-var createMaxTransform = /* @__PURE__ */ factory(name296, dependencies296, (_ref) => {
+var name302 = "max";
+var dependencies303 = ["typed", "config", "numeric", "larger", "isNaN"];
+var createMaxTransform = /* @__PURE__ */ factory(name302, dependencies303, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     numeric: numeric2,
-    larger
+    larger,
+    isNaN: mathIsNaN
   } = _ref;
   var max2 = createMax({
     typed: typed2,
     config: config2,
     numeric: numeric2,
-    larger
+    larger,
+    isNaN: mathIsNaN
   });
   return typed2("max", {
     "...any": function any(args) {
@@ -42824,9 +44199,9 @@ var createMaxTransform = /* @__PURE__ */ factory(name296, dependencies296, (_ref
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/mean.transform.js
-var name297 = "mean";
-var dependencies297 = ["typed", "add", "divide"];
-var createMeanTransform = /* @__PURE__ */ factory(name297, dependencies297, (_ref) => {
+var name303 = "mean";
+var dependencies304 = ["typed", "add", "divide"];
+var createMeanTransform = /* @__PURE__ */ factory(name303, dependencies304, (_ref) => {
   var {
     typed: typed2,
     add: add2,
@@ -42852,20 +44227,22 @@ var createMeanTransform = /* @__PURE__ */ factory(name297, dependencies297, (_re
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/min.transform.js
-var name298 = "min";
-var dependencies298 = ["typed", "config", "numeric", "smaller"];
-var createMinTransform = /* @__PURE__ */ factory(name298, dependencies298, (_ref) => {
+var name304 = "min";
+var dependencies305 = ["typed", "config", "numeric", "smaller", "isNaN"];
+var createMinTransform = /* @__PURE__ */ factory(name304, dependencies305, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     numeric: numeric2,
-    smaller
+    smaller,
+    isNaN: mathIsNaN
   } = _ref;
   var min2 = createMin({
     typed: typed2,
     config: config2,
     numeric: numeric2,
-    smaller
+    smaller,
+    isNaN: mathIsNaN
   });
   return typed2("min", {
     "...any": function any(args) {
@@ -42882,19 +44259,21 @@ var createMinTransform = /* @__PURE__ */ factory(name298, dependencies298, (_ref
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/range.transform.js
-var name299 = "range";
-var dependencies299 = ["typed", "config", "?matrix", "?bignumber", "smaller", "smallerEq", "larger", "largerEq", "add", "isPositive"];
-var createRangeTransform = /* @__PURE__ */ factory(name299, dependencies299, (_ref) => {
+var name305 = "range";
+var dependencies306 = ["typed", "config", "?matrix", "?bignumber", "equal", "smaller", "smallerEq", "larger", "largerEq", "add", "isZero", "isPositive"];
+var createRangeTransform = /* @__PURE__ */ factory(name305, dependencies306, (_ref) => {
   var {
     typed: typed2,
     config: config2,
     matrix,
     bignumber,
+    equal,
     smaller,
     smallerEq,
     larger,
     largerEq,
     add: add2,
+    isZero,
     isPositive
   } = _ref;
   var range = createRange({
@@ -42902,11 +44281,13 @@ var createRangeTransform = /* @__PURE__ */ factory(name299, dependencies299, (_r
     config: config2,
     matrix,
     bignumber,
+    equal,
     smaller,
     smallerEq,
     larger,
     largerEq,
     add: add2,
+    isZero,
     isPositive
   });
   return typed2("range", {
@@ -42924,9 +44305,9 @@ var createRangeTransform = /* @__PURE__ */ factory(name299, dependencies299, (_r
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/row.transform.js
-var name300 = "row";
-var dependencies300 = ["typed", "Index", "matrix", "range"];
-var createRowTransform = /* @__PURE__ */ factory(name300, dependencies300, (_ref) => {
+var name306 = "row";
+var dependencies307 = ["typed", "Index", "matrix", "range"];
+var createRowTransform = /* @__PURE__ */ factory(name306, dependencies307, (_ref) => {
   var {
     typed: typed2,
     Index,
@@ -42958,9 +44339,9 @@ var createRowTransform = /* @__PURE__ */ factory(name300, dependencies300, (_ref
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/subset.transform.js
-var name301 = "subset";
-var dependencies301 = ["typed", "matrix", "zeros", "add"];
-var createSubsetTransform = /* @__PURE__ */ factory(name301, dependencies301, (_ref) => {
+var name307 = "subset";
+var dependencies308 = ["typed", "matrix", "zeros", "add"];
+var createSubsetTransform = /* @__PURE__ */ factory(name307, dependencies308, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -42987,18 +44368,18 @@ var createSubsetTransform = /* @__PURE__ */ factory(name301, dependencies301, (_
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/concat.transform.js
-var name302 = "concat";
-var dependencies302 = ["typed", "matrix", "isInteger"];
-var createConcatTransform = /* @__PURE__ */ factory(name302, dependencies302, (_ref) => {
+var name308 = "concat";
+var dependencies309 = ["typed", "matrix", "isInteger"];
+var createConcatTransform = /* @__PURE__ */ factory(name308, dependencies309, (_ref) => {
   var {
     typed: typed2,
     matrix,
-    isInteger: isInteger2
+    isInteger: isInteger3
   } = _ref;
   var concat2 = createConcat({
     typed: typed2,
     matrix,
-    isInteger: isInteger2
+    isInteger: isInteger3
   });
   return typed2("concat", {
     "...any": function any(args) {
@@ -43021,9 +44402,9 @@ var createConcatTransform = /* @__PURE__ */ factory(name302, dependencies302, (_
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/diff.transform.js
-var name303 = "diff";
-var dependencies303 = ["typed", "matrix", "subtract", "number", "bignumber"];
-var createDiffTransform = /* @__PURE__ */ factory(name303, dependencies303, (_ref) => {
+var name309 = "diff";
+var dependencies310 = ["typed", "matrix", "subtract", "number", "bignumber"];
+var createDiffTransform = /* @__PURE__ */ factory(name309, dependencies310, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -43038,7 +44419,7 @@ var createDiffTransform = /* @__PURE__ */ factory(name303, dependencies303, (_re
     number,
     bignumber
   });
-  return typed2(name303, {
+  return typed2(name309, {
     "...any": function any(args) {
       args = lastDimToZeroBase(args);
       try {
@@ -43053,9 +44434,9 @@ var createDiffTransform = /* @__PURE__ */ factory(name303, dependencies303, (_re
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/std.transform.js
-var name304 = "std";
-var dependencies304 = ["typed", "map", "sqrt", "variance"];
-var createStdTransform = /* @__PURE__ */ factory(name304, dependencies304, (_ref) => {
+var name310 = "std";
+var dependencies311 = ["typed", "map", "sqrt", "variance"];
+var createStdTransform = /* @__PURE__ */ factory(name310, dependencies311, (_ref) => {
   var {
     typed: typed2,
     map: map2,
@@ -43083,9 +44464,9 @@ var createStdTransform = /* @__PURE__ */ factory(name304, dependencies304, (_ref
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/sum.transform.js
-var name305 = "sum";
-var dependencies305 = ["typed", "config", "add", "numeric"];
-var createSumTransform = /* @__PURE__ */ factory(name305, dependencies305, (_ref) => {
+var name311 = "sum";
+var dependencies312 = ["typed", "config", "add", "numeric"];
+var createSumTransform = /* @__PURE__ */ factory(name311, dependencies312, (_ref) => {
   var {
     typed: typed2,
     config: config2,
@@ -43098,7 +44479,7 @@ var createSumTransform = /* @__PURE__ */ factory(name305, dependencies305, (_ref
     add: add2,
     numeric: numeric2
   });
-  return typed2(name305, {
+  return typed2(name311, {
     "...any": function any(args) {
       args = lastDimToZeroBase(args);
       try {
@@ -43113,9 +44494,9 @@ var createSumTransform = /* @__PURE__ */ factory(name305, dependencies305, (_ref
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/quantileSeq.transform.js
-var name306 = "quantileSeq";
-var dependencies306 = ["typed", "bignumber", "add", "subtract", "divide", "multiply", "partitionSelect", "compare", "isInteger", "smaller", "smallerEq", "larger"];
-var createQuantileSeqTransform = /* @__PURE__ */ factory(name306, dependencies306, (_ref) => {
+var name312 = "quantileSeq";
+var dependencies313 = ["typed", "bignumber", "add", "subtract", "divide", "multiply", "partitionSelect", "compare", "isInteger", "smaller", "smallerEq", "larger", "mapSlices"];
+var createQuantileSeqTransform = /* @__PURE__ */ factory(name312, dependencies313, (_ref) => {
   var {
     typed: typed2,
     bignumber,
@@ -43125,10 +44506,11 @@ var createQuantileSeqTransform = /* @__PURE__ */ factory(name306, dependencies30
     multiply,
     partitionSelect,
     compare,
-    isInteger: isInteger2,
+    isInteger: isInteger3,
     smaller,
     smallerEq,
-    larger
+    larger,
+    mapSlices
   } = _ref;
   var quantileSeq = createQuantileSeq({
     typed: typed2,
@@ -43139,22 +44521,23 @@ var createQuantileSeqTransform = /* @__PURE__ */ factory(name306, dependencies30
     multiply,
     partitionSelect,
     compare,
-    isInteger: isInteger2,
+    isInteger: isInteger3,
     smaller,
     smallerEq,
-    larger
+    larger,
+    mapSlices
   });
   return typed2("quantileSeq", {
     "Array | Matrix, number | BigNumber": quantileSeq,
-    "Array | Matrix, number | BigNumber, number": (arr, prob, dim) => quantileSeq(arr, prob, dimToZeroBase(dim)),
+    "Array | Matrix, number | BigNumber, number": (arr, prob, dim) => quantileSeq(arr, prob, dimToZeroBase2(dim)),
     "Array | Matrix, number | BigNumber, boolean": quantileSeq,
-    "Array | Matrix, number | BigNumber, boolean, number": (arr, prob, sorted, dim) => quantileSeq(arr, prob, sorted, dimToZeroBase(dim)),
+    "Array | Matrix, number | BigNumber, boolean, number": (arr, prob, sorted, dim) => quantileSeq(arr, prob, sorted, dimToZeroBase2(dim)),
     "Array | Matrix, Array | Matrix": quantileSeq,
-    "Array | Matrix, Array | Matrix, number": (data, prob, dim) => quantileSeq(data, prob, dimToZeroBase(dim)),
+    "Array | Matrix, Array | Matrix, number": (data, prob, dim) => quantileSeq(data, prob, dimToZeroBase2(dim)),
     "Array | Matrix, Array | Matrix, boolean": quantileSeq,
-    "Array | Matrix, Array | Matrix, boolean, number": (data, prob, sorted, dim) => quantileSeq(data, prob, sorted, dimToZeroBase(dim))
+    "Array | Matrix, Array | Matrix, boolean, number": (data, prob, sorted, dim) => quantileSeq(data, prob, sorted, dimToZeroBase2(dim))
   });
-  function dimToZeroBase(dim) {
+  function dimToZeroBase2(dim) {
     return lastDimToZeroBase([[], dim])[1];
   }
 }, {
@@ -43162,9 +44545,9 @@ var createQuantileSeqTransform = /* @__PURE__ */ factory(name306, dependencies30
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/cumsum.transform.js
-var name307 = "cumsum";
-var dependencies307 = ["typed", "add", "unaryPlus"];
-var createCumSumTransform = /* @__PURE__ */ factory(name307, dependencies307, (_ref) => {
+var name313 = "cumsum";
+var dependencies314 = ["typed", "add", "unaryPlus"];
+var createCumSumTransform = /* @__PURE__ */ factory(name313, dependencies314, (_ref) => {
   var {
     typed: typed2,
     add: add2,
@@ -43175,7 +44558,7 @@ var createCumSumTransform = /* @__PURE__ */ factory(name307, dependencies307, (_
     add: add2,
     unaryPlus
   });
-  return typed2(name307, {
+  return typed2(name313, {
     "...any": function any(args) {
       if (args.length === 2 && isCollection(args[0])) {
         var dim = args[1];
@@ -43197,17 +44580,17 @@ var createCumSumTransform = /* @__PURE__ */ factory(name307, dependencies307, (_
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/variance.transform.js
-var name308 = "variance";
-var dependencies308 = ["typed", "add", "subtract", "multiply", "divide", "apply", "isNaN"];
-var createVarianceTransform = /* @__PURE__ */ factory(name308, dependencies308, (_ref) => {
+var name314 = "variance";
+var dependencies315 = ["typed", "add", "subtract", "multiply", "divide", "mapSlices", "isNaN"];
+var createVarianceTransform = /* @__PURE__ */ factory(name314, dependencies315, (_ref) => {
   var {
     typed: typed2,
     add: add2,
     subtract,
     multiply,
     divide: divide2,
-    apply,
-    isNaN: isNaN2
+    mapSlices,
+    isNaN: mathIsNaN
   } = _ref;
   var variance = createVariance({
     typed: typed2,
@@ -43215,10 +44598,10 @@ var createVarianceTransform = /* @__PURE__ */ factory(name308, dependencies308, 
     subtract,
     multiply,
     divide: divide2,
-    apply,
-    isNaN: isNaN2
+    mapSlices,
+    isNaN: mathIsNaN
   });
-  return typed2(name308, {
+  return typed2(name314, {
     "...any": function any(args) {
       args = lastDimToZeroBase(args);
       try {
@@ -43233,9 +44616,9 @@ var createVarianceTransform = /* @__PURE__ */ factory(name308, dependencies308, 
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/print.transform.js
-var name309 = "print";
-var dependencies309 = ["typed", "matrix", "zeros", "add"];
-var createPrintTransform = /* @__PURE__ */ factory(name309, dependencies309, (_ref) => {
+var name315 = "print";
+var dependencies316 = ["typed", "matrix", "zeros", "add"];
+var createPrintTransform = /* @__PURE__ */ factory(name315, dependencies316, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -43248,11 +44631,11 @@ var createPrintTransform = /* @__PURE__ */ factory(name309, dependencies309, (_r
     zeros: zeros2,
     add: add2
   });
-  return typed2(name309, {
-    "string, Object | Array": function stringObjectArray(template, values) {
+  return typed2(name315, {
+    "string, Object | Array": function string_Object__Array(template, values) {
       return print(_convertTemplateToZeroBasedIndex(template), values);
     },
-    "string, Object | Array, number | Object": function stringObjectArrayNumberObject(template, values, options) {
+    "string, Object | Array, number | Object": function string_Object__Array_number__Object(template, values, options) {
       return print(_convertTemplateToZeroBasedIndex(template), values, options);
     }
   });
@@ -43274,9 +44657,9 @@ var createPrintTransform = /* @__PURE__ */ factory(name309, dependencies309, (_r
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/and.transform.js
-var name310 = "and";
-var dependencies310 = ["typed", "matrix", "zeros", "add", "equalScalar", "not", "concat"];
-var createAndTransform = /* @__PURE__ */ factory(name310, dependencies310, (_ref) => {
+var name316 = "and";
+var dependencies317 = ["typed", "matrix", "zeros", "add", "equalScalar", "not", "concat"];
+var createAndTransform = /* @__PURE__ */ factory(name316, dependencies317, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -43308,9 +44691,9 @@ var createAndTransform = /* @__PURE__ */ factory(name310, dependencies310, (_ref
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/or.transform.js
-var name311 = "or";
-var dependencies311 = ["typed", "matrix", "equalScalar", "DenseMatrix", "concat"];
-var createOrTransform = /* @__PURE__ */ factory(name311, dependencies311, (_ref) => {
+var name317 = "or";
+var dependencies318 = ["typed", "matrix", "equalScalar", "DenseMatrix", "concat"];
+var createOrTransform = /* @__PURE__ */ factory(name317, dependencies318, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -43339,10 +44722,42 @@ var createOrTransform = /* @__PURE__ */ factory(name311, dependencies311, (_ref)
   isTransformFunction: true
 });
 
+// node_modules/mathjs/lib/esm/expression/transform/nullish.transform.js
+var name318 = "nullish";
+var dependencies319 = ["typed", "matrix", "size", "flatten", "deepEqual"];
+var createNullishTransform = /* @__PURE__ */ factory(name318, dependencies319, (_ref) => {
+  var {
+    typed: typed2,
+    matrix,
+    size,
+    flatten: flatten2,
+    deepEqual
+  } = _ref;
+  var nullish = createNullish({
+    typed: typed2,
+    matrix,
+    size,
+    flatten: flatten2,
+    deepEqual
+  });
+  function nullishTransform(args, math2, scope) {
+    var left = args[0].compile().evaluate(scope);
+    if (!isCollection(left) && left != null && left !== void 0) {
+      return left;
+    }
+    var right = args[1].compile().evaluate(scope);
+    return nullish(left, right);
+  }
+  nullishTransform.rawArgs = true;
+  return nullishTransform;
+}, {
+  isTransformFunction: true
+});
+
 // node_modules/mathjs/lib/esm/expression/transform/bitAnd.transform.js
-var name312 = "bitAnd";
-var dependencies312 = ["typed", "matrix", "zeros", "add", "equalScalar", "not", "concat"];
-var createBitAndTransform = /* @__PURE__ */ factory(name312, dependencies312, (_ref) => {
+var name319 = "bitAnd";
+var dependencies320 = ["typed", "matrix", "zeros", "add", "equalScalar", "not", "concat"];
+var createBitAndTransform = /* @__PURE__ */ factory(name319, dependencies320, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -43379,9 +44794,9 @@ var createBitAndTransform = /* @__PURE__ */ factory(name312, dependencies312, (_
 });
 
 // node_modules/mathjs/lib/esm/expression/transform/bitOr.transform.js
-var name313 = "bitOr";
-var dependencies313 = ["typed", "matrix", "equalScalar", "DenseMatrix", "concat"];
-var createBitOrTransform = /* @__PURE__ */ factory(name313, dependencies313, (_ref) => {
+var name320 = "bitOr";
+var dependencies321 = ["typed", "matrix", "equalScalar", "DenseMatrix", "concat"];
+var createBitOrTransform = /* @__PURE__ */ factory(name320, dependencies321, (_ref) => {
   var {
     typed: typed2,
     matrix,
@@ -43418,6 +44833,39 @@ var createBitOrTransform = /* @__PURE__ */ factory(name313, dependencies313, (_r
   isTransformFunction: true
 });
 
+// node_modules/mathjs/lib/esm/function/fraction/num.js
+var name321 = "num";
+var dependencies322 = ["typed", "fraction"];
+var createNum = /* @__PURE__ */ factory(name321, dependencies322, (_ref) => {
+  var {
+    typed: typed2,
+    fraction
+  } = _ref;
+  return typed2(name321, {
+    Fraction: (x) => x.s * x.n,
+    BigNumber: (x) => {
+      var f = fraction(x);
+      return f.s * f.n;
+    },
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
+  });
+});
+
+// node_modules/mathjs/lib/esm/function/fraction/den.js
+var name322 = "den";
+var dependencies323 = ["typed", "fraction"];
+var createDen = /* @__PURE__ */ factory(name322, dependencies323, (_ref) => {
+  var {
+    typed: typed2,
+    fraction
+  } = _ref;
+  return typed2(name322, {
+    Fraction: (x) => x.d,
+    BigNumber: (x) => fraction(x).d,
+    "Array | Matrix": typed2.referToSelf((self2) => (x) => deepMap2(x, self2))
+  });
+});
+
 // node_modules/mathjs/lib/esm/entry/allFactoriesAny.js
 var all = factoriesAny_exports;
 
@@ -43445,17 +44893,17 @@ function importFactory(typed2, load, math2, importedFactories) {
     if (!options) {
       options = {};
     }
-    function flattenImports(flatValues2, value2, name315) {
+    function flattenImports(flatValues2, value2, name324) {
       if (Array.isArray(value2)) {
         value2.forEach((item) => flattenImports(flatValues2, item));
-      } else if (typeof value2 === "object") {
+      } else if (isObject(value2) || isModule(value2)) {
         for (var _name in value2) {
           if (hasOwnProperty(value2, _name)) {
             flattenImports(flatValues2, value2[_name], _name);
           }
         }
-      } else if (isFactory(value2) || name315 !== void 0) {
-        var flatName = isFactory(value2) ? isTransformFunctionFactory(value2) ? value2.fn + ".transform" : value2.fn : name315;
+      } else if (isFactory(value2) || name324 !== void 0) {
+        var flatName = isFactory(value2) ? isTransformFunctionFactory(value2) ? value2.fn + ".transform" : value2.fn : name324;
         if (hasOwnProperty(flatValues2, flatName) && flatValues2[flatName] !== value2 && !options.silent) {
           throw new Error('Cannot import "' + flatName + '" twice');
         }
@@ -43468,13 +44916,13 @@ function importFactory(typed2, load, math2, importedFactories) {
     }
     var flatValues = {};
     flattenImports(flatValues, functions);
-    for (var name314 in flatValues) {
-      if (hasOwnProperty(flatValues, name314)) {
-        var value = flatValues[name314];
+    for (var name323 in flatValues) {
+      if (hasOwnProperty(flatValues, name323)) {
+        var value = flatValues[name323];
         if (isFactory(value)) {
           _importFactory(value, options);
         } else if (isSupportedType(value)) {
-          _import(name314, value, options);
+          _import(name323, value, options);
         } else {
           if (!options.silent) {
             throw new TypeError("Factory, Object, or Array expected");
@@ -43483,61 +44931,64 @@ function importFactory(typed2, load, math2, importedFactories) {
       }
     }
   }
-  function _import(name314, value, options) {
+  function _import(name323, value, options) {
+    var _math$Unit;
     if (options.wrap && typeof value === "function") {
       value = _wrap(value);
     }
     if (hasTypedFunctionSignature(value)) {
-      value = typed2(name314, {
+      value = typed2(name323, {
         [value.signature]: value
       });
     }
-    if (typed2.isTypedFunction(math2[name314]) && typed2.isTypedFunction(value)) {
+    if (typed2.isTypedFunction(math2[name323]) && typed2.isTypedFunction(value)) {
       if (options.override) {
-        value = typed2(name314, value.signatures);
+        value = typed2(name323, value.signatures);
       } else {
-        value = typed2(math2[name314], value);
+        value = typed2(math2[name323], value);
       }
-      math2[name314] = value;
-      delete importedFactories[name314];
-      _importTransform(name314, value);
-      math2.emit("import", name314, function resolver() {
+      math2[name323] = value;
+      delete importedFactories[name323];
+      _importTransform(name323, value);
+      math2.emit("import", name323, function resolver() {
         return value;
       });
       return;
     }
-    if (math2[name314] === void 0 || options.override) {
-      math2[name314] = value;
-      delete importedFactories[name314];
-      _importTransform(name314, value);
-      math2.emit("import", name314, function resolver() {
+    var isDefined = math2[name323] !== void 0;
+    var isValuelessUnit = (_math$Unit = math2.Unit) === null || _math$Unit === void 0 ? void 0 : _math$Unit.isValuelessUnit(name323);
+    if (!isDefined && !isValuelessUnit || options.override) {
+      math2[name323] = value;
+      delete importedFactories[name323];
+      _importTransform(name323, value);
+      math2.emit("import", name323, function resolver() {
         return value;
       });
       return;
     }
     if (!options.silent) {
-      throw new Error('Cannot import "' + name314 + '": already exists');
+      throw new Error('Cannot import "' + name323 + '": already exists');
     }
   }
-  function _importTransform(name314, value) {
+  function _importTransform(name323, value) {
     if (value && typeof value.transform === "function") {
-      math2.expression.transform[name314] = value.transform;
-      if (allowedInExpressions(name314)) {
-        math2.expression.mathWithTransform[name314] = value.transform;
+      math2.expression.transform[name323] = value.transform;
+      if (allowedInExpressions(name323)) {
+        math2.expression.mathWithTransform[name323] = value.transform;
       }
     } else {
-      delete math2.expression.transform[name314];
-      if (allowedInExpressions(name314)) {
-        math2.expression.mathWithTransform[name314] = value;
+      delete math2.expression.transform[name323];
+      if (allowedInExpressions(name323)) {
+        math2.expression.mathWithTransform[name323] = value;
       }
     }
   }
-  function _deleteTransform(name314) {
-    delete math2.expression.transform[name314];
-    if (allowedInExpressions(name314)) {
-      math2.expression.mathWithTransform[name314] = math2[name314];
+  function _deleteTransform(name323) {
+    delete math2.expression.transform[name323];
+    if (allowedInExpressions(name323)) {
+      math2.expression.mathWithTransform[name323] = math2[name323];
     } else {
-      delete math2.expression.mathWithTransform[name314];
+      delete math2.expression.mathWithTransform[name323];
     }
   }
   function _wrap(fn) {
@@ -43555,32 +45006,33 @@ function importFactory(typed2, load, math2, importedFactories) {
     return wrapper;
   }
   function _importFactory(factory2, options) {
-    var name314 = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : factory2.fn;
-    if (name314.includes(".")) {
-      throw new Error("Factory name should not contain a nested path. Name: " + JSON.stringify(name314));
+    var _factory$meta$formerl, _factory$meta;
+    var name323 = arguments.length > 2 && arguments[2] !== void 0 ? arguments[2] : factory2.fn;
+    if (name323.includes(".")) {
+      throw new Error("Factory name should not contain a nested path. Name: " + JSON.stringify(name323));
     }
     var namespace = isTransformFunctionFactory(factory2) ? math2.expression.transform : math2;
-    var existingTransform = name314 in math2.expression.transform;
-    var existing = hasOwnProperty(namespace, name314) ? namespace[name314] : void 0;
+    var existingTransform = name323 in math2.expression.transform;
+    var existing = hasOwnProperty(namespace, name323) ? namespace[name323] : void 0;
     var resolver = function resolver2() {
-      var dependencies314 = {};
+      var dependencies324 = {};
       factory2.dependencies.map(stripOptionalNotation).forEach((dependency) => {
         if (dependency.includes(".")) {
           throw new Error("Factory dependency should not contain a nested path. Name: " + JSON.stringify(dependency));
         }
         if (dependency === "math") {
-          dependencies314.math = math2;
+          dependencies324.math = math2;
         } else if (dependency === "mathWithTransform") {
-          dependencies314.mathWithTransform = math2.expression.mathWithTransform;
+          dependencies324.mathWithTransform = math2.expression.mathWithTransform;
         } else if (dependency === "classes") {
-          dependencies314.classes = math2;
+          dependencies324.classes = math2;
         } else {
-          dependencies314[dependency] = math2[dependency];
+          dependencies324[dependency] = math2[dependency];
         }
       });
-      var instance = /* @__PURE__ */ factory2(dependencies314);
+      var instance = /* @__PURE__ */ factory2(dependencies324);
       if (instance && typeof instance.transform === "function") {
-        throw new Error('Transforms cannot be attached to factory functions. Please create a separate function for it with exports.path="expression.transform"');
+        throw new Error('Transforms cannot be attached to factory functions. Please create a separate function for it with export const path = "expression.transform"');
       }
       if (existing === void 0 || options.override) {
         return instance;
@@ -43591,39 +45043,51 @@ function importFactory(typed2, load, math2, importedFactories) {
       if (options.silent) {
         return existing;
       } else {
-        throw new Error('Cannot import "' + name314 + '": already exists');
+        throw new Error('Cannot import "' + name323 + '": already exists');
       }
     };
+    var former = (_factory$meta$formerl = (_factory$meta = factory2.meta) === null || _factory$meta === void 0 ? void 0 : _factory$meta.formerly) !== null && _factory$meta$formerl !== void 0 ? _factory$meta$formerl : "";
+    var needsTransform = isTransformFunctionFactory(factory2) || factoryAllowedInExpressions(factory2);
+    var withTransform = math2.expression.mathWithTransform;
     if (!factory2.meta || factory2.meta.lazy !== false) {
-      lazy(namespace, name314, resolver);
+      lazy(namespace, name323, resolver);
+      if (former) lazy(namespace, former, resolver);
       if (existing && existingTransform) {
-        _deleteTransform(name314);
+        _deleteTransform(name323);
+        if (former) _deleteTransform(former);
       } else {
-        if (isTransformFunctionFactory(factory2) || factoryAllowedInExpressions(factory2)) {
-          lazy(math2.expression.mathWithTransform, name314, () => namespace[name314]);
+        if (needsTransform) {
+          lazy(withTransform, name323, () => namespace[name323]);
+          if (former) lazy(withTransform, former, () => namespace[name323]);
         }
       }
     } else {
-      namespace[name314] = resolver();
+      namespace[name323] = resolver();
+      if (former) namespace[former] = namespace[name323];
       if (existing && existingTransform) {
-        _deleteTransform(name314);
+        _deleteTransform(name323);
+        if (former) _deleteTransform(former);
       } else {
-        if (isTransformFunctionFactory(factory2) || factoryAllowedInExpressions(factory2)) {
-          lazy(math2.expression.mathWithTransform, name314, () => namespace[name314]);
+        if (needsTransform) {
+          lazy(withTransform, name323, () => namespace[name323]);
+          if (former) lazy(withTransform, former, () => namespace[name323]);
         }
       }
     }
-    importedFactories[name314] = factory2;
-    math2.emit("import", name314, resolver);
+    importedFactories[name323] = factory2;
+    math2.emit("import", name323, resolver);
   }
   function isSupportedType(object) {
     return typeof object === "function" || typeof object === "number" || typeof object === "string" || typeof object === "boolean" || object === null || isUnit(object) || isComplex(object) || isBigNumber(object) || isFraction(object) || isMatrix(object) || Array.isArray(object);
   }
+  function isModule(object) {
+    return typeof object === "object" && object[Symbol.toStringTag] === "Module";
+  }
   function hasTypedFunctionSignature(fn) {
     return typeof fn === "function" && typeof fn.signature === "string";
   }
-  function allowedInExpressions(name314) {
-    return !hasOwnProperty(unsafe, name314);
+  function allowedInExpressions(name323) {
+    return !hasOwnProperty(unsafe, name323);
   }
   function factoryAllowedInExpressions(factory2) {
     return !factory2.fn.includes(".") && // FIXME: make checking on path redundant, check on meta data instead
@@ -43655,6 +45119,7 @@ function create(factories, config2) {
     isNumber,
     isComplex,
     isBigNumber,
+    isBigInt,
     isFraction,
     isUnit,
     isString,
@@ -43672,6 +45137,9 @@ function create(factories, config2) {
     isDate,
     isRegExp,
     isObject,
+    isMap,
+    isPartitionedMap,
+    isObjectWrappingMap,
     isNull,
     isUndefined,
     isAccessorNode,
@@ -44353,15 +45821,6 @@ var GrapherSettingTab = class extends import_obsidian.PluginSettingTab {
   }
 };
 /*! Bundled license information:
-
-fraction.js/fraction.js:
-  (**
-   * @license Fraction.js v4.3.0 20/08/2023
-   * https://www.xarg.org/2014/03/rational-numbers-in-javascript/
-   *
-   * Copyright (c) 2023, Robert Eisele (robert@raw.org)
-   * Dual licensed under the MIT or GPL Version 2 licenses.
-   **)
 
 decimal.js/decimal.mjs:
   (*!
