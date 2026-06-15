@@ -2275,8 +2275,8 @@ function latexToMathjs(input) {
     prev = s;
     s = s.replace(/\\left\s*\|([^|]*?)\\right\s*\|/g, "abs($1)");
   }
-  s = s.replace(/\\left\s*[\(\[]/g, "(");
-  s = s.replace(/\\right\s*[\)\]]/g, ")");
+  s = s.replace(/\\left\s*[([]/g, "(");
+  s = s.replace(/\\right\s*[)\]]/g, ")");
   s = s.replace(/\\left\s*\./g, "");
   s = s.replace(/\\right\s*\./g, "");
   s = s.replace(

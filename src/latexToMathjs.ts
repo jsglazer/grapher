@@ -198,8 +198,8 @@ export function latexToMathjs(input: string): string {
 	}
 
 	// \left/\right brackets and parens → plain parens
-	s = s.replace(/\\left\s*[\(\[]/g, '(');
-	s = s.replace(/\\right\s*[\)\]]/g, ')');
+	s = s.replace(/\\left\s*[([]/g, '(');
+	s = s.replace(/\\right\s*[)\]]/g, ')');
 	s = s.replace(/\\left\s*\./g, '');
 	s = s.replace(/\\right\s*\./g, '');
 
