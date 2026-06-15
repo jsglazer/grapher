@@ -1,7 +1,7 @@
 # Grapher
 
 [![GitHub release](https://img.shields.io/github/v/release/jsglazer/grapher?logo=github)](https://github.com/jsglazer/grapher/releases)
-[![GitHub license](https://img.shields.io/github/license/jsglazer/grapher)](https://github.com/jsglazer/grapher/blob/main/LICENSE)
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/jsglazer/grapher/blob/main/LICENSE)
 [![Made with Claude](https://img.shields.io/badge/Made_with-Claude-D97756?logo=anthropic)](https://claude.ai)
 
 An Obsidian plugin that renders mathematical equations as graphs directly in your notes using a `grapher` code block.
