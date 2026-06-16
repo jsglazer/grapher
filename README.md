@@ -3,6 +3,7 @@
 [![GitHub release](https://img.shields.io/github/v/release/jsglazer/grapher?logo=github)](https://github.com/jsglazer/grapher/releases)
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/jsglazer/grapher/blob/main/LICENSE)
 [![Made with Claude](https://img.shields.io/badge/Made_with-Claude-D97756?logo=anthropic)](https://claude.ai)
+[![Gemini Flash Antigravity](https://img.shields.io/badge/Gemini%20Flash-Antigravity-4f86f7?logo=google-gemini&logoColor=white)](https://github.com/google-gemini)
 
 An Obsidian plugin that renders mathematical equations as graphs directly in your notes using a `grapher` code block.
 
