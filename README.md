@@ -4,6 +4,9 @@
 [![License](https://img.shields.io/badge/License-MIT-blue.svg)](https://github.com/jsglazer/grapher/blob/main/LICENSE)
 [![Made with Claude](https://img.shields.io/badge/Made_with-Claude-D97756?logo=anthropic)](https://claude.ai)
 [![Gemini Flash Antigravity](https://img.shields.io/badge/Gemini%20Flash-Antigravity-4f86f7?logo=google-gemini&logoColor=white)](https://github.com/google-gemini)
+[![CI](https://github.com/jsglazer/grapher/actions/workflows/ci.yml/badge.svg)](https://github.com/jsglazer/grapher/actions/workflows/ci.yml)
+[![CodeQL](https://github.com/jsglazer/grapher/actions/workflows/codeql.yml/badge.svg)](https://github.com/jsglazer/grapher/actions/workflows/codeql.yml)
+[![OpenSSF Scorecard](https://api.scorecard.dev/projects/github.com/jsglazer/grapher/badge)](https://securityscorecards.dev/viewer/?uri=github.com/jsglazer/grapher)
 
 An Obsidian plugin that renders mathematical equations as graphs directly in your notes using a `grapher` code block.
 
@@ -12,7 +15,6 @@ An Obsidian plugin that renders mathematical equations as graphs directly in you
 ---
 
 ![Example](quadcub.png)
-
 
 ## Usage
 
